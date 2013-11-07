@@ -1,0 +1,55 @@
+<?page title="paramedit" contentType="text/html;charset=UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<zk>
+	<window title="paramedit" border="normal" width="320px"
+		id="parameditWin" apply="com.siteview.ecc.message.ParamEdit"
+		forward="onCreate=onInit" closable="true">
+		<groupbox>
+			<caption label="${c:l('WhetherExistenceOfReturnValue')}" />
+			<radiogroup orient="horizontal">
+				<radio label="${c:l('Exist')}" id="exist"
+					onCheck="paraGroupbox.setVisible(true);porcType.setSelectedIndex(0)" />
+				<space width="110px" />
+				<radio label="${c:l('NotExist')}" id="notexist"
+					onCheck="paraGroupbox.setVisible(false);" />
+			</radiogroup>
+		</groupbox>
+		<groupbox id="paraGroupbox">
+			<caption label="${c:l('ParameterList')}" />
+			<grid oddRowSclass="none" zclass="none">
+				<columns>
+					<column label="" />
+					<column label="" />
+				</columns>
+				<rows>
+
+					<row zclass="none">
+						<label value="${c:l('ParameterType*:')}" />
+						<combobox height="15px" id="porcType"
+							width="173px" readonly="true"><comboitem label="String"/><comboitem label="int"/><comboitem label="DateTime"/><comboitem label="bool"/></combobox>
+						
+					</row>
+					<row zclass="none">
+						<label value="${c:l('ParameterLength*:')}" />
+						<intbox height="15px" id="porcLength"
+							width="190px" />
+					</row>
+					<row zclass="none">
+						<label value="${c:l('ParameterDescription:')}" />
+						<textbox height="90px" id="porcInfo"
+							width="190px" multiline="true" />
+					</row>
+				</rows>
+			</grid>
+		</groupbox>
+		<hbox style="margin-top:5px ">
+			<space width="120px" />
+			<button id="addDutyButton" sclass="btnDefault" width="74px"
+				height="23px" image="/main/images/button/ico/save_bt.gif" label="${c:l('Determine')}"
+				forward="onClick=onApply" />
+			<button label="${c:l('Cancel')}" sclass="btnDefault" width="74px"
+				height="23px" image="/main/images/button/ico/close_bt.gif"
+				onClick="parameditWin.detach()" />
+		</hbox>
+	</window>
+</zk>

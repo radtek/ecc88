@@ -1,0 +1,279 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<zk>
+	<zscript>
+			 String fontsize = "font-size:20px;color:red";
+			 String fontsize2 = "font-size:12px;color:blue";
+			 void onChangeStyle(Toolbarbutton b){
+					h2.setStyle(fontsize2);
+					h4.setStyle(fontsize2);
+					h8.setStyle(fontsize2);
+					d1.setStyle(fontsize2);
+					d2.setStyle(fontsize2);
+					d3.setStyle(fontsize2);
+					d5.setStyle(fontsize2);
+					week.setStyle(fontsize2);
+					week1.setStyle(fontsize2);
+					month1.setStyle(fontsize2);
+					month2.setStyle(fontsize2);
+					month3.setStyle(fontsize2);
+			 		nowDay.setStyle(fontsize2);
+			 		if(tree.getSelectedItem()!=null)
+			 			b.setStyle(fontsize);
+			 }
+		</zscript>
+	<borderlayout apply="com.siteview.ecc.report.TendencyReport"
+		id="trendreport">
+		<west id="treeview" title="${c:l('TrendReport')}" size="220px" flex="true"
+			splittable="true" minsize="100" maxsize="500" collapsible="true">
+			<borderlayout>
+				<north size="93%" flex="true" style="border:none">
+					<tree zclass="z-dottree" id="tree"
+						fixedLayout="true" use="com.siteview.ecc.alert.SelectTree"
+						checkable="false" height="100%" vflex="true" width="180px">
+					</tree>
+				</north>
+				<center flex="true" style="border:none">
+					<hbox style="margin-top:1%" align="center">
+						<label value="${c:l('GroupNameV:')}" style="margin-left:15px" id="groupLink" forward="onCreate=onCreate$groupLink"></label>
+						<combobox id="viewNamecombobox" height="15px"
+							width="100px" readonly="true"
+							use="com.siteview.ecc.alert.control.ViewNameCombobox" />
+					</hbox>
+				</center>
+			</borderlayout>
+		</west>
+		<center border="none" flex="true">
+			<tabbox>
+				<tabs>
+					<tab label="${c:l('Query')}" />
+					<tab label="${c:l('Data')}" />
+				</tabs>
+				<tabpanels>
+					<tabpanel>
+						<borderlayout>
+							<north border="none" flex="true"  splittable="true" id="north"
+								size="60%" collapsible="true" minsize="100" maxsize="900" style="overflow-y:auto">
+								<div width="90%">
+									<panel collapsible="true" border="none"
+										title="${c:l('QueryConditions')}">
+										<panelchildren>
+											<groupbox closable="false"
+												open="true" style="margin-right:1px">
+												<hbox>
+													<toolbarbutton
+														id="h2" label="${c:l('TwoHours')}" onFocus="onChangeStyle(self)"
+														style="line-height:18px;vertical-align:bottom" />
+													<space width="1px" />
+													<toolbarbutton
+														id="h4" label="${c:l('FourHours')}" onFocus="onChangeStyle(self)"
+														style="line-height:18px;vertical-align:bottom" />
+													<space width="1px" />
+													<toolbarbutton
+														id="h8" label="${c:l('EightHours')}" onFocus="onChangeStyle(self)"
+														style="line-height:18px;vertical-align:bottom" />
+													<space width="1px" />
+													<toolbarbutton
+														id="d1" label="${c:l('OneDays')}" onFocus="onChangeStyle(self)"
+														style="line-height:18px;vertical-align:bottom" />
+													<space width="1px" />
+													<toolbarbutton
+														id="d2" label="${c:l('TwoDays')}" onFocus="onChangeStyle(self)"
+														style="line-height:18px;vertical-align:bottom" />
+													<space width="1px" />
+													<toolbarbutton
+														id="d3" label="${c:l('ThreeDays')}" onFocus="onChangeStyle(self)"
+														style="line-height:18px;vertical-align:bottom" />
+													<space width="1px" />
+													<toolbarbutton
+														id="d5" label="${c:l('FiveDays')}" onFocus="onChangeStyle(self)"
+														style="line-height:18px;vertical-align:bottom" />
+													<space width="1px" />
+													<toolbarbutton
+														id="week" label="${c:l('ThisWeek')}" onFocus="onChangeStyle(self)"
+														style="line-height:18px;vertical-align:bottom" />
+													<space width="1px" />
+													<toolbarbutton
+														id="week1" label="${c:l('OneWeeks')}" onFocus="onChangeStyle(self)"
+														style="line-height:18px;vertical-align:bottom" />
+													<space width="1px" />
+													<toolbarbutton
+														id="month1" label="${c:l('OneMonths')}" onFocus="onChangeStyle(self)"
+														style="line-height:18px;vertical-align:bottom" />
+													<space width="1px" />
+													<toolbarbutton
+														id="month2" label="${c:l('TwoMonths')}" onFocus="onChangeStyle(self)"
+														style="line-height:16px;vertical-align:bottom" />
+													<space width="1px" />
+													<toolbarbutton
+														id="month3" label="${c:l('SixMonths')}" onFocus="onChangeStyle(self)"
+														style="line-height:18px;vertical-align:bottom" />
+													<space width="1px" />
+													<toolbarbutton
+														id="nowDay" label="${c:l('SameDay')}" onFocus="onChangeStyle(self)"
+														style="line-height:18px;vertical-align:bottom" />
+												</hbox>
+												<grid
+													oddRowSclass="none" style="margin-top:8px;border:none">
+													<columns>
+														<column label=""
+															width="120px" align="center" />
+														<column label=""
+															align="left" />
+													</columns>
+													<rows>
+														<row
+															zclass="none" height="23px">
+															<label value="${c:l('StartTime:')}"/>
+															<hbox>
+																<datebox
+																	id="start" format="yyyy-MM-dd" compact="true"
+																	readonly="true" style="font-size:10pt;" />
+																<timebox
+																	width="40px" id="begin_Time" height="15px"
+																	style="font-size:10pt;vertical-align:text-bottom" />
+															</hbox>
+														</row>
+														<row
+															zclass="none" height="23px">
+															<label value="${c:l('EndTime:')}"/>
+															<hbox>
+																<datebox
+																	id="end" format="yyyy-MM-dd" readonly="true"
+																	style="font-size:10pt;" />
+																<timebox
+																	width="40px" id="end_Time" height="15px"
+																	style="font-size:10pt;vertical-align:text-bottom" />
+															</hbox>
+														</row>
+														<row
+															zclass="none" height="23px">
+															<label
+																value=" " />
+															<hbox>
+																<button
+																	id="seachBtn" label="${c:l('Query')}" sclass="btnDefault"
+																	width="74px" height="23px"
+																	image="/main/images/button/ico/query_bt.gif" />
+																<button
+																	id="exportReport" label="${c:l('ExportReport')}" sclass="btnDefault"
+																	width="85px" height="23px"
+																	image="/main/images/bakRestore.gif" />
+																<button
+																	label="${c:l('Help')}" sclass="btnDefault" width="74px"
+																	height="23px" image="/main/images/action/help.gif"
+																	action="onclick:showHelp(20)" />
+															</hbox>
+														</row>
+													</rows>
+												</grid>
+											</groupbox>
+										</panelchildren>
+									</panel>
+
+									<panel sclass="ecc-panel"
+										title="${c:l('RunningStatusTable')}"  style="border:none;margin-left:0px"
+										collapsible="true">
+										<panelchildren>
+											<listbox id="runtimeReport"	fixedLayout="true">
+												<listhead sizable="true">
+													<listheader
+														label="${c:l('Name')}" width="20%" sort="auto(name)" />
+													<listheader
+														label="${c:l('Uptime(%)')}" width="20%" sort="auto(ok)" />
+													<listheader
+														label="${c:l('Warning(%)')}" width="10%" sort="auto(warn)" />
+													<listheader
+														label="${c:l('Error')}" width="10%" sort="auto(error)" />
+													<listheader
+														label="${c:l('Newest')}" width="10%" sort="auto(newDate)" />
+													<listheader
+														label="${c:l('Threshold')}" width="30%" sort="auto(value)" />
+												</listhead>
+											</listbox>
+										</panelchildren>
+									</panel>
+									<panel sclass="ecc-panel"
+										title="${c:l('MonitorStatistics')}" 
+										style="border:none;margin-left:0px" collapsible="true">
+										<panelchildren>
+											<listbox id="checkDataReport" fixedLayout="true">
+												<listhead
+													sizable="true">
+													<listheader
+														label="${c:l('Name')}" sort="auto(name)" width="10%" />
+													<listheader
+														label="${c:l('ReturnsValueName')}" sort="auto(type)" width="5%" />
+													<listheader
+														label="${c:l('MaximumValue')}" sort="auto(max)" width="6%" />
+													<listheader
+														label="${c:l('MinimumValue')}" sort="auto(min)" width="6%" />
+													<listheader
+														label="${c:l('AverageValue')}" sort="auto(average)" width="6%" />
+													<listheader
+														label="${c:l('ARecent')}" sort="auto(latest)" width="6%" />
+													<listheader
+														label="${c:l('MaximumTime')}" sort="auto(max_when)" width="8%" />
+												</listhead>
+											</listbox>
+										</panelchildren>
+									</panel>
+								</div>
+							</north>
+							
+							<center flex="true" border="none">
+									<panel id="tt" title="${c:l('Chart')}"  width="98%" 
+										collapsible="true" border="none">
+										<panelchildren  style="overflow-y:auto">
+											<image id="chart"  width="100%" height="100%"/>
+										</panelchildren>
+									</panel>
+							</center>
+							
+							<south size="0" border="none"></south>
+						</borderlayout>
+					</tabpanel>
+
+					<tabpanel>
+						<borderlayout>
+							<north flex="true" style="border:none"
+								height="45px">
+								<groupbox width="250px"
+									closable="false">
+									<caption label="${c:l('StatusData')}" />
+									<hbox align="center"
+										style="margin-left:5px">
+										<radiogroup id="dataToShow">
+											<radio label="${c:l('All')}"
+												value="all" style="background:#0099ff" checked="true" />
+											<radio label="${c:l('Error')}"
+												value="error" style="background:#ff6666;margin-left:10px" />
+											<radio label="${c:l('Warning')}"
+												value="warning" style="background:#ffff88;margin-left:10px" />
+											<radio label="${c:l('Good')}" value="ok"
+												style="background:#00ff00;margin-left:10px" />
+										</radiogroup>
+										<button label="${c:l('GenerateEXCEL')}"
+											id="createExcelReport" sclass="btnDefault" width="80px"
+											height="23px" />
+									</hbox>
+								</groupbox>
+							</north>
+							<center border="none">
+								<!-- <panel collapsible="true">
+									<panelchildren  style="overflow-x:auto;overflow-y:auto"> -->
+								<div id="reportDate" visible="false"
+									width="100%" />
+								<!-- </panelchildren>
+									</panel> -->
+							</center>
+						</borderlayout>
+					</tabpanel>
+				</tabpanels>
+			</tabbox>
+		</center>
+	</borderlayout>
+	<zscript>
+	</zscript>
+</zk>
+

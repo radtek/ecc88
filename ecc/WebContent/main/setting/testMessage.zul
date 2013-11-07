@@ -1,0 +1,22 @@
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<window id="testMessageWin" title="${c:l('ReceivingInformationTest')}" closable="true" height="100px"
+	width="320px" apply="com.siteview.ecc.message.SendTestImpl"
+	border="normal">
+	<hbox style="margin-top:5px" align="center">
+		<label value="${c:l('InputInformationReceivingPhoneNumber*:')}" style="margin-left:10px" />
+		<textbox id="phoneNum" height="15px"  width="105px"/>
+	</hbox>
+	<hbox id="testHbox" style="margin-top:10px" align="center">
+		<hbox width="110px">
+			<label id="messageLabel" value="" style="margin-left:10px;"/>
+		</hbox>
+		<hbox style="margin-left:10px;">
+			<button sclass="btnDefault" id="testSmsButton" label="${c:l('Send')}" width="74px" height="23px"
+				forward="onClick=onSmsTest" />
+
+			<button sclass="btnDefault" label="${c:l('Close')}"  width="74px" height="23px"
+				onClick="testMessageWin.detach()" />
+
+		</hbox>
+	</hbox>
+</window>

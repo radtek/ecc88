@@ -1,0 +1,109 @@
+<?page title="Test Mail" contentType="text/html;charset=UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<zk>
+	<window id="addUserSetting" title="${c:l('AddUserSettings')}" border="normal"
+		mode="popup" width="370px" closable="true"
+		apply="com.siteview.ecc.usermanager.User_add" >
+
+			<groupbox closable="false" style="margin-left:10px;margin-right:10px;margin-top:10px" >
+	 			 <caption  label="${c:l('BasicSettings')}"/>	
+					<grid id="manageGroupId" oddRowSclass="none"  style="margin-top:5px;border:none">
+						<columns>
+							<column label="" width="123px"/>
+							<column label="" width="123px"/>
+						</columns>
+						<rows >												
+							<row zclass="none" height="23px">
+								
+									<label value="${c:l('LoginName*:')}" />
+									<textbox id="loginName" height="15px" width="200px" tooltiptext="${c:l('EnterNameLogSystemCannotEmpty')}"/>								
+							</row>
+							<row zclass="none" height="23px">
+							    
+									<label value="${c:l('UserName*:')}" />
+									<textbox id="userName" height="15px" width="200px" tooltiptext="${c:l('NameLoginSystemAfterFormDisplayedCannotEmpty')}"/>
+							    
+							</row>		
+							<row zclass="none" height="23px" > 
+								
+								<label value="" />
+								<checkbox id="hold" label="${c:l('Disable')}"	 tooltiptext="${c:l('CheckProhibitUserLoginSystemWhereasRepresentationAllowsUserLoginSystem')}"/>								
+							</row>	
+							<row zclass="none" height="23px" > 
+								
+								<label value="" />
+								<checkbox id="ldapCheck" label="${c:l('UseLDAPAuthentication')}"	 tooltiptext="${c:l('CheckRepresentationLDAPCertificationUserWithoutLDAPCertification')}">
+									<attribute name="onCheck">{
+										if(self.isChecked()){
+											passwordDiv.setVisible(true);
+											ldapDiv.setVisible(true);
+										}else{
+											passwordDiv.setVisible(true);
+											ldapDiv.setVisible(false);
+										}
+									}</attribute>
+								
+								</checkbox>								
+							</row>	
+				
+						</rows>
+					</grid>
+					<div id="passwordDiv"  visible="true">
+						<grid  oddRowSclass="none"  style="border:none">
+							<columns>
+								<column label="" width="123px"/>
+								<column label="" width="123px"/>
+							</columns>
+							<rows>
+								<row zclass="none" height="23px">
+								   
+										<label value="${c:l('Password*:')}" />
+										<textbox id="pwd" ctrlKeys="^v" type="password" height="15px" width="200px" tooltiptext="${c:l('NewUserPasswordNotEmpty')}"/>
+								    
+								</row>	
+															
+								<row zclass="none" height="23px">
+								   
+										<label value="${c:l('ConfirmPassword*:')}" />
+										<textbox id="confirmPwd" ctrlKeys="^v" height="15px" 	type="password" width="200px" tooltiptext="${c:l('RepeatEnterPasswordNewUser')}"/>							    
+								</row>	
+
+							</rows>						
+						</grid>																					
+					</div>	
+					
+					<div id="ldapDiv"  visible="false">
+						<grid  oddRowSclass="none"  style="border:none">
+							<columns>
+								<column label="" width="123px"/>
+								<column label="" width="123px"/>
+							</columns>
+							<rows>
+								<row zclass="none" height="23px">
+									
+										<label value="${c:l('LDAPCertificationAddress:')}" />
+										<textbox id="LDAPProviderUrl" height="15px"  width="200px" tooltiptext="${c:l('PEnterLDAPCertificationAddress')}"/>								
+								</row>
+								<row zclass="none" height="23px">
+										<label value="${c:l('LDAPCertificationRules:')}" />
+										<textbox id="LDAPSecurityPrincipal" height="15px"   width="200px" tooltiptext="${c:l('PEnterLDAPCertificationRules')}"/>
+								</row>	
+								<row zclass="none" height="23px">
+										<space width="1px"/>
+								</row>		
+							</rows>						
+						</grid>																					
+					</div>			
+						 	 			 	
+	 		</groupbox>	
+				<vbox style="margin-left:190px">
+					<hbox style="margin-top:10px;margin-bottom:10px">
+						<button id="userButton" label="${c:l('Save')}" sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/save_bt.gif"
+							forward="onClick=onAdd" />
+						<button label="${c:l('Cancel')}" width="74px" height="23px" image="/main/images/button/ico/close_bt.gif"  sclass="btnDefault"
+							onClick="addUserSetting.detach()" />
+					</hbox>
+				</vbox>	 		
+
+	</window>
+</zk>

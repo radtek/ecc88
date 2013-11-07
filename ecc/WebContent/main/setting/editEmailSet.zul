@@ -1,0 +1,102 @@
+<?page title="editEmailSet" contentType="text/html;charset=UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<zk>
+<window id="editEmailSetting" title="${c:l('EditEmailAddressSet')}" border="normal"
+		mode="popup" width="460px" closable="true"
+		apply="com.siteview.ecc.email.Email_edit" height=""
+		forward="onCreate=onInit">
+			
+			<groupbox id="manageGroup" closable="false" style="margin-left:10px;margin-right:10px;margin-top:10px">
+	 			 <caption  label="${c:l('BasicOptions')}"/>		
+					<grid id="manageGroupId" oddRowSclass="none" style="margin-top:5px;border:none">
+						<columns>
+						    <column label="" width="6px"/>
+							<column label="" width="123px"/>
+							<column label="" width="123px"/>
+							<column label="" width="6px"/>
+						</columns>
+						<rows>
+							<row zclass="none" height="2px">
+							</row>
+							<row zclass="none" height="23px">
+							<space width="1px"/>
+								<label value="${c:l('Name*：')}" />
+								<textbox style="margin-left:5px" width="285px" id="emailName"  height="15px" />
+							    <space width="6px"/>
+							</row>
+							<row zclass="none" height="23px">
+							    <space width="1px"/>
+								<label value="${c:l('ReceivingEmailAddress*:')}" />
+								<textbox style="margin-left:5px" width="285px" id="emailAddress"  height="15px" />
+								<space width="6px"/>
+							</row>		
+							<row zclass="none" height="23px">
+								<space width="1px"/>
+								<label value="" />
+								<checkbox label="${c:l('Disable')}" id="emailHold" style="margin-right:5px"/>
+								<space width="6px"/>
+							</row>													
+						</rows>
+					</grid>	
+	 		</groupbox>	 
+
+
+			<groupbox id="manageDevice" style="margin-left:10px;margin-right:10px;margin-top:10px" closable="false">
+	 			 <caption  label="${c:l('AdvanceItem')}"/>		
+					<grid id="manageDeviceId" oddRowSclass="none" style="border:none">
+						<columns>
+						    <column label="" width="6px"/>
+							<column label="" width="123px"/>
+							<column label="" width="123px"/>
+							<column label="" width="6px"/>
+						</columns>
+						<rows>
+							<row zclass="none" height="2px">
+							</row>	
+											
+							<row zclass="none" height="23px">
+								<space width="1px"/>
+								<label value="${c:l('EmailTemplate:')}" id="emailTemplateLink"/>	
+								<combobox id="emailTemplate"   width="272px" readonly="true" height="15px" >
+								</combobox>
+								<space width="6px"/>								
+							</row>
+							<row zclass="none" height="23px">
+								<space width="1px"/>
+								<label value="${c:l('TaskPlanType:')}" />
+								<combobox id="taskType" width="272px" forward="onSelect=onGetTaskvalue"  readonly="true" height="15px">
+									<comboitem label="${c:l('AbsoluteTimeTaskPlan')}"  value="1"/>
+									<comboitem label="${c:l('TimeSlotTaskPlan')}"   value="2"/>
+									<comboitem label="${c:l('RelativeTimeTaskPlan')}"  value="3"/>
+								</combobox>
+								<space width="6px"/>
+							</row>								
+							<row zclass="none" height="23px">
+								<space width="1px"/>
+								<label value="${c:l('TaskPlan:')}" id="taskLink" />
+								<combobox id="taskPlain"   width="272px"  readonly="true" height="15px">
+								</combobox>
+								<space width="6px"/>
+							</row>		
+							<row zclass="none" height="23px">
+							<space width="1px"/>
+								<label value="${c:l('Des:')}" />
+								<textbox id="emailDescription"   rows="7" width="290px" />
+								<space width="6px"/>
+							</row>													
+						</rows>
+					</grid>		
+	 		</groupbox>	
+	 		
+			<vbox style="margin-top:10px;margin-bottom:10px">
+				<hbox style="margin-top:5px">
+				<space width="260px"/>
+					<button   id="userButton" sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/save_bt.gif" label="${c:l('Save')}" forward="onClick=onSave()" />
+					<button  sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/close_bt.gif" label="${c:l('Cancel')}" forward="onClick=onFresh" />
+				</hbox>
+			</vbox>
+
+	</window>
+</zk>
+
+

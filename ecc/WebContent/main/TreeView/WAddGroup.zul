@@ -1,0 +1,117 @@
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<window id="WAddGroup" title="${c:l('GroupTitle')}" border="normal" width="600px"
+	position="center" apply="com.siteview.ecc.treeview.windows.AddGroup"
+	closable="true">
+	<vbox width="100%" >
+		<div style="float:right;margin-right:10px">
+			<image id="btnhelp" tooltiptext="展示输入框的辅助提示信息"
+				src="/main/images/btnhelp.gif"
+				hover="/main/images/btnhelp_hover.gif"
+				use="com.siteview.actions.HelpImageButton" />
+		</div>
+	</vbox>
+	<panel id="p1">
+		<panelchildren
+			style="margin:5px 5px 5px 5px;overflow-y:auto;max-height:500px;">
+			<panel title="${c:l('GroupTitle')}" collapsible="true">
+				<panelchildren>
+					<grid>
+						<columns>
+							<column width="20%" label=""></column>
+							<column label=""></column>
+						</columns>
+						<rows>
+							<row>
+								<label value="${c:l('GroupNameTile')}"></label>
+								<box>
+									<textbox id="tbname" width="350px"
+										height="15px" value="">
+									</textbox>
+									<label id="lbp1" visible="false"
+										sclass="helplabel" value="${c:l('GroupViewName')}">
+									</label>
+								</box>
+							</row>
+						</rows>
+					</grid>
+				</panelchildren>
+			</panel>
+			<panel title="${c:l('AdvanceItem')}" collapsible="true">
+				<panelchildren>
+					<grid>
+						<columns>
+							<column width="20%" label=""></column>
+							<column label=""></column>
+						</columns>
+						<rows>
+							<row>
+								<label value="${c:l('Des')}"></label>
+								<box>
+									<textbox id="tbDescription" rows="6"
+										width="350px" multiline="true">
+									</textbox>
+									<label id="lbp2" visible="false"
+										sclass="helplabel" value="${c:l('InPutDesInfo')}">
+									</label>
+								</box>
+							</row>
+							<row>
+								<label value="${c:l('GroupDenpendcy')}"></label>
+								<box>
+									<hbox>
+										<textbox id="tbDepends"
+											width="320px" height="15px" readonly="true">
+										</textbox>
+										<button id="btnDepends"
+											width="25px" height="15px" label="..." />
+									</hbox>
+									<label id="lbp3" visible="false"
+										sclass="helplabel"
+										 value="${c:l('ChooseJC')}">
+									</label>
+								</box>
+							</row>
+							<row>
+								<label value="${c:l('GroupDenpendcyContidion')}"></label>
+								<box>
+									<radiogroup>
+										<radio id="rdGood" label="${c:l('Good')}"></radio>
+										<radio id="rdWarning"
+											label="${c:l('Warning')}">
+										</radio>
+										<radio id="rdError" label="${c:l('Error')}"
+											checked="true">
+										</radio>
+									</radiogroup>
+									<label id="lbp4" visible="false"
+										style="margin-left:8px;" sclass="helplabel"
+										value="${c:l('ChooseGood')}">
+									</label>
+									<label id="lbp5" visible="false"
+										sclass="helplabel" value="${c:l('ChooseWarning')}">
+									</label>
+									<label id="lbp6" visible="false"
+										sclass="helplabel" value="${c:l('ChooseError')}">
+									</label>
+								</box>
+							</row>
+						</rows>
+					</grid>
+				</panelchildren>
+			</panel>
+		</panelchildren>
+	</panel>
+	<div style="float:right;margin-bottom:12px;margin-right:12px; ">
+		<hbox>
+
+			<button id="btnok" tooltiptext="保存对当前组的修改"
+				sclass="btnDefault" width="74px" height="23px"
+				image="/main/images/button/ico/save_bt.gif" label="${c:l('Save')}">
+			</button>
+			<button id="btncancel" sclass="btnDefault" width="74px"
+				tooltiptext="放弃所做的编辑并关闭窗体" height="23px"
+				image="/main/images/button/ico/close_bt.gif" label="${c:l('Cancel')}">
+			</button>
+		</hbox>
+	</div>
+</window>

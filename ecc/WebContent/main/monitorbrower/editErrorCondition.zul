@@ -1,0 +1,50 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<zk>
+	<window id="editMonitor" title="${c:l('EditAlarmCondition')}" border="normal" width="600px" position="center"
+	apply="com.siteview.ecc.monitorbrower.PublicOperate"	closable="true">
+		<hbox style="margin:5px 5px 5px 5px">
+			<label value="${c:l('Project:')}" />
+			<combobox id="expr"  readonly="true" height="15px"  width="140px">
+				<comboitem label="${c:l('IsStarted')}" />
+				<comboitem label="${c:l('OperationState')}" />
+				<comboitem label="${c:l('ServiceStatus')}" />
+				<comboitem label="${c:l('CorrespondingProcessName')}" />
+				<comboitem label="${c:l('NumberOfInstances')}" />
+			</combobox>			
+			<label value="${c:l('Operator:')}" />
+			<combobox id="fh"  readonly="true" height="15px" width="70px"  >						
+			</combobox>	
+			<label value="${c:l('Value:')}" />		
+			<textbox id="v1" height="15px" width="130px" />
+		</hbox>
+		<hbox style="margin:5px 5px 5px 5px">
+			<label value="${c:l('Relationship:')}" />
+			<radiogroup>
+				<radio id="rdy" label="${c:l('And')}" checked="true" />
+				<radio id="rdh" label="${c:l('Or')}" />
+			</radiogroup>
+			<space width="380px"/>
+			<button label="${c:l('Add')}" id="btnadd" width="60px" />
+		</hbox>
+		<listbox id="lb1" style="margin:5px 5px 5px 5px" checkmark="true"
+			multiple="true">
+			<listhead sizable="true">
+				<listheader label="${c:l('Project')}" width="35%" sort="none"></listheader>
+				<listheader label="${c:l('Operator')}" width="20%" sort="none"></listheader>
+				<listheader label="${c:l('Value')}" sort="none"></listheader>
+				<listheader label="${c:l('Relationship')}" width="15%" sort="none"></listheader>
+			</listhead>
+		</listbox>
+		<space orient="horizontal" height="30px"/>
+		<div style="float:right;margin-bottom:12px;margin-right:12px; " >
+			<button id="btndel" label="${c:l('Delete')}" sclass="btnDefault" width="60px" />
+			<button id="btnok" label="${c:l('Determine')}" sclass="btnDefault" width="60px"/>
+			<button id="btnclose"  label="${c:l('Cancel')}" sclass="btnDefault" width="60px">
+				<attribute name="onClick">
+		       editMonitor.detach();
+	  	      </attribute>
+			</button>
+		</div>
+	</window>
+</zk>

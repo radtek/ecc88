@@ -1,0 +1,93 @@
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<window id="editDutySetting" title="${c:l('AddDutyListDetails')}" border="normal" mode="popup"
+	width="350"	height="" closable="true"  apply="com.siteview.ecc.dutytable.AddDutyInfoMonth" forward="onCreate=onInit">	
+	
+
+			<groupbox  closable="false" style="margin-left:10px;margin-right:10px;margin-top:10px">
+	 			 <caption  label="${c:l('DetailedInformation')}"/>		
+					<grid oddRowSclass="none" style="margin-top:5px;border:none">
+						<columns>
+							<column label="" />
+							<column label="" />
+						</columns>
+						<rows>
+							
+							<row zclass="none" height="23px">
+								<label value="${c:l('ReceivingAlarmSMSPhoneNumber:')}" />													
+								<textbox id="mobilePhoneNum"    height="15px"  width="150px"  tooltiptext="${c:l('ReceiveAlarmMessagePhoneNumberInput')}"/>
+							</row>
+							
+							<row zclass="none" height="23px">
+								<label value="${c:l('ReceiveAlarmInformationEmail*:')}" />
+								<textbox id="alarmEmailbox" height="15px"  width="150px" tooltiptext="${c:l('InputAlarmReceivingEmail')}"/>
+							</row>		
+							<row zclass="none" height="23px">
+								<label value="${c:l('Date:')}"  />
+								<combobox id="monthValue" width="" >
+									<comboitem label="1"  value="1"/>
+									<comboitem label="2"  value="2"  />
+									<comboitem label="3"  value="3"/>
+									<comboitem label="4"  value="4"/>
+									<comboitem label="5"  value="5"/>
+									<comboitem label="6"  value="6"/>
+									<comboitem label="7"  value="7"/>
+									<comboitem label="8"  value="8"  />
+									<comboitem label="9"  value="9"/>
+									<comboitem label="10"  value="10"/>
+									<comboitem label="11"  value="11"/>
+									<comboitem label="12"  value="12"/>
+									<comboitem label="13"  value="13"/>
+									<comboitem label="14"  value="14"  />
+									<comboitem label="15"  value="15"/>
+									<comboitem label="16"  value="16"/>
+									<comboitem label="17"  value="17"/>
+									<comboitem label="18"  value="18"/>
+									<comboitem label="19"  value="19"/>
+									<comboitem label="20"  value="20"  />
+									<comboitem label="21"  value="21"/>
+									<comboitem label="22"  value="22"/>
+									<comboitem label="23"  value="23"/>
+									<comboitem label="24"  value="24"/>
+									<comboitem label="25"  value="25"/>
+									<comboitem label="26"  value="26"  />
+									<comboitem label="27"  value="27"/>
+									<comboitem label="28"  value="28"/>
+									<comboitem label="29"  value="29"/>
+									<comboitem label="30"  value="30"/>
+									<comboitem label="31"  value="31"/>
+								</combobox>
+							</row>	
+							<row zclass="none" height="23px">
+								<label value="${c:l('StartTime:')}" />
+								<timebox id="beginduty" height="15px" tooltiptext="${c:l('SelectStartTime')}"/>
+							</row>	
+							<row zclass="none" height="23px">
+								<label value="${c:l('EndTime:')}" />
+								<timebox id="endduty" height="15px" tooltiptext="${c:l('SelectEndTime')}"/>
+							</row>																																
+						</rows>
+					</grid>
+	 		</groupbox>		
+	<vbox >
+		<hbox style="margin-top:10px;margin-bottom:10px"  >
+		<space width="165px"/>
+			<button id="addDutyButton" sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/save_bt.gif"
+				label="${c:l('Save')}" forward="onClick=onAddDutyInfo" />
+			<button label="${c:l('Cancel')}" sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/close_bt.gif"
+				forward="onClick=onRefresh" />
+		</hbox>
+	</vbox>	
+
+	<popup id="mymail" width="200px">
+		<html>
+			(&lt;font color="#FFA500" &gt; 电话号码格式：139-88888888&lt;/font&gt;)
+		</html>
+	</popup>
+	
+	<popup id="mydate" width="200px">
+		<html>
+			(&lt;font color="#FFA500" &gt; 日期必须从右边图标选取&lt;/font&gt;)
+		</html>
+	</popup>		
+	
+</window>	

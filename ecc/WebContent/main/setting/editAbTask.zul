@@ -1,0 +1,104 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<zk>
+	<window id="editAbTask" border="normal" closable="true"
+		width="350px" apply="com.siteview.ecc.tasks.EditAbTask"
+		forward="onCreate=onInit">
+		<tabbox>
+			<tabs>
+				<tab label="${c:l('Basic')}" />
+				<tab label="${c:l('Des')}" />
+			</tabs>
+			<tabpanels>
+				<tabpanel>
+					<grid>
+						<columns>
+							 <column label="" width="6px"/>
+							<column label="" />
+							<column label="" />
+						</columns>
+						<rows>
+							<row zclass="none" height="23px"><space width="1px"/>
+								<label value="${c:l('TaskName*:')}" />
+								<textbox width="180px" id="nameTextbox" height="15px" />
+							</row>
+							<row zclass="none" height="23px"><space width="1px"/>
+								<label value="${c:l('Sunday')}" />
+								<hbox align="center">
+									<checkbox label="${c:l('Enable')}" id="cb0" />
+									<timebox width="80px" id="tb0" height="15px" />
+								</hbox>
+							</row>
+							<row zclass="none" height="23px"><space width="1px"/>
+								<label value="${c:l('Monday')}" />
+								<hbox align="center">
+									<checkbox label="${c:l('Enable')}" id="cb1" />
+									<timebox width="80px" id="tb1" height="15px"/>
+								</hbox>
+							</row>
+							<row zclass="none" height="23px"><space width="1px"/>
+								<label value="${c:l('Tuesday')}" />
+								<hbox align="center">
+									<checkbox label="${c:l('Enable')}" id="cb2" />
+									<timebox width="80px" id="tb2" height="15px"/>
+								</hbox>
+							</row>
+							<row zclass="none" height="23px"><space width="1px"/>
+								<label value="${c:l('Wednesday')}" />
+								<hbox align="center">
+									<checkbox label="${c:l('Enable')}" id="cb3" />
+									<timebox width="80px" id="tb3" height="15px"/>
+								</hbox>
+							</row>
+							<row zclass="none" height="23px"><space width="1px"/>
+								<label value="${c:l('Thursday')}" />
+								<hbox align="center">
+									<checkbox label="${c:l('Enable')}" id="cb4" />
+									<timebox width="80px" id="tb4" height="15px"/>
+								</hbox>
+							</row>
+							<row zclass="none" height="23px"><space width="1px"/>
+								<label value="${c:l('Friday')}" />
+								<hbox align="center">
+									<checkbox label="${c:l('Enable')}" id="cb5" />
+									<timebox width="80px" id="tb5" height="15px"/>
+								</hbox>
+							</row>
+							<row zclass="none" height="23px"><space width="1px"/>
+								<label value="${c:l('Saturday')}" />
+								<hbox align="center">
+									<checkbox label="${c:l('Enable')}" id="cb6" />
+									<timebox width="80px" id="tb6" height="15px"/>
+								</hbox>
+							</row>
+						</rows>
+
+					</grid>
+				</tabpanel>
+				<tabpanel>
+				<grid zclass="none">
+						<columns>
+							<column label="" />
+							<column label="" />
+						</columns>
+						<rows>
+							<row zclass="none">
+								<label value="${c:l('Des:')}" />
+								<textbox width="280px" multiline="true"
+									id="description" height="180px"/>
+							</row>
+						</rows>
+					</grid>
+				
+					
+				</tabpanel>
+			</tabpanels>
+		</tabbox>
+		<hbox align="center" style="margin-left:52%;margin-top:3px;margin-bottom:3px" >
+			<button label="${c:l('Save')}" width="74px" height="23px" image="/main/images/button/ico/save_bt.gif" sclass="btnDefault"
+				forward="onClick=onApply" />
+			<button label="${c:l('Cancel')}" sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/close_bt.gif"
+				onClick="editAbTask.detach()" />
+		</hbox>
+	</window>
+</zk>

@@ -1,0 +1,147 @@
+<?page contentType="text/html;charset=UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<zk>
+	<borderlayout id="monitorBrower"
+		apply="com.siteview.ecc.monitorbrower.MonitorBrowseComposer">
+		<north border="none">
+
+			<toolbar sclass="eccBottom">
+				<grid oddRowSclass="none" width="100%"
+					sclass="eccBottom" style="border:none">
+					<columns>
+						<column label="" width="120px" align="left" />
+						<column label="" align="right" />
+					</columns>
+					<rows>
+						<row zclass="none">
+							<div>
+								<label value="${c:l('MonitorBrowsing')}"
+									style="height:25px;font-weight:bold;color:#18599C"
+									sclass="eccBottom" width="50px" />
+							</div>
+							<div>
+								<image align="absmiddle"
+									src="/main/control/images/state_grey.gif" />
+								<label value="${c:l('DefinitionOfError:')}" />
+								<label id="bad" value="0" width="10px" />
+								<space width="1px" />
+								<image align="absmiddle"
+									src="/main/control/images/state_dark.gif" />
+								<label value="${c:l('NoMonitoringData:')}" />
+								<label id="nullspecial" value="0" width="10px" />
+								<space width="1px" />
+								<image align="absmiddle"
+									src="/main/control/images/state_green.gif" />
+								<label value="${c:l('Good:')}" />
+								<label id="ok" value="0" width="10px" />
+								<space width="1px" />
+								<image align="absmiddle"
+									src="/main/control/images/state_red.gif" />
+								<label value="${c:l('Error:')}" />
+								<label id="error" value="0"
+									width="10px" />
+								<space width="1px" />
+								<image align="absmiddle"
+									src="/main/control/images/state_yellow.gif" />
+								<label value="${c:l('Warning:')}" />
+								<label id="warn" value="0" width="10px" />
+								<space width="1px" />
+								<image align="absmiddle"
+									src="/main/control/images/state_stop.gif" />
+								<label value="${c:l('Disable:')}" />
+								<label id="forbid" value="0"
+									width="10px" />
+								<space width="1px" />
+							</div>
+						</row>
+					</rows>
+				</grid>
+			</toolbar>
+		</north>
+		<center border="none">
+			<div>
+				<panel title="">
+					<panelchildren>
+						<hbox
+							style="margin-left:3px;margin-top:3px;margin-bottom:3px">
+							<button id="filter" label="${c:l('CreateFilterCondition')}"
+								sclass="btnDefault" width="74px" height="23px"
+								image="/main/images/button/ico/add_bt.gif" />
+							<button id="editFilter" label="${c:l('Editor')}"
+								sclass="btnDefault" width="74px" height="23px"
+								image="/main/images/alert/edit.gif" />
+							<button id="refresh" label="${c:l('Refresh')}"
+                sclass="btnDefault" width="74px" height="23px"
+                image="/main/images/refresh.gif" />
+							<button id="delete" label="${c:l('Delete')}"
+								sclass="btnDefault" width="74px" height="23px"
+								image="/main/images/button/ico/delete_bt.gif" />
+							<button id="excel" label="${c:l('GenerateEXCEL')}"
+								sclass="btnDefault" width="74px" height="23px"
+								image="/main/images/bakRestore.gif" />
+							<button id="count" label="${c:l('SetDisplayItems')}" visible="false"
+								sclass="btnDefault" width="74px" height="23px"
+								image="/main/images/settings.gif" />
+							<button label="${c:l('Help')}" sclass="btnDefault"
+								width="74px" height="23px" image="/main/images/action/help.gif"
+								action="onclick:showHelp(13)" />
+						</hbox>
+						<listbox id="showMonitorFilter"
+							fixedLayout="true" multiple="false" vflex="true" mold="paging"
+							pageSize="6">
+							<listhead sizable="true">
+								<listheader label="${c:l('Name')}" sort="auto"
+									width="120px" align="left" />
+								<listheader label="${c:l('Group')}" sort="auto"
+									width="100px" align="left" />
+								<listheader label="${c:l('Equipment')}" sort="auto"
+									width="100px" align="left" />
+								<listheader label="${c:l('Name')}" sort="auto"
+									width="100px" align="left" />
+								<listheader label="${c:l('MonitorType')}" sort="auto"
+									width="100px" align="left" />
+								<listheader label="${c:l('Show/hide:')}" sort="auto"
+									width="100px" align="left" />
+								<listheader label="${c:l('Des')}" sort="auto"
+									width="50px" align="left" />
+								<listheader label="${c:l('Sort')}" sort="auto"
+									width="50px" align="left" />
+							</listhead>
+						</listbox>
+
+						<panel id="showMonitorData" title="${c:l('BrowseMaximumNumberMonitor')}"
+							style="margin-left:3px;margin-top:3px;margin-bottom:3px">
+							<panelchildren>
+								<listbox id="monitorInfo"
+									style="background: white; overflow: auto; width: 100%; position: relative;"
+									mold="paging" pageSize="20" height="270px" use="com.siteview.ecc.monitorbrower.MonitorInfoListbox">
+									<!-- 
+									<listhead sizable="true">
+										<listheader label="状态"
+											sort="auto" width="30px" />
+										<listheader label="组"
+											sort="auto" width="200px" />
+										<listheader label="设备"
+											sort="auto" width="100px" />
+										<listheader label="名称"
+											sort="auto" width="100px" />
+										<listheader label="编辑"
+											width="30px" />
+										<listheader label="刷新"
+											width="30px" />
+										<listheader label="更新时间"
+											sort="auto" width="80px" />
+										<listheader label="描述"
+											sort="auto" width="150px" />
+									</listhead>
+									 -->
+								</listbox>
+							</panelchildren>
+						</panel>
+
+					</panelchildren>
+				</panel>
+			</div>
+		</center>
+	</borderlayout>
+</zk>

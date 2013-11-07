@@ -1,0 +1,118 @@
+<?page title="添加设备" contentType="text/html;charset=UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<zk>
+
+	<window id="WAddEntity" title="${c:l('AddingEquipment')}" width="600px" closable="true"
+		position="center" apply="com.siteview.ecc.treeview.windows.addEntity"
+		border="normal">
+		<vbox width="100%">
+			<div style="float:right;margin-right:10px">
+				<image id="btnhelp" tooltiptext="${c:l('btnhelptitle')}"
+					src="/main/images/btnhelp.gif"
+					hover="/main/images/btnhelp_hover.gif"
+					use="com.siteview.actions.HelpImageButton" />
+			</div>
+		</vbox>
+		<!-- style="margin:5px 5px 5px 5px;overflow-y:auto;max-height:480px;" -->
+		<panel id="p1">
+			<panelchildren id="pc"
+				>
+				<panel title="${c:l('BasicInformation')}" collapsible="true">
+					<panelchildren>
+						<grid>
+							<columns>
+								<column width="20%" label=""></column>
+								<column label=""></column>
+							</columns>
+							<rows id="baserow"></rows>
+						</grid>
+					</panelchildren>
+				</panel>
+				<panel title="${c:l('AdvanceItem')}" collapsible="true">
+					<panelchildren>
+						<grid>
+							<columns>
+								<column width="20%" label=""></column>
+								<column label=""></column>
+							</columns>
+							<rows>
+								<row>
+									<label value="${c:l('Des:')}"></label>
+									<box>
+										<textbox id="tbDescription"
+											rows="6" width="350px" multiline="true">
+										</textbox>
+										<label id="lbp1" visible="false"
+											sclass="helplabel" value="${c:l('InPutDesInfo')}">
+										</label>
+									</box>
+								</row>
+								<row>
+									<label value="${c:l('Dependence:')}"></label>
+									<box>
+										<hbox>
+											<textbox id="tbDepends"
+												width="320px" height="15px" readonly="true">
+											</textbox>
+											<button id="btnDepends"
+												width="25px" height="15px" label="..." />
+										</hbox>
+										<label id="lbp2" visible="false"
+											sclass="helplabel"
+											value="${c:l('ChooseJC')}">
+										</label>
+									</box>
+								</row>
+								<row>
+									<label value="${c:l('RelyingOnConditions:')}"></label>
+									<box>
+										<radiogroup>
+											<radio id="rdGood"
+												label="${c:l('Good:')}">
+											</radio>
+											<radio id="rdWarning"
+												label="${c:l('Warning:')}">
+											</radio>
+											<radio id="rdError"
+												label="${c:l('Error:')}" checked="true">
+											</radio>
+										</radiogroup>
+										<label id="lbp3" visible="false"
+											sclass="helplabel" style="margin-left:8px;"
+											value="${c:l('ChooseGood')}" />
+										<label id="lbp4" visible="false"
+											sclass="helplabel" value="${c:l('ChooseWarning')}" />
+										<label id="lbp5" visible="false"
+											sclass="helplabel" value="${c:l('ChooseError')}" />
+									</box>
+								</row>
+							</rows>
+						</grid>
+					</panelchildren>
+				</panel>
+			</panelchildren>
+		</panel>
+		<div
+			style="float:right;margin-bottom:12px;margin-right:12px; ">
+			<hbox>
+				<button id="btnok" sclass="btnDefault" width="74px"
+					height="23px" image="/main/images/button/ico/save_bt.gif"
+					label="${c:l('Save')}" tooltiptext="${c:l('SaveCurrentEquipmentModificationTreeNodeSelectModified')}">
+				</button>
+				<button id="btncancel" sclass="btnDefault" width="74px"
+					height="23px" image="/main/images/button/ico/close_bt.gif"
+					label="${c:l('Cancel')}" tooltiptext="${c:l('AbandonEditorSlosed')}">
+				</button>
+				<button id="btnadd" sclass="btnDefault" width="90px"
+					height="23px" image="/main/images/button/ico/reload_bt.gif"
+					label="${c:l('ContinueAdd')}" tooltiptext="${c:l('SaveCurrentEquipmentModificationNotShutDownEquipmentList')}">
+				</button>
+				<button id="btntest" sclass="btnDefault" width="74px"
+					height="23px" disabled="true"
+					image="/main/images/button/ico/test_bt.gif" label="${c:l('Test')}">
+				</button>
+			</hbox>
+		</div>
+
+	</window>
+</zk>

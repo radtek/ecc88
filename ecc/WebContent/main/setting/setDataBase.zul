@@ -1,0 +1,113 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8" id="setDbPage"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<window apply="com.siteview.ecc.message.SetDataBase" id="setDbWin" 
+	forward="onCreate=onInit" width="700px"  style="overflow-y:auto;" >
+	<panel  collapsible="true">
+		<panelchildren>
+			<groupbox>
+				<caption label="${c:l('InsertMode')}" />
+
+				<radiogroup orient="horizontal" onCheck="applyButton.setDisabled(false)">
+					<radio id="nomalInsert" label="${c:l('ConventionalInsertion')}"
+						onCheck="row1.setVisible(false);row2.setVisible(false);hbox1.setVisible(true)" checked="true"/>
+					<radio id="storedInsert" style="margin-left:250px"
+						label="${c:l('StoredProcedureInsert')}"
+						onCheck="row1.setVisible(true);row2.setVisible(true);hbox1.setVisible(false)" />
+				</radiogroup>
+
+			</groupbox>
+			<groupbox style="margin-top:10px" >
+				<caption label="${c:l('Parameters')}" />
+				<grid oddRowSclass="none" zclass="none">
+					<columns>
+						<column label="" width="100px" />
+						<column label="" />
+					</columns>
+					<rows>
+						<row zclass="none" height="20px">
+
+							<label value="${c:l('ypeOfDatabase*:')}" />
+							<hbox align="center">
+								<combobox height="15px"
+									id="dbTypeCombobox" readonly="true" onChange="applyButton.setDisabled(false);" tooltiptext="${c:l('SelectTypeOfDatabase')}">
+									<comboitem label="Oracle" />
+									<comboitem label="Mysql" />
+									<comboitem label="SqlServer" />
+									<comboitem label="Sybase" />
+									<comboitem label="DB2" />
+								</combobox>
+								<hbox align="center" id="hbox1">
+									<label value="${c:l('DatabaseTableName*:')}"
+										style="margin-left:30px" />
+									<textbox height="15px" onChanging="applyButton.setDisabled(false);"
+										id="dbTableName" tooltiptext="${c:l('ParameterInputDynamicLibrary')}"/>
+								</hbox>
+							</hbox>
+						</row>
+						<row zclass="none" height="30px">
+							<label value="${c:l('ConnectionString*:')}" />
+							<textbox height="15px" width="450px"
+								id="connectString" onChanging="applyButton.setDisabled(false);" tooltiptext="${c:l('ParameterInputDynamicLibrary')}"/>
+						</row>
+						<row zclass="none">
+							<label value="${c:l('ParameterList:')}" />
+							<hbox align="start">
+								<listbox width="453px" height="90px" 
+									id="param" checkmark="true" multiple="true" onSelect="applyButton.setDisabled(false);">
+									<listhead sizable="true">
+										<listheader label="${c:l('ParameterName')}" 
+											sort="auto" />
+										<listheader label="${c:l('ParameterType')}"
+											sort="auto" />
+										<listheader label="${c:l('Length')}"
+											sort="auto" />
+										<listheader label="${c:l('MeaningOfParameters')}"
+											sort="auto" />
+									</listhead>
+
+								</listbox><vbox><button label="${c:l('Add')}" sclass="btnDefault"
+							width="74px" height="23px"
+							image="/main/images/button/ico/add_bt.gif"
+							forward="onClick=onAdd" id="addButton" />
+								<button label="${c:l('Delete')}" sclass="btnDefault"
+							width="74px" height="23px"
+							image="/main/images/button/ico/delete_bt.gif"
+							forward="onClick=onDel" id="delButton" /></vbox>
+							</hbox>
+						</row>
+						<row zclass="none" height="30px" id="row1">
+							<label value="${c:l('StoredProcedureName*:')}" />
+							<textbox height="15px" id="storedName" onChanging="applyButton.setDisabled(false);" tooltiptext="${c:l('EnterNameOfStoredProcedure')}"/>
+						</row>
+						<row zclass="none" height="30px" id="row2">
+							<label value="${c:l('ReturnValue:')}" />
+							<hbox align="center">
+								<textbox id="returnValue" height="15px"
+									readonly="true" width="450px" onChanging="applyButton.setDisabled(false);"/>
+								<button label=".." image="" width="35px" id="onMoreButton"
+									height="15px" style="margin-left:10px"
+									forward="onClick=onMore" >
+								</button>
+							</hbox>
+						</row>
+
+					</rows>
+				</grid>
+
+			</groupbox>
+
+			<div >
+				<button label="${c:l('Application')}"
+					style="margin-left:450px;margin-top:10px"
+					image="/main/images/button/ico/save_bt.gif" sclass="btnDefault"
+					width="74px" height="23px" id="applyButton"
+					forward="onClick=onApply" />
+				<button label="${c:l('Regain')}" style="margin-left:10px"
+					sclass="btnDefault" height="23px"
+					image="/main/images/button/ico/reload_bt.gif"
+					id="recoverButton"
+					forward="onClick=onRecover()" />
+			</div>
+		</panelchildren>
+	</panel>
+</window>

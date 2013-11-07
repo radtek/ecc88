@@ -1,0 +1,231 @@
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<zk>
+	<window border="none" id="setBatchWin" position="center" closable="true"
+		apply="com.siteview.ecc.setmonitor.SetBatch" title="${c:l('ModifyBatchMonitor')}"
+		forward="onCreate=onInit;onCheckItem=onCheckItem" height="500px"
+		width="700px">
+		<borderlayout>
+			<west title="${c:l('Monitor')}" size="25%" flex="true" splittable="true"
+				minsize="100" maxsize="500" collapsible="true" autoscroll="true">
+				<tree id="monitorTree"
+					use="com.siteview.ecc.setmonitor.MonitorSelectTree"
+					zclass="z-dottree"  checkable="true" vflex="true" rows="20"
+					width="300px" height="529px">
+				</tree>
+			</west>
+			<center flex="true">
+				<borderlayout>
+					<north border="none">
+						<panel border="none">
+							<panelchildren>
+								<listbox id="monitor" height="200px"
+									fixedLayout="true" multiple="false" vflex="true" mold="paging"
+									pageSize="15" 
+									style="background: white; border: 0; overflow: auto;  position: relative;">
+
+									<listhead sizable="true">
+										<listheader label="${c:l('Name')}"
+											sort="auto(monitorName)" width="40px" />
+										<listheader label="${c:l('MonitoringFrequency')}"
+											sort="auto(frequency)" width="50px" />
+										<listheader label="${c:l('Threshold')}"
+											sort="auto(keyValue)" width="40px" />
+										<listheader label="${c:l('State')}"
+											sort="auto(status)" width="40px" />
+									</listhead>
+
+								</listbox>
+
+							</panelchildren>
+						</panel>
+					</north>
+					<center flex="true" border="0">
+						<borderlayout>
+							<north style="border:none;overflow-y:auto"
+								size="85%">
+								<tabbox style="border-bottom-style:none"
+									id="tabbox">
+									<tabs>
+										<tab label="${c:l('GroupBaseInfo')}" />
+										<tab label="${c:l('AlarmCondition')}" />
+										<tab label="${c:l('ErrorChecking')}" />
+									</tabs>
+									<tabpanels
+										style="border-style :hidden ">
+										<tabpanel
+											style="border-bottom-style:none" id="p1">
+											<hbox align="center"
+												style="margin-left:20px;margin-top:20px">
+												<label value="${c:l('MonitorFrequency*:')}"
+													width="70px" />
+												<intbox height="15px"
+													id="ibFrequency"
+													onChanging="applyButton.setDisabled(false)" width="120px" tooltiptext="${c:l('MonitoringFrequencyMonitor')}"/>
+												<combobox height="15px"
+													id="cbFrequencyUnit"
+													onChange="applyButton.setDisabled(false)" width="100px"
+													value="${c:l('Hour')}" readonly="true">
+													<comboitem
+														label="${c:l('Minute')}" />
+													<comboitem
+														label="${c:l('Hour')}" />
+												</combobox>
+											</hbox>
+										</tabpanel>
+										<tabpanel id="p2"
+											style="border-bottom-style:none">
+											<grid oddRowSclass="none"
+												style="margin-left:20px;" zclass="none">
+												<columns>
+													<column label=""
+														width="100px" />
+													<column label="" />
+
+												</columns>
+												<rows>
+													<row
+														zclass="none">
+														<label
+															value="${c:l('MonitorType:')}" />
+														<combobox
+															height="15px" forward="onChange=onChangeMonitorType"
+															width="220px" id="monitorType" readonly="true" tooltiptext="${c:l('MonitoringTypeMonitor')}">
+															<comboitem
+																label="" />
+															<comboitem
+																label="" />
+														</combobox>
+
+													</row>
+													<row
+														zclass="none">
+														<label
+															value="${c:l('Error:')}" />
+														<hbox
+															align="end">
+															<textbox
+																height="35px" width="238px" readonly="true" id="tberror"
+																multiline="true"
+																onChanging="applyButton.setDisabled(false)" tooltiptext="${c:l('InPutDesInfo')}"/>
+															<button
+																label="..." forward="onClick=onErrorButton"
+																id="errorButton" />
+														</hbox>
+													</row>
+													<row
+														zclass="none">
+														<label
+															value="${c:l('WarningS:')}" />
+														<hbox
+															align="end">
+															<textbox
+																height="35px" width="238px" readonly="true"
+																id="tbdanger" multiline="true"
+																onChanging="applyButton.setDisabled(false)" tooltiptext="${c:l('InPutDesInfo')}"/>
+															<button
+																label="..." forward="onClick=onAlertButton"
+																id="alertButton" />
+														</hbox>
+													</row>
+													<row
+														zclass="none">
+														<label
+															value="${c:l('Good:')}" />
+														<hbox
+															align="end">
+															<textbox
+																height="35px" width="238px" readonly="true"
+																id="tbnormal" multiline="true"
+																onChanging="applyButton.setDisabled(false)" tooltiptext="${c:l('InPutDesInfo')}"/>
+															<button
+																label="..." forward="onClick=onNomalButton"
+																id="nomalButton" />
+														</hbox>
+													</row>
+												</rows>
+											</grid>
+										</tabpanel>
+										<tabpanel id="p3"
+											style="border-bottom-style:none">
+											<grid oddRowSclass="none"
+												style="margin-left:20px;" zclass="none">
+												<columns>
+													<column label=""
+														width="100px" />
+													<column label="" />
+												</columns>
+												<rows>
+													<row zclass="none"
+														height="20px">
+														<label
+															value="${c:l('ErrorEffect:')}" />
+														<checkbox
+															label="${c:l('MonitorErrorCheck')}" id="chCheckError"
+															onChange="applyButton.setDisabled(false)" tooltiptext="${c:l('MonitorErrorCheckInfo')}"/>
+													</row>
+													<row zclass="none"
+														height="60px">
+														<label
+															value="${c:l('ErrorCheckFrequency:')}" />
+														<hbox>
+															<intbox
+																height="15px" width="120px" id="ibErrorFrequency"
+																onChanging="applyButton.setDisabled(false)" tooltiptext="${c:l('ErrorCheckFrequencyInfo')}"/>
+															<combobox
+																height="15px" value="${c:l('Hour')}" id="cbErrorFrequencyUnit"
+																onChange="applyButton.setDisabled(false)"
+																readonly="true" width="100px">
+																<comboitem
+																	label="${c:l('Minute')}" />
+																<comboitem
+																	label="${c:l('Hour')}" />
+															</combobox>
+														</hbox>
+													</row>
+												</rows>
+											</grid>
+										</tabpanel>
+									</tabpanels>
+								</tabbox>
+							</north>
+							<center style="border:none;">
+								<grid style="border:0"
+									oddRowSclass="none">
+									<columns>
+										<column label="" align="right" />
+									</columns>
+									<rows>
+										<row zclass="none"
+											style="border:none">
+											<hbox>
+												<button label="${c:l('Determine')}"
+													image="/main/images/button/ico/save_bt.gif"
+													sclass="btnDefault" width="74px" height="23px" id="okButton"
+													forward="onClick=onOk" />
+												<button label="${c:l('Cancel')}"
+													sclass="btnDefault" height="23px"
+													image="/main/images/button/ico/reload_bt.gif"
+													forward="onClick=onCancel" />
+												<button label="${c:l('Application')}"
+													image="/main/images/button/ico/save_bt.gif"
+													sclass="btnDefault" width="74px" height="23px"
+													id="applyButton" forward="onClick=onApply" />
+												<button label="${c:l('Help')}"
+													sclass="btnDefault" width="74px" height="23px"
+													image="/main/images/action/help.gif"
+													action="onclick:showHelp(14)" />
+												<space width="1px" />
+											</hbox>
+										</row>
+									</rows>
+								</grid>
+							</center>
+
+						</borderlayout>
+					</center>
+				</borderlayout>
+			</center>
+		</borderlayout>
+	</window>
+
+</zk>

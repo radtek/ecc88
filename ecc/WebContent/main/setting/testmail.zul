@@ -1,0 +1,33 @@
+<?page title="Test Mail" contentType="text/html;charset=UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<zk>
+	<window id="testMailWin" title="${c:l('TestEmail')}" border="normal" mode="popup"
+		width="300px" closable="true" height="290px"
+		apply="com.siteview.ecc.email.SendTestImpl">
+
+
+		<groupbox>
+			<caption label="${c:l('EmailTest')}" />
+			<vbox style="margin-left:10px">
+				<label value="${c:l('EmailAddress:()')}" />
+				<textbox id="mailTo" width="220px" height="15px"/>
+				<label value="${c:l('MessageContent:')}" />
+				<textbox id="content" width="220px" multiline="true"
+					height="115px" style="margin-bottom:10px" />
+			</vbox>
+
+		</groupbox>
+
+			<hbox  style="margin-top:5px;"
+				align="center"><hbox width="50px">
+				<label id="messageLabel"  multiline="false" /></hbox>
+				<hbox  style="margin-left:20%;">
+					<button sclass="btnDefault" id="testMailButton" width="74px" height="23px"
+						label="${c:l('Determine')}" forward="onClick=onApply" />
+					<button sclass="btnDefault" label="${c:l('Close')}" width="74px" height="23px"
+						onClick="testMailWin.detach()" />
+				</hbox>
+			</hbox>
+	
+	</window>
+</zk>

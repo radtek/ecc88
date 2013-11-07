@@ -1,0 +1,95 @@
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<borderlayout>
+	<north size="55px">
+		<panel title="${c:l('TopNReport')}"
+			style="margin-left:3px;margin-top:3px;margin-bottom:3px">
+			<panelchildren>
+			   <hbox height="27px">
+					<button id="addTopN" label="${c:l('AddReport')}"
+						sclass="btnDefault" width="74px" height="23px"
+						image="/main/images/button/ico/add_bt.gif" />
+					<button id="delete" label="${c:l('BatchDelete')}" sclass="btnDefault"
+						image="/main/images/button/ico/delete_bt.gif" width="74px"
+						height="23px" />
+					<button width="74px" height="23px"
+						sclass="btnDefault" image="/main/images/button/ico/enable_bt.gif"
+						label="${c:l('LotTolerance')}" id="batchAllow" />
+					<button width="74px" height="23px"
+						sclass="btnDefault" image="/main/images/button/ico/disable_bt.gif"
+						label="${c:l('BatchNo')}" id="batchForbid" />
+					<button width="74px" height="23px"
+						sclass="btnDefault" image="/main/images/button/ico/ref_bt.gif"
+						label="${c:l('Refresh')}" id="refresh" />
+					<button width="74px" height="23px"
+						sclass="btnDefault" image="/main/images/bakRestore.gif"
+						label="${c:l('ReportGeneration')}" id="CreateReportBtn" />
+					<button label="${c:l('Help')}" sclass="btnDefault"
+							width="74px" height="23px" 
+							image="/main/images/action/help.gif" action="onclick:showHelp(21)"/>	
+				</hbox>
+			</panelchildren>
+		</panel>
+	</north>
+	<center style="overflow-y:scroll;">
+		<window apply="com.siteview.ecc.report.TopNReportComposer" forward="onCreate=onInit"
+			border="normal"  id="topNReport" style="margin-right:15px;"
+			onClientInfo="onClientInfo(event)">
+			<panel title="${c:l('TopNReportListInformation')}" collapsible="true" id="pa1">
+				<panelchildren>
+					<panel collapsible="true">
+						<panelchildren>
+							<listbox id="topNList" fixedLayout="true"  
+								checkmark="true" mold="paging" pageSize="6" multiple="true">
+								<listhead sizable="true">
+									<listheader label="${c:l('Name')}" width="200px"
+										sort="auto" />
+									<listheader label="${c:l('Des')}"
+										sort="auto" />
+									<listheader label="${c:l('TimeSlot')}" width="80px"
+										sort="auto" />
+									<listheader label="${c:l('Format')}"
+										align="center" width="60px" sort="auto" />
+									<listheader label="${c:l('State')}"
+										align="center" width="60px" sort="auto" />
+									<listheader label="${c:l('Editor')}"
+										align="center" width="80px" sort="auto"/>
+								</listhead>
+							</listbox>
+						</panelchildren>
+					</panel>
+				</panelchildren>
+			</panel>
+			<separator width="1px" />
+			<div id="topn_time"
+				style="hrioght:30px;text-align:right;padding-right:5px">
+				<button id="btnBatchDeleteGen" sclass="btnDefault"
+					label="${c:l('BatchDeleteLog')}" />
+				<space />
+				<label value="${c:l('LogPage')}"/>
+				<combobox width="20px" id="genlistboxPageSize"
+					value="10"  readonly="true"
+					use="com.siteview.ecc.treeview.controls.ListboxPageSize" />
+				<listbox id="topNGenerateTime" fixedLayout="true"
+					checkmark="true" mold="paging" pageSize="10" multiple="true"
+					style="margin-left:5px">
+					<listhead sizable="true">
+						<listheader label="${c:l('Format')}" align="center" sort="auto(filetype)"
+							width="80px" />
+						<listheader label="${c:l('FileName')}" align="left" sort="auto(title)"/>
+						<listheader label="${c:l('CreationDate')}" align="center" sort="auto(generateDate)"
+							width="120px" />
+						<listheader label="${c:l('Founder')}" align="center" sort="auto(author)"
+							width="100px" />
+						<listheader label="${c:l('Validity')}" align="center" sort="auto(enabled)"
+							width="80px" />
+						<listheader label="${c:l('Operation')}" align="center" sort="auto(filetype)"
+							width="80px" />
+					</listhead>
+				</listbox>
+			</div>
+			<zscript>
+	topNGenerateTime.pagingChild.mold ="os";
+</zscript>
+		</window>
+	</center>
+</borderlayout>

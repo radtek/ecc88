@@ -1,0 +1,177 @@
+锘�?xml version="1.0" encoding="UTF-8"?>
+<?page id="eccmain" title="SiteView Ecc 8.8"?>
+<?link  rel="stylesheet" type="text/css" href="css/main.css"?>
+<zk xmlns:h="http://www.w3.org/1999/xhtml">
+<h:div style="margin-top:-10px;height:1px;width:100%;position: absolute; z-index: 33;">
+<h:div class="eccHeaderStatics" style="width:550px;height:15px;margin-left: -491px; left:50%;margin: 20px auto 0px auto;">
+<div id="eccHeaderComposer" apply="com.siteview.ecc.treeview.EccHeaderComposer" >
+	<label sclass="padding-top:10px;font-size:12px;font-weight: bold;" height="15px"
+		value="娆㈣繋鎮� />
+	<label id="loginName" sclass="padding-top:10px;font-size:12px;font-weight: bold;" height="15px"/>
+	<label sclass="padding-top:10px;font-size:12px;font-weight: bold;" height="15px"
+		value=",鍦ㄧ嚎" visible="true"/>
+	<label id="onlineInfo" sclass="padding-top:10px;font-size:12px;font-weight: bold;" height="15px" visible="true"/>
+	<label sclass="padding-top:10px;font-size:12px;font-weight: bold;" height="15px"
+		value="浜� visible="true"/>
+	<image src='/main/images/header.gif' />
+	 <label sclass="padding-top:10px;font-size:12px;font-weight: bold;" height="15px"
+		value="鍏ㄩ儴锛� /><label id="total_monitor" sclass="padding-top:10px;font-size:12px;font-weight: bold;" height="15px"/>
+	<image src='/main/images/header1.gif' />
+	 <label sclass="padding-top:10px;font-size:12px;font-weight: bold;" height="15px"
+		value="姝ｅ父锛� /><label id="total_ok" sclass="padding-top:10px;font-size:12px;font-weight: bold;" height="15px"/>
+	<image src='/main/images/header3.gif' />
+	 <label sclass="padding-top:10px;font-size:12px;font-weight: bold;" height="15px"
+		value="閿欒锛� /><label id="total_error" sclass="padding-top:10px;font-size:12px;font-weight: bold;" height="15px"	/>
+	<image src='/main/images/header2.gif' />
+	 <label sclass="padding-top:10px;font-size:12px;font-weight: bold;" height="15px"
+		value="鍗遍櫓锛� /><label id="total_warning" sclass="padding-top:10px;font-size:12px;font-weight: bold;" height="15px"/>
+</div>	
+</h:div>
+</h:div>
+	<borderlayout id="main" apply="com.siteview.ecc.treeview.EccLayoutComposer" style="margin:0px;">
+		<north border="none" sclass="mainNorth">
+			<borderlayout style="margin:0px">
+				<west border="none" style="" sclass="ecc-logo" >
+						<timer id="header_timer" running="true" delay="30000" repeats="true" use="com.siteview.ecc.timer.EccTimer"/>
+				</west>
+				<center border="none" class="ecc-header">
+				<div height="30px" style="padding-top:5px">
+						<popup id="action_popup" use="com.siteview.actions.ActionPopup"/>
+						<popup id="nodeInfoTooltip"	use="com.siteview.ecc.util.TooltipPopup" />
+				</div>
+				</center>
+				<east border="none" sclass="ecc-top_right">
+				<div>
+				<image id="btnLogout" src="/main/images/none.gif" width="75px" height="40px" style="float:right;cursor:pointer"/>
+				<image action="onclick:showHelp(0)" id="btnHelp" src="/main/images/none.gif" width="75px" height="40px" style="float:right;cursor:pointer"/>
+				</div>
+				</east>
+			</borderlayout>
+		</north>
+		<center flex="true" border="none" sclass="ecc-top_middle2">
+			<tabbox  id="tabBox" sclass="ecc-top_right2" >
+				<tabs sclass="eccMainTabbox" style="background:transparent;">
+					<tab id="tab_monitor" label="鐩戞帶鍣� closable="false" />
+					<tab id="tab_view" label="瑙嗗浘" closable="false" />
+					<tab id="info_tab" label="绯荤粺淇℃伅" closable="false" use="com.siteview.ecc.timer.EccInfoTab"/>
+					<!-- tab id="bbs_tab" label="寤鸿涓嶣UG鎶ュ憡" closable="false"/-->
+				</tabs>
+				<tabpanels >
+					<tabpanel>
+						<borderlayout style="margin:0;">
+							<west use="com.siteview.ecc.controlpanel.EccLayoutWest" id="westTree" style="font-size:12px" size="195px" flex="true"
+								splittable="true" minsize="0" maxsize="500"
+								collapsible="true"  border="none">
+								<panel framable="false">
+									<toolbar style="padding-left:3px;font-size:12px">
+									<hbox><label pre="true" style="width:100px;font-size:12px;over-flow:hidden" value="瑙嗗浘锛�/><listbox mold="select" id="viewSelect" /><space width="1px"/>
+									<image id="btnEditView" hover="/main/images/trend.gif" tooltiptext="缂栬緫瑙嗗浘" style="cursor:pointer" align="absmiddle" src="/main/images/virtualvieweditting.gif" onClick='tabBox.setSelectedPanel(virtualViewTab)'/><space width="1px"/>
+									<image id="btnRefreshTree" hover="/main/images/refresh_hover.gif" tooltiptext="鍒锋柊" style="cursor:pointer" align="absmiddle" src="/main/images/refresh.gif"/>
+									</hbox>
+									<hbox style="padding-top:3px;"><label pre="true" style="width:120px;font-size:12px;over-flow:hidden" value="璁惧锛�/>
+									<combobox id="locateEntityCombox" autodrop="true" buttonVisible="false"/><image tooltiptext="娓呯┖" id="imgClear" hover="/main/images/clear_hover.gif" visible="false" style="cursor:pointer" src="/main/images/clear.gif"/></hbox>
+									<!-- 娉ㄩ噴鎺夐〉闈笂鏍规嵁鐩戞祴鍣↖D鏌ユ壘骞惰嚜鍔ㄨ烦杞埌鐩戞祴鍣ㄦ樉绀虹晫闈㈢殑鍔熻兘
+									<hbox style="padding-top:3px;"><label pre="true" style="width:120px;font-size:12px;over-flow:hidden" value=" ID锛�"/>
+									<combobox id="idCombox" autodrop="true" buttonVisible="false"/><image tooltiptext="娓呯┖" id="idImgClear" hover="/main/images/clear_hover.gif" visible="false" style="cursor:pointer" src="/main/images/clear.gif"/></hbox>
+									 -->
+									</toolbar>
+									<panelchildren>
+										
+										<borderlayout>
+											<center>
+												<tree zclass="z-dottree" Vflex="true" id="tree"/>
+											</center>
+											<south id="south" title="鏈�繎娴忚鐨勭洃娴嬪櫒" flex="true" maxsize="140" splittable="true" collapsible="true">
+												<panel title="">
+													<panelchildren >
+														<listbox fixedLayout="true" mold="paging" multiple="true" vflex="true" id="recentlyViewMonitor" width="100%" rows="4" >
+															<listhead>
+																<listheader width="32px" label="鐘舵�" />
+																<listheader width="" label="鍚嶇О" />
+															</listhead>
+														</listbox>
+													</panelchildren>
+												</panel>
+											</south>
+										</borderlayout>
+									</panelchildren>
+								</panel>
+							</west>
+							<center flex="true"  border="none">
+								<include mode="defer" progressing="false" id="eccBody"/>
+							</center>
+						</borderlayout>
+					</tabpanel>
+					<tabpanel id="virtualViewTab" fulfill="tab_view.onSelect">
+						<borderlayout apply="com.siteview.ecc.treeview.VirtualViewLayoutComposer">
+							<west title="榛樿瑙嗗浘" size="350px" flex="true"
+								splittable="true" minsize="100" maxsize="700"
+								collapsible="true"  border="none">
+								<panel framable="false">
+									<panelchildren>
+										<tree zclass="z-dottree" Vflex="true" id="treeOriginal"/>
+									</panelchildren>
+								</panel>
+							</west>
+							<center flex="true"  border="none">
+								<panel framable="false">
+									<toolbar>
+										<label style="font-size:12px" value="铏氭嫙瑙嗗浘:" />
+										<combobox id="viewSelectEditting"/>
+									</toolbar>
+									<panelchildren>
+										<tree zclass="z-dottree" Vflex="true" id="treeEditting"/>
+									</panelchildren>
+								</panel>
+							</center>
+						</borderlayout>
+					</tabpanel>
+<!-- 				<tabpanel fulfill="tab_css.onSelect">
+					<panel framable="false" border="none">
+					<panelchildren id="cssSelectDiv" use="com.siteview.ecc.css.CssSelectDiv">
+					</panelchildren>
+					</panel>
+					</tabpanel> -->
+					<tabpanel fulfill="info_tab.onSelect">
+					<borderlayout apply="com.siteview.ecc.timer.OnlineLayoutComposer">
+					<north size="90px"  border="none">
+					<vbox id="onlineInfoDiv"/>
+					</north>
+					<center id="chatCenter" style="overflow-y:auto;"  border="none">
+					<!-- <div id="chatContent" style="padding-left:5px;padding-right:5px;"/> -->
+					<grid id="chartGrid" mold="paging" pageSize="10" style="border:none" oddRowSclass="none" width="100%">
+						<rows id="chartRows"></rows>
+					</grid>
+					</center>
+					<south size="28px"  border="none">
+					<div><textbox height="19px" id="sendMsg" width="400px"/><button id="btnSend" src="/images/alarmstart.gif" label="鍙戦�" sclass="btnDefault"/></div>
+					</south>
+					</borderlayout>
+					</tabpanel>
+					<!-- tabpanel fulfill="bbs_tab.onSelect">
+					<iframe height="100%" width="100%" src="http://eccdemo.siteview.com/bbs/forumdisplay.php?fid=2"/>
+					</tabpanel-->
+				</tabpanels>
+			</tabbox>
+		</center>
+	</borderlayout>
+<script><![CDATA[
+mesg.FAILED_TO_RESPONSE="鏈嶅姟鍣ㄨ繛鎺ュ嚭鐜伴棶棰橈紝璇锋鏌ユ湇鍔＄绋嬪簭銆俓n\n";
+var newWin=null;
+function showHelp(id)
+{
+  if(newWin!=null)
+  {
+	  try{newWin.close();}catch(e){}
+  }
+  var url="/ecc/main/help/help/outline_"+id+".htm";
+  newWin=window.open("","helpWin");
+  newWin.document.write("<frameset cols='283,*' framespacing='0' border='0' frameborder='0'>");
+  newWin.document.write("<frame name='contents' target='main' src='/ecc/main/help/index.htm'/>");
+  newWin.document.write("<frame name='main' scrolling='yes' src='"+url+"'/>");
+  newWin.document.write("</frameset>");
+  newWin.document.close();
+  newWin.focus();
+}
+]]></script>
+</zk>

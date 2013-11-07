@@ -1,0 +1,28 @@
+<?page id="" contentType="text/html;charset=UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<zk>
+<window id="entityselect" title="${c:l('EquipmentSelection')}" height="320px" width="300px" border="normal">
+<tabbox>
+	<tabs>
+		<tab label="${c:l('Browse')}" />
+	</tabs>
+	<tabpanels>
+		<tabpanel>
+			<tree id="monitortree" zclass="z-dottree" use="com.siteview.ecc.monitorbrower.EntitySelectTree" height="200px" vflex="true" width="250px"/>
+		</tabpanel>
+	</tabpanels>
+</tabbox>
+	<hbox style="margin-left:120px;margin-top:3px" align="end">
+		<button id="OK" label="${c:l('Save')}"  sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/save_bt.gif">
+			<attribute name="onClick">
+			Textbox t = (Textbox)entityselect.getAttribute("entityLabel");
+			com.siteview.ecc.monitorbrower.EntitySelectTree tree = (com.siteview.ecc.monitorbrower.EntitySelectTree)monitortree;
+			t.setValue(tree.getAllSelectedIds());
+			entityselect.detach();
+			</attribute>
+		</button>
+		<button id="Cancel" label="${c:l('Cancel')}"  sclass="btnDefault" onClick="entityselect.detach()"  width="74px" height="23px" image="/main/images/button/ico/close_bt.gif"/>
+	</hbox>
+</window>
+
+</zk>

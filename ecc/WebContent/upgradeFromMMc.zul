@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?page title="upgrade from mmc" ?>
+<zk xmlns:h="http://www.w3.org/1999/xhtml" >
+<window id="upgradeFromMMC" title="閰嶇疆鏁版嵁鍗囩骇" position="center" apply="com.siteview.ecc.util.UpgradeFromMMC" border="normal" width="430px" style="color: white">
+<separator /> 
+<groupbox mold="3d">
+    <hbox>
+    <label value="绠＄悊鍛樼敤鎴峰悕:" id="label"/>
+    <textbox id="name" width="310px"> </textbox> 
+    </hbox>
+    <hbox>
+    <label value="  绠＄悊鍛樺瘑鐮�" id="label2"  pre="true"/>
+    <textbox id="pwd" width="310px"> </textbox>    
+    </hbox>    
+</groupbox>    
+<separator />
+<groupbox mold="3d" >
+  <hbox align="end">
+    <button label="鍗囩骇" id="btnUpgrade" />
+   </hbox>   
+</groupbox>  
+<separator />
+<groupbox mold="3d">
+    <hbox height="30px" >
+    <label value="灏�mmc 鐗堟湰鐨勭浉鍏虫暟鎹悜涓婂崌绾у埌   8.8 web 鐗堟湰锛岀浉鍏充俊鎭�" id="message2" width="370px" />
+    </hbox>
+    <hbox height="200px" >
+    <label value="鎻愮ず淇℃伅" id="message" width="370px" height="100px" multiline="true"  pre="true" />
+    </hbox>
+</groupbox>      
+</window>
+</zk>

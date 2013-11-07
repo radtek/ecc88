@@ -1,0 +1,126 @@
+<?page title="步编辑" contentType="text/html;charset=UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<zk>
+	<window title="${c:l('StepEdit')}" id="wStepDetail" width="600px" closable="true" position="center"
+	apply="com.siteview.ecc.treeview.windows.AddStepDetail"	border="normal">
+		<panel id="p1">
+			<panelchildren
+				style="margin:5px 5px 5px 5px;overflow-y:auto;max-height:500px;">
+				<panel title="${c:l('GroupBaseInfo')}" collapsible="true">
+					<panelchildren>
+						<grid>
+							<columns>
+								<column width="20%" label=""></column>
+								<column label=""></column>
+							</columns>
+							<rows>
+								<row>
+									<label value="${c:l('UrlName:')}"></label>
+									<hbox>
+										<radio  id="rdUrl"  checked="true"></radio>
+										<textbox id="tbUrl"
+											width="320px" height="15px" value="">
+										</textbox>
+									</hbox>
+								</row>
+								<row>
+
+									<label value="${c:l('LinksName:')}"></label>
+
+									<hbox>
+										<radio id="rdLinks"></radio>
+										<combobox id="cbLinks"
+											width="302px" readonly="true">
+										</combobox>
+									</hbox>
+								</row>
+								<row>
+									<label value="${c:l('FormsName:')}"></label>
+									<hbox>
+										<radio id="rdForms"></radio>
+										<combobox id="cbForms"
+											width="302px" readonly="true">
+										</combobox>
+									</hbox>
+								</row>
+								<!--  row >
+									<label value="Frames名称:"></label>
+									<hbox>
+										<radio id="rdFrames"></radio>
+										<combobox id="cbFrames"
+											width="302px" readonly="true">
+										</combobox>
+									</hbox>
+								</row>
+								<row>
+									<label value="Refreshs名称:"></label>
+									<hbox>
+										<radio id="rdRefreshs"></radio>
+										<combobox id="cbRefreshs"
+											width="302px" readonly="true">
+										</combobox>
+									</hbox>
+								</row-->
+								<row>
+									<label value="${c:l('PostDataParameter:')}"></label>
+									<textbox id="tbPostDataParameter"
+										multiline="true" rows="6" width="340px" value="">
+									</textbox>
+								</row>
+							</rows>
+						</grid>
+					</panelchildren>
+				</panel>
+				<panel title="${c:l('AdvanceItem')}" collapsible="true">
+					<panelchildren>
+						<grid>
+							<columns>
+								<column width="20%" label=""></column>
+								<column label=""></column>
+							</columns>
+							<rows>
+								<row>
+									<label value="${c:l('ContentMatching:')}"></label>
+									<textbox id="tbContent"
+										width="340px" height="15px">
+									</textbox>
+								</row>
+								<row>
+									<label value="${c:l('ContentErrorMatching:')}"></label>
+									<textbox id="tbErrorContent"
+										width="340px" height="15px">
+									</textbox>
+								</row>
+								<row>
+									<label value="${c:l('UserName:')}"></label>
+									<textbox id="tbUser" width="340px"
+										height="15px">
+									</textbox>
+								</row>
+								<row>
+									<label value="${c:l('UserPassword:')}"></label>
+									<textbox id="tbPwd" width="340px"
+										height="15px">
+									</textbox>
+								</row>
+							</rows>
+						</grid>
+					</panelchildren>
+				</panel>
+			</panelchildren>
+		</panel>
+		<div
+			style="float:right;margin-bottom:12px;margin-right:12px; ">
+			<hbox>
+				<button id="btnok" sclass="btnDefault" width="74px"
+					height="23px" image="/main/images/button/ico/save_bt.gif"
+					label="${c:l('Save')}">
+				</button>
+				<button id="btncancel" sclass="btnDefault" width="74px"
+					height="23px" image="/main/images/button/ico/close_bt.gif"
+					label="${c:l('Cancel')}">
+				</button>
+			</hbox>
+		</div>
+	</window>
+</zk>
