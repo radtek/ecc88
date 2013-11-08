@@ -1,0 +1,100 @@
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<zk>
+	<borderlayout>
+		<center style="overflow:auto;border:none">
+			<panel title="${c:l('BasicSetting')}" collapsible="true">
+				<panelchildren>
+					<window id="generalSet"
+						apply="com.siteview.ecc.general.GeneralSet" border="normal"
+						style="overflow-y:auto;" forward="onCreate=onInit">
+
+						<panel title="${c:l('BasicSettingInfo')}" border="normal"
+							collapsible="true">
+							<panelchildren style="center">
+								<hbox style="margin-top:20px">
+									<checkbox id="ipCheckbox"
+										style="margin-left:5px" label="${c:l('IfIPVerification')}"
+										onCheck="applyButton.setDisabled(false)" />
+								</hbox>
+								<vbox align="end"
+									style="margin-left:10px">
+									<hbox style="margin-top:10px"
+										align="center">
+										<label value="${c:l('AllowsAccessIPAddress:')}" />
+										<textbox id="ip"
+											onChanging="applyButton.setDisabled(false)" width="300px"
+											height="15px" tooltiptext="${c:l('PInputAllowsAccessIPAddress')}" />
+									</hbox>
+									<hbox style="margin-top:10px"
+										align="center">
+
+										<button sclass="btnDefault"
+											width="74px" height="23px" label="${c:l('Application')}" id="applyButton"
+											forward="onClick=onApply"
+											image="/main/images/button/ico/save_bt.gif" />
+
+										<button sclass="btnDefault"
+											height="23px" label="${c:l('Regain')}" forward="onClick=onRecover"
+											style="margin-left:10px"
+											image="/main/images/button/ico/reload_bt.gif"
+											id="recoverButton" />
+										<button label="${c:l('Help')}"
+											sclass="btnDefault" width="74px" height="23px"
+											image="/main/images/action/help.gif"
+											action="onclick:showHelp(27)" />
+									</hbox>
+									<panel></panel>
+								</vbox>
+							</panelchildren>
+						</panel>
+						<div id="setTuopuId" visible="false">
+						<panel title="${c:l('TopologySettings')}" border="normal" 
+							collapsible="true">
+							<panelchildren id="pc"  apply="com.siteview.ecc.tuopu.tuopuset">
+								<listbox width="" >
+									<listhead>
+										<listheader width="60px" label="${c:l('State')}">
+										</listheader>
+										<listheader label="${c:l('BorderColor')}">
+										</listheader>
+										<listheader label="${c:l('BorderWidth')}">
+										</listheader>
+									</listhead>
+									<listitem>
+										<listcell  label="${c:l('Error')}"></listcell>
+										<listcell><hbox> <textbox id="c1"  readonly="true" ></textbox>  <toolbarbutton id="b1" height="18px"  label=". . ."/></hbox> </listcell>
+										<listcell ><spinner id="w1" readonly="true" constraint="min 0 max 6"/> </listcell>
+									</listitem>
+									<listitem>
+										<listcell label="${c:l('Warning')}">
+										</listcell>
+										<listcell><hbox> <textbox id="c2"  readonly="true" ></textbox> <toolbarbutton id="b2" label=". . ."/></hbox></listcell>
+										<listcell ><spinner id="w2" readonly="true" constraint="min 0 max 6"/> </listcell>
+									</listitem>
+									<listitem>
+										<listcell label="${c:l('Good')}">
+										</listcell>
+										<listcell><hbox> <textbox id="c3"  readonly="true" ></textbox> <toolbarbutton id="b3"  label=". . ."/></hbox> </listcell>
+										<listcell ><spinner id="w3" readonly="true" constraint="min 0 max 6"/> </listcell>
+									</listitem>
+								</listbox>
+								<hbox align="center"><space width="150px"></space> 	<button sclass="btnDefault"
+											width="74px" height="23px" label="${c:l('Application')}" id="btntuopu"
+											image="/main/images/button/ico/save_bt.gif" />  <button sclass="btnDefault"
+											width="74px" height="23px" label="${c:l('Preview')}" id="btnlook"
+											image="/main/images/button/ico/query_bt.gif" /> 
+											<button sclass="btnDefault"
+											width="74px" height="23px" label="${c:l('RestoreDefault')}" id="btnreturn"
+											image="/main/images/button/ico/reload_bt.gif" /> 
+											</hbox>
+							</panelchildren>
+						</panel>
+						</div>
+					</window>
+				</panelchildren>
+			</panel>
+		</center>
+	</borderlayout>
+</zk>
+
+

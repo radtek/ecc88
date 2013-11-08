@@ -1,0 +1,41 @@
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<zk>
+	<borderlayout apply="com.siteview.ecc.report.statisticalreport.ReportComposer" forward="onCreate=onInit" >
+	<north size="55px">
+			<panel title="${c:l('StatisticalReport')}" style="margin-left:3px;margin-top:3px;margin-bottom:3px">
+			<panelchildren>
+				<button width="85px" height="23px" sclass="btnDefault" id="addStatisticButton"
+					label="${c:l('AddReport')}" forward="onClick=onAddReport"  image="/main/images/button/ico/add_bt.gif"/><space width="1px"/>
+				<button width="74px" height="23px" sclass="btnDefault" id="deleStatisticButton"
+					label="${c:l('BatchDelete')}" forward="onDeleteReport"  image="/main/images/button/ico/delete_bt.gif"/><space width="1px"/>
+				<button width="85px" height="23px" sclass="btnDefault"
+					label="${c:l('LotTolerance')}" forward="onAlloweport" image="/main/images/button/ico/enable_bt.gif"/><space width="1px"/>
+				<button width="85px" height="23px" sclass="btnDefault"
+					label="${c:l('BatchNo')}" forward="onDenyeport" image="/main/images/button/ico/disable_bt.gif"/><space width="1px"/>
+				<button width="74px" height="23px" sclass="btnDefault"
+					label="${c:l('Refresh')}" forward="onRefreshReport" image="/main/images/button/ico/ref_bt.gif"/><space width="1px"/>
+				<button width="85px" height="23px" sclass="btnDefault"
+					label="${c:l('ReportGeneration')}" forward="onClick=onCreateReport"  image="/main/images/bakRestore.gif"/><space width="1px"/>
+				<button width="74px" height="23px" sclass="btnDefault"
+					id="simpleMonitorButton" label="${c:l('SimpleMonitoringInformation')}" visible="false" />
+										<button label="${c:l('Help')}" sclass="btnDefault"
+							width="74px" height="23px" 
+							image="/main/images/action/help.gif" action="onclick:showHelp(19)"/>
+				</panelchildren>	
+				</panel>	
+	</north>
+	<center style="overflow-y:scroll;">
+	<vbox spacing="0" width="100%" style="padding-right:18px">
+		<listbox id="direportlistbox" multiple="true" checkmark="true" mold="paging" fixedLayout="true" pageSize="6"/>
+		<splitter collapse="before" />
+		<div style="hrioght:30px;text-align:right;padding-right:5px">
+		<button id="btnBatchDeleteGen" sclass="btnDefault" label="${c:l('BatchDeleteLog')}"/>
+		<space/><label value="${c:l('LogPage')}"/>
+		<combobox width="20px" id="genlistboxPageSize" value="10" use="com.siteview.ecc.treeview.controls.ListboxPageSize" readonly="true"/>
+		<label value="${c:l('Article')}"/>
+		</div>
+		<listbox id="genlistbox" multiple="true" checkmark="true"  mold="paging" fixedLayout="true" pageSize="10"/>
+	</vbox>
+	</center>	
+	</borderlayout>
+</zk>

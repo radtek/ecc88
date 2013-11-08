@@ -1,0 +1,59 @@
+<?page title="" contentType="text/html;charset=UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<zk>
+	<window id="wdisablemonitors" title="${c:l('Ban/AllowsMonitoring')}" border="normal"
+		width="500px" position="center" closable="true"
+		apply="com.siteview.ecc.treeview.windows.DisableMonitors">
+		<groupbox style="margin:5px 5px 5px 5px;">
+			<caption label="${c:l('SelectionConditions')}" />
+			<grid style="margin:5px 5px 5px 5px;">
+				<columns>
+					<column width="30%" label=""></column>
+					<column label=""></column>
+				</columns>
+				<rows>
+					<row>
+						<label value="${c:l('SelectType')}"></label>
+						<radiogroup orient="vertical">
+							<radio id="rdy" label="${c:l('PermanentBanMonitoring')}"
+								checked="true" />
+							<radio id="rdl" label="${c:l('TemporaryBanMonitoring')}" />
+						</radiogroup>
+					</row>
+					<row>
+						<label value="${c:l('From:')}" />
+						<hbox>
+							<datebox id="dateform" width="100px"
+								height="15px" readonly="true" compact="true"
+								format="yyyy-MM-dd" />
+							<timebox id="timefrom" width="40px"
+								height="15px" >
+							</timebox>
+						</hbox>
+					</row>
+					<row>
+						<label value="${c:l('To:')}" />
+						<hbox>
+							<datebox id="dateto" width="100px"
+								height="15px" readonly="true" compact="true"
+								format="yyyy-MM-dd" />
+							<timebox id="timeto" width="40px"
+								 height="15px">
+							</timebox>
+						</hbox>
+					</row>
+				</rows>
+			</grid>
+		</groupbox>
+		<div
+			style="float:right;margin-bottom:12px;margin-right:12px; ">
+			<button id="btndisable" height="15px" width="73px" sclass="btnDefault" label="${c:l('NoMonitoring')}" />
+			<button id="btnclose" height="15px"  sclass="btnDefault" label="${c:l('Cancel')}"
+				width="73px">
+				<attribute name="onClick">
+		       wdisablemonitors.detach();
+	  	      </attribute>
+			</button>
+		</div>
+	</window>
+</zk>

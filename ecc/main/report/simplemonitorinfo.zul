@@ -1,0 +1,37 @@
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<window id="simplemonitorinfowindow"
+	title="${ requestScope.simpletitle}" border="normal" position="center"
+	apply="com.siteview.ecc.report.statisticalreport.SimpleMonitorInfoComposer"
+	closable="true" width="640px">
+	<vbox>
+		<separator width="1px" />
+		<groupbox>
+		<separator width="1px" />
+			<hbox align="center">
+				<label value="${c:l('CustomizedMonitor:')}"/>
+				<listbox rows="1" mold="select" id="allmonitors"
+					width="410px" forward="onSelect=onGetSimpleMonitorInfo">
+				</listbox>
+				<space width="10px"/>
+				<button width="74px" height="23px"
+								sclass="btnDefault" label="${c:l('Close')}"
+								onClick="simplemonitorinfowindow.detach()"/>
+			</hbox>
+		</groupbox>
+		<panel>
+			<panelchildren>
+				<listbox id="simplemonitorinfolistbox" mold="paging"
+					fixedLayout="true" rows="15" pageSize="15">
+					<listhead sizable="true">
+						<listheader label="${c:l('TimeSlot')}" />
+						<listheader label="${c:l('MinimumValue')}" />
+						<listheader label="${c:l('AverageValue')}" />
+						<listheader label="${c:l('MaximumValue')}" />
+					</listhead>
+				</listbox>
+			</panelchildren>
+		</panel>
+
+	</vbox>
+
+</window>

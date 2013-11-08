@@ -1,0 +1,78 @@
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<?page id="alertcodition"?>
+<radiogroup id="selectradio" height="200px">
+	<groupbox use="com.siteview.ecc.alert.AlertConditionGroupbox"
+		closable="false" width="406px">
+		<caption label="${c:l('TransmissionCondition')}" />
+		<grid style="border:0" oddRowSclass="none" width="100%">
+			<columns>
+				<column label="" />
+			</columns>
+			<rows>
+				<row zclass="none" height="6px">
+					<separator />
+				</row>
+				<row zclass="none" height="23px">
+					<hbox>
+						<space width="6px" />
+						<label value="${c:l('AlarmEvent')}"></label>
+						<combobox id="alertEvent" width="60px"
+							height="15px" readonly="true"
+							use="com.siteview.ecc.alert.control.AlertEventCombobox"
+							tooltiptext="${c:l('AlarmStateSet')}" />
+					</hbox>
+				</row>
+				<row zclass="none" height="23px" tooltiptext="${c:l('TransmissionCondition')}">
+					<radio label="${c:l('ContinuouslyWarning')}" id="selectradio1"
+						height="10px" tooltiptext="" />
+				</row>
+				<row zclass="none" height="23px">
+					<div>
+						<space width="20px" />
+						<label value="${c:l('FrontAlwaysSend')}"/>
+						<intbox width="30px" height="15px" maxlength="4"
+							value="1" id="awayCount"
+							tooltiptext="${c:l('AlwaysSend')}" />
+						<label value="${c:l('EndAlwaysSend')}"/>
+					</div>
+				</row>
+				<row zclass="none" height="23px" tooltiptext="${c:l('TransmissionCondition')}">
+					<radio label="${c:l('SendAAlarm')}" id="selectradio2"
+						height="15px" />
+				</row>
+				<row zclass="none" height="23px">
+					<div>
+						<space width="20px" />
+						<label value="${c:l('FrontSendAAlarm')}"/>
+						<intbox width="30px" height="15px" maxlength="4"
+							value="1" id="onlyOne"
+							tooltiptext="${c:l('ConditionOne')}" />
+						<label value="${c:l('EndSendAAlarm')}"/>
+					</div>
+				</row>
+				<row zclass="none" height="23px" tooltiptext="${c:l('TransmissionCondition')}">
+					<radio label="${c:l('SelectSend')}" id="selectradio3"
+						selected="true" height="15px" />
+				</row>
+				<row zclass="none" height="23px">
+					<div>
+						<space width="20px" />
+						<label value="${c:l('FrontSelectSend')}"/>
+						<intbox width="30px" height="15px" maxlength="4"
+							value="2" id="select1"
+							tooltiptext="${c:l('ConditionTwo')}"/>
+						<label value="${c:l('MidSelectSend')}"/>
+						<intbox width="30px" height="15px" maxlength="4"
+							value="3" id="select2"
+							tooltiptext="${c:l('ConditionTwo')}" />
+						<label value="${c:l('EndSelectSend')}"/>
+					</div>
+				</row>
+				<row zclass="none" height="6px">
+					<separator />
+				</row>
+			</rows>
+		</grid>
+	</groupbox>
+</radiogroup>
+

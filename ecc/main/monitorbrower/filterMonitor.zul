@@ -1,0 +1,207 @@
+<?page id="filtermonitorPage" title="" contentType="text/html;charset=UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<zk>
+	<window id="createFilter" title="${c:l('EditFilter')}"
+		apply="com.siteview.ecc.monitorbrower.FilterMonitorComposer_ES"
+		border="normal" width="390px" height="402px">
+
+		<groupbox style="margin-top:5px">
+			<caption label="${c:l('CustomInformation')}" />
+			<hbox style="margin-top:5px;">
+				<label value="${c:l('FilterName*:')}" style="margin-left:20px;"></label>
+				<textbox width="140px" id="filterName" height="12px"  />
+			</hbox>
+			<radiogroup id="eidt" style="margin-left:20px;">
+				<radio id="add" label="${c:l('Add')}" selected="true" />
+				<radio id="edit" label="${c:l('Editor')}" disabled="true"  />
+			</radiogroup>
+		</groupbox>
+
+		<groupbox height="240px" style="margin-top:5px">
+			<caption label="${c:l('ConditionSetting')}" />
+			<grid oddRowSclass="none" style="border:none;">
+				<columns>
+					<column label="" align="left" />
+					<column label="" align="left" />
+				</columns>
+				<rows>
+					<row zclass="none" style="border:none"
+						height="30px" >
+						<label value="${c:l('MonitorName:')}" style="margin-left:20px;"></label>
+						<hbox>
+							<textbox width="140px" id="monitorName"
+								height="15px"
+								tooltiptext="${c:l('MonitorNameInfo')}" />
+							<button id="monitorNameBtn" label="..." />
+						</hbox>
+					</row>
+					<row zclass="none" style="border:none"
+						height="30px">
+						<label value="${c:l('GenusGroup:')}" style="margin-left:20px;"></label>
+						<hbox>
+							<textbox width="140px" id="groupName"
+								height="15px"
+								tooltiptext="${c:l('GenusGroupInfo')}" />
+							<button id="monitorGroupBtn" label="..." />
+						</hbox>
+					</row>
+					<row zclass="none" style="border:none"
+						height="10px">
+						<label value="${c:l('TEquipment')}" style="margin-left:20px;"></label>
+						<hbox>
+							<textbox width="140px" id="entityBe"
+								height="15px"
+								tooltiptext="${c:l('TEquipmentInfo')}" />
+							<button id="monitorEntiryBtn" label="..." />
+						</hbox>
+					</row>
+					<row zclass="none" style="border:none"
+						height="30px">
+						<label value="${c:l('Des:')}" style="margin-left:20px;"></label>
+						<textbox width="140px" id="descript"
+							height="15px" tooltiptext="${c:l('DescriptiveEMGroup')}" />
+					</row>
+					<row zclass="none" style="border:none"
+						height="20px">
+						<label value="${c:l('Show/hide:')}" style="margin-left:20px;"></label>
+						<listbox width="145px" id="showAndHidden"
+							height="25px" mold="select" rows="1"
+							tooltiptext="${c:l('ShowAndHideInfo')}">
+							<listitem selected="true" id="showAll">
+								<listcell label="${c:l('DisplayAll')}" />
+							</listitem>
+							<listitem id="showErrorWarnning">
+								<listcell label="${c:l('DisplayErrorAndDangerous')}" />
+							</listitem>
+							<listitem id="showError">
+								<listcell label="${c:l('DisplayError')}" />
+							</listitem>
+							<listitem id="showWarnning">
+								<listcell label="${c:l('ShowsDanger')}" />
+							</listitem>
+							<listitem id="showNormal">
+								<listcell label="${c:l('DisplayNormal')}" />
+							</listitem>
+							<listitem id="showNone">
+								<listcell label="${c:l('NoStateDisplay')}" />
+							</listitem>
+							<listitem id="showBad">
+								<listcell label="${c:l('DisplaysDefinitionError')}"/>
+							</listitem>
+							<listitem id="showForbid">
+								<listcell label="${c:l('DisplayBanMonitoring')}" />
+							</listitem>
+							<listitem id="showForeverForbid">
+								<listcell label="${c:l('DisplayPermanentBanMonitoring')}" />
+							</listitem>
+							<listitem id="showTemporaryForbid">
+								<listcell label="${c:l('DisplayTemporaryBanMonitoring')}" />
+							</listitem>
+							<listitem id="hideErrorWarnning">
+								<listcell label="${c:l('ErrorConcealmentAndDangerous')}" />
+							</listitem>
+							<listitem id="hideError">
+								<listcell label="${c:l('ErrorConcealment')}" />
+							</listitem>
+							<listitem id="hideWarnning">
+								<listcell label="${c:l('HiddenDanger')}" />
+							</listitem>
+							<listitem id="hideNormal">
+								<listcell label="${c:l('HideNormal')}" />
+							</listitem>
+							<listitem id="hideNone">
+								<listcell label="${c:l('NoState')}" />
+							</listitem>
+							<listitem id="hideBad">
+								<listcell label="${c:l('HiddenDefinitionError')}"/>
+							</listitem>
+							<listitem id="hideForbid">
+								<listcell label="${c:l('HiddenProhibitedMonitoring')}" />
+							</listitem>
+							<listitem id="hideForeverForbid">
+								<listcell label="${c:l('HidingPermanentBanMonitoring')}" />
+							</listitem>
+							<listitem id="hideTemporaryForbid">
+								<listcell label="${c:l('HidingTemporaryBanOnMonitoring')}" />
+							</listitem>
+						</listbox>
+					</row>
+					<row zclass="none" style="border:none"
+						height="25px">
+						<label value="${c:l('MonitorType:')}" style="margin-left:20px;"></label>
+						<listbox width="145px" id="monitorType"
+							height="20px" mold="select" rows="1"
+							tooltiptext="${c:l('MonitorTypeInfo')}">
+						</listbox>
+					</row>
+					<row zclass="none" style="border:none"
+						height="25px">
+						<label value="${c:l('Sort:')}" style="margin-left:20px;"></label>
+						<listbox width="145px" id="sort" height="20px"
+							mold="select" rows="1"
+							tooltiptext="${c:l('ChooseStateSort')}">
+							<listitem selected="true" id="status">
+								<listcell label="${c:l('State')}" />
+							</listitem>
+							<listitem id="group">
+								<listcell label="${c:l('Group')}" />
+							</listitem>
+							<listitem id="name">
+								<listcell label="${c:l('Name')}" />
+							</listitem>
+							<listitem id="statusText">
+								<listcell label="${c:l('Des')}" />
+							</listitem>
+							<listitem id="entity">
+								<listcell label="${c:l('Equipment')}" />
+							</listitem>
+						</listbox>
+					</row>
+					<row zclass="none" style="border:none"
+						height="25px">
+						<label value="${c:l('RefreshSettings:')}" style="margin-left:20px;"></label>
+						<listbox width="145px" id="reflesh"
+							mold="select" rows="1" height="20px" disabled="true"
+							tooltiptext="${c:l('RefreshSettingsInfo')}">
+							<listitem selected="true" id="manual">
+								<listcell label="${c:l('ManualRefresh')}" />
+							</listitem>
+							<listitem id="fifteenSecond">
+								<listcell label="${c:l('Every15SecondsRefresh')}" />
+							</listitem>
+							<listitem id="thirtySecond">
+								<listcell label="${c:l('Every30SecondsRefresh')}" />
+							</listitem>
+							<listitem id="oneMinute">
+								<listcell label="${c:l('RefreshesEvery1Minutes')}" />
+							</listitem>
+							<listitem id="twoMinute">
+								<listcell label="${c:l('RefreshesEvery2Minutes')}" />
+							</listitem>
+							<listitem id="fiveMinute">
+								<listcell label="${c:l('RefreshesEvery5Minutes')}" />
+							</listitem>
+						</listbox>
+					</row>
+				</rows>
+			</grid>
+		</groupbox>
+		<grid oddRowSclass="none" style="border:none;">
+			<columns>
+				<column label="" align="right" />
+			</columns>
+			<rows>
+				<row zclass="none" style="border:none" height="24px">
+					<hbox>
+						<button id="editOK" label="${c:l('Save')}"
+							sclass="btnDefault" width="74px" height="23px"
+							image="/main/images/button/ico/save_bt.gif" />
+						<button id="Cancel" label="${c:l('Cancel')}"
+							sclass="btnDefault" onClick="createFilter.detach()" width="74px"
+							height="23px" image="/main/images/button/ico/close_bt.gif" />
+					</hbox>
+				</row>
+			</rows>
+		</grid>
+	</window>
+</zk>

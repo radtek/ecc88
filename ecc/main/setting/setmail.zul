@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<?page id="setMail"?>
+<zk>
+<borderlayout>
+	<center style="overflow:auto;border:none">
+	
+<panel title="${c:l('MailSettings')}" collapsible="true">	
+<panelchildren>
+<window id="setMail" apply="com.siteview.ecc.email.SetMail"  border="normal" style="overflow-y:auto;"
+	forward="onCreate=onInit" >
+			<div height="27px" >						
+				<button label="${c:l('Add')}" sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/add_bt.gif">
+					<attribute name="onClick">{
+							final Window win = (Window) Executions.createComponents(
+							"/main/setting/addEmailSet.zul", null, null);							
+							win.doModal();									
+							}</attribute>
+				</button><space width="1px" />
+				<button label="${c:l('Delete')}" sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/delete_bt.gif" forward="onClick=onDel" id="delButton" /><space width="1px"/>
+				<button label="${c:l('Enable')}" sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/enable_bt.gif" forward="onClick=onPermiter" id="permiterButton" /><space width="1px"/>
+				<button label="${c:l('Disable')}" sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/disable_bt.gif" forward="onClick=onHold" id="holdButton" /><space width="1px"/>				
+				<button label="${c:l('Refresh')}" sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/ref_bt.gif" forward="onClick=onMessageRefrash" id="refreshButton" /><space width="1px"/>
+				<button label="${c:l('TemplateSettings')}" sclass="btnDefault" id="templateSetBtn"
+					height="23px" image="/main/images/button/ico/template_bt.gif">
+					<attribute name="onClick">{
+							final Window win = (Window) Executions.createComponents(
+							"/main/setting/template/emailTemplateSet.zul", null, null);
+							win.doModal();									
+							}</attribute>
+				</button>
+				<button label="${c:l('Help')}" sclass="btnDefault"
+							width="74px" height="23px" 
+							image="/main/images/action/help.gif" action="onclick:showHelp(28)"/>
+			</div>
+	
+			<panel title="${c:l('MailSettingsInformation')}" border="normal"  
+				collapsible="true">
+				<panelchildren>
+
+					<listbox fixedLayout="true" mold="paging" 
+						id="listbox_data" forward="onSelect=onShowMoreImfo"
+						multiple="true" checkmark="true" vflex="true" rows="10" pageSize="10" 
+						use="com.siteview.ecc.email.EmailModelListbox">
+					<!-- 
+						<listhead sizable="true">
+							<listheader align="left" label="名称" 
+								width="35%" sort="auto" />
+							<listheader align="left" label="状态"
+								width="15%" sort="auto" />
+							<listheader align="left" label="电子邮件地址"
+								width="35%" sort="auto" />
+							<listheader align="left" label="编辑" />
+						</listhead>
+ 					-->
+					</listbox>
+
+				</panelchildren>
+			</panel>
+			<separator/>
+			<panel title="${c:l('BasicSettings')}" border="normal" id="setPanel" 
+				collapsible="true">
+				<panelchildren>
+
+					<vbox align="right" style="margin-left:10px">
+						<hbox style="margin-top:20px" align="center">
+							<label value="${c:l('SendingServerSMTP:')}" />
+							<textbox id="strMailServer" height="15px" onChanging='applyButton.setDisabled(false)' width="200px" tooltiptext="${c:l('SendingServerSMTPInfo:')}"/>
+						</hbox>
+						<hbox align="center">
+							<label value="${c:l('SenderEmailAddress:')}" />
+							<textbox id="strMailFrom" height="15px" onChanging='applyButton.setDisabled(false)' width="200px" tooltiptext="${c:l('SenderEmailAddressInfo:')}"/>
+						</hbox>
+						<hbox align="center">
+							<label value="${c:l('BackupServer:')}"  />
+							<textbox id="strBackupServer" height="15px" onChanging='applyButton.setDisabled(false)' width="200px" tooltiptext="${c:l('BackupServerInfo:')}"/>
+						</hbox>
+						<hbox align="center">
+							<label value="${c:l('AuthenticationUserName:')}" />
+							<textbox id="strUser" height="15px" onChanging='applyButton.setDisabled(false)' width="200px" tooltiptext="${c:l('AuthenticationUserNameInfo:')}"/>
+						</hbox>
+						<hbox align="center">
+							<label value="${c:l('AuthenticationPassword:')}" />
+							<textbox id="strPassword" type="password" height="15px" onChanging='applyButton.setDisabled(false)' width="200px" tooltiptext="${c:l('AuthenticationPasswordInfo:')}"/>
+						</hbox>
+						<hbox style="margin-top:10px">
+							<button sclass="btnDefault" width="74px"
+								height="23px" id="applyButton" label="${c:l('Application')}"
+								forward="onClick=onApply"
+								image="/main/images/button/ico/save_bt.gif" />
+							<button sclass="btnDefault" height="23px"
+								label="${c:l('Regain')}" forward="onClick=onRefresh"
+								style="margin-left:10px"
+								image="/main/images/button/ico/reload_bt.gif" />
+							<button sclass="btnDefault" width="74px"
+								height="23px"  label="${c:l('Test')}"
+								style="margin-left:10px"
+								image="/main/images/button/ico/test_bt.gif" id="testButton" forward="onClick=onTestButton"/>
+						</hbox>
+
+					</vbox>
+					</panelchildren>
+				</panel>
+</window>
+</panelchildren>
+</panel>	
+</center>
+</borderlayout>
+</zk>

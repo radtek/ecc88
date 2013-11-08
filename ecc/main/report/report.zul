@@ -1,0 +1,14 @@
+<?page title="简单报表" contentType="text/html;charset=UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<zk>
+	<window id="wreport" height="100%" apply="com.siteview.ecc.simplereport.report"
+		title="${c:l('SimpleStatements')}" border="normal">
+		<label value="${c:l('SelectFileType:')}"/>
+		<listbox id="format" mold="select" >
+		<listitem label="PDF" value="pdf" />
+		<listitem label="HTML" value="html" selected="true"  />
+		<listitem label="Excel" value="xls" />
+	</listbox>
+		<jasperreport  height="100%" id="jreport"></jasperreport>
+	</window>
+</zk>

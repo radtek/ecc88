@@ -1,0 +1,81 @@
+﻿<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<?page id="alertrule"?>
+<?component name="monitorselect" macro-uri="/main/alert/control/monitorselect.zul"?>
+<window id="mainwin" title="${c:l('AddSMSAlarm')}"  border="normal" position="center" use="com.siteview.ecc.alert.SmsAlertView" closable="true" width="660px">
+	<vbox>
+		<space height="3px"/>
+		<hbox>
+			<space width="3px"/>
+			<monitorselect treeheight="390px"/>
+			<vbox>
+				<groupbox closable="false" width="406px">
+					<caption label="${c:l('SetSMSAlarm')}"/>
+					<grid style="border:0" oddRowSclass="none" width="100%">
+						<columns>
+							<column width="6px"/>
+							<column width="123px"/>
+							<column width="248px"/>
+							<column width="6px"/>
+						</columns>
+						<rows>
+							<row zclass="none" height="6px"><separator/>
+							</row>
+							<row zclass="none" height="23px"><space width="1px"/><label value="${c:l('AlarmName*')}"></label><textbox width="267px" height="15px" id="alertName"  tooltiptext="${c:l('AlarmName')}"/>
+								<space width="1px"/>
+							</row>
+							<row zclass="none" height="23px"><space width="1px"/><label value="${c:l('AlarmReceivingPhoneNumber*:')}" id="alerReceiverSmsLink"></label>
+								<bandbox width="250px" height="15px" id="alertReceiver" use="com.siteview.ecc.alert.control.AlertSmsReceiveTelNoBandBox" readonly="true" tooltiptext="${c:l('AlarmReceivingPhoneNumberInfo')}"/>
+								<space width="1px"/>
+							</row>
+							<row zclass="none" height="23px"><space width="1px"/><label value="${c:l('OtherMobilePhone:')}"></label><textbox width="267px" height="15px" id="otherTelNo" tooltiptext="${c:l('OtherMobilePhoneInfo')}"/>
+								<space width="1px"/>
+							</row>
+							<row zclass="none" height="23px"><space width="1px"/><label value="${c:l('TransmissionMode*:')}"></label>
+								<combobox width="250px" height="15px" id="smsModes" readonly="true" use="com.siteview.ecc.alert.control.SmsSendModesCombobox" tooltiptext="${c:l('TransmissionMode')}"/>
+								<space width="1px"/>
+							</row>
+							<row zclass="none" height="23px"><space width="1px"/><label value="${c:l('SMSTemplates*:')}" id="smsTemplateLink"></label>
+								<div id="smsTemplateDiv">
+								<combobox width="250px" height="15px" id="smsTemplateWeb" readonly="true" use="com.siteview.ecc.alert.control.WebSmsTemplateCombobox" visible="true" tooltiptext="${c:l('SMSTemplatesInfo')}"/>
+								<combobox width="250px" height="15px" id="smsTemplate" readonly="true" use="com.siteview.ecc.alert.control.SmsTemplateCombobox" visible="false" tooltiptext="${c:l('SMSTemplatesInfo')}"/>
+								</div>
+								<space width="1px"/>
+							</row>
+							<row zclass="none" height="23px"><space width="1px"/><label value="${c:l('UpgradeNumber:')}"></label><intbox id="updateCount" maxlength="4" value="0" width="267px" height="15px" tooltiptext="${c:l('UpgradeNumber')}"/>
+								<space width="1px"/>
+							</row>
+							<row zclass="none" height="23px"><space width="1px"/><label value="${c:l('UpgradeRecipientAddress:')}"></label><textbox width="267px" height="15px" id="updateReceiver" tooltiptext="${c:l('UpgradeRecipientAddress')}"/>
+								<space width="1px"/>
+							</row>
+							<row zclass="none" height="23px"><space width="1px"/><label value="${c:l('StoppingTime:')}"></label><intbox id="stopCount" maxlength="4" value="0" width="267px" height="15px" tooltiptext="${c:l('StoppingTime')}"/>
+								<space width="1px"/>
+							</row>
+							<row zclass="none" height="23px"><space width="1px"/><label value="${c:l('WatchAlarmList:')}" id="watchSheetLink"></label>
+								<combobox id="watchSheet" width="250px" height="15px"  use="com.siteview.ecc.alert.control.WatchSheetsCombobox" tooltiptext="${c:l('WatchAlarmListInfo')}">
+									<comboitem label="${c:l('Empty')}" value="${c:l('Empty')}"/>
+								</combobox>
+								<space width="1px"/>
+							</row>
+							<row zclass="none" height="23px"><space width="1px"/><label value="${c:l('AlarmStrategy:')}"></label>
+								<combobox id="alertPloy" width="250px" height="15px" readonly="true" use="com.siteview.ecc.alert.control.AlertPloyCombobox" tooltiptext="${c:l('AlarmStrategy')}">
+									<comboitem label="${c:l('Empty')}" value="${c:l('Empty')}"/>
+								</combobox>
+								<space width="1px"/>
+							</row>
+							<row zclass="none" height="6px"><separator/>
+							</row>
+						</rows>
+					</grid>
+				</groupbox>
+				<include src="/main/alert/alertcondition.zul"/>
+			</vbox>
+			<space width="3px"/>
+		</hbox>
+		<hbox>
+			<separator width="470px"/>
+			<button label="${c:l('Save')}" id="button_ok" sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/save_bt.gif"/>
+			<button label="${c:l('Cancel')}" id="button_cancel" sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/close_bt.gif" onClick="mainwin.doCancel()"/>
+		</hbox>
+		<space height="3px"/>
+	</vbox>
+</window>

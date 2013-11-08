@@ -1,0 +1,74 @@
+<window width="800px" height="600px" border="normal" title="${c:l('StatisticalReport')}"
+	apply="com.siteview.ecc.report.statisticalreport.StatisticalReportGenericForwardComposer"
+	id="createReportWindow">
+	<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+	<zscript><![CDATA[					                  
+				   Date stime=new Date();
+				  stime.setDate(stime.getDate()-1); 
+				  Date etime=new Date();					  
+				  //checkmark="true" multiple="true"
+				  ]]></zscript>
+	<panel border="none" title="${c:l('QueryConditions')}" id="p1" collapsible="true">
+		<panelchildren id="pc1">
+			<groupbox width="768px" id="g1">
+				<vbox>
+					<space height="1px" />
+					<grid oddRowSclass="none" style="border:0">
+						<columns>
+							<column label="" width="80px"
+								align="center" />
+							<column label="" align="left" />
+							<column label="" width="80px"
+								align="center" />
+							<column label="" align="left" />
+							<column label="" width="200px"
+								align="right" />
+						</columns>
+						<rows style="border:none">
+							<row zclass="none" height="27px">
+								<label value="${c:l('StartTime:')}"/>
+								<hbox>
+									<datebox width="75px"
+										format="yyyy-MM-dd" value="${stime }" id="createBegin_Date"
+										height="18px" style="font-size:10pt" />
+									<timebox width="75px"
+										id="createBegin_Time" height="18px"
+										style="font-size:10pt;vertical-align:text-bottom" />
+								</hbox>
+								<label value="${c:l('EndTime:')}"/>
+								<hbox>
+									<datebox width="75px"
+										value="${etime}" height="18px" format="yyyy-MM-dd"
+										id="createEnd_Date" style="font-size:10pt" />
+									<timebox width="75px"
+										id="createEnd_Time" height="18px"
+										style="font-size:10pt;vertical-align:text-bottom" />
+								</hbox>
+								<hbox>
+									<button width="74px" height="23px"
+										sclass="btnDefault" label="${c:l('ToObtainData')}" forward="onRegetdata" />
+									<button width="74px" height="23px"
+										sclass="btnDefault" label="${c:l('Export')}" forward="onExportReport" image="/main/images/bakRestore.gif" />
+									<button width="74px" height="23px"
+										sclass="btnDefault" label="${c:l('Close')}"
+										onClick="createReportWindow.detach()" image="/main/images/button/ico/close_bt.gif"/>
+								</hbox>
+							</row>
+						</rows>
+					</grid>
+				</vbox>
+				<zscript><![CDATA[		 
+				createBegin_Time.setValue(new Date());
+				createEnd_Time.setValue(new Date());
+
+				  ]]></zscript>
+			</groupbox>
+
+		</panelchildren>
+	</panel>
+	<panel collapsible="true" id="datapaneldiv" height="490px" border="normal">
+		<panelchildren id="datapanel"
+			style="overflow-x:auto;overflow-y:auto">
+		</panelchildren>
+	</panel>
+</window>

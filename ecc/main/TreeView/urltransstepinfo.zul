@@ -1,0 +1,36 @@
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<zk>
+	<window title="UrlTransStepInfo" border="normal" width="600px" closable="true"
+		position="center"  id="UrlTransStepInfo"
+		apply="com.siteview.ecc.treeview.windows.UrlTransStepInfo">
+		<vbox>
+		<div
+			style="float:left;margin-bottom:12px;margin-right:12px; ">
+			<hbox>
+				<button id="btnok" sclass="btnDefault" width="74px"
+					height="23px" image="/main/images/button/ico/add_bt.gif" 
+					label="${c:l('AnAdditionalStep')}">
+				</button>
+				<button id="btncancel" sclass="btnDefault" width="74px"
+					height="23px" image="/main/images/button/ico/delete_bt.gif"
+					label="${c:l('Delete')}">
+				</button>
+				<button id="btnclose" sclass="btnDefault" width="74px"
+					height="23px" image="/main/images/button/ico/close_bt.gif"
+					label="${c:l('Cancel')}">
+				</button>
+			</hbox>
+		</div>
+		<listbox id="UrlTrans" fixedLayout="true" checkmark="true"
+			mold="paging" pageSize="10" multiple="true">
+			<listhead sizable="true">
+				<listheader label="${c:l('StepName')}" sort="auto(name)" />
+				<listheader label="${c:l('StepType')}" sort="auto(name)"
+					align="center" width="100px" />
+				<listheader label="${c:l('Editor')}" align="center" width="80px"
+					sort="auto(name)" />
+			</listhead>
+		</listbox>
+		</vbox>
+	</window>
+</zk>

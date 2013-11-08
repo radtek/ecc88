@@ -1,0 +1,249 @@
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<window id="addreportwindow" closable="true" height="550px"
+	width="543px" border="normal" position="center" title="${c:l('AddReport')}"
+	apply="com.siteview.ecc.report.dao.ReportDaoImpl">
+	<vbox>
+		<space height="1px" />
+		<hbox>
+			<space width="1px" />
+			<groupbox closable="false" width="200" height="450px"
+				style="padding-left:5px;">
+				<caption label="${c:l('Monitor')}" />
+				<tree id="monitortree" zclass="z-dottree"
+					use="com.siteview.ecc.alert.SelectTree" vflex="true" height="400px"
+					width="185px" />
+				<separator width="1px" />
+				<div height="23px">
+					<span>
+						<label value="${c:l('GroupNameV:')}" id="groupLink" forward="onCreate=onCreate$groupLink,onClick=onClick$groupLink"></label>
+					</span>
+					<combobox id="viewNamecombobox"
+						forward="onSelect=onSelectGroupName" height="15px" width="117px"
+						readonly="true"
+						use="com.siteview.ecc.alert.control.ViewNameCombobox" />
+					<separator width="1px" />
+				</div>
+			</groupbox>
+
+			<vbox>
+				<groupbox closable="false" width="280px" height="450px"
+					style="padding-left:15px">
+					<caption label="${c:l('ReportSettings')}" />
+					<grid style="border:0:margin-left:15px"
+						oddRowSclass="none">
+						<rows>
+							<row zclass="none" style="border:none"
+								height="30px">
+								<label value="${c:l('ReportTitle*:')}"/>
+								<textbox width="140px" height="15px"   
+									id="Title"
+									tooltiptext="${c:l('ReportTitleInfo')}" />
+							</row>
+							<row zclass="none" style="border:none"
+								height="30px">
+								<label value="${c:l('ReportDescription:')}"/>
+								<textbox width="140px" height="15px"
+									id="Descript" tooltiptext="${c:l('EnterReportNotes')}"/>
+							</row>
+							<row zclass="none" style="border:none"
+								height="30px">
+								<label value="${c:l('ReportType:')}"/>
+								<listbox rows="1" mold="select"
+									id="Period" width="144px" height="" style="font-size:8pt"
+									tooltiptext="${c:l('ReportTypeInfo')}">
+									<attribute name="onSelect">{
+										if(self.getSelectedItem().getLabel().equals("周报")){
+										Begin_Date.setDisabled(true);
+<!-- 									Begin_Time.setDisabled(true);
+										End_Time.setDisabled(true);
+										 -->
+										End_Date.setDisabled(true);
+										WeekEndTime.setDisabled(false);
+										}else if(self.getSelectedItem().getLabel().equals("其他")){
+										Begin_Date.setDisabled(false);
+									<!--Begin_Time.setDisabled(false);
+										End_Time.setDisabled(false); -->
+										End_Date.setDisabled(false);
+										WeekEndTime.setDisabled(true);
+										}else{
+										Begin_Date.setDisabled(true);
+<!-- 									Begin_Time.setDisabled(true);
+										End_Time.setDisabled(true);
+										 -->
+										End_Date.setDisabled(true);
+										WeekEndTime.setDisabled(true);
+										}
+										} </attribute>
+									<listitem label="${c:l('Daily')}" selected="true" value="Day"		height="" />
+									<listitem label="${c:l('Weekly')}" height="" value="Week"/>
+									<listitem label="${c:l('Monthly')}" height="" value="Month"/>
+									<listitem label="${c:l('Other')}" height="" value="Other" />
+								</listbox>
+							</row>
+							<row zclass="none" style="border:none"
+								height="30px">
+								<label />
+								<hbox>
+									<checkbox id="Graphic"
+										tooltiptext="${c:l('SpecifyReportingItemsDisplayed')}"  />
+									<label value="${c:l('GeneratingGraphs')}" />
+									<listbox rows="1" mold="select"
+										width="60px" id="ComboGraphic" height=""
+										style="font-size:8pt">
+										<listitem label="${c:l('LinearGraph')}"
+											selected="true" />
+										<listitem label="${c:l('BarChart')}" />
+									</listbox>
+								</hbox>
+							</row>
+							<row zclass="none" style="border:none"
+								height="30px">
+								<label value="${c:l('ReportingOptions:')}" />
+								<checkbox label="${c:l('ListErrors')}" id="ListError"
+									tooltiptext="${c:l('SpecifyReportingItemsDisplayed')}" />
+							</row>
+							<row zclass="none" style="border:none"
+								height="30px">
+								<label />
+								<checkbox label="${c:l('ListDangerous')}" id="ListDanger"
+									tooltiptext="${c:l('SpecifyReportingItemsDisplayed')}" />
+							</row>
+							<row zclass="none" style="border:none"
+								height="30px">
+								<label value="${c:l('ReportFileFormat:')}" />
+								<listbox rows="1" mold="select"
+									id="fileType" width="144px" style="font-size:8pt">
+									<listitem label="html"
+										selected="true" value="html" />
+									<listitem label="pdf" value="pdf" />
+									<listitem label="Excel" value="xls" />
+								</listbox>
+							</row>
+							<row zclass="none" style="border:none"
+								height="30px">
+								<label value="${c:l('E-MAILSend:')}" />
+								<textbox width="140px" height="15px"
+									id="EmailSend"
+									tooltiptext="${c:l('E-MAILSendInfo')}" />
+							</row>
+							<row zclass="none" style="border:none"
+								height="30px">
+								<label value="${c:l('DetailedParameters:')}" />
+								<vbox><checkbox label="${c:l('DisplayDetailedInformationMonitoring')}"
+									id="Parameter" forward="onCheckThisBox"
+									tooltiptext="${c:l('DetailedParametersInfo')}" >
+								</checkbox>
+								<checkbox label="${c:l('NoReport')}" id="Deny"
+									tooltiptext="${c:l('NoReportInfo')}" />
+								</vbox>
+							</row>
+							<row zclass="none" style="border:none"
+								height="30px">
+								<label value="${c:l('GenerationTime:')}" />
+								<hbox>
+									<zscript><![CDATA[
+											String[] ctime=new String[24];
+											for(int a=0;a<24;a++){
+												ctime[a]=a+"";
+											}
+											]]></zscript>
+									<listbox rows="1" mold="select"
+										width="125px" id="Generate" height="" style="font-size:8pt"
+										tooltiptext="${c:l('GenerationTimInfo')}">
+										<listitem label="${each}"
+											forEach="${ctime}" />
+									</listbox>
+									<label value="${c:l('Hour')}" />
+								</hbox>
+							</row>
+							<row zclass="none" style="border:none"
+								height="30px">
+								<label value="${c:l('Cut-offTime:')}" />
+								<hbox>
+									<listbox rows="1" mold="select"
+										width="64px" id="EndTime1" height="" style="font-size:8pt"
+										tooltiptext="${c:l('Cut-offTimeInfo')}" >
+										<listitem label="${each }"
+											forEach="${ctime}" />
+									</listbox>
+									:
+									<listbox rows="1" mold="select"
+										width="64px" id="EndTime2" height="" style="font-size:8pt"
+										tooltiptext="${c:l('Cut-offTimeInfo')}">
+										<listitem label="00"
+											selected="true" />
+										<listitem label="30" />
+									</listbox>
+								</hbox>
+							</row>
+							<row zclass="none" style="border:none"
+								height="30px">
+								<label value="${c:l('WeeklyDeadline:')}"/>
+								<listbox rows="1" mold="select"
+									width="144px" id="WeekEndTime" disabled="true" height=""
+									tooltiptext="${c:l('WeeklyDeadlineInfo')}">
+									<listitem label="${c:l('Monday')}" value="1" />
+									<listitem label="${c:l('Tuesday')}" value="2" />
+									<listitem label="${c:l('Wednesday')}" value="3" />
+									<listitem label="${c:l('Thursday')}" value="4" />
+									<listitem label="${c:l('Friday')}" value="5" />
+									<listitem label="${c:l('Saturday')}" value="6" />
+									<listitem label="${c:l('Sunday')}" value="0"
+										selected="true" />
+								</listbox>
+							</row>
+							
+							<row zclass="none" height="23px">
+								<label value="${c:l('StartTime:')}"></label>
+								<hbox>
+									<datebox format="yyyy-MM-dd"
+										id="Begin_Date" height="20px" disabled="true" style="valign:center" />
+									<label width="1px" />
+									<!-- 
+									<timebox id="Begin_Time"
+										height="20px" disabled="true" style="valign:center" />
+										 -->
+								</hbox>
+							</row>
+							<row zclass="none" height="23px">
+								<label value="${c:l('EndTime:')}"></label>
+								<hbox>
+									<datebox format="yyyy-MM-dd"
+										id="End_Date" height="20px" disabled="true" />
+									<label width="1px" />
+									<!-- 
+									<timebox id="End_Time"
+										height="20px" disabled="true"/>
+										 -->
+								</hbox>
+							</row>
+
+						</rows>
+					</grid>
+					<separator height="30px" />
+				</groupbox>
+				<grid style="border:0"
+						oddRowSclass="none">
+					<columns>
+						<column label="" align="right"/>
+					</columns>
+					<rows>
+						<row zclass="none" style="border:none">
+							<hbox>
+							<button label="${c:l('Save')}" id="button_ok"
+								sclass="btnDefault" width="74px" height="23px"
+								image="/main/images/button/ico/save_bt.gif"
+								forward="onSaveReport" />
+							<button label="${c:l('Cancel')}" id="button_cancel"
+								sclass="btnDefault" width="74px" height="23px"
+								image="/main/images/button/ico/close_bt.gif"
+								onClick="addreportwindow.detach()" />
+							</hbox>
+						</row>
+					</rows>
+				</grid>
+			</vbox>
+		</hbox>
+	</vbox>
+
+</window>

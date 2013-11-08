@@ -1,0 +1,280 @@
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<borderlayout>
+	<center style="overflow:auto;border:none">
+		<panel title="${c:l('MessageSettings')}" collapsible="true">
+			<panelchildren>
+				<window id="setMassage"
+					apply="com.siteview.ecc.message.SetMessage" border="normal"
+					style="overflow-y:auto;" forward="onCreate=onInit">
+					
+					<div height="27px">
+						<button label="${c:l('Add')}"
+							image="/main/images/button/ico/add_bt.gif" sclass="btnDefault"
+							width="74px" height="23px">
+							<attribute name="onClick">{
+									final Window win = (Window) Executions.createComponents(
+									"/main/setting/addMessageSet.zul", null, null);
+									
+									win.doModal();												
+									}</attribute>
+						</button><space width="1px" />
+
+						<button label="${c:l('Delete')}" image="/main/images/button/ico/delete_bt.gif" forward="onClick=onDel" id="delButton" sclass="btnDefault"
+							width="74px" height="23px" /><space width="1px" />
+						<button label="${c:l('Enable')}" image="/main/images/button/ico/enable_bt.gif" forward="onClick=onPermiter" id="permiterButton"
+							sclass="btnDefault" width="74px" height="23px" /><space width="1px" />
+						<button label="${c:l('Disable')}" image="/main/images/button/ico/disable_bt.gif" forward="onClick=onHold" id="holdButton" sclass="btnDefault"
+							width="74px" height="23px" /><space width="1px" />
+						<button label="${c:l('Refresh')}" image="/main/images/button/ico/ref_bt.gif" forward="onClick=onMessageRefrash" id="refreshButton"
+							sclass="btnDefault" width="74px" height="23px" /><space width="1px" />
+						<button label="${c:l('TemplateSettings')}" popup="templateSet" sclass="btnDefault" height="23px" image="/main/images/button/ico/template_bt.gif" />
+						<button label="${c:l('Help')}" sclass="btnDefault"
+							width="74px" height="23px" 
+							image="/main/images/action/help.gif" action="onclick:showHelp(29)"/>
+					</div>
+					<menupopup id="templateSet">
+						<menuitem src="/images/sms2.gif"
+							id="msgTemplateSet" label="${c:l('SMSTemplateSettings')}">
+							<attribute name="onClick">{
+											final Window win = (Window) Executions.createComponents(
+											"/main/setting/template/messageTemplateSet.zul", null, null);
+											win.doModal();												
+											}</attribute>
+						</menuitem>
+
+						<menuitem src="/images/email2.gif"
+							id="webMsgTemplateSet" label="${c:l('WebSMSTemplateSettings')}">
+							<attribute name="onClick">{
+											final Window win = (Window) Executions.createComponents(
+											"/main/setting/template/webMsgTemplateSet.zul", null, null);
+											win.doModal();												
+											}</attribute>
+						</menuitem>
+					</menupopup>
+
+					<panel title="${c:l('MessageSettingsInfo')}" border="normal"
+						collapsible="true">
+						<panelchildren style="center">
+							<listbox fixedLayout="true"
+								id="listbox_data"  rows="8"
+								checkmark="true" multiple="true" vflex="true" mold="paging" pageSize="8"
+								use="com.siteview.ecc.message.MessageModelListbox">
+								<!-- 
+								<listhead sizable="true">
+									<listheader align="left" label="名称"
+										sort="auto" width="40%" />
+									<listheader align="left" label="状态"
+										sort="auto" width="15%" />
+									<listheader align="left"
+										label="手机号码" sort="auto" width="25%" />
+									<listheader label="编辑" align="left"
+										width="10%" />
+								</listhead>
+								 -->
+							</listbox>
+						</panelchildren>
+					</panel>
+					<separator />
+					<tabbox width="100%" droppable="true"
+						draggable="false">
+						<tabs droppable="false">
+							<tab label="${c:l('ToWEBSendingSMS')}" />
+							<tab label="${c:l('SendSMSToSerialMode')}" />
+							<tab label="${c:l('FunctionSendMessagesCallingDynamicLibrary')}" />
+							<tab label="${c:l('DatabaseAccess')}" />
+						</tabs>
+						<tabpanels>
+							<tabpanel>
+								<panel maximizable="true"
+									collapsible="true">
+									<panelchildren style="center">
+										<vbox align="left"
+											style="margin-left:10px">
+											<hbox
+												style="margin-top:20px" align="center">
+												<label
+													value="${c:l('UserName*:')}" />
+												<textbox id="userName"
+													width="200px" onChanging='applyButton.setDisabled(false)'
+													height="15px" tooltiptext="${c:l('PEnterFriendlyName')}" />
+											</hbox>
+											<hbox align="center">
+												<label
+													value="${c:l('Password*:')}" />
+												<textbox id="pwd"
+													width="200px" type="password"
+													onChanging='applyButton.setDisabled(false)' height="15px" tooltiptext="${c:l('PEnterPassword')}"/>
+											</hbox>
+											<hbox align="center">
+												<label value="${c:l('MessageLength*:')}" />
+												<intbox
+													id="webMessageLength" width="200px"
+													onChanging='applyButton.setDisabled(false)' height="15px" />
+
+												<label value="${c:l('MaximumLengthOfShortMessages')}"
+													style="color:red" />
+											</hbox>
+
+										</vbox>
+										<hbox style="margin-top:10px"
+											align="center">
+											<button sclass="btnDefault"
+												style="margin-left:22px"
+												image="/main/images/button/ico/save_bt.gif" label="${c:l('Application')}"
+												width="74px" height="23px" forward="onClick=onApply"
+												id="applyButton" />
+											<button sclass="btnDefault"
+												height="23px" label="${c:l('Regain')}" forward="onClick=onRecover()"
+												image="/main/images/button/ico/reload_bt.gif"
+												style="margin-left:10px" 
+												id="recoverButton"/>
+
+
+
+											<button label="${c:l('Test')}"
+												style="margin-left:10px" sclass="btnDefault" height="23px"
+												image="/main/images/button/ico/test_bt.gif">
+												<attribute name="onClick">{
+												final Window win = (Window) Executions.createComponents(
+														"/main/setting/testMessage.zul", null, null);
+														win.setTitle("通过WEB发送");
+														win.setAttribute("flag","web");
+												win.setMaximizable(false);
+												win.doModal();
+												
+	
+											}</attribute>
+											</button>
+										</hbox>
+										<panel></panel>
+									</panelchildren>
+								</panel>
+							</tabpanel>
+							<tabpanel>
+								<panel maximizable="true"
+									collapsible="true" minimizable="true">
+									<panelchildren style="center">
+										<vbox align="left"
+											style="margin-left:10px">
+											<hbox
+												style="margin-top:20px" align="center">
+												<label
+													value="${c:l('PortNumber*:')}" />
+												<combobox id="comNum"
+													height="15px" width="183px" onChanging=''
+													onChange="applyButton2.setDisabled(false)"
+													readonly="true" tooltiptext="${c:l('SelectPortNumber')}">
+													<comboitem
+														label="COM1" value="1" />
+													<comboitem
+														label="COM2" value="2" />
+													<comboitem
+														label="COM3" value="3" />
+													<comboitem
+														label="COM4" value="4" />
+												</combobox>
+											</hbox>
+											<hbox align="center">
+												<label value="${c:l('MessageLength*:')}" />
+												<intbox
+													id="messageLength" height="15px" width="200px"
+													onChanging='applyButton2.setDisabled(false)' />
+												<label value="${c:l('MaximumLengthOfShortMessages')}"
+													style="color:red" />
+											</hbox>
+
+										</vbox>
+										<hbox style="margin-top:10px"
+											align="center">
+											<button label="${c:l('Application')}"
+												style="margin-left:18px"
+												image="/main/images/button/ico/save_bt.gif"
+												sclass="btnDefault" width="74px" height="23px"
+												id="applyButton2" forward="onClick=onApply2()" />
+											<button label="${c:l('Regain')}"
+												style="margin-left:10px"
+												image="/main/images/button/ico/reload_bt.gif"
+												sclass="btnDefault" height="23px"
+												forward="onClick=onRecover2()" 
+												id="recoverButton2"/>
+												 
+											<button label="${c:l('Test')}"
+												image="/main/images/button/ico/test_bt.gif"
+												sclass="btnDefault" width="74px" height="23px"
+												style="margin-left:10px">
+												<attribute name="onClick">{
+									final Window win = (Window) Executions.createComponents(
+									"/main/setting/testmessage.zul", null, null);
+											win.setAttribute("flag","serial");
+									win.setTitle("通过串口发送");
+									win.setMaximizable(false);
+									win.doModal();
+									
+									}</attribute>
+											</button>
+										</hbox>
+										<panel></panel>
+									</panelchildren>
+								</panel>
+							</tabpanel>
+							<tabpanel>
+								<panel maximizable="true"
+									collapsible="true" minimizable="true">
+									<panelchildren style="center">
+										<vbox align="left"
+											style="margin-left:10px">
+											<hbox
+												style="margin-top:20px" align="center">
+												<label
+													value="${c:l('DynamicLibraryName*:')}" />
+												<combobox id="libName"
+													forward="onChange=onChangeItem" height="15px" width="183px"
+													readonly="true"
+													onChange='applyButton3.setDisabled(false)' tooltiptext="${c:l('SelectNameDLL')}">
+
+												</combobox>
+											</hbox>
+											<hbox align="center">
+												<label
+													value="${c:l('DynamicLibraryFunctionParameters:')}" />
+												<textbox id="libPara"
+													height="15px" width="200px"
+													onChanging='applyButton3.setDisabled(false)' tooltiptext="${c:l('InputParametersOfDynamicFunction')}"/>
+											</hbox>
+
+										</vbox>
+										<hbox style="margin-top:5px">
+											<button label="${c:l('Application')}"
+												id="applyButton3" style="margin-left:53px"
+												sclass="btnDefault" width="74px" height="23px"
+												image="/main/images/button/ico/save_bt.gif"
+												forward="onClick=onApply3()" />
+											<button label="${c:l('Regain')}"
+												sclass="btnDefault" height="23px"
+												image="/main/images/button/ico/reload_bt.gif"
+												forward="onClick=onRecover3()" style="margin-left:10px" 
+												id="recoverButton3"/>
+											<button label="${c:l('Test')}"
+												sclass="btnDefault" width="74px" height="23px"
+												image="/main/images/button/ico/test_bt.gif"
+												style="margin-left:10px" id="dllTestButton"
+												forward="onClick=onDllTest">
+											</button>
+
+										</hbox>
+										<panel></panel>
+									</panelchildren>
+								</panel>
+							</tabpanel>
+							<tabpanel >
+								<include src="/main/setting/setDataBase.zul"/>
+							</tabpanel>
+
+						</tabpanels>
+					</tabbox>
+				</window>
+			</panelchildren>
+		</panel>
+	</center>
+</borderlayout>
+

@@ -1,0 +1,58 @@
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<window id="editDutyInfoSetting" title="${c:l('EditorOnDutyTableDetails')}" border="normal" mode="popup"
+	width="360px"	height="" closable="true"  apply="com.siteview.ecc.dutytable.EditDutyInfoWeek" forward="onCreate=onInit">
+			<groupbox  closable="false" style="margin-left:5px;margin-right:5px;margin-top:10px">
+	 			 <caption  label="${c:l('DetailedInformation')}"/>		
+					<grid oddRowSclass="none" style="margin-top:5px;border:none">
+						<columns>
+							<column label="" />
+							<column label="" />
+						</columns>
+						<rows>
+							<row zclass="none" height="23px">
+								<label   value="${c:l('ReceivingAlarmSMSPhoneNumber:')}" />
+								<textbox id="mobilePhoneNum"   width="150px" height="15px" tooltiptext="${c:l('ReceiveAlarmMessagePhoneNumberInput')}"/>
+							</row>
+							<row zclass="none" height="23px">
+								<label   value="${c:l('ReceiveAlarmInformationEmail*:')}" />
+								<textbox id="alarmEmailbox" width="150px" height="15px" tooltiptext="${c:l('InputAlarmReceivingEmail')}"/>
+							</row>	
+							<row zclass="none" height="23px">
+								<label value="${c:l('Week:')}"  />
+								<combobox id="weekValue" width="" >
+									<comboitem label="${c:l('Monday')}"  value="1"/>
+									<comboitem label="${c:l('Tuesday')}"  value="2"  />
+									<comboitem label="${c:l('Wednesday')}"  value="3"/>
+									<comboitem label="${c:l('Thursday')}"  value="4"/>
+									<comboitem label="${c:l('Friday')}"  value="5"/>
+									<comboitem label="${c:l('Saturday')}"  value="6"/>
+									<comboitem label="${c:l('Sunday')}"  value="7"/>
+								</combobox>
+							</row>		
+							<row zclass="none" height="23px">
+								<label value="${c:l('StartTime:')}" />
+								<timebox id="beginduty" height="15px" tooltiptext="${c:l('SelectStartTime')}"/>	
+							</row>	
+							<row zclass="none" height="23px">
+								<label value="${c:l('EndTime:')}" />
+								<timebox id="endduty"  height="15px" tooltiptext="${c:l('SelectEndTime')}"/>
+							</row>																																
+						</rows>
+					</grid>
+	 		</groupbox>		
+<vbox >
+	<hbox style="margin-top:10px;margin-bottom:10px" >
+	<space width="165px"/>
+		<button id="addDutyButton" sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/save_bt.gif"
+			label="${c:l('Save')}" forward="onClick=onSaveDutyInfo" />
+		<button label="${c:l('Cancel')}" sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/close_bt.gif"
+			forward="onClick=onReFresh" />
+	</hbox>
+</vbox>	
+
+<popup id="mydate" width="200px">
+	<html>
+		(&lt;font color="#FFA500" &gt; 日期必须从右边图标选取&lt;/font&gt;)
+	</html>
+</popup>	
+</window>

@@ -1,0 +1,272 @@
+<zk>
+<zscript><![CDATA[
+tree=(org.zkoss.zul.Tree)desktop.getPage("eccmain").getFellow("tree");
+treeModel=(com.siteview.ecc.treeview.EccTreeModel)tree.getModel();
+eccView=(com.siteview.base.manage.View)treeModel.getView();
+if(tree.getSelectedItem()==null)
+{
+	topNode=(org.zkoss.zul.Treeitem)tree.getTreechildren().getVisibleChildrenIterator().next();
+	tree.selectItem(topNode);
+	topNode.setOpen(true);
+}
+eccTreeItem = (com.siteview.ecc.treeview.EccTreeItem)tree.getSelectedItem().getValue();
+
+String type=eccTreeItem.getType();
+String id=eccTreeItem.getId();
+String name=eccTreeItem.getTitle();
+
+tabTitleMap=new LinkedHashMap();
+tabUrlMap=new LinkedHashMap();
+
+if(type.equals(""))
+{
+	tabTitleMap.put("welcome","娆㈣繋");
+	
+	tabUrlMap.put("control","/main/welcome/index.zul");
+}   
+else if(type.equals("Set") || type.equals("Alert") || type.equals("Report") || type.equals("Task"))
+{
+	//鎶ヨ銆佹姤琛ㄣ�璁剧疆銆佷换鍔¤鍒� --> 鍙互鐢ㄧ浉鍚岀殑椤甸潰鏉�+ 涓嶅悓鐨勫弬鏁版柟寮忓睍绀�
+	tabTitleMap.put("content",name);
+	
+	tabUrlMap.put("content","/main/content/index.zul");
+}
+else if(type.equals("WholeView"))
+{
+	//鏁翠綋瑙嗗浘
+	tabTitleMap.put("content",name);
+	
+	tabUrlMap.put("content","/main/control/index.zul");
+}
+else if(type.equals("TopoView"))  
+{
+	//鎷撴墤瑙嗗浘
+	tabTitleMap.put("content",name);
+	
+//	tabUrlMap.put("content","/main/tuoplist/tuoplisttest.zul?type="+type+"&amp;id="+id);
+	tabUrlMap.put("content","/main/tuoplist/tuoplist.zul");
+}
+else if(type.equals("MonitorBrower"))  
+{
+	//鐩戞祴鍣ㄦ祻瑙�
+	tabTitleMap.put("content",name);
+	
+//	tabUrlMap.put("content","/main/tuoplist/tuoplisttest.zul?type="+type+"&amp;id="+id);
+	tabUrlMap.put("content","/main/monitorbrower/monitorbrower.zul");
+}
+else if(type.equals("SetMonitor"))  
+{
+	//鐩戞祴鍣ㄦ祻瑙�
+	tabTitleMap.put("content",name);
+	
+//	tabUrlMap.put("content","/main/tuoplist/tuoplisttest.zul?type="+type+"&amp;id="+id);
+	tabUrlMap.put("content","/main/setmonitor/setmonitor.zul");
+}
+else if(type.equals("AlertRule"))  
+{
+	//鎶ヨ瑙勫垯
+	tabTitleMap.put("content",name);
+	
+	tabUrlMap.put("content","/main/control/index.zul");	
+}
+else if(type.equals("AlertLog"))  
+{
+    //鎶ヨ鏃ュ織
+	tabTitleMap.put("content",name);
+	
+	tabUrlMap.put("content","/main/control/index.zul");
+}
+else if(type.equals("AlertStrategy"))  
+{
+    //鎶ヨ绛栫暐
+	tabTitleMap.put("content",name);
+	
+	tabUrlMap.put("content","/main/control/index.zul");
+}
+else if(type.equals("ReportStatistic"))  
+{
+	//缁熻鎶ュ憡
+	tabTitleMap.put("content",name);
+	
+	tabUrlMap.put("content","/main/report/statisticalreport.zul");
+}
+else if(type.equals("ReportTrend"))  
+{
+	//瓒嬪娍鎶ュ憡
+	tabTitleMap.put("content",name);
+	
+	tabUrlMap.put("content","/main/report/trendreport.zul");
+}
+else if(type.equals("ReportTopN"))  
+{
+	//TopN鎶ュ憡
+	tabTitleMap.put("content",name);
+	
+	tabUrlMap.put("content","/main/control/index.zul");
+}
+else if(type.equals("ReportContrast"))  
+{
+	//瀵规瘮鎶ュ憡
+	tabTitleMap.put("content",name);
+	
+	tabUrlMap.put("content","/main/control/index.zul");
+}
+else if(type.equals("ReportErrorContrast"))  
+{
+	//閿欒瀵规瘮鎶ュ憡
+	tabTitleMap.put("content",name);
+	
+	tabUrlMap.put("content","/main/control/index.zul");
+}
+else if(type.equals("ReportTimeContrast"))  
+{
+	//鏃舵瀵规瘮鎶ュ憡
+	tabTitleMap.put("content",name);
+	
+	tabUrlMap.put("content","/main/report/periodoftimereport.zul");
+}
+else if(type.equals("MonitorInfo"))  
+{
+	//鐩戞祴鍣ㄤ俊鎭�
+	tabTitleMap.put("content",name);
+	
+	tabUrlMap.put("content","/main/report/index.zul");
+}
+else if(type.equals("SysLogQuery"))  
+{
+	//鍩烘湰璁剧疆
+	tabTitleMap.put("content",name);
+	
+	tabUrlMap.put("content","/main/control/index.zul");
+}
+else if(type.equals("SetGeneral"))  
+{
+	//閭欢璁剧疆
+	tabTitleMap.put("content",name);
+	
+	tabUrlMap.put("content","/main/control/index.zul");
+}
+else if(type.equals("SetMail"))  
+{
+	//閭欢璁剧疆
+	tabTitleMap.put("content",name);
+	
+	tabUrlMap.put("content","/main/control/index.zul");
+}
+else if(type.equals("SetMaintain"))  
+{
+	//鍊肩彮琛ㄨ缃�
+	tabTitleMap.put("content",name);
+	
+	tabUrlMap.put("content","/main/control/index.zul");
+}
+else if(type.equals("SetSms"))  
+{
+	//鐭俊璁剧疆
+	tabTitleMap.put("content",name);
+	
+	tabUrlMap.put("content","/main/control/index.zul");
+}
+else if(type.equals("UserManager"))  
+{
+	//鐢ㄦ埛绠＄悊
+	tabTitleMap.put("content",name);
+	
+	tabUrlMap.put("content","/main/control/index.zul");
+}
+else if(type.equals("importDataBase"))  
+{
+	//鏁版嵁搴�
+	tabTitleMap.put("content",name);
+	
+	tabUrlMap.put("content","/main/mysql/index.zul");
+}
+else if(type.equals("TaskAbsolute"))  
+{
+	//缁濆鏃堕棿浠诲姟璁″垝
+	tabTitleMap.put("content",name);
+	
+	tabUrlMap.put("content","/main/control/index.zul");
+}   		   		   		   		   		   
+else if(type.equals("TaskPeriod"))  
+{
+	//鏃堕棿娈典换鍔¤鍒�
+	tabTitleMap.put("content",name);
+	
+	tabUrlMap.put("content","/main/control/index.zul");
+}
+else if(type.equals("SysLogSet"))  
+{
+	//SysLog璁剧疆
+	tabTitleMap.put("content",name);
+	
+	tabUrlMap.put("content","/main/control/index.zul");
+}
+else if(type.equals("BackupRestore"))  
+{
+    //澶囦唤鍜屾仮澶�
+	tabTitleMap.put("content",name);
+	
+	tabUrlMap.put("content","/main/control/index.zul");
+}
+else if(type.equals("SetMaintain"))  
+{
+	//鍊肩彮琛ㄨ缃�
+	tabTitleMap.put("content",name);
+	
+	tabUrlMap.put("content","/main/control/index.zul");
+}
+else if(type.equals("OperateLog"))  
+{
+	//鐢ㄦ埛鎿嶄綔鏃ュ織
+	tabTitleMap.put("content",name);
+	
+	tabUrlMap.put("content","/main/control/index.zul");
+}
+else if(type.equals("m_userOtherPublic"))  
+{
+	//鍏朵粬浜у搧鐨刄RL鍦板潃
+	tabTitleMap.put("content",name);
+	
+	tabUrlMap.put("content","/main/control/index.zul");
+}
+else if(type.equals("SystemDiagnosis"))  
+{
+	//绯荤粺璇婃柇
+	tabTitleMap.put("content",name);
+	
+	tabUrlMap.put("content","/main/control/index.zul");
+}
+else if(type.equals("License"))  
+{
+	//杞欢璁稿彲
+	tabTitleMap.put("content",name);
+	
+	tabUrlMap.put("content","/main/control/index.zul");
+}
+else if(type.equals("About"))  
+{
+	//鍏充簬鎴戜滑
+	tabTitleMap.put("content",name);
+	
+	tabUrlMap.put("content","/main/control/index.zul");
+}  		   		   		   		   		   
+else
+{
+   
+}
+]]></zscript>
+			<tabbox>
+			<tabs align="end">
+						<tab id="tab_${each.key}" label="${each.value}" closable="false" forEach="${tabTitleMap}"/>
+			</tabs>
+			<tabpanels>
+						<!--fulfill can not work,why?tabpanel forEach="${tabUrlMap}" fulfill="self.getLinkedTab().onSelect"-->
+						<tabpanel forEach="${tabUrlMap}">
+						<include mode="defer" progressing="false" id="tabpan_${each.key}" src="${each.value}"/>
+						</tabpanel>
+			</tabpanels>
+					
+			</tabbox>
+			
+</zk>

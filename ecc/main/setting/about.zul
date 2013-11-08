@@ -1,0 +1,75 @@
+<?page title="about" contentType="text/html;charset=UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<zk>
+	<borderlayout>
+		<center style="overflow:auto;border:none">
+			<panel title="${c:l('ProductIntroduction')}" collapsible="true">
+				<panelchildren>
+					<window title="" border="normal">
+
+
+						<vbox align="center" width="100%">
+							<label>
+							</label>
+							<image src="/images/siteviewabout.jpg" 
+								align="center" width="70%">
+							</image>
+							<label
+								style="font:small-caps 900 16pt 楷体;line-height:40px"
+								value="${c:l('ProductIntroduction')}">
+							</label>
+
+							<div align="center" width="70%"
+								style="font:12pt;color:#418577;line-height:25px;text-align:left">
+								<label id="intro" multiline="true"
+									style="font:10pt;color:#6495ED;line-height:16px;text-align:left ">
+	 								<attribute name="value">    ${c:l('ProductIntroductionInfo1')}
+	
+    ${c:l('ProductIntroductionInfo2')}
+   
+    ${c:l('ProductIntroductionInfo3')}
+   
+   ${c:l('ProductIntroductionInfo4')}
+     
+   ${c:l('ProductIntroductionInfo5')}
+           
+   ${c:l('ProductIntroductionInfo6')}
+
+   ${c:l('ProductIntroductionInfo7')}
+   ${c:l('ProductIntroductionInfo8')}
+
+   ${c:l('ProductIntroductionInfo9')}
+
+     ${c:l('ProductIntroductionInfo10')}
+    
+    ${c:l('ProductIntroductionInfo11')}
+  ${c:l('ProductIntroductionInfo12')}
+  ${c:l('ProductIntroductionInfo13')}
+  ${c:l('ProductIntroductionInfo14')}
+  ${c:l('ProductIntroductionInfo15')}
+  ${c:l('ProductIntroductionInfo16')}
+  ${c:l('ProductIntroductionInfo17')}
+  ${c:l('ProductIntroductionInfo18')}
+  ${c:l('ProductIntroductionInfo19')}
+  ${c:l('ProductIntroductionInfo20')}
+ 
+		  
+ 
+ 
+</attribute>
+								</label>
+							</div>
+							<html>
+								<attribute name="content" >
+		${c:l('WelcomeVisitWebsite')} <a href="http://www.siteview.com"> www.siteview.com </a> ${c:l('ObtainTechnicalService')}
+		</attribute>
+							</html>
+						</vbox>
+
+
+					</window>
+				</panelchildren>
+			</panel>
+		</center>
+	</borderlayout>
+</zk>

@@ -1,0 +1,198 @@
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<zk>
+	<window id="WAddMonitor" title="${c:l('EditMonitor')}" border="normal"
+		width="650px" closable="true"
+		apply="com.siteview.ecc.monitorbrower.edit.AddMonitor">
+		<vbox width="100%">
+			<div style="float:right;margin-right:10px">
+				<image id="btnhelp" tooltiptext="${c:l('btnhelptitle')}"
+					src="/main/images/btnhelp.gif"
+					hover="/main/images/btnhelp_hover.gif"
+					use="com.siteview.actions.HelpImageButton" />
+			</div>
+		</vbox>
+		<panel id="p1">
+			<panelchildren
+				style="margin:5px 5px 5px 5px;overflow-y:auto;max-height:500px;">
+				<panel title="${c:l('BasicInformation')}" collapsible="true">
+					<panelchildren>
+						<grid>
+							<columns>
+								<column width="20%" label=""></column>
+								<column label=""></column>
+							</columns>
+							<rows id="baserow">
+								<row>
+									<label value="${c:l('DeviceNameTile')}" />
+									<label id="entityname" value="${c:l('DeviceNameTile')}" />
+								</row>
+							</rows>
+						</grid>
+					</panelchildren>
+				</panel>
+				<panel title="${c:l('AlarmCondition')}" collapsible="true">
+					<panelchildren>
+						<grid>
+							<columns>
+								<column width="20%" label=""></column>
+								<column label=""></column>
+							</columns>
+							<rows>
+								<row>
+									<label value="${c:l('Error:')}"></label>
+									<box>
+										<hbox align="end">
+											<textbox id="tberror"
+												readonly="true" rows="4" width="350px" multiline="true">
+											</textbox>
+											<button id="btnerror"
+												height="15px" width="25px" label="..." />
+										</hbox>
+
+										<label visible="false" id="lbp1"
+											sclass="helplabel" value="${c:l('InPutDesInfo')}">
+										</label>
+									</box>
+								</row>
+								<row>
+									<label value="${c:l('Warning:')}"></label>
+									<box>
+										<hbox align="end">
+											<textbox id="tbdanger"
+												readonly="true" rows="4" width="350px" multiline="true">
+											</textbox>
+											<button id="btndanger"
+												height="15px" width="25px" label="..." />
+										</hbox>
+										<label visible="false" id="lbp2"
+											sclass="helplabel" value="${c:l('InPutDesInfo')}">
+										</label>
+									</box>
+								</row>
+								<row>
+									<label value="${c:l('Good:')}"></label>
+									<box>
+										<hbox align="end">
+											<textbox id="tbnormal"
+												readonly="true" rows="4" width="350px" multiline="true">
+											</textbox>
+											<button id="btnnormal"
+												height="15px" width="25px" label="..." />
+										</hbox>
+										<label visible="false" id="lbp3"
+											sclass="helplabel" value="${c:l('InPutDesInfo')}">
+										</label>
+									</box>
+								</row>
+							</rows>
+						</grid>
+					</panelchildren>
+				</panel>
+				<panel title="${c:l('AdvanceItem')}" collapsible="true">
+					<panelchildren>
+						<grid>
+							<columns>
+								<column width="20%" label=""></column>
+								<column label=""></column>
+							</columns>
+							<rows id="advancerow">
+								<row id="insertp">
+									<label value="${c:l('ParityError:')}" />
+									<box>
+										<checkbox id="chCheckError"
+											label="${c:l('MonitorErrorChecking')}">
+										</checkbox>
+										<label visible="false" id="lbp4"
+											sclass="helplabel" value="${c:l('MonitorErrorCheckingInfo')}">
+										</label>
+									</box>
+								</row>
+								<row>
+									<label value="${c:l('FrequencyMonitoringErrors')}" />
+									<box>
+										<hbox>
+											<textbox width="285px"
+												height="15px" id="tbErrorFrequency">
+											</textbox>
+											<combobox
+												id="cbErrorFrequencyUnit" height="15px" width="40px"
+												readonly="true">
+											</combobox>
+
+										</hbox>
+										<label visible="false" id="lbp5"
+											sclass="helplabel" value="${c:l('ErrorCheckFrequencyInfo')}">
+										</label>
+									</box>
+								</row>
+								<row>
+									<label value="${c:l('TaskPlan')}" />
+									<box>
+										<combobox id="cbPlan"
+											width="335px" height="15px" readonly="true">
+
+										</combobox>
+										<label visible="false" id="lbp6"
+											sclass="helplabel" value="${c:l('TaskPlanInfo')}">
+										</label>
+									</box>
+								</row>
+
+								<row>
+									<label value="${c:l('MonitoringDescription:')}"></label>
+									<box>
+										<textbox id="tbDescription"
+											rows="4" width="350px" multiline="true">
+										</textbox>
+										<label visible="false" id="lbp7"
+											sclass="helplabel" value="${c:l('MonitoringDescriptionInfo')}">
+										</label>
+									</box>
+								</row>
+								<row>
+									<label value="${c:l('ReportDescription:')}"></label>
+									<box>
+										<textbox
+											id="tbReqortDescription" rows="4" width="350px"
+											multiline="true">
+										</textbox>
+										<label visible="false" id="lbp8"
+											sclass="helplabel" value="${c:l('ReportDescriptionChartInfo')}">
+										</label>
+									</box>
+								</row>
+
+							</rows>
+						</grid>
+					</panelchildren>
+				</panel>
+
+
+			</panelchildren>
+		</panel>
+		<div
+			style="float:right;margin-bottom:12px;margin-right:12px; ">
+			<hbox>
+				<button id="btnplok" sclass="btnDefault" label="${c:l('BatchAdd')}"
+					width="74px" height="23px" visible="false"
+					tooltiptext="${c:l('BatchSameAddInfo')}">
+				</button>
+				<button id="btnok" sclass="btnDefault" width="74px"
+					height="23px" image="/main/images/button/ico/save_bt.gif"
+					label="${c:l('Save')}" tooltiptext="${c:l('SaveCurrentMonitorChangesInfo')}">
+				</button>
+				<button id="btncancel" sclass="btnDefault" width="74px"
+					height="23px" image="/main/images/button/ico/close_bt.gif"
+					label="${c:l('Cancel')}" tooltiptext="${c:l('AbandonEditorSlosed')}">
+				</button>
+				<button id="btnadd" sclass="btnDefault" width="90px"
+					height="23px" image="/main/images/button/ico/reload_bt.gif"
+					label="${c:l('ContinueAdd')}" tooltiptext="${c:l('SaveCurrentMonitorChangesNotCloseMonitorList')}">
+				</button>
+				<button id="btndefault" sclass="btnDefault" width="90px"
+					height="23px" label="${c:l('DefaultValueAlarm')}" tooltiptext="${c:l('SetAlarmDefaultValue')}">
+				</button>
+			</hbox>
+		</div>
+	</window>
+</zk>

@@ -1,0 +1,38 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<zk>
+	<window id="wrefresh" title="${c:l('RefreshObtainLatestMonitoringState')}" border="normal"
+		width="650px" closable="true" position="center,top"
+		apply="com.siteview.ecc.monitorbrower.edit.RefreshMonitors">
+		<panel title="${c:l('MonitorRefreshResults')}">
+			<panelchildren
+				style="margin:5px 5px 5px 5px;overflow-y:auto;max-height:400px;">
+				<label id="lbrefresh" value="${c:l('Refreshing')}" />
+				<space orient="horizontal" />
+				<listbox id="lbmonitor" style="border-style:none;">
+					<listhead style="background:white;">
+						<listheader style="border-style:none;"
+							width="35%" label="${c:l('MonitorName')}">
+						</listheader>
+						<listheader align="center" width="40px"
+							style="border-style:none;" label="${c:l('State')}">
+						</listheader>
+						<listheader style="border-style:none;"
+							width="50%" label="${c:l('Des')}">
+						</listheader>
+					</listhead>
+				</listbox>
+				<space orient="horizontal" />
+				<label id="lbfinish" />
+				<separator height="20px" bar="true" />
+			</panelchildren>
+		</panel>
+		<div style="float:right;margin-bottom:12px;margin-right:12px; " >
+		<button id="btnclose" sclass="btnDefault" width="60px" style="margin-left:10px;" label="${c:l('Close')}" >
+		<attribute name="onClick">
+		wrefresh.detach();
+		</attribute>
+		</button>
+		</div>
+	</window>
+</zk>

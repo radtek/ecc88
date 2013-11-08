@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<zk>
+	<borderlayout id="periodReport"
+		apply="com.siteview.ecc.report.PeriodReport">
+		<west title="${c:l('TimeComparisonReport')}" size="250px" flex="true" splittable="true" id="treeview"
+			minsize="100" maxsize="500" collapsible="true" autoscroll="true">
+			<zscript><![CDATA[					                  
+				  Date stime=new Date();
+				  stime.setDate(stime.getDate()-1); 
+				  Date etime=new Date();		
+				  //checkmark="true" multiple="true"
+				  ]]></zscript>
+			<borderlayout>
+				<north size="93%" flex="true" style="border:none">
+					<tree zclass="z-dottree" id="tree"
+						fixedLayout="true" use="com.siteview.ecc.alert.SelectTree"
+						checkable="false" height="100%" vflex="true" width="180px">
+					</tree>
+				</north>
+				<center flex="true" style="border:none">
+					<hbox style="margin-top:1%" align="center">
+						<label value="${c:l('GroupNameV:')}" style="margin-left:15px;" id="groupLink" forward="onCreate=onCreate$groupLink,onClick=onClick$groupLink"></label>
+						<combobox id="viewNamecombobox" height="15px"
+							width="100px" readonly="true"
+							use="com.siteview.ecc.alert.control.ViewNameCombobox" />
+					</hbox>
+				</center>
+			</borderlayout>
+		</west>
+		<center flex="true" style="border:none">
+			<tabbox>
+				<tabs>
+					<tab label="${c:l('Query')}" />
+				</tabs>
+				<tabpanels>
+					<tabpanel>
+						<borderlayout>
+							<north border="none" flex="true"  splittable="true" id="north"
+								size="29%" collapsible="true" minsize="100" maxsize="900">
+								<div>
+									<panel title="${c:l('QueryConditions')}"	collapsible="true">
+										<panelchildren>
+											<groupbox  closable="false"	open="true">
+												<grid
+													oddRowSclass="none" style="border:0">
+													<columns>
+														<column label=""
+															width="80px" align="center" />
+														<column label=""
+															align="left" />
+													</columns>
+													<rows
+														style="border:none">
+														<row
+															zclass="none" height="23px">
+															<label value="${c:l('ComparativeMethod:')}"/>
+															<listbox
+																mold="select" rows="1" id="comparetype" width="115px">
+																<listitem
+																	label="${c:l('DayContrast')}" selected="true" value="daymodel" />
+																<listitem
+																	label="${c:l('WeeklyComparison')}" value="weekmodel" />
+																<listitem
+																	label="${c:l('MonthlyComparison')}" value="monthmodel" />
+															</listbox>
+														</row>
+														<row
+															zclass="none" height="23px">
+															<label value="${c:l('FirstTime:')}"/>
+															<datebox
+																id="starttime" format="yyyy-MM-dd HH:mm" value="${stime}"
+																readonly="true" compact="true" tooltiptext="${self.value}"/>
+														</row>
+														<row
+															zclass="none" height="23px">
+															<label value="${c:l('SecondTime:')}"/>
+															<datebox
+																id="endtime" format="yyyy-MM-dd HH:mm" value="${etime}"
+																readonly="true"  tooltiptext="${self.value}"/>
+														</row>
+														<row
+															zclass="none" height="23px">
+															<label
+																value=" " />
+															<hbox>
+																<button
+																	id="seachButton"
+																	image="/main/images/button/ico/query_bt.gif" label="${c:l('Query')}"
+																	sclass="btnDefault" width="74px" height="23px" />
+																<button
+																	id="exportButton" image="/main/images/bakRestore.gif"
+																	label="${c:l('ExportReport')}" sclass="btnDefault" height="23px" />
+																<button
+																	label="${c:l('Help')}" sclass="btnDefault" width="74px"
+																	height="23px" image="/main/images/action/help.gif"
+																	action="onclick:showHelp(23)" />
+															</hbox>
+														</row>
+													</rows>
+												</grid>
+											</groupbox>
+										</panelchildren>
+									</panel>
+								</div>
+							</north>
+							<center flex="true" border="none">
+								<panel title="${c:l('Chart')}" collapsible="true" border="none">
+									<panelchildren
+										style="overflow-y:auto">
+										<div id="maptable" height="100%" width="100%"/>
+									</panelchildren>
+								</panel>
+							</center>
+							<south border="none" size="none"></south>
+						</borderlayout>
+					</tabpanel>
+				</tabpanels>
+			</tabbox>
+		</center>
+	</borderlayout>
+</zk>

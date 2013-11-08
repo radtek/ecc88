@@ -1,0 +1,22 @@
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<?page id="reportPage" ?>
+<zk>
+<borderlayout apply="com.siteview.ecc.general.report" forward="onCreate=onInit">
+	<center>
+		<borderlayout>
+			<center style="overflow:auto;border:none">
+			<panel title="${c:l('ReportForm')}" collapsible="true"><panelchildren>
+			
+			<listbox id="mainMenu">
+				<listhead sizable="true">
+					<listheader label="${c:l('Name')}" height="25px" width="120px"/>
+					<listheader label="${c:l('Explain')}" height="25px"/>
+				</listhead>
+							
+			</listbox>
+		    </panelchildren></panel>
+			</center>
+		</borderlayout>
+	</center>				
+</borderlayout>
+</zk>

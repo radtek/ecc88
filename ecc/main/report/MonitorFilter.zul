@@ -1,0 +1,201 @@
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<?page title="new page title" contentType="text/html;charset=gb2312"?>
+<zk>
+	<window id="monitorFilter" border="normal" closable="true"
+		height="405px" width="395px"
+		apply="com.siteview.ecc.report.MonitorFilterComposer">
+		<hbox>
+			<space width="1px" />
+			<vbox>
+				<space height="1px" />
+				<groupbox width="360px">
+					<caption label="${c:l('ScreeningConditions')}" />
+					<hbox>
+					<space width="1px"/>
+					<grid style="border:0" oddRowSclass="none">
+						<columns>
+							<column label="" align="left" />
+							<column label="" width="120px" />
+							<column label="" align="left" />
+						</columns>
+						<rows>
+							<row zclass="none" height="40px">
+								<label value="${c:l('MonitorName:')}" />
+								<listbox id="nameListbox" rows="1"
+									mold="select" width="100px">
+									<listitem selected="true">
+										<listcell label="like" />
+									</listitem>
+									<listitem>
+										<listcell label="=" />
+									</listitem>
+									<listitem>
+										<listcell label="&lt;&gt;" />
+									</listitem>
+								</listbox>
+								<textbox id="nameTextbox" width="147px"
+									height="18px" tooltiptext="${c:l('AccordingConditionsMonitorScreenName')}" />
+							</row>
+							<row zclass="none" spans="3"></row>
+							<row zclass="none" height="70px">
+								<vbox>
+									<label value="${c:l('GroupNameTile:')}" />
+									<space height="18px" />
+									<label value="${c:l('LogicCombination:')}" />
+								</vbox>
+								<vbox>
+									<listbox id="groupListbox" rows="1"
+										mold="select" width="100px">
+										<listitem selected="true">
+											<listcell label="like" />
+										</listitem>
+										<listitem sclass="none">
+											<listcell label="=" />
+										</listitem>
+										<listitem>
+											<listcell label="&lt;&gt;" />
+										</listitem>
+									</listbox>
+									<space height="7px" />
+									<listbox id="groupConditionListbox"
+										mold="select" width="100px">
+										<listitem>
+											<listcell label="and" />
+										</listitem>
+										<listitem selected="true">
+											<listcell label="or" />
+										</listitem>
+									</listbox>
+								</vbox>
+								<listbox id="groupData"
+									style="border: 1px solid #7F9DB9;align:left" width="150px"
+									checkmark="true" multiple="true" rows="3"
+									tooltiptext="${c:l('AccordingScreeningGroupName')}">
+								</listbox>
+							</row>
+							<row zclass="none" spans="3"
+								height="10px">
+							</row>
+							<row zclass="none" height="70px">
+								<vbox>
+									<label value="${c:l('Type:')}" />
+									<space height="15px" />
+									<label value="${c:l('LogicCombination:')}" visible="true" />
+								</vbox>
+
+								<vbox>
+									<listbox id="typeListbox" rows="1"
+										mold="select" width="100px">
+										<listitem selected="true">
+											<listcell label="like" />
+										</listitem>
+										<listitem>
+											<listcell label="=" />
+										</listitem>
+										<listitem>
+											<listcell label="&lt;&gt;" />
+										</listitem>
+									</listbox>
+									<space height="8px" />
+									<listbox id="typeConditionListbox"
+										mold="select" width="100px">
+										<listitem>
+											<listcell label="and" />
+										</listitem>
+										<listitem selected="true">
+											<listcell label="or" />
+										</listitem>
+									</listbox>
+								</vbox>
+								<listbox id="typeData" checkmark="true"
+									style="border: 1px solid #7F9DB9;align:left" multiple="true" rows="3"
+									width="150px" tooltiptext="${c:l('AccordingTypeScreeningConditions')}">
+								</listbox>
+							</row>
+							<row zclass="none" spans="3"
+								height="10px">
+							</row>
+							<row zclass="none" height="30px">
+								<label value="${c:l('MonitoringFrequency:')}" />
+								<listbox id="frequencyListbox" rows="1"
+									mold="select" width="100px">
+									<listitem selected="true">
+										<listcell label="like" />
+									</listitem>
+									<listitem>
+										<listcell label="&gt;=" />
+									</listitem>
+									<listitem>
+										<listcell label="&gt;" />
+									</listitem>
+									<listitem>
+										<listcell label="=" />
+									</listitem>
+									<listitem>
+										<listcell label="&lt;=" />
+									</listitem>
+									<listitem>
+										<listcell label="&lt;" />
+									</listitem>
+									<listitem>
+										<listcell label="&lt;&gt;" />
+									</listitem>
+								</listbox>
+								<listbox id="frequencyListboxData"
+									rows="1" mold="select" width="153px" tooltiptext="${c:l('AccordingConditionFiltrationTime')}">
+								</listbox>
+							</row>
+							<row zclass="none" spans="3"
+								height="10px">
+							</row>
+							<row zclass="none" height="40px">
+								<vbox>
+									<label value="${c:l('Threshold:')}" />
+									<space height="20px" />
+								</vbox>
+								<vbox>
+									<listbox id="keybox" rows="1"
+										mold="select" width="100px">
+										<listitem selected="true">
+											<listcell label="like" />
+										</listitem>
+										<listitem>
+											<listcell label="=" />
+										</listitem>
+										<listitem>
+											<listcell label="&lt;&gt;" />
+										</listitem>
+									</listbox>
+									<space height="18px" />
+								</vbox>
+								<textbox id="keyvalue" rows="3"
+									width="150px" tooltiptext="${c:l('AccordingScreeningThreshold')}" />
+							</row>
+						</rows>
+					</grid>
+					</hbox>
+				</groupbox>
+				
+				<grid style="border:0" oddRowSclass="none">
+					<columns>
+						<column label="" align="right" />
+					</columns>
+					<rows>
+						<row zclass="none">
+							<hbox>
+								<button label="${c:l('Determine')}" id="ok"
+									image="/main/images/button/ico/save_bt.gif" sclass="btnDefault"
+									width="74px" height="23px">
+								</button>
+								<button label="${c:l('Cancel')}" id="cancel"
+									image="/main/images/button/ico/close_bt.gif"
+									sclass="btnDefault" width="74px" height="23px" />
+							</hbox>
+
+						</row>
+					</rows>
+				</grid>
+			</vbox>
+		</hbox>
+	</window>
+</zk>

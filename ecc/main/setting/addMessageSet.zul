@@ -1,0 +1,80 @@
+<?page title="Test Mail" contentType="text/html;charset=UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<zk>
+<window  title="${c:l('AddMobilePhoneNumberSet')}" width="425px" height="" id="messageWin"  
+apply="com.siteview.ecc.message.SetMessage_add" closable="true" border="normal"
+forward="onCreate=onInit">
+
+
+			<groupbox style="margin-left:10px;margin-right:10px;margin-top:10px">
+	 			 <caption  label="${c:l('MobilePhoneNumberInformation')}"/>		
+					<grid oddRowSclass="none"  style="margin-top:5px;border:none">
+						<columns>
+							<column label="" width="6px"/>
+							<column label="" />
+							<column label="" />
+						</columns>
+						<rows >					
+							<row zclass="none" height="23px">
+							<space width="1px"/>
+								<label value="${c:l('Name*：')}" />
+								<textbox id="name" value="" width="260px" height="15px" tooltiptext="${c:l('PEnterName')}"/>
+							</row>
+							<row zclass="none" height="23px">
+							<space width="1px"/>
+								<label   value="${c:l('ReceivingMobilePhoneNumber*:')}" />
+								<textbox id="mobileNum" width="260px"  height="15px"  tooltiptext="${c:l('PEnterReceivedMobilePhoneNumber')}"/>
+							</row>		
+							<row zclass="none" height="23px">
+							<space width="1px"/>
+								<label   value="" />
+								<checkbox label="${c:l('Disable')}" id="hold" checked="false" tooltiptext="${c:l('ProhibitionOfMobilePhoneNumber')}"/>
+							</row>					
+							<row zclass="none" height="23px">
+							<space width="1px"/>
+								<label   value="${c:l('TemplateType:')}" />
+								<combobox id="templateType" width="242px" forward="onSelect=onGetTemplatevalue" readonly="true" height="15px" tooltiptext="${c:l('PSelectTemplateType')}">
+									<comboitem label="com"  value="com"/>
+									<comboitem label="web"  value="web"/>
+								</combobox>							
+							</row>		
+							<row zclass="none" height="23px">
+							<space width="1px"/>
+								<label   value="${c:l('InformationTemplate*:')}" id="messageTemplateLink"/>
+								<combobox id="messageTemplater"  width="242px" readonly="true" height="15px" tooltiptext="${c:l('PSelectMessageTemplate')}">
+								</combobox>								
+							</row>	
+							<row zclass="none" height="23px">
+							<space width="1px"/>
+								<label value="${c:l('TaskPlanType:')}" />
+								<combobox id="taskType" width="242px" forward="onSelect=onGetTaskvalue" readonly="true" height="15px" tooltiptext="${c:l('SelectTaskPlanType')}">
+									<comboitem label="${c:l('AbsoluteTimeTaskPlan')}"  value="1"/>
+									<comboitem label="${c:l('TimeSlotTaskPlan')}"  value="2"/>
+									<comboitem label="${c:l('RelativeTimeTaskPlan')}"  value="3"/>
+								</combobox>
+							</row>							
+							<row zclass="none" height="23px">
+							<space width="1px"/>
+								<label value="${c:l('TaskPlan:')}" id="taskLink"/>
+								<combobox id="taskPlan" width="242px" readonly="true" height="15px" tooltiptext="${c:l('SelectTaskPlan')}">		
+								</combobox>
+							</row>																									
+						</rows>
+					</grid>	
+	 		</groupbox>		
+					<hbox   style="margin-top:10px;margin-bottom:10px">
+					<space width="240px"/>
+							<button sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/save_bt.gif"  label="${c:l('Save')}"		forward="onClick=onSave" />
+				
+							<button sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/close_bt.gif" label="${c:l('Cancel')}"		forward="onClick=onReFresh" />
+
+					</hbox>	
+</window>	
+
+	<popup id="myPhone" width="200px">
+		<html>
+			(&lt;font color="#FFA500" &gt; 电话号码格式：139-88888888&lt;/font&gt;)
+		</html>
+	</popup>
+				   						   
+</zk>

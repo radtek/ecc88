@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<?component name="monitorselect" macro-uri="/main/report/control/monitorselect.zul"?>
+<zk>
+	<style>
+		.z-button-cm { width:74px; background-image: none;
+		background-color: #c1c2c3; }
+	</style>
+	<window apply="com.siteview.ecc.report.ErrorCompareReport"
+		id="compareReport" visible="true" height="100%" width="100%">
+		<borderlayout>
+			<west size="250px" flex="true" title="${c:l('ErrorComparisonReport')}"
+				splittable="true" minsize="100" maxsize="500" collapsible="true"
+				style="font:12pt" autoscroll="true" border="none" id="treeview">
+				<borderlayout>
+					<north size="93%" flex="true" style="border:none">
+						<tree id="monitortree" zclass="z-dottree"
+							use="com.siteview.ecc.alert.SelectTree"
+							height="${arg.treeheight}" vflex="true" width="180px" />
+					</north>
+					<center flex="true" style="border:none">
+						<hbox style="margin-top:1%" align="center">
+							<label value="${c:l('GroupNameV:')}" style="margin-left:15px"
+								id="groupLink">
+							</label>
+							<combobox id="viewNamecombobox"
+								height="15px" width="100px" readonly="true"
+								use="com.siteview.ecc.alert.control.ViewNameCombobox" />
+						</hbox>
+					</center>
+				</borderlayout>
+			</west>
+
+			<center flex="true" style="border:none">
+				<tabbox>
+					<tabs>
+						<tab label="${c:l('Query')}"  />
+					</tabs>
+					<tabpanels>
+						<tabpanel>
+							<borderlayout>
+								<north border="none" size="100%"
+									collapsible="true" id="north">
+									<div>
+										<panel title="${c:l('QueryConditions')}"
+											collapsible="true">
+											<panelchildren>
+												<groupbox
+													closable="false" open="true">
+													<grid
+														oddRowSclass="none" style="border:0">
+														<columns>
+															<column
+																width="80px" />
+															<column
+																width="*" />
+														</columns>
+														<rows>
+															<row
+																zclass="none" height="25px" align="left">
+																<label
+																	value="${c:l('StartTime:')}" style="margin-left:6px"
+																	tooltiptext="${self.value}" />
+																<datebox
+																	id="starttime" compact="true"
+																	format="yyyy-MM-dd HH:mm:ss" readonly="true"
+																	tooltiptext="${self.value}" />
+
+															</row>
+															<row
+																zclass="none" height="25px">
+																<label
+																	value="${c:l('EndTime:')}" style="margin-left:6px" />
+																<datebox
+																	id="endtime" compact="true"
+																	format="yyyy-MM-dd HH:mm:ss" readonly="true" />
+															</row>
+															<row
+																zclass="none" height="29px" valign="middle">
+																<label />
+																<hbox>
+																	<button
+																		id="seachButton" label="${c:l('Query')}" sclass="btnDefault"
+																		image="/main/images/button/ico/query_bt.gif"
+																		width="74px" height="23px" />
+																	<button
+																		id="exportButton" label="${c:l('ASeparateExportReport')}" sclass="btnDefault"
+																		height="23px" image="/main/images/bakRestore.gif" />
+																	<button
+																		id="batchdownButton" label="${c:l('BatchExportReport')}" sclass="btnDefault"
+																		height="23px" image="/main/images/bakRestore.gif" />	
+																	<button
+																		width="74px" height="23px" sclass="btnDefault"
+																		id="deleStatisticButton" label="${c:l('BatchDelete')}"
+																		image="/main/images/button/ico/delete_bt.gif" />
+																</hbox>
+															</row>
+														</rows>
+													</grid>
+												</groupbox>
+											</panelchildren>
+										</panel>
+										<div id="runtimeDiv">
+											<panel id="centerPanel"
+												title="${c:l('OperationReport')}" collapsible="true">
+												<panelchildren
+													visible="true" id="centerPanelChildren">
+													<listbox
+														id="runtimeState" fixedLayout="true" multiple="true"
+														checkmark="true" mold="paging" pageSize="10"
+														width="100%">
+														<listhead
+															sizable="true">
+															<listheader
+																label="${c:l('Format')}" sort="auto" width="80px" />
+															<listheader
+																label="${c:l('Title')}" sort="auto" />
+															<listheader
+																label="${c:l('TimeSlot')}" sort="auto" />
+															<listheader
+																label="${c:l('CreationDate')}" sort="auto" />
+														</listhead>
+													</listbox>
+												</panelchildren>
+											</panel>
+										</div>
+									</div>
+								</north>
+							</borderlayout>
+						</tabpanel>
+					</tabpanels>
+				</tabbox>
+			</center>
+		</borderlayout>
+	</window>
+</zk>
+
+

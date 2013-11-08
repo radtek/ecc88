@@ -1,0 +1,146 @@
+<?page title="" contentType="text/html;charset=UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<zk>
+	<window id="wSimpleReport" title="${c:l('SimpleReport')}" border="normal" 
+		apply="com.siteview.ecc.simplereport.SimpleReport">
+		<panel id="p2"  >
+		<panelchildren id="p1" style="margin:5px 5px 5px 5px;overflow-y:auto;">
+		<panel title="  ">
+			<panelchildren>
+				<vbox align="center" width="100%">
+					<label style="font:oblique small-caps 900 26pt 黑体;"
+						id="monitorname" value="LocalHost:Disk">
+					</label>
+					<label id="datefromto"
+						value="${c:l('TimePoint:')}">
+					</label>
+				</vbox>
+			</panelchildren>
+		</panel>
+		<panel title="${c:l('Monitor')}" collapsible="true">
+			<panelchildren>
+				<listbox id="mlist" fixedLayout="true">
+					<listhead>
+						<listheader width="30%" label="${c:l('Name')}"
+							sort="none">
+						</listheader>
+						<listheader width="10%" label="${c:l('Normal(%)')}"
+							sort="none">
+						</listheader>
+						<listheader width="10%" label="${c:l('Warning(%)')}"
+							sort="none">
+						</listheader>
+						<listheader width="10%" label="${c:l('Error(%)')}"
+							sort="none">
+						</listheader>
+						<listheader width="10%" label="${c:l('Ban(%)')}"
+							sort="none">
+						</listheader>
+						<listheader width="30%" label="${c:l('Threshold')}"
+							sort="none">
+						</listheader>
+					</listhead>
+				</listbox>
+			</panelchildren>
+		</panel>
+
+		<panel title="${c:l('Statistics')}" collapsible="true">
+			<panelchildren>
+				<listbox id="slist" fixedLayout="true" >
+					<listhead>
+						<listheader width="30%" label="${c:l('Name')}"
+							sort="none">
+						</listheader>
+						<listheader width="25%" label="${c:l('ReturnValue')}"
+							sort="none">
+						</listheader>
+						<listheader width="15%" label="${c:l('MaximumValue')}"
+							sort="none">
+						</listheader>
+						<listheader width="15%" label="${c:l('AverageValue')}"
+							sort="none">
+						</listheader>
+						<listheader width="15%" label="${c:l('MinimumValue')}"
+							sort="none">
+						</listheader>
+					</listhead>
+				</listbox>
+			</panelchildren>
+		</panel>
+		<panel title="${c:l('Chart')}" collapsible="true">
+			<panelchildren style="margin:0px">
+				<vbox id="maptable" align="center" width="100%"></vbox>
+			</panelchildren>
+		</panel>
+		<panel title="${c:l('Error')}" collapsible="true">
+			<panelchildren>
+				<listbox id="errorlist" fixedLayout="true">
+					<listhead>
+						<listheader width="20%" label="${c:l('Time')}"
+							sort="none">
+						</listheader>
+						<listheader width="40%" label="${c:l('Name')}"
+							sort="none">
+						</listheader>
+						<listheader width="40%" label="${c:l('Des')}"
+							sort="none">
+						</listheader>
+					</listhead>
+				</listbox>
+			</panelchildren>
+		</panel>
+		<panel title="${c:l('Warning')}" collapsible="true">
+			<panelchildren>
+				<listbox id="dangerlist" fixedLayout="true">
+					<listhead>
+						<listheader width="20%" label="${c:l('Time')}"
+							sort="none">
+						</listheader>
+						<listheader width="40%" label="${c:l('Name')}"
+							sort="none">
+						</listheader>
+						<listheader width="40%" label="${c:l('Des')}"
+							sort="none">
+						</listheader>
+					</listhead>
+				</listbox>
+			</panelchildren>
+		</panel>
+		<panel title="${c:l('Good')}" collapsible="true">
+			<panelchildren>
+				<listbox id="oklist" fixedLayout="true">
+					<listhead>
+						<listheader width="20%" label="${c:l('Time')}"
+							sort="none">
+						</listheader>
+						<listheader width="40%" label="${c:l('Name')}"
+							sort="none">
+						</listheader>
+						<listheader width="40%" label="${c:l('Des')}"
+							sort="none">
+						</listheader>
+					</listhead>
+				</listbox>
+			</panelchildren>
+		</panel>
+		<panel title="${c:l('Disable')}" collapsible="true">
+			<panelchildren>
+				<listbox id="disablelist" fixedLayout="true">
+					<listhead>
+						<listheader width="20%" label="${c:l('Time')}"
+							sort="none">
+						</listheader>
+						<listheader width="40%" label="${c:l('Name')}"
+							sort="none">
+						</listheader>
+						<listheader width="40%" label="${c:l('Des')}"
+							sort="none">
+						</listheader>
+					</listhead>
+				</listbox>
+			</panelchildren>
+		</panel>
+		</panelchildren>
+		</panel>
+	</window>
+</zk>
