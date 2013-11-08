@@ -141,15 +141,15 @@ public class Task extends GenericAutowireComposer {
 		}
 
 		public void setImageDscr(String zulName) {
-			if (zulName.equals("绝对时间任务计划")) {
+			if (zulName.equals("TaskAbsolute")) {
 				pic = "/main/images/task.gif";
 				dscr = Labels.getLabel("AbsoluteTimeTaskPlanFirrstTitle");//描述添加在这
 			}
-			if (zulName.equals("时间段任务计划")) {
+			if (zulName.equals("TaskPeriod")) {
 				pic = "/main/images/task.gif";
 				dscr = Labels.getLabel("TimeSlotTaskPlanFirrstTitle");
 			}
-			if (zulName.equals("相对时间任务计划")) {
+			if (zulName.equals("TaskRelative")) {
 				pic = "/main/images/task.gif";
 				dscr = Labels.getLabel("RelativeTimeTaskPlanFirrstTitle");
 			}

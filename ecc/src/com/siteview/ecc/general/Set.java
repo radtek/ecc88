@@ -144,51 +144,51 @@ public class Set extends GenericAutowireComposer {
 		}
 
 		public void setImageDscr(String zulName) {
-			if (zulName.equals("产品介绍")) {
+			if (zulName.equals("About")) {
 				pic = "/main/images/about.gif";
 				dscr = "提供北京游龙网网络科技有限公司的简介，同时也提供了公司网站的超链接，欢迎用户浏览，以便获取更为全面的技术服务。";//描述添加在这
 			}
-			if (zulName.equals("软件许可")) {
+			if (zulName.equals("License")) {
 				pic = "/main/images/license.gif";
 				dscr = "显示用户购买和已使用的点数、购买和已使用的网络设备数、已购买功能模块的信息，方便用户及时地了解系统的使用情况。";
 			}
-			if (zulName.equals("SysLog设置")) {
+			if (zulName.equals("SysLogSet")) {
 				pic = "/main/images/log.gif";
 				dscr = "对syslog采集数据的参数及数据保存期限等信息进行设置。";
 			}
-			if (zulName.equals("用户操作日志")) {
+			if (zulName.equals("OperateLog")) {
 				pic = "/main/images/log.gif";
 				dscr = "用于记录所有用户的操作并展示，用户可筛选条件定义对操作日志查询。";
 			}
-			if(zulName.equals("产品URL地址")){
+			if(zulName.equals("m_userOtherPublic")){
 				pic = "/main/images/log.gif";
 				dscr = "用于记录其他同类产品的URL地址，方便其他产品的打开";
 			}
-			if (zulName.equals("系统诊断")) {
+			if (zulName.equals("SystemDiagnosis")) {
 				pic = "/main/images/diagnosis.gif";
 				dscr = "用于对系统基本运行状况的分析与诊断，便于用户根据诊断结果，修复系统。";
 			}
-			if (zulName.equals("任务计划")) {
+			if (zulName.equals("Task")) {
 				pic = "/main/images/task.gif";
 				dscr = "实现监测器工作时间的定义，更方便用户根据实际需要安排监测器监测及报警工作时间。";
 			}
-			if (zulName.equals("邮件设置")) {
+			if (zulName.equals("SetMail")) {
 				pic = "/main/images/email.gif";
 				dscr = "用来进行邮件接收地址及邮件发送服务器配置，为邮件报警发送提供先决条件。";
 			}
-			if (zulName.equals("短信设置")) {
+			if (zulName.equals("SetSms")) {
 				pic = "/main/images/sms.gif";
 				dscr = "用来进行短信接收地址及短信发送服务器配置，为短信报警发送提供先决条件。";
 			}
-			if (zulName.equals("基本设置")) {
+			if (zulName.equals("SetGeneral")) {
 				pic = "/main/images/settings.gif";
 				dscr = "用来进行登陆访问设置，配置是否需要IP地址验证，防止非法接入。";
 			}
-			if (zulName.equals("值班表设置")) {
+			if (zulName.equals("SetMaintain")) {
 				pic = "/main/images/maintain.gif";
 				dscr = "实现值班表的添加及详细值班表的安排，支持多种值班表类型的添加。";
 			}
-			if (zulName.equals("用户管理")) {
+			if (zulName.equals("UserManager")) {
 				pic = "/main/images/user.gif";
 				dscr = "实现用户的添加，管理设置的设置及用户权限的分配。";
 			}

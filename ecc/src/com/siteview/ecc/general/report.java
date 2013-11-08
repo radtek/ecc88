@@ -141,42 +141,42 @@ public class report extends GenericAutowireComposer implements StarterListener{
 		}
 
 		public void setImageDscr(String zulName) {
-			if (zulName.equals("统计报告")) {
+			if (zulName.equals("ReportStatistic")) {
 				pic = "/main/images/report.gif";
 			//	dscr = "对定义监测器数据进行统计分析，可以定义日/周/月报多种类型，支持报告自动生成与实时报告展示。";
 				dscr = Labels.getLabel("reportdscr1");
 			}
-			if (zulName.equals("趋势报告")) {
+			if (zulName.equals("ReportTrend")) {
 				pic = "/main/images/report.gif";
 			//	dscr = "展示选定的监测器数据在一段时间内的运行情况，通过提供的预测值，可提早监控容易出问题的参数，提早对系统进行升级维护，从而防止意外的服务停顿事件。";
 				dscr = Labels.getLabel("reportdscr2");
 			}
-			if (zulName.equals("TopN报告")) {
+			if (zulName.equals("ReportTopN")) {
 				pic = "/main/images/report.gif";
 			//	dscr = "方便用户查看一定时间范围内某一监测器的某项监测指标的N个数据统计情况，可以定义日/周/月报多种类型，支持报告自动生成与实时报告展示。";
 				dscr = Labels.getLabel("reportdscr3");
 			}
-			if (zulName.equals("状态统计报告")) {
+			if (zulName.equals("ReportStatus")) {
 				pic = "/main/images/report.gif";
 			//	dscr = "方便用户查看一定时间范围内某一监测器的某项监测指标的N个数据统计情况，可以定义日/周/月报多种类型，支持报告自动生成与实时报告展示。";
 				dscr = Labels.getLabel("reportdscr4");
 			}
-			if (zulName.equals("对比报告")) {
+			if (zulName.equals("ReportContrast")) {
 				pic = "/main/images/contrast.gif";
 			//	dscr = " 显示了不同设备的监测器在相同时段内的监测数据的对比。通过数据的显示，可以对选择监测器的不同指标进行详细显示，可以对监测器数据情况进行详细的把握。";
 				dscr = Labels.getLabel("reportdscr5");
 			}
-			if (zulName.equals("时段对比报告")) {
+			if (zulName.equals("ReportTimeContrast")) {
 				pic = "/main/images/contrast.gif";
 			//	dscr = "显示了同一监测器在不同时间段内的监测数据的对比。通过数据的显示，可以对选择监测器在不同时间段的数据进行详细显示，可以对监测器进行详细的把握。";
 				dscr = Labels.getLabel("reportdscr7");
 			}
-			if (zulName.equals("监测器信息报告")) {
+			if (zulName.equals("MonitorInfo")) {
 				pic = "/main/images/info.gif";
 			//	dscr = "展示了整体视图中读取的所有监测器信息列表，可以根据筛选条件进行分类显示。";
 				dscr = Labels.getLabel("reportdscr8");
 			}
-			if (zulName.equals("SysLog查询")) {
+			if (zulName.equals("SysLogQuery")) {
 				pic = "/main/images/log.gif";
 			//	dscr = "Syslog查询用来查询对应时间段内，与SyslogMsg信息相匹配的符合参数Facility和Level的Syslog日志。支持用户定义条件筛选查询。";
 				dscr = Labels.getLabel("reportdscr9");

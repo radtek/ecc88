@@ -22,7 +22,7 @@ public class VirtualItem implements Serializable {
 	/**
 	 * 不同的组下的设备或监测器，可以组织在一个虚拟组下
 	 */
-	public static final ZulItem				VirtualGroup		= new ZulItem("VirtualGroup", "虚拟组", "");
+	/*public static final ZulItem				VirtualGroup		= new ZulItem("VirtualGroup", "虚拟组", "");
 	
 	public static final ZulItem				WholeView			= new ZulItem("WholeView", "整体视图", "m_allview");
 	public static final ZulItem				TreeView			= new ZulItem("TreeView", "树状视图", "m_tree-it's_a_button_now-no_needing_anymore");
@@ -32,12 +32,13 @@ public class VirtualItem implements Serializable {
 	public static final ZulItem				SetMonitor			= new ZulItem("SetMonitor", "监测器设置", "m_allview");// add by yuandong
 	public static final ZulItem				TopoView			= new ZulItem("TopoView", "拓扑视图", "m_tuop");
 	
-	public static final ZulItem				Alert				= new ZulItem("Alert", "报警", "");	
+	public static final ZulItem				Alert				= new ZulItem("Alert", "Alert", "");	
 	// m_AlertRuleAdd, m_AlertRuleDel,m_AlertRuleEdit
 //	public static final ZulItem				AlertRule			= new ZulItem("AlertRule", "报警规则", "m_AlertRuleAdd");//old//报警规则的关键字 和添加报警规则的关键字重复
-	public static final ZulItem				AlertRule			= new ZulItem("AlertRule", "报警规则", "m_AlertRule");//new
-	public static final ZulItem				AlertLog			= new ZulItem("AlertLog", "报警日志", "m_alertLogs");
-	public static final ZulItem				AlertStrategy		= new ZulItem("AlertStrategy", "报警策略", "m_alertStrategy");
+	public static final ZulItem				AlertRule			= new ZulItem("AlertRule", "AlertRule", "m_AlertRule");//new
+	public static final ZulItem				AlertLog			= new ZulItem("AlertLog", "AlertLog", "m_alertLogs");
+	
+	public static final ZulItem				AlertStrategy		= new ZulItem("AlertStrategy", "AlertStrategy", "m_alertStrategy");
 	
 	public static final ZulItem				Report				= new ZulItem("Report", "报表", "");
 	// m_reportlistAdd,m_reportlistDel,m_reportlistEdit
@@ -76,8 +77,65 @@ public class VirtualItem implements Serializable {
 	public static final ZulItem				License				= new ZulItem("License", "软件许可", "");
 	public static final ZulItem				About				= new ZulItem("About", "产品介绍", "");
 	
-	public static final ZulItem				OtherUnknown		= new ZulItem("OtherUnknown", "其他未知", "");
+	public static final ZulItem				OtherUnknown		= new ZulItem("OtherUnknown", "其他未知", "");*/
 
+	public static final ZulItem				VirtualGroup		= new ZulItem("VirtualGroup", "VirtualGroup", "");
+	
+	public static final ZulItem				WholeView			= new ZulItem("WholeView", "WholeView", "m_allview");
+	public static final ZulItem				TreeView			= new ZulItem("TreeView", "TreeView", "m_tree-it's_a_button_now-no_needing_anymore");
+	public static final ZulItem				MonitorBrower		= new ZulItem("MonitorBrower", "MonitorBrower", "m_monitorDisplay");// add by yuandong
+	
+	//"监测器设置"功能的权限：管理员总是有此功能，如果不是管理员则至少要对一个monitor拥有编辑权限、而且有"整体视图"权限————才有此功能
+	public static final ZulItem				SetMonitor			= new ZulItem("SetMonitor", "SetMonitor", "m_allview");// add by yuandong
+	public static final ZulItem				TopoView			= new ZulItem("TopoView", "TopoView", "m_tuop");
+	
+	public static final ZulItem				Alert				= new ZulItem("Alert", "Alert", "");	
+	// m_AlertRuleAdd, m_AlertRuleDel,m_AlertRuleEdit
+//	public static final ZulItem				AlertRule			= new ZulItem("AlertRule", "报警规则", "m_AlertRuleAdd");//old//报警规则的关键字 和添加报警规则的关键字重复
+	public static final ZulItem				AlertRule			= new ZulItem("AlertRule", "AlertRule", "m_AlertRule");//new
+	public static final ZulItem				AlertLog			= new ZulItem("AlertLog", "AlertLog", "m_alertLogs");
+	
+	public static final ZulItem				AlertStrategy		= new ZulItem("AlertStrategy", "AlertStrategy", "m_alertStrategy");
+	
+	public static final ZulItem				Report				= new ZulItem("Report", "Report", "");
+	// m_reportlistAdd,m_reportlistDel,m_reportlistEdit
+//	public static final ZulItem				ReportStatistic		= new ZulItem("ReportStatistic", "统计报告", "m_statisticReportlistAdd");	//old
+	public static final ZulItem				ReportStatistic		= new ZulItem("ReportStatistic", "ReportStatistic", "m_StatisticReport");	
+//	public static final ZulItem				ReportTrend			= new ZulItem("ReportTrend", "趋势报告", "m_SetshowSystemReport");	//old
+	public static final ZulItem				ReportTrend			= new ZulItem("ReportTrend", "ReportTrend", "m_TrendReport");
+	public static final ZulItem				ReportTopN			= new ZulItem("ReportTopN", "ReportTopN", "m_topnadd");
+	public static final ZulItem				ReportStatus		= new ZulItem("ReportStatus","ReportStatus","m_ShowStatusReport");//qimin.xiong
+	public static final ZulItem				ReportStatus2		= new ZulItem("ReportStatus2","ReportStatus2","m_ShowStatusReport2");//qimin.xiong
+//	public static final ZulItem				ReportContrast		= new ZulItem("ReportContrast", "对比报告", "m_SetshowSystemReport");	//old
+	public static final ZulItem				ReportContrast		= new ZulItem("ReportContrast", "ReportContrast", "m_ContrastReport");
+	public static final ZulItem				ReportErrorContrast		= new ZulItem("ReportErrorContrast", "ReportErrorContrast", "m_ErrorContrastReport");	
+//	public static final ZulItem				ReportTimeContrast	= new ZulItem("ReportTimeContrast", "时段对比报告", "m_SetshowSystemReport");//old
+	public static final ZulItem				ReportTimeContrast	= new ZulItem("ReportTimeContrast", "ReportTimeContrast", "m_TimeContrastReport");
+	public static final ZulItem				MonitorInfo			= new ZulItem("MonitorInfo", "MonitorInfo", "m_logshower");
+	public static final ZulItem				SysLogQuery			= new ZulItem("SysLogQuery", "SysLogQuery", "m_syslogquery");//change
+	
+	public static final ZulItem				Set					= new ZulItem("Set", "Set", "");
+	public static final ZulItem				SetGeneral			= new ZulItem("SetGeneral", "SetGeneral", "m_general");
+	public static final ZulItem				SetMail				= new ZulItem("SetMail", "SetMail", "m_mailsetting");
+	public static final ZulItem				SetSms				= new ZulItem("SetSms", "SetSms", "m_smssetting");
+	public static final ZulItem				SetMaintain			= new ZulItem("SetMaintain", "SetMaintain", "m_maintainsetting");//change
+	public static final ZulItem				UserManager			= new ZulItem("UserManager", "UserManager", "m_usermanager");//change
+	//public static final ZulItem				importDataBase		= new ZulItem("importDataBase", "数据库设置", "only_authorize_to_admin");
+	
+	public static final ZulItem				Task				= new ZulItem("Task", "Task", "");//change
+	public static final ZulItem				TaskAbsolute		= new ZulItem("TaskAbsolute", "TaskAbsolute", "m_taskabsolute");//change
+	public static final ZulItem				TaskPeriod			= new ZulItem("TaskPeriod", "TaskPeriod", "m_taskperiod");//change
+	public static final ZulItem				TaskRelative		= new ZulItem("TaskRelative", "TaskRelative", "m_taskrelative");//change
+	public static final ZulItem				SysLogSet			= new ZulItem("SysLogSet", "SysLogSet", "m_syslogset");//change
+	public static final ZulItem				BackupRestore		= new ZulItem("BackupRestore", "BackupRestore", "only_authorize_to_admin-it_is_not_supoort");
+	public static final ZulItem				OperateLog			= new ZulItem("OperateLog", "OperateLog", "m_operatelog");//change
+	public static final ZulItem				m_userOtherPublic			= new ZulItem("m_userOtherPublic", "m_userOtherPublic", "m_userOtherPublic");//change
+	public static final ZulItem				SystemDiagnosis		= new ZulItem("SystemDiagnosis", "SystemDiagnosis", "m_system_diagnosis");
+	public static final ZulItem				License				= new ZulItem("License", "License", "");
+	public static final ZulItem				About				= new ZulItem("About", "About", "");
+	
+	public static final ZulItem				OtherUnknown		= new ZulItem("OtherUnknown", "OtherUnknown", "");
+	
 	public final static Map<String, ZulItem> allZulItem = new HashMap<String, ZulItem>();
 	static {
 		allZulItem.put("VirtualGroup", VirtualGroup);

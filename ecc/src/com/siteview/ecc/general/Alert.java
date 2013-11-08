@@ -140,17 +140,17 @@ public class Alert extends GenericAutowireComposer {
 		}
 
 		public void setImageDscr(String zulName) {
-			if (zulName.equals("报警规则")) {
+			if (zulName.equals("AlertRule")) {
 				pic = "/images/alarmstart.gif";
 		//		dscr = "报警规则的定义，当某个监测器的状态符合报警条件时通知用户，通知方式有：Email、短信、脚本、声音。";//描述添加在这
 				dscr = Labels.getLabel("dscr1");
 			}
-			if (zulName.equals("报警日志")) {
+			if (zulName.equals("AlertLog")) {
 				pic = "/main/images/alarmhistory.gif";
 		//		dscr = "查询所有报警日志，可以根据筛选条件进行查询。";
 				dscr = Labels.getLabel("dscr2");
 			}
-			if (zulName.equals("报警策略")) {
+			if (zulName.equals("AlertStrategy")) {
 				pic = "/main/images/alarmhistory.gif";
 		//		dscr = "查询所有报警日志，可以根据筛选条件进行查询。";
 				dscr = Labels.getLabel("dscr3");
