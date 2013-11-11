@@ -58,9 +58,9 @@
 	String strCustomerTitle = "";
 	String strCustomer = ini.getValue("license", "Customer");
 	if(!strCustomer.isEmpty())
-		strCustomerTitle = "Copyright©:游龙科技授权给" + strCustomer + "的正式版" ;
+		strCustomerTitle = "Copyright©:Siteview Licesen to" + strCustomer + "'s Normal version" ;
 	else
-		strCustomerTitle = "Copyright©:SiteView Ecc 8.8  试用版" ;
+		strCustomerTitle = "Copyright©:SiteView Ecc 8.8 Test" ;
  	String sid = (String) session.getAttribute("usersessionid");
  	View view = null;
  	if (sid != null)
@@ -176,21 +176,21 @@
 						<form method="post" id="login" name="login" action="/ecc/index.jsp">
 							<table cellSpacing="0px" cellPadding="0px" class="widthauto">					
 								<tr>
-									<td style="color:#000000; font-weight:bold; line-height:25px; width:60px; white-space:nowrap;">登录名：</td>
+									<td style="color:#000000; font-weight:bold; line-height:25px; width:60px; white-space:nowrap;">Login Name：</td>
 									<td ><input onFocus="this.select()" onkeypress="if(event.keyCode==13){document.getElementById('login').submit();}" style="border:1px solid #19598D; width:150px;" name="Account" value="<%=user%>"/>&nbsp;</td>
 									<td class="hand" rowspan="2"><img onClick="document.getElementById('login').submit();" src="images/login_but_cn.png"/></td>
 								</tr>
 								<tr>
-									<td style="color:#000000; font-weight:bold; line-height:22px; width:60px; white-space:nowrap;">密　码：</td>
+									<td style="color:#000000; font-weight:bold; line-height:22px; width:60px; white-space:nowrap;">Login Password：</td>
 									<td ><input onFocus="this.select()" onkeypress="if(event.keyCode==13){document.getElementById('login').submit();}" style="border:1px solid #19598D; width:150px;" name="Password" type=password value="<%=password%>"/></td>
 								</tr>
 								<tr>
 									<td ></td>
-									<td ><input type="checkbox" name="autoLogin" value="ON">自动登录</td>
+									<td ><input type="checkbox" name="autoLogin" value="ON">Atuo Login</td>
 								</tr>
 								<tr>
 									<td ></td>
-									<td ><input type="checkbox" name="recordAccount" value="ON">记录登录账号信息</td>
+									<td ><input type="checkbox" name="recordAccount" value="ON">Remember Login Account Info</td>
 								</tr>
 							</table>
 						</form>

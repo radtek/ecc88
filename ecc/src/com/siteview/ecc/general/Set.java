@@ -126,7 +126,7 @@ public class Set extends GenericAutowireComposer {
 			item.addEventListener("onClick", new SelectListener(vi));
 			Listcell lc1 = new Listcell();
 			Listcell lc2 = new Listcell();
-			item.setHeight("22px");
+			item.setHeight("22px"); 
 
 			setImageDscr(vi.getItemDataZulName());
 			Image image = new Image();
