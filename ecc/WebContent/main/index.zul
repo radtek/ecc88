@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
 <?page id="eccmain" title="SITEVIEW ECC 8.8"?>
 <?link  rel="stylesheet" type="text/css" href="css/main.css"?>
 <zk xmlns:h="http://www.w3.org/1999/xhtml">
@@ -6,25 +7,25 @@
 <h:div class="eccHeaderStatics" style="width:550px;height:15px;margin-left: -491px; left:50%;margin: 20px auto 0px auto;">
 <div id="eccHeaderComposer" apply="com.siteview.ecc.treeview.EccHeaderComposer" >
 	<label sclass="ecc-header-label" height="15px"
-		value="欢迎您" />
+		value="${c:l('WelcomeYou')}" />
 	<label id="loginName" sclass="ecc-header-label" height="15px"/>
 	<label sclass="ecc-header-label" height="15px"
-		value=",在线" visible="true"/>
+		value="${c:l('On-line')}" visible="true"/>
 	<label id="onlineInfo" sclass="ecc-header-label" height="15px" visible="true"/>
 	<label sclass="ecc-header-label" height="15px"
-		value="人" visible="true"/>
+		value="${c:l('People')}" visible="true"/>
 	<image src='/main/images/header.gif' />
 	 <label sclass="ecc-header-label" height="15px"
-		value="全部：" /><label id="total_monitor" sclass="ecc-header-label" height="15px"/>
+		value="${c:l('All:')}" /><label id="total_monitor" sclass="ecc-header-label" height="15px"/>
 	<image src='/main/images/header1.gif' />
 	 <label sclass="ecc-header-label" height="15px"
-		value="正常：" /><label id="total_ok" sclass="ecc-header-label" height="15px"/>
+		value="${c:l('Good:')}"  /><label id="total_ok" sclass="ecc-header-label" height="15px"/>
 	<image src='/main/images/header3.gif' />
 	 <label sclass="ecc-header-label" height="15px"
-		value="错误：" /><label id="total_error" sclass="ecc-header-label" height="15px"	/>
+		value="${c:l('Error:')}"  /><label id="total_error" sclass="ecc-header-label" height="15px"	/>
 	<image src='/main/images/header2.gif' />
 	 <label sclass="ecc-header-label" height="15px"
-		value="危险：" /><label id="total_warning" sclass="ecc-header-label" height="15px"/>
+		value="${c:l('Warning:')}" /><label id="total_warning" sclass="ecc-header-label" height="15px"/>
 </div>	
 </h:div>
 </h:div>
@@ -51,11 +52,11 @@
 		<center flex="true" border="none" sclass="ecc-top_middle2">
 			<tabbox  id="tabBox" sclass="ecc-top_right2" >
 				<tabs sclass="eccMainTabbox" style="background:transparent;">
-					<tab id="tab_monitor" label="监控器" closable="false" />
-					<tab id="tab_summaryview" label="Top10 报告" closable="false" />
-					<tab id="tab_view" label="视图" closable="false" />
-					<tab id="tab_css" label="主题" closable="false" />
-					<tab id="info_tab" label="系统信息" closable="false" use="com.siteview.ecc.timer.EccInfoTab"/>
+					<tab id="tab_monitor" label="${c:l('MonitorJ')}" closable="false" />
+					<tab id="tab_summaryview" label="${c:l('Top10Report')}" closable="false" />
+					<tab id="tab_view" label="${c:l('View')}" closable="false" />
+					<tab id="tab_css" label="${c:l('Theme')}" closable="false" />
+					<tab id="info_tab" label="${c:l('SystemInformation')}" closable="false" use="com.siteview.ecc.timer.EccInfoTab"/>
 					<!-- tab id="bbs_tab" label="建议与BUG报告" closable="false"/-->
 				</tabs>
 				<tabpanels >
@@ -66,12 +67,12 @@
 								collapsible="true"  border="none">
 								<panel framable="false">
 									<toolbar style="padding-left:3px;font-size:12px">
-									<hbox><label pre="true" style="width:100px;font-size:12px;over-flow:hidden" value="视图："/><listbox mold="select" id="viewSelect" /><space width="1px"/>
-									<image id="btnEditView" hover="/main/images/trend.gif" tooltiptext="编辑视图" style="cursor:pointer" align="absmiddle" src="/main/images/virtualvieweditting.gif" onClick='tabBox.setSelectedPanel(virtualViewTab)'/><space width="1px"/>
-									<image id="btnRefreshTree" hover="/main/images/refresh_hover.gif" tooltiptext="刷新" style="cursor:pointer" align="absmiddle" src="/main/images/refresh.gif"/>
+									<hbox><label pre="true" style="width:100px;font-size:12px;over-flow:hidden" value="${c:l('View:')}"/><listbox mold="select" id="viewSelect" /><space width="1px"/>
+									<image id="btnEditView" hover="/main/images/trend.gif" tooltiptext="${c:l('EditView')}" style="cursor:pointer" align="absmiddle" src="/main/images/virtualvieweditting.gif" onClick='tabBox.setSelectedPanel(virtualViewTab)'/><space width="1px"/>
+									<image id="btnRefreshTree" hover="/main/images/refresh_hover.gif" tooltiptext="${c:l('Refresh')}" style="cursor:pointer" align="absmiddle" src="/main/images/refresh.gif"/>
 									</hbox>
-									<hbox style="padding-top:3px;"><label pre="true" style="width:120px;font-size:12px;over-flow:hidden" value="设备："/>
-									<combobox id="locateEntityCombox" autodrop="true" buttonVisible="false"/><image tooltiptext="清空" id="imgClear" hover="/main/images/clear_hover.gif" visible="false" style="cursor:pointer" src="/main/images/clear.gif"/></hbox>
+									<hbox style="padding-top:3px;"><label pre="true" style="width:120px;font-size:12px;over-flow:hidden" value="${c:l('Equipment:')}"/>
+									<combobox id="locateEntityCombox" autodrop="true" buttonVisible="false"/><image tooltiptext="${c:l('QEmpty')}" id="imgClear" hover="/main/images/clear_hover.gif" visible="false" style="cursor:pointer" src="/main/images/clear.gif"/></hbox>
 									<!-- 注释掉页面上根据监测器ID查找并自动跳转到监测器显示界面的功能
 									<hbox style="padding-top:3px;"><label pre="true" style="width:120px;font-size:12px;over-flow:hidden" value=" ID： "/>
 									<combobox id="idCombox" autodrop="true" buttonVisible="false"/><image tooltiptext="清空" id="idImgClear" hover="/main/images/clear_hover.gif" visible="false" style="cursor:pointer" src="/main/images/clear.gif"/></hbox>
@@ -83,13 +84,13 @@
 											<center>
 												<tree zclass="z-dottree" Vflex="true" id="tree"/>
 											</center>
-											<south id="south" title="最近浏览的监测器" flex="true" maxsize="140" splittable="true" collapsible="true">
+											<south id="south" title="${c:l('RecentlyBrowseMonitor')}" flex="true" maxsize="140" splittable="true" collapsible="true">
 												<panel title="">
 													<panelchildren style="overflow-y:auto;">
 														<listbox fixedLayout="true" mold="paging" multiple="true" vflex="true" id="recentlyViewMonitor" width="100%" rows="5" >
 															<listhead>
-																<listheader width="32px" label="状态" />
-																<listheader width="" label="名称" />
+																<listheader width="32px" label="${c:l('State')}" />
+																<listheader width="" label="${c:l('Name')}" />
 															</listhead>
 														</listbox>
 													</panelchildren>
@@ -111,7 +112,7 @@
 					</tabpanel>
 					<tabpanel id="virtualViewTab" fulfill="tab_view.onSelect">
 						<borderlayout apply="com.siteview.ecc.treeview.VirtualViewLayoutComposer">
-							<west title="默认视图" size="350px" flex="true"
+							<west title="${c:l('Defaultview')}" size="350px" flex="true"
 								splittable="true" minsize="100" maxsize="700"
 								collapsible="true"  border="none">
 								<panel framable="false">
@@ -123,7 +124,7 @@
 							<center flex="true"  border="none">
 								<panel framable="false">
 									<toolbar>
-										<label style="font-size:12px" value="虚拟视图:" />
+										<label style="font-size:12px" value="${c:l('VirtualView:')}" />
 										<combobox id="viewSelectEditting"/>
 									</toolbar>
 									<panelchildren>
@@ -151,7 +152,7 @@
 					</grid>
 					</center>
 					<south size="28px"  border="none">
-					<div><textbox height="19px" id="sendMsg" width="400px"/><button id="btnSend" src="/images/alarmstart.gif" label="发送" sclass="btnDefault"/></div>
+					<div><textbox height="19px" id="sendMsg" width="400px"/><button id="btnSend" src="/images/alarmstart.gif" label="${c:l('Send')}" sclass="btnDefault"/></div>
 					</south>
 					</borderlayout>
 					</tabpanel>
@@ -163,7 +164,7 @@
 		</center>
 	</borderlayout>
 <script><![CDATA[
-mesg.FAILED_TO_RESPONSE="服务器连接出现问题，请检查服务端程序。\n\n";
+mesg.FAILED_TO_RESPONSE="${c:l('ServerConnectionProblemCheckServerProgram')}";
 var newWin=null;
 function showHelp(id)
 {

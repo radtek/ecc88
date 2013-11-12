@@ -3,6 +3,8 @@ package com.siteview.ecc.controlpanel;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
+import org.zkoss.util.resource.Labels;
+
 import com.siteview.base.manage.View;
 import com.siteview.base.tree.INode;
 import com.siteview.base.treeInfo.MonitorInfo;
@@ -20,11 +22,11 @@ public class MonitorTableModel extends EccListModel {
 		switch(idxCol)
 		{
 			case 0:
-				return "名称";
+				return Labels.getLabel("Name");
 			case 1:
-				return "描述";
+				return Labels.getLabel("Des");
 			case 2:
-				return "最后更新";
+				return Labels.getLabel("LastUpdated");
 		}
 		return "";
 	}

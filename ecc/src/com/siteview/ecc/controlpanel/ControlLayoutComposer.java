@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zhtml.Messagebox;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Components;
@@ -171,14 +172,14 @@ public class ControlLayoutComposer extends GenericForwardComposer implements
 
 	public Panel getGroupIconPanel() {
 		if (groupIconPanel == null) {
-			groupIconPanel = makePanel("子组");
+			groupIconPanel = makePanel(Labels.getLabel("SubGroup"));
 		}
 		return groupIconPanel;
 	}
 
 	public Panel getEntityIconPanel() {
 		if (entityIconPanel == null) {
-			entityIconPanel = makePanel("设备");
+			entityIconPanel = makePanel(Labels.getLabel("Equipment"));
 		}
 
 		return entityIconPanel;
@@ -186,7 +187,7 @@ public class ControlLayoutComposer extends GenericForwardComposer implements
 
 	public Panel getMonitorIconPanel() {
 		if (monitorIconPanel == null)
-			monitorIconPanel = makePanel("监测器");
+			monitorIconPanel = makePanel(Labels.getLabel("Monitor"));
 
 		monitorIconPanel.setVisible(true);
 		return monitorIconPanel;
@@ -206,7 +207,7 @@ public class ControlLayoutComposer extends GenericForwardComposer implements
 
 	public Panel getGroupPanel() {
 		if (groupListPanel == null) {
-			groupListPanel = makePanel("子组");
+			groupListPanel = makePanel(Labels.getLabel("SubGroup"));
 			Listbox listbox = getListBox(groupListPanel, INode.GROUP,
 					groupTableModel);
 			this.group_listbox = listbox;
@@ -219,7 +220,7 @@ public class ControlLayoutComposer extends GenericForwardComposer implements
 
 	public Panel getEntityPanel() {
 		if (entityListPanel == null) {
-			entityListPanel = makePanel("设备");
+			entityListPanel = makePanel(Labels.getLabel("Equipment"));
 			Listbox listbox = getListBox(entityListPanel, INode.ENTITY,
 					entityTableModel);
 			this.entity_listbox = listbox;
@@ -232,7 +233,7 @@ public class ControlLayoutComposer extends GenericForwardComposer implements
 
 	public Panel getMonitorPanel() {
 		if (monitorListPanel == null) {
-			monitorListPanel = makePanel("监测器");
+			monitorListPanel = makePanel(Labels.getLabel("Monitor"));
 			Listbox listbox = getListBox(monitorListPanel, INode.MONITOR,
 					monitorTableModel);
 			this.monitor_listbox =listbox;
@@ -262,7 +263,7 @@ public class ControlLayoutComposer extends GenericForwardComposer implements
 			if(index != -1){
 				monitor_listbox.setSelectedIndex(index);
 			}else{
-				Messagebox.show("无法跳转，该监测器可能已被删除", "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("CannotJumpMonitorDeleted"), "提示", Messagebox.OK, Messagebox.INFORMATION);
 				monitor_listbox.setSelectedIndex(0);
 			}
 			
@@ -515,7 +516,7 @@ public class ControlLayoutComposer extends GenericForwardComposer implements
 				Toolkit.getToolkit().setCookie("homeEccTreeItem",
 						eccTreeItem.getId(), desktop, Integer.MAX_VALUE);
 				Toolkit.getToolkit().showOK(
-						"已设置，登录自动显示节点:" + eccTreeItem.getTitle());
+						Labels.getLabel("HasSetAutomaticDisplayNodeLogin:") + eccTreeItem.getTitle());
 			}
 		});
 		curNodeTitle.addEventListener("onClick", actionMenuOpenListener);
@@ -1847,72 +1848,72 @@ public class ControlLayoutComposer extends GenericForwardComposer implements
 			return div;
 		if (node instanceof GroupInfo) {
 
-			makeStatusSumLabel("设备","/main/control/images/entity.gif",-1,
+			makeStatusSumLabel(Labels.getLabel("Equipment"),"/main/control/images/entity.gif",-1,
 					((GroupInfo) node).get_sub_entity_sum(session),false).setParent(div);
 
 			
-			makeStatusSumLabel("监测器","/main/control/images/monitor.gif",EccTreeItem.STATUS_ALL,
+			makeStatusSumLabel(Labels.getLabel("Monitor"),"/main/control/images/monitor.gif",EccTreeItem.STATUS_ALL,
 					((GroupInfo) node).get_sub_monitor_sum(session),true).setParent(div);
-			makeStatusSumLabel("正常","/main/control/images/state_green.gif",EccTreeItem.STATUS_OK,
+			makeStatusSumLabel(Labels.getLabel("Good"),"/main/control/images/state_green.gif",EccTreeItem.STATUS_OK,
 					((GroupInfo) node).get_sub_monitor_ok_sum(session),true).setParent(div);
 
-			makeStatusSumLabel("错误","/main/control/images/state_red.gif",
+			makeStatusSumLabel(Labels.getLabel("Error"),"/main/control/images/state_red.gif",
 					EccTreeItem.STATUS_BAD | EccTreeItem.STATUS_ERROR
 							| EccTreeItem.STATUS_NULL,
 					((GroupInfo) node).get_sub_monitor_error_sum(session),true).setParent(
 					div);
 
-			makeStatusSumLabel("危险","/main/control/images/state_yellow.gif",EccTreeItem.STATUS_WARNING,
+			makeStatusSumLabel(Labels.getLabel("Warning"),"/main/control/images/state_yellow.gif",EccTreeItem.STATUS_WARNING,
 					((GroupInfo) node).get_sub_monitor_warning_sum(session),true)
 					.setParent(div);
 
-			makeStatusSumLabel("禁止","/main/control/images/state_stop.gif",EccTreeItem.STATUS_DISABLED,
+			makeStatusSumLabel(Labels.getLabel("Disable"),"/main/control/images/state_stop.gif",EccTreeItem.STATUS_DISABLED,
 					((GroupInfo) node).get_sub_monitor_disable_sum(session),true)
 					.setParent(div);
 
 			return div;
 		} else if (node instanceof EntityInfo) {
-			makeStatusSumLabel("监测器","/main/control/images/monitor.gif",EccTreeItem.STATUS_ALL,
+			makeStatusSumLabel(Labels.getLabel("Monitor"),"/main/control/images/monitor.gif",EccTreeItem.STATUS_ALL,
 					((EntityInfo) node).get_sub_monitor_sum(session),true).setParent(div);
 
-			makeStatusSumLabel("正常","/main/control/images/state_green.gif",EccTreeItem.STATUS_OK,
+			makeStatusSumLabel(Labels.getLabel("Good"),"/main/control/images/state_green.gif",EccTreeItem.STATUS_OK,
 					((EntityInfo) node).get_sub_monitor_ok_sum(session),true)
 					.setParent(div);
 
-			makeStatusSumLabel("错误","/main/control/images/state_red.gif",
+			makeStatusSumLabel(Labels.getLabel("Error"),"/main/control/images/state_red.gif",
 					EccTreeItem.STATUS_BAD | EccTreeItem.STATUS_ERROR
 							| EccTreeItem.STATUS_NULL,
 					((EntityInfo) node).get_sub_monitor_error_sum(session),true).setParent(
 					div);
 
-			makeStatusSumLabel("危险","/main/control/images/state_yellow.gif",EccTreeItem.STATUS_WARNING,
+			makeStatusSumLabel(Labels.getLabel("Warning"),"/main/control/images/state_yellow.gif",EccTreeItem.STATUS_WARNING,
 					((EntityInfo) node).get_sub_monitor_warning_sum(session),true)
 					.setParent(div);
 
-			makeStatusSumLabel("禁止","/main/control/images/state_stop.gif",EccTreeItem.STATUS_DISABLED,
+			makeStatusSumLabel(Labels.getLabel("Disable"),"/main/control/images/state_stop.gif",EccTreeItem.STATUS_DISABLED,
 					((EntityInfo) node).get_sub_monitor_disable_sum(session),true)
 					.setParent(div);
 			return div;
 		} else if (node instanceof SeInfo) {
-			makeStatusSumLabel("设备","/main/control/images/entity.gif",-1,
+			makeStatusSumLabel(Labels.getLabel("Equipment"),"/main/control/images/entity.gif",-1,
 					((SeInfo) node).get_sub_entity_sum(session),false).setParent(div);
 
-			makeStatusSumLabel("监测器","/main/control/images/monitor.gif",EccTreeItem.STATUS_ALL,
+			makeStatusSumLabel(Labels.getLabel("Monitor"),"/main/control/images/monitor.gif",EccTreeItem.STATUS_ALL,
 					((SeInfo) node).get_sub_monitor_sum(session),true).setParent(div);
 
-			makeStatusSumLabel("正常","/main/control/images/state_green.gif",EccTreeItem.STATUS_OK,
+			makeStatusSumLabel(Labels.getLabel("Good"),"/main/control/images/state_green.gif",EccTreeItem.STATUS_OK,
 					((SeInfo) node).get_sub_monitor_ok_sum(session),true).setParent(div);
 
-			makeStatusSumLabel("错误","/main/control/images/state_red.gif",
+			makeStatusSumLabel(Labels.getLabel("Error"),"/main/control/images/state_red.gif",
 					EccTreeItem.STATUS_BAD | EccTreeItem.STATUS_ERROR
 							| EccTreeItem.STATUS_NULL,
 					((SeInfo) node).get_sub_monitor_error_sum(session),true).setParent(div);
 
-			makeStatusSumLabel("危险","/main/control/images/state_yellow.gif",EccTreeItem.STATUS_WARNING,
+			makeStatusSumLabel(Labels.getLabel("Warning"),"/main/control/images/state_yellow.gif",EccTreeItem.STATUS_WARNING,
 					((SeInfo) node).get_sub_monitor_warning_sum(session),true).setParent(
 					div);
 
-			makeStatusSumLabel("禁止","/main/control/images/state_stop.gif",EccTreeItem.STATUS_DISABLED,
+			makeStatusSumLabel(Labels.getLabel("Disable"),"/main/control/images/state_stop.gif",EccTreeItem.STATUS_DISABLED,
 					((SeInfo) node).get_sub_monitor_disable_sum(session),true).setParent(
 					div);
 			return div;
@@ -1929,23 +1930,23 @@ public class ControlLayoutComposer extends GenericForwardComposer implements
 		NodeInfoBean bean = ehc.refreshNodeInfo(eccTreeItem);
 
 		if ("se".equals(eccTreeItem.getType())) {
-			makeStatusSumLabel("设备","/main/control/images/entity.gif",-1,
+			makeStatusSumLabel(Labels.getLabel("Equipment"),"/main/control/images/entity.gif",-1,
 					bean.getDevice(),false).setParent(div);
 		} else if ("group".equals(eccTreeItem.getType())) {
-			makeStatusSumLabel("设备","/main/control/images/entity.gif",-1,
+			makeStatusSumLabel(Labels.getLabel("Equipment"),"/main/control/images/entity.gif",-1,
 					bean.getDevice(),false).setParent(div);
 		}
 
-		makeStatusSumLabel("监测器","/main/control/images/monitor.gif",EccTreeItem.STATUS_ALL,
+		makeStatusSumLabel(Labels.getLabel("Monitor"),"/main/control/images/monitor.gif",EccTreeItem.STATUS_ALL,
 				bean.getAll(),true).setParent(div);
-		makeStatusSumLabel("正常","/main/control/images/state_green.gif",EccTreeItem.STATUS_OK,
+		makeStatusSumLabel(Labels.getLabel("Good"),"/main/control/images/state_green.gif",EccTreeItem.STATUS_OK,
 				bean.getOk(),true).setParent(div);
-		makeStatusSumLabel("错误","/main/control/images/state_red.gif",
+		makeStatusSumLabel(Labels.getLabel("Error"),"/main/control/images/state_red.gif",
 				EccTreeItem.STATUS_BAD | EccTreeItem.STATUS_ERROR | EccTreeItem.STATUS_NULL,
 				bean.getError(),true).setParent(div);
-		makeStatusSumLabel("危险","/main/control/images/state_yellow.gif",EccTreeItem.STATUS_WARNING,
+		makeStatusSumLabel(Labels.getLabel("Warning"),"/main/control/images/state_yellow.gif",EccTreeItem.STATUS_WARNING,
 				bean.getWarning(),true).setParent(div);
-		makeStatusSumLabel("禁止","/main/control/images/state_stop.gif",EccTreeItem.STATUS_DISABLED,
+		makeStatusSumLabel(Labels.getLabel("Disable"),"/main/control/images/state_stop.gif",EccTreeItem.STATUS_DISABLED,
 				bean.getDisabled(),true).setParent(div);
 		return div;
 	}

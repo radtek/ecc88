@@ -1,4 +1,5 @@
 <?page id="MonitorReport" contentType="text/html;charset=UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
 <zk>
 		<borderlayout id="WMonitorInfo" apply="com.siteview.ecc.controlpanel.MonitorReport" >
 			<center border="none" >
@@ -8,9 +9,9 @@
 					</center>
 					<east size="350px" splittable="false" style="background:#F0FAFF;border-style:outset;border-width:0px">  
 						<vbox align="left" width="98%" style="margin-left:10px;margin-right:10px;">
-							<button id="btndetail"  sclass="btnDefault" label="详细信息"></button>
+							<button id="btndetail"  sclass="btnDefault" label="${c:l('DetailedInformation')}"></button>
 							<groupbox width="320px"  >
-								<caption label="数据记录"></caption>
+								<caption label="${c:l('DataRecording')}"></caption>
 								<grid>
 									<columns>
 										<column width="20%" label="" />
@@ -20,17 +21,17 @@
 									</columns>
 									<rows>
 										<row>
-											<label value="正常：" />
+											<label value="${c:l('Good:')}" />
 											<label id="lbok" />
-											<label value="危险：" />
+											<label value="${c:l('Warning:')}" />
 											<label id="lbdanger"
 												value="" />
 										</row>
 										<row>
-											<label value="错误：" />
+											<label value="${c:l('Error:')}" />
 											<label id="lberror"
 												value="" />
-											<label value="禁止：" />
+											<label value="${c:l('Disable:')}" />
 											<label id="lbdisable" />
 										</row>
 									</rows>
@@ -42,20 +43,20 @@
 									</columns>
 									<rows>
 										<row>
-											<label value="阀值：" />
+											<label value="${c:l('Threshold:')}" />
 											<label id="lbfz" value="" />
 										</row>
 										<row>
-											<label value="时间段：" />
+											<label value="${c:l('TimeSlot:')}" />
 											<label />
 										</row>
 										<row>
-											<label value="从" />
+											<label value="${c:l('From')}" />
 											<label id="datefrom"
 												value="" />
 										</row>
 										<row>
-											<label value="到" />
+											<label value="${c:l('To')}" />
 											<label id="dateto" value="" />
 										</row>
 									</rows>
@@ -68,10 +69,10 @@
 			<south size="60px" autoscroll="true" border="none">
 				<listbox id="listtj" fixedLayout="true"  >
 					<listhead>
-						<listheader label="返回值" sort="none"></listheader>
-						<listheader label="最大值" sort="none"></listheader>
-						<listheader label="平均值" sort="none"></listheader>
-						<listheader label="最新值" sort="none"></listheader>
+						<listheader label="${c:l('ReturnValue')}" sort="none"></listheader>
+						<listheader label="${c:l('MaximumValue')}" sort="none"></listheader>
+						<listheader label="${c:l('AverageValue')}" sort="none"></listheader>
+						<listheader label="${c:l('MostRecentValue')}" sort="none"></listheader>
 					</listhead>
 				</listbox>
 			</south>

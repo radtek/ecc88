@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
 <?page id="controlPage"?>
 <zk>
 	<borderlayout id="controlLayout"
@@ -23,7 +24,7 @@
 											<image class="pointer"
 												align="absbottom" id="homeImg"
 												src="/main/images/home.gif"
-												hover="/main/images/home_hover.gif" tooltiptext="设置当前节点在登录后自动显示"/>
+												hover="/main/images/home_hover.gif" tooltiptext="${c:l('SetCurrentNodeAfterLoginAutomaticallyDisplay')}"/>
 										</div>
 										<div sclass="eccTitleFont"
 											style="padding-top:2px;background: transparent;cursor:pointer;float:right;padding-right:10px;"
@@ -39,19 +40,19 @@
 												use="com.siteview.actions.ImageButton"
 												src="/main/control/images/listview.gif"
 												hover="/main/control/images/listview_hover.gif"
-												tooltiptext="列表视图" />
+												tooltiptext="${c:l('ListView')}" />
 											<image width="21px"
 												height="19px" id="btnIconView"
 												use="com.siteview.actions.ImageButton"
 												src="/main/control/images/icoview.gif"
 												hover="/main/control/images/icoview_hover.gif"
-												tooltiptext="图标视图" />
+												tooltiptext="${c:l('IconView')}" />
 											<image width="21px"
 												height="19px" id="btnTreeView"
 												use="com.siteview.actions.ImageButton"
 												src="/main/control/images/treeview.gif"
 												hover="/main/control/images/treeview_hover.gif"
-												tooltiptext="树状视图" />
+												tooltiptext="${c:l('TreeView')}" />
 											<image
 												src="/main/control/images/split.gif" />
 											<image width="21px"
@@ -59,13 +60,13 @@
 												use="com.siteview.actions.ImageButton"
 												src="/main/control/images/subgroup.gif"
 												hover="/main/control/images/subgroup_hover.gif"
-												tooltiptext="显示缩略 " />
+												tooltiptext="${c:l('DisplayThumbnail')}" />
 											<image width="21px"
 												height="19px" id="btnDisplayInherit"
 												use="com.siteview.actions.ImageButton"
 												src="/main/control/images/showchildren.gif"
 												hover="/main/control/images/showchildren_hover.gif"
-												tooltiptext="显示细节" />
+												tooltiptext="${c:l('DisplayDetails')}" />
 											<image
 												src="/main/control/images/split.gif" />
 											<image width="21px"
@@ -73,20 +74,22 @@
 												use="com.siteview.actions.ImageButton"
 												src="/main/control/images/leftdoor.gif"
 												hover="/main/control/images/leftdoor_hover.gif"
-												tooltiptext="显示/隐藏整体树 " />
+												tooltiptext="${c:l('Show/HideTree')}" />
 											<image width="21px"
 												height="19px" id="btnRightActionVisible"
 												use="com.siteview.actions.ImageButton"
 												src="/main/control/images/rightdoor.gif"
 												hover="/main/control/images/rightdoor_hover.gif"
-												tooltiptext="显示/隐藏操作面板" />
+												tooltiptext="${c:l('Show/HideOperationPanel')}" />
 										</div>
 										<div 
 											style="text-align:bottom;float:right;padding-right:15px;padding-bottom:2px">
 											<combobox id="favSelect" readonly="true"
 												rows="1"
 												use="com.siteview.ecc.util.FavouriteSelect" /><image src="/main/images/none.gif" width="3px" height="19px"/>
-												列表每页<combobox width="20px" readonly="true" id="boxPageSize" value="15" use="com.siteview.ecc.treeview.controls.ListboxPageSize"/>条
+												<label value="${c:l('ListPage')}"/>
+												<combobox width="20px" readonly="true" id="boxPageSize" value="15" use="com.siteview.ecc.treeview.controls.ListboxPageSize"/>
+												<label value="${c:l('Article')}"/>
 											
 										</div>
 									</div>
@@ -123,11 +126,11 @@
 															style="border-style:outset;" border="none">
 															<div  align="left" style="margin-left:10px;" height="98%" width="98%"><button
 																		id="btndetail" sclass="btn" height="23px"
-																		label="详细信息">
+																		label="${c:l('DetailedInformation')}">
 																	</button>
 																	<groupbox  height="85%" closable="false"
 																		width="98%"  style="margin-left:0px;margin:0px 0px 0px 0px;padding: 0px 0 0px 0">
-																		<caption label="数据记录"/>
+																		<caption label="${c:l('DataRecording')}"/>
 																			<grid height="100%" 
 																			style="overflow-y:auto;margin-left:0px;">
 																				<columns>
@@ -143,30 +146,30 @@
 																				<rows>
 																					<row>
 																						<label
-																							value="正常：" />
+																							value="${c:l('Good:')}" />
 																						<label
 																							id="lbok" style="background-color:#00FF00;" />
 																						<label
-																							value="危险：" />
+																							value="${c:l('Warning:')}" />
 																						<label
 																							id="lbdanger" style="background-color:#FFFF00;"
 																							value="" />
 																					</row>
 																					<row>
 																						<label
-																							value="错误：" />
+																							value="${c:l('Error:')}" />
 																						<label
 																							id="lberror" style="background-color:#FF0000;"
 																							value="" />
 																						<label
-																							value="禁止：" />
+																							value="${c:l('Disable:')}" />
 																						<label
 																							id="lbdisable" style="background-color:#FFA500;" />
 																					</row>
 																					<row 
 																						spans="1,3">
 																						<label  
-																							value="阀值：" />
+																							value="${c:l('Threshold:')}" />
 																						<label   maxlength="34" multiline="false"
 													
 																							id="lbfz" value="" />
@@ -174,20 +177,20 @@
 																					<row
 																						spans="1,3">
 																						<label
-																							value="时间段：" />
+																							value="${c:l('TimeSlot:')}" />
 																						<label />
 																					</row>
 																					<row 
 																						spans="1,3">
 																						<label
-																							value="从" />
+																							value="${c:l('From')}" />
 																						<label
 																							id="datefrom" value="" />
 																					</row>
 																					<row
 																						spans="1,3">
 																						<label
-																							value="到" />
+																							value="${c:l('To')}" />
 																						<label
 																							id="dateto" value="" />
 																					</row>
@@ -205,16 +208,16 @@
 														fixedLayout="true">
 														<listhead>
 															<listheader align="left"
-																label="返回值" sort="none">
+																label="${c:l('ReturnValue')}" sort="none">
 															</listheader>
 															<listheader align="center"
-																label="最大值" width="120px" sort="none">
+																label="${c:l('MaximumValue')}" width="120px" sort="none">
 															</listheader>
 															<listheader align="center"
-																label="平均值" width="120px" sort="none">
+																label="${c:l('AverageValue')}" width="120px" sort="none">
 															</listheader>
 															<listheader align="center"
-																label="最新值" width="120px" sort="none">
+																label="${c:l('MostRecentValue')}" width="120px" sort="none">
 															</listheader>
 														</listhead>
 													</listbox>
@@ -232,58 +235,58 @@
 										<div style="float:left">
 										<image
 											src="/main/images/none.gif" width="10px" />
-										<label value="状态: " />
+										<label value="${c:l('State:')}" />
 										<image align="absmiddle"
 											src="/main/control/images/state_grey.gif" />
-										<label value="定义错误; " />
+										<label value="${c:l('DefinitionOfError;')}" />
 										<image align="absmiddle"
 											src="/main/control/images/state_dark.gif" />
-										<label value="无监测数据; " />
+										<label value="${c:l('NoMonitoringData;')}" />
 										<image align="absmiddle"
 											src="/main/control/images/state_green.gif" />
-										<label value="正常; " />
+										<label value="${c:l('Good;')}" />
 										<image align="absmiddle"
 											src="/main/control/images/state_yellow.gif" />
-										<label value="危险; " />
+										<label value="${c:l('Warning;')}" />
 										<image align="absmiddle"
 											src="/main/control/images/state_red.gif" />
-										<label value="错误; " />
+										<label value="${c:l('Error;')}" />
 										<image align="absmiddle"
 											src="/main/control/images/state_stop.gif" />
-										<label value="禁止" />
+										<label value="${c:l('Disable')}" />
 										</div>
 										<div style="float:right">
 										<listbox  id="slider_timer" 
 											mold="select" rows="1">
-											<listitem label="每1秒获取更新"
+											<listitem label="${c:l('EverySecondUpdates')}"
 												value="1" />
-											<listitem label="每2秒获取更新"
+											<listitem label="${c:l('Every2SecondsUpdates')}"
 												value="2" />
-											<listitem label="每3秒获取更新"
+											<listitem label="${c:l('Every3SecondsUpdates')}"
 												value="3" />
-											<listitem label="每5秒获取更新"
+											<listitem label="${c:l('Every5SecondsUpdates')}"
 												value="5" />
-											<listitem label="每10秒获取更新"
+											<listitem label="${c:l('Every10SecondsUpdates')}"
 												value="10" />
-											<listitem label="每15秒获取更新"
+											<listitem label="${c:l('Every12SecondsUpdates')}"
 												value="15" />
-											<listitem label="每20秒获取更新"
+											<listitem label="${c:l('Every20SecondsUpdates')}"
 												value="20" />
-											<listitem label="每30秒获取更新"
+											<listitem label="${c:l('Every30SecondsUpdates')}"
 												value="30" selected="true" />
-											<listitem label="每40秒获取更新"
+											<listitem label="${c:l('Every40SecondsUpdates')}"
 												value="40" />
-											<listitem label="每50秒获取更新"
+											<listitem label="${c:l('Every50SecondsUpdates')}"
 												value="50" />
-											<listitem label="每60秒获取更新"
+											<listitem label="${c:l('Every60SecondsUpdates')}"
 												value="60" />
-											<listitem label="每70秒获取更新"
+											<listitem label="${c:l('Every70SecondsUpdates')}"
 												value="70" />
-											<listitem label="每80秒获取更新"
+											<listitem label="${c:l('Every80SecondsUpdates')}"
 												value="80" />
-											<listitem label="每90秒获取更新"
+											<listitem label="${c:l('Every90SecondsUpdates')}"
 												value="90" />
-											<listitem label="每100秒获取更新"
+											<listitem label="${c:l('Every100SecondsUpdates')}"
 												value="100" />
 										</listbox>
 										</div>

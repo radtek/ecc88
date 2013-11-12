@@ -8,8 +8,8 @@
 			
 			<listbox id="mainMenu">
 				<listhead sizable="true">
-					<listheader label="名称" height="25px" width="120px"/>
-					<listheader label="说明" height="25px"/>
+					<listheader label="${c:l('Name')}" height="25px" width="120px"/>
+					<listheader label="${c:l('Explain')}" height="25px"/>
 				</listhead>
 							
 			</listbox>

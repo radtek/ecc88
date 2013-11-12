@@ -1,5 +1,6 @@
 package com.siteview.ecc.controlpanel;
 
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Page;
 import org.zkoss.zul.Column;
 import org.zkoss.zul.Label;
@@ -16,7 +17,7 @@ public class EccListhead extends Listhead {
 
 	public void initHeader(EccListModel model)
 	{
-		Listheader selHeader=new Listheader("״̬");
+		Listheader selHeader=new Listheader(Labels.getLabel("State"));
 		selHeader.setWidth("55px");
 		selHeader.setAlign("left");
 		selHeader.setStyle("width:55px;overflow:visible");

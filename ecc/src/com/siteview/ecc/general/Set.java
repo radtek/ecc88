@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Properties;
 
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zhtml.Messagebox;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.Session;
@@ -126,7 +127,7 @@ public class Set extends GenericAutowireComposer {
 			item.addEventListener("onClick", new SelectListener(vi));
 			Listcell lc1 = new Listcell();
 			Listcell lc2 = new Listcell();
-			item.setHeight("22px"); 
+			item.setHeight("22px");
 
 			setImageDscr(vi.getItemDataZulName());
 			Image image = new Image();
@@ -146,19 +147,23 @@ public class Set extends GenericAutowireComposer {
 		public void setImageDscr(String zulName) {
 			if (zulName.equals("About")) {
 				pic = "/main/images/about.gif";
-				dscr = "提供北京游龙网网络科技有限公司的简介，同时也提供了公司网站的超链接，欢迎用户浏览，以便获取更为全面的技术服务。";//描述添加在这
+			//	dscr = "提供北京游龙网网络科技有限公司的简介，同时也提供了公司网站的超链接，欢迎用户浏览，以便获取更为全面的技术服务。";描述添加在这
+				dscr = Labels.getLabel("ProductIntroductionTitle");
 			}
 			if (zulName.equals("License")) {
 				pic = "/main/images/license.gif";
-				dscr = "显示用户购买和已使用的点数、购买和已使用的网络设备数、已购买功能模块的信息，方便用户及时地了解系统的使用情况。";
+			//	dscr = "显示用户购买和已使用的点数、购买和已使用的网络设备数、已购买功能模块的信息，方便用户及时地了解系统的使用情况。";
+				dscr = Labels.getLabel("SoftwareLicenseTitle");
 			}
 			if (zulName.equals("SysLogSet")) {
 				pic = "/main/images/log.gif";
-				dscr = "对syslog采集数据的参数及数据保存期限等信息进行设置。";
+			//	dscr = "对syslog采集数据的参数及数据保存期限等信息进行设置。";
+				dscr = Labels.getLabel("SysLogSettingsTitle");
 			}
 			if (zulName.equals("OperateLog")) {
 				pic = "/main/images/log.gif";
-				dscr = "用于记录所有用户的操作并展示，用户可筛选条件定义对操作日志查询。";
+			//	dscr = "用于记录所有用户的操作并展示，用户可筛选条件定义对操作日志查询。";
+				dscr = Labels.getLabel("UserOperationLogTitle");
 			}
 			if(zulName.equals("m_userOtherPublic")){
 				pic = "/main/images/log.gif";
@@ -166,31 +171,38 @@ public class Set extends GenericAutowireComposer {
 			}
 			if (zulName.equals("SystemDiagnosis")) {
 				pic = "/main/images/diagnosis.gif";
-				dscr = "用于对系统基本运行状况的分析与诊断，便于用户根据诊断结果，修复系统。";
+			//	dscr = "用于对系统基本运行状况的分析与诊断，便于用户根据诊断结果，修复系统。";
+				dscr = Labels.getLabel("SystemDiagnosisTitle");
 			}
 			if (zulName.equals("Task")) {
 				pic = "/main/images/task.gif";
-				dscr = "实现监测器工作时间的定义，更方便用户根据实际需要安排监测器监测及报警工作时间。";
+			//	dscr = "实现监测器工作时间的定义，更方便用户根据实际需要安排监测器监测及报警工作时间。";
+				dscr = Labels.getLabel("TaskPlanTitle");
 			}
 			if (zulName.equals("SetMail")) {
 				pic = "/main/images/email.gif";
-				dscr = "用来进行邮件接收地址及邮件发送服务器配置，为邮件报警发送提供先决条件。";
+			//	dscr = "用来进行邮件接收地址及邮件发送服务器配置，为邮件报警发送提供先决条件。";
+				dscr = Labels.getLabel("MailSettingTitle");
 			}
 			if (zulName.equals("SetSms")) {
 				pic = "/main/images/sms.gif";
-				dscr = "用来进行短信接收地址及短信发送服务器配置，为短信报警发送提供先决条件。";
+			//	dscr = "用来进行短信接收地址及短信发送服务器配置，为短信报警发送提供先决条件。";
+				dscr = Labels.getLabel("MessageSettingsTitle");
 			}
 			if (zulName.equals("SetGeneral")) {
 				pic = "/main/images/settings.gif";
-				dscr = "用来进行登陆访问设置，配置是否需要IP地址验证，防止非法接入。";
+			//	dscr = "用来进行登陆访问设置，配置是否需要IP地址验证，防止非法接入。";
+				dscr = Labels.getLabel("BasicSettingTitle");
 			}
 			if (zulName.equals("SetMaintain")) {
 				pic = "/main/images/maintain.gif";
-				dscr = "实现值班表的添加及详细值班表的安排，支持多种值班表类型的添加。";
+			//	dscr = "实现值班表的添加及详细值班表的安排，支持多种值班表类型的添加。";
+				dscr = Labels.getLabel("DutyTableSetTitle");
 			}
 			if (zulName.equals("UserManager")) {
 				pic = "/main/images/user.gif";
-				dscr = "实现用户的添加，管理设置的设置及用户权限的分配。";
+			//	dscr = "实现用户的添加，管理设置的设置及用户权限的分配。";
+				dscr = Labels.getLabel("UserManagementTitle");
 			}
 		}
 	}

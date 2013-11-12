@@ -1,4 +1,5 @@
-﻿<zk>
+﻿<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<zk>
 <window id="progressWindow" use="com.siteview.ecc.progress.ProgressWindow" width="702px" height="50px" closable="true" onClose="self.visible = false; event.stopPropagation();" sizable="false">
 	<borderlayout id="progressComposer" apply="com.siteview.ecc.progress.ProgressComposer" style="border:none;margin:0">
 	<north size="0px" border="none"><timer id="progressTimer" delay="1000" repeats="true" running="false"/></north>
@@ -8,7 +9,7 @@
 	<south size="25px" border="none">
 	<div style="float:right;padding-right:5px">
 		<label id="excutingInfoLabel" style="color:blue"/>
-		<button id="btnCancel" sclass="btnDefault" label="取消" width="60px"/>
+		<button id="btnCancel" sclass="btnDefault" label="${c:l('Cancel')}" width="60px"/>
 	</div>	
 	</south>
 	</borderlayout>
