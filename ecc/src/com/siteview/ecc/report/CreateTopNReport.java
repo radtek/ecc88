@@ -147,7 +147,7 @@ public class CreateTopNReport extends GenericForwardComposer {
 		String strZipDirPath = null;// "c:\\xxx.zip";// FIXME 需要发送附件到对方邮箱
 		if (strMailTo == null || strMailTo.equals("") || strMailTo.contains(" ")) {
 			try {
-				Messagebox.show("该报告中没有相关E_MAIL地址信息!", "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("NoE_MAILAddressInformationReport"), "提示", Messagebox.OK, Messagebox.INFORMATION);
 			} catch (InterruptedException e) {
 			}
 			return;
@@ -177,16 +177,16 @@ public class CreateTopNReport extends GenericForwardComposer {
 			themail.setNamePass(strUser, strPassword);
 			boolean ret = themail.sendout();
 			if (ret) {
-				Messagebox.show("邮件发送成功!", "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("SendMailSuccess"), "提示", Messagebox.OK, Messagebox.INFORMATION);
 			} else {
 				try {
-					Messagebox.show("发送邮件不成功!", "提示", Messagebox.OK, Messagebox.INFORMATION);
+					Messagebox.show(Labels.getLabel("SendMailFailed"), "提示", Messagebox.OK, Messagebox.INFORMATION);
 				} catch (InterruptedException e1) {
 				}
 			}
 		} catch (Exception e) {
 			try {
-				Messagebox.show("发送邮件不成功:" + e.getMessage(), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("SendMailFailed:") + e.getMessage(), "提示", Messagebox.OK, Messagebox.INFORMATION);
 			} catch (InterruptedException e1) {
 			}
 		}
@@ -232,12 +232,12 @@ public class CreateTopNReport extends GenericForwardComposer {
 		strName = getValue("Title");
 		if (strSort==null||strSort.equals(""))
 		{
-			strSort="升序";
+			strSort=Labels.getLabel("Ascending");
 		}
 		String strget=getValue("GetValue");
 		if(strget==null||strget.equals(""))
 		{
-			strget="最新";
+			strget=Labels.getLabel("Newest");
 		}
 //		TopNReport tn = new TopNReport(strName, strIds, strSelType, strMark, strSort, strget,strCount, tmStart, tmEnd, w);
 //		// 生成图片
@@ -251,27 +251,27 @@ public class CreateTopNReport extends GenericForwardComposer {
 		gr.setRows(3);
 		// gr.setFixedLayout(true);
 		Listhead lh = new Listhead();
-		Listheader lhr = new Listheader("设备名称");
+		Listheader lhr = new Listheader(Labels.getLabel("DeviceNameTile"));
 		lhr.setSort("auto");
 		lhr.setWidth("30%");
 		lh.appendChild(lhr);
-		lhr = new Listheader("监测器名称");
+		lhr = new Listheader(Labels.getLabel("MonitorName"));
 		lhr.setSort("auto");
 		lhr.setWidth("30%");
 		lh.appendChild(lhr);
-		lhr = new Listheader("最大值");
+		lhr = new Listheader(Labels.getLabel("MaximumValue"));
 		lhr.setSort("auto");
 		lhr.setWidth("10%");
 		lh.appendChild(lhr);
-		lhr = new Listheader("平均值 ");
+		lhr = new Listheader(Labels.getLabel("AverageValue"));
 		lhr.setSort("auto");
 		lhr.setWidth("10%");
 		lh.appendChild(lhr);
-		lhr = new Listheader("最小值");
+		lhr = new Listheader(Labels.getLabel("MinimumValue"));
 		lhr.setSort("auto");
 		lhr.setWidth("10%");
 		lh.appendChild(lhr);
-		lhr = new Listheader("最近一次描述");
+		lhr = new Listheader(Labels.getLabel("ARecentDescription"));
 		lhr.setSort("auto");
 		lh.appendChild(lhr);
 		gr.appendChild(lh);

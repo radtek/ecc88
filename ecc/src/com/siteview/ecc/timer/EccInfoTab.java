@@ -3,6 +3,7 @@ package com.siteview.ecc.timer;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zul.Tab;
 
 import com.siteview.base.queue.IQueueEvent;
@@ -24,7 +25,7 @@ public class EccInfoTab extends Tab implements TimerListener {
 				onlineLayoutComposer.echoEvent(chatHistory.remove(chatHistory
 						.size() - 1));
 
-			setLabel("系统信息");
+			setLabel(Labels.getLabel("SystemInformation"));
 		}
 		this.onlyDispMsgCount = onlyDispMsgCount;
 	}
@@ -48,7 +49,7 @@ public class EccInfoTab extends Tab implements TimerListener {
 		if (event instanceof OnlineEvent) {
 			if (onlyDispMsgCount) {
 				chatHistory.add(event);
-				setLabel("系统信息(" + chatHistory.size() + ")");
+				setLabel(Labels.getLabel("SystemInformation")+"(" + chatHistory.size() + ")");
 			} else
 				onlineLayoutComposer.echoEvent(event);
 		}

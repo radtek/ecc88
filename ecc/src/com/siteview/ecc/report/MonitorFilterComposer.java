@@ -13,6 +13,7 @@ import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zhtml.Messagebox;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.Event;
@@ -65,7 +66,7 @@ public class MonitorFilterComposer  extends GenericForwardComposer{
 		try {
 			init();
 		} catch (Exception e) {
-			Messagebox.show("³õÊ¼»¯´°¿ÚÊ±³ö´í£¬ÇëÖØÊÔ£¡","´íÎó",Messagebox.OK,Messagebox.ERROR);
+			Messagebox.show(Labels.getLabel("ErrorInitializingWindowTryAgain"),"´íÎó",Messagebox.OK,Messagebox.ERROR);
 			e.printStackTrace();
 		}
 	}
@@ -79,7 +80,7 @@ public class MonitorFilterComposer  extends GenericForwardComposer{
 		if(frequencyListboxData.getItems()!=null && frequencyListboxData.getItems().size()>0) frequencyListboxData.getItems().clear();
 		Listitem blankItem = new Listitem();
 		blankItem.setSelected(true);
-		blankItem.appendChild(new Listcell("¼à²âÆµÂÊ"));
+		blankItem.appendChild(new Listcell(Labels.getLabel("MonitoringFrequency")));
 		frequencyListboxData.appendChild(blankItem);
 		Object[] obj = freqCollection.toArray();
 		Arrays.sort(obj, new Comparator<Object>(){

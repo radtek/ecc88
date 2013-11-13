@@ -75,10 +75,10 @@ public class TopNLogListmodel extends ListModelList implements ListitemRenderer
 			}
 			logbean.setAuthor(author);
 			String name = getfilename(filename, filetype);
-			String enable = "不存在";
+			String enable = Labels.getLabel("NotExist");
 			if (new File(name).exists())
 			{
-				enable = "存在";
+				enable = Labels.getLabel("Exist");
 			}
 			logbean.setEnabled(enable);
 			list.add(logbean);
@@ -270,7 +270,7 @@ public class TopNLogListmodel extends ListModelList implements ListitemRenderer
 		tmpcell.setParent(item);
 		String isvalid=logBean.getEnabled();
 		tmpcell = new Listcell(isvalid);
-		if(isvalid.equals("不存在"))
+		if(isvalid.equals(Labels.getLabel("NotExist")))
 		{
 			item.setStyle("color:gray");
 		}

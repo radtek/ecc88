@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.Events;
@@ -75,9 +76,9 @@ public class TopNListitemModel extends ListModelList implements ListitemRenderer
 				bean.setPeriod(sectionData.get("Period"));
 				if (deny != null) {
 					if (deny.trim().toLowerCase().equals("no")) {
-						bean.setDeny("‘ –Ì");
+						bean.setDeny(Labels.getLabel("Enable"));
 					} else
-						bean.setDeny("Ω˚÷π");
+						bean.setDeny(Labels.getLabel("Disable"));
 				}
 				String filetype=sectionData.get("fileType");
 				if(filetype==null||filetype.equals(""))
@@ -138,8 +139,8 @@ public class TopNListitemModel extends ListModelList implements ListitemRenderer
 		Image img=new Image("/main/images/filetype/"+fileType+".gif");
 		img.setTooltiptext(fileType);
 		img.setParent(cell);
-		if(m.getDeny().equals("‘ –Ì")){
-			Listcell l1=new Listcell("‘ –Ì");
+		if(m.getDeny().equals(Labels.getLabel("Enable"))){
+			Listcell l1=new Listcell(Labels.getLabel("Enable"));
 			l1.setImage("/main/images/button/ico/enable_bt.gif");
 			l1.setParent(item);
 		}else{

@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.HtmlMacroComponent;
 import org.zkoss.zul.Caption;
@@ -40,7 +41,7 @@ public class DisplayComponent extends HtmlMacroComponent{
 				if (this.getCaption().getLabel() == null) this.getCaption().setLabel("No title");
 				Listhead head = getListhead();
 				Listheader header = new Listheader();
-				header.setLabel("ÐòºÅ");
+				header.setLabel(Labels.getLabel("SerialNumber"));
 				header.setParent(head);
 				for (String title : top10.getTitles()){
 					header = new Listheader();

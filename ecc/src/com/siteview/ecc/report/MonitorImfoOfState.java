@@ -11,6 +11,7 @@ import java.util.Random;
 import org.apache.log4j.Logger;
 import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.general.PieDataset;
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.Event;
@@ -197,7 +198,7 @@ public class MonitorImfoOfState extends Window {
 				}
 				if (startTime == null || endTime == null) {
 					Row blankRow = new Row();
-					blankRow.appendChild(new Label("无数据！"));
+					blankRow.appendChild(new Label(Labels.getLabel("NoData")));
 					getStatePeriodRow().appendChild(blankRow);
 					continue;
 				}
@@ -247,8 +248,8 @@ public class MonitorImfoOfState extends Window {
 		MonitorTemplate tmplate = info.getMonitorTemplate();
 		String initFreq = "";
 		for (Map<String, String> keyMap : tmplate.get_Parameter_Items()) {
-			if ("监测频率".equals(keyMap.get("sv_label"))) {
-				initFreq = keyMap.get("sv_value") + "分钟";
+			if (Labels.getLabel("MonitoringFrequency").equals(keyMap.get("sv_label"))) {
+				initFreq = keyMap.get("sv_value") + Labels.getLabel("Minute");
 				break;
 			}
 		}
@@ -268,16 +269,16 @@ public class MonitorImfoOfState extends Window {
 		StringBuilder sb = new StringBuilder();
 		long day = l / (24 * 60 * 60 * 1000);
 		if (day > 0)
-			sb.append(day).append("天");
+			sb.append(day).append(Labels.getLabel("Day"));
 		long hour = (l / (60 * 60 * 1000) - day * 24);
 		if (hour > 0)
-			sb.append(hour).append("小时");
+			sb.append(hour).append(Labels.getLabel("HourX"));
 		long min = ((l / (60 * 1000)) - day * 24 * 60 - hour * 60);
 		if (min > 0)
-			sb.append(min).append("分钟");
+			sb.append(min).append(Labels.getLabel("MinuteZ"));
 		long s = (l / 1000 - day * 24 * 60 * 60 - hour * 60 * 60 - min * 60);
 		if (s > 0)
-			sb.append(s).append("秒");
+			sb.append(s).append(Labels.getLabel("Seconds"));
 		if("".equals(sb.toString())){
 			sb.append(this.getInitFrequecy(getSelectedNode()));
 		}
@@ -287,11 +288,11 @@ public class MonitorImfoOfState extends Window {
 
 	private static PieDataset createDataset(StateBean sb) {
 		DefaultPieDataset localDefaultPieDataset = new DefaultPieDataset();
-		localDefaultPieDataset.setValue("正常", sb.getOk());
-		localDefaultPieDataset.setValue("危险", sb.getWarn());
-		localDefaultPieDataset.setValue("错误", sb.getError());
-		localDefaultPieDataset.setValue("禁止", sb.getDisable());
-		localDefaultPieDataset.setValue("无监测数据", sb.getBad());
+		localDefaultPieDataset.setValue(Labels.getLabel("Good"), sb.getOk());
+		localDefaultPieDataset.setValue(Labels.getLabel("Warning"), sb.getWarn());
+		localDefaultPieDataset.setValue(Labels.getLabel("Error"), sb.getError());
+		localDefaultPieDataset.setValue(Labels.getLabel("Disable"), sb.getDisable());
+		localDefaultPieDataset.setValue(Labels.getLabel("NoMonitoringData"), sb.getBad());
 		return localDefaultPieDataset;
 	}
 	public Label getGroupLink(){

@@ -424,16 +424,16 @@ public class AlertRuleView extends AbstractWindow {
 						Window win = null;
 						if (alertItem instanceof EmailAlert) {
 							win = (Window) Executions.createComponents(EmailAlert_TargetUrl, null, null);
-							win.setTitle("编辑 Email报警");
+							win.setTitle(Labels.getLabel("EditEmailAlarm"));
 						} else if (alertItem instanceof ScriptAlert) {
 							win = (Window) Executions.createComponents(ScriptAlert_TargetUrl, null, null);
-							win.setTitle("编辑 脚本报警");
+							win.setTitle(Labels.getLabel("EditScriptAlarm"));
 						} else if (alertItem instanceof SMSAlert) {
 							win = (Window) Executions.createComponents(SmsAlert_TargetUrl, null, null);
-							win.setTitle("编辑短信报警");
+							win.setTitle(Labels.getLabel("EditSMSAlarm"));
 						} else if (alertItem instanceof SoundAlert) {
 							win = (Window) Executions.createComponents(SoundAlert_TargetUrl, null, null);
-							win.setTitle("编辑 声音报警");
+							win.setTitle(Labels.getLabel("EditVoiceAlarm"));
 						}
 						if (win != null) {
 							getDesktop().getSession().setAttribute("CurrentWindow", win);
@@ -451,7 +451,7 @@ public class AlertRuleView extends AbstractWindow {
 			}else
 			{
 				try{
-					Message.showInfo("用户:"+userView.getLoginName()+" 没有  编辑报警  的权限!");
+					Message.showInfo(Labels.getLabel("User:")+userView.getLoginName()+Labels.getLabel("NoPermissionEditAlarm"));
 					return;
 				}catch(Exception e){}
 			}
@@ -560,7 +560,7 @@ public class AlertRuleView extends AbstractWindow {
 		if(this.editFlag){
 			for (BaseAlert basealert : result) {
 				Listitem item = BaseTools.setRow(getAlertRuleListbox(), basealert, basealert.getName(), basealert.getType().getComponent(),
-						basealert.getCategory().getComponent(), basealert.getState().getComponent(), BaseTools.getWithLink("", "编辑",
+						basealert.getCategory().getComponent(), basealert.getState().getComponent(), BaseTools.getWithLink("", Labels.getLabel("Editor"),
 								"/main/images/alert/edit.gif", new EditAlertMenuClickListener(this, basealert)));
 				item.setTooltip(getDetailPopup(basealert));
 				if (firstItem == null) firstItem = item;
@@ -568,7 +568,7 @@ public class AlertRuleView extends AbstractWindow {
 		}else{
 			for (BaseAlert basealert : result) {
 				Listitem item = BaseTools.setRow(getAlertRuleListbox(), basealert, basealert.getName(), basealert.getType().getComponent(),
-						basealert.getCategory().getComponent(), basealert.getState().getComponent(), BaseTools.getWithLink("", "编辑",
+						basealert.getCategory().getComponent(), basealert.getState().getComponent(), BaseTools.getWithLink("", Labels.getLabel("Editor"),
 								"/main/images/alert/edit_false.gif", new EditAlertMenuClickListener(this, basealert)));
 				item.setTooltip(getDetailPopup(basealert));
 				if (firstItem == null) firstItem = item;
@@ -634,62 +634,62 @@ public class AlertRuleView extends AbstractWindow {
 	private void getTooltiptext(TooltipPopup tooltippopup, AlertLogItem alertlogitem) {
 		tooltippopup.setTitle(alertlogitem.getAlertName());
 		tooltippopup.setImage(alertlogitem.getAlertType().getImage());
-		tooltippopup.addDescription("报警时间", DATE_TO_STRING.format(alertlogitem.getAlertTime()));
-		tooltippopup.addDescription("设备名称", alertlogitem.getEntityName());
-		tooltippopup.addDescription("监测器名称", alertlogitem.getMonitorName());
-		tooltippopup.addDescription("报警接收人", alertlogitem.getAlertReceiver());
-		tooltippopup.addDescription("报警状态", alertlogitem.getAlertStatus().toString());
+		tooltippopup.addDescription(Labels.getLabel("AlarmTime"), DATE_TO_STRING.format(alertlogitem.getAlertTime()));
+		tooltippopup.addDescription(Labels.getLabel("DeviceNameTile"), alertlogitem.getEntityName());
+		tooltippopup.addDescription(Labels.getLabel("MonitorName"), alertlogitem.getMonitorName());
+		tooltippopup.addDescription(Labels.getLabel("AlarmReceiver"), alertlogitem.getAlertReceiver());
+		tooltippopup.addDescription(Labels.getLabel("AlarmStatus"), alertlogitem.getAlertStatus().toString());
 	}
 
 	private void getTooltiptext(TooltipPopup tooltippopup, BaseAlert basealert) {
 		tooltippopup.setTitle(basealert.getName());
 		tooltippopup.setImage(basealert.getType().getImage());
-		tooltippopup.addDescription("报警类型：", basealert.getType().toString());
+		tooltippopup.addDescription(Labels.getLabel("AlarmType:"), basealert.getType().toString());
 		if (basealert.getType() == AlertType.EmailAlert) {
-			tooltippopup.addDescription("报警邮件接收地址：", ((EmailAlert) basealert).getEmailAddresss());
-			tooltippopup.addDescription("其它邮件地址：", ((EmailAlert) basealert).getOtherAddress());
-			tooltippopup.addDescription("邮件模板：", ((EmailAlert) basealert).getEmailTemplate());
-			tooltippopup.addDescription("升级次数：", ((EmailAlert) basealert).getUpgradeTimes());
-			tooltippopup.addDescription("升级接收人地址：", ((EmailAlert) basealert).getReceiverAddress());
-			tooltippopup.addDescription("停止次数：", ((EmailAlert) basealert).getStopTimes());
-			tooltippopup.addDescription("值班报警列表：", ((EmailAlert) basealert).getWatchSheet());
+			tooltippopup.addDescription(Labels.getLabel("AlarmReceiveMailAddress:"), ((EmailAlert) basealert).getEmailAddresss());
+			tooltippopup.addDescription(Labels.getLabel("OtherEmailAddress"), ((EmailAlert) basealert).getOtherAddress());
+			tooltippopup.addDescription(Labels.getLabel("EmailTemplate:"), ((EmailAlert) basealert).getEmailTemplate());
+			tooltippopup.addDescription(Labels.getLabel("UpgradeNumber"), ((EmailAlert) basealert).getUpgradeTimes());
+			tooltippopup.addDescription(Labels.getLabel("UpgradeRecipientAddress"), ((EmailAlert) basealert).getReceiverAddress());
+			tooltippopup.addDescription(Labels.getLabel("StoppingTime"), ((EmailAlert) basealert).getStopTimes());
+			tooltippopup.addDescription(Labels.getLabel("WatchAlarmList"), ((EmailAlert) basealert).getWatchSheet());
 		} else if (basealert.getType() == AlertType.SmsAlert) {
-			tooltippopup.addDescription("报警接收手机号：", ((SMSAlert) basealert).getSmsNumber());
-			tooltippopup.addDescription("其它手机号：", ((SMSAlert) basealert).getOtherNumber());
-			tooltippopup.addDescription("发送方式：", ((SMSAlert) basealert).getSendMode());
-			tooltippopup.addDescription("短信模板：", ((SMSAlert) basealert).getSMSTemplate());
-			tooltippopup.addDescription("升级次数：", ((SMSAlert) basealert).getUpgradeTimes());
-			tooltippopup.addDescription("升级接收人地址：", ((SMSAlert) basealert).getReceiverAddress());
-			tooltippopup.addDescription("停止次数：", ((SMSAlert) basealert).getStopTimes());
-			tooltippopup.addDescription("值班配置列表：", ((SMSAlert) basealert).getWatchSheet());
+			tooltippopup.addDescription(Labels.getLabel("AlarmReceivingPhoneNumber:"), ((SMSAlert) basealert).getSmsNumber());
+			tooltippopup.addDescription(Labels.getLabel("OtherMobilePhone:"), ((SMSAlert) basealert).getOtherNumber());
+			tooltippopup.addDescription(Labels.getLabel("TransmissionMode"), ((SMSAlert) basealert).getSendMode());
+			tooltippopup.addDescription(Labels.getLabel("SMSTemplates:"), ((SMSAlert) basealert).getSMSTemplate());
+			tooltippopup.addDescription(Labels.getLabel("UpgradeNumber"), ((SMSAlert) basealert).getUpgradeTimes());
+			tooltippopup.addDescription(Labels.getLabel("UpgradeRecipientAddress"), ((SMSAlert) basealert).getReceiverAddress());
+			tooltippopup.addDescription(Labels.getLabel("StoppingTime"), ((SMSAlert) basealert).getStopTimes());
+			tooltippopup.addDescription(Labels.getLabel("OnDutyConfigurationList:"), ((SMSAlert) basealert).getWatchSheet());
 		} else if (basealert.getType() == AlertType.ScriptAlert) {
-			tooltippopup.addDescription("服务器：", ((ScriptAlert) basealert).getScriptServer());
-			tooltippopup.addDescription("脚本：", ((ScriptAlert) basealert).getScriptFile());
-			tooltippopup.addDescription("附加参数：", ((ScriptAlert) basealert).getScriptParam());
+			tooltippopup.addDescription(Labels.getLabel("Server:"), ((ScriptAlert) basealert).getScriptServer());
+			tooltippopup.addDescription(Labels.getLabel("Script:"), ((ScriptAlert) basealert).getScriptFile());
+			tooltippopup.addDescription(Labels.getLabel("AdditionalParameters:"), ((ScriptAlert) basealert).getScriptParam());
 		} else if (basealert.getType() == AlertType.SoundAlert) {
-			tooltippopup.addDescription("服务器名：", ((SoundAlert) basealert).getServerName());
-			tooltippopup.addDescription("登录名：", ((SoundAlert) basealert).getLoginName());
+			tooltippopup.addDescription(Labels.getLabel("ServerName:"), ((SoundAlert) basealert).getServerName());
+			tooltippopup.addDescription(Labels.getLabel("LoginName:"), ((SoundAlert) basealert).getLoginName());
 		}
-		tooltippopup.addDescription("报警策略：", basealert.getStrategy());
+		tooltippopup.addDescription(Labels.getLabel("AlarmStrategy:"), basealert.getStrategy());
 		tooltippopup.addDivRow();
-		tooltippopup.addDescription("报警事件：", basealert.getCategory().getDisplayString());
-		tooltippopup.addDescription("告警条件分类：", basealert.getTimes().getDisplayString());
+		tooltippopup.addDescription(Labels.getLabel("AlarmEvent:"), basealert.getCategory().getDisplayString());
+		tooltippopup.addDescription(Labels.getLabel("AlarmConditionClassification:"), basealert.getTimes().getDisplayString());
 
 		StringBuffer sb = new StringBuffer();
 		if (basealert.getTimes() == AlertTimes.Always) {
-			sb.append("总是发送，从第");
+			sb.append(Labels.getLabel("FrontAlwaysSend"));
 			sb.append(basealert.getAlways());
-			sb.append("次符合报警发送条件开始发送报警");
+			sb.append(Labels.getLabel("EndAlwaysSend"));
 		} else if (basealert.getTimes() == AlertTimes.Only) {
-			sb.append("发送一次，当第");
+			sb.append(Labels.getLabel("FrontSendAAlarm="));
 			sb.append(basealert.getOnly());
-			sb.append("次符合报警发送条件时发送报警");
+			sb.append(Labels.getLabel("EndSendAAlarm"));
 		} else if (basealert.getTimes() == AlertTimes.Select) {
-			sb.append("当第");
+			sb.append(Labels.getLabel("FrontSelectSend"));
 			sb.append(basealert.getSelect1());
-			sb.append("次符合报警发送条件时及其以后每重复");
+			sb.append(Labels.getLabel("MidSelectSend"));
 			sb.append(basealert.getSelect2());
-			sb.append("次时发送报警");
+			sb.append(Labels.getLabel("EndSelectSend"));
 		}
 		tooltippopup.addDescription("", sb.toString());
 		/*

@@ -1,5 +1,6 @@
 package com.siteview.ecc.alert.dao.type;
 
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zul.Image;
 import org.zkoss.zul.Label;
@@ -40,11 +41,11 @@ public enum AlertTimes implements TypeInterface{
 	@Override
 	public String getDisplayString() {
 		if (this == Always){
-			return "连续不断报警";
+			return Labels.getLabel("ContinuousAlarm");
 		}else if (this == Only){
-			return "只报警一次";
+			return Labels.getLabel("OnlyOneAlarmTime");
 		}else if (this == Select){
-			return "选择性发送报警";
+			return Labels.getLabel("SelectiveTransmitAlarm");
 		}
 		return "";
 	}

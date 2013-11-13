@@ -2,6 +2,7 @@ package com.siteview.ecc.controlpanel;
 
 import java.util.ArrayList;
 
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.Session;
 
@@ -23,19 +24,19 @@ public class EntityTableModel extends EccListModel
 		switch(idxCol)
 		{
 			case 0:
-				return "Ãû³Æ";
+				return Labels.getLabel("Name");
 			case 1:
-				return "¼à²âÆ÷";
+				return Labels.getLabel("Monitor");
 			case 2:
-				return "½ûÖ¹";
+				return Labels.getLabel("Disable");
 			case 3:
-				return "´íÎó";
+				return Labels.getLabel("Error");
 			case 4:
-				return "Î£ÏÕ";
+				return Labels.getLabel("Warning");
 			case 5:
-				return "ipµØÖ·";
+				return Labels.getLabel("IPAddress");
 			case 6:
-				return "Éè±¸ÀàĞÍ";
+				return Labels.getLabel("DeviceType");
 		}
 		return "";
 	}

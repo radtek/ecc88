@@ -2,6 +2,7 @@ package com.siteview.ecc.controlpanel;
 
 import java.util.ArrayList;
 
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.Session;
 
@@ -22,21 +23,21 @@ public class GroupTableModel extends EccListModel {
 		switch(idxCol)
 		{
 			case 0:
-				return "名称";
+				return Labels.getLabel("Name");
 			case 1:
-				return "设备数";
+				return Labels.getLabel("DeviceNumber");
 			case 2:
-				return "监测器数";
+				return Labels.getLabel("MonitorNumber");
 			case 3:
-				return "禁止数";
+				return Labels.getLabel("DisableNumber");
 			case 4:
-				return "错误";
+				return Labels.getLabel("Error");
 			case 5:
-				return "危险";
+				return Labels.getLabel("Warning");
 			case 6:
-				return "描述信息";
+				return Labels.getLabel("DescriptionInformation");
 			case 7:
-				return "依靠";
+				return Labels.getLabel("RelyOn");
 		}
 		return "";
 	}

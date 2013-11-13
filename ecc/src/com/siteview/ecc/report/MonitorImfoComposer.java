@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zhtml.Messagebox;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.Event;
@@ -58,7 +59,7 @@ public class MonitorImfoComposer extends GenericForwardComposer{
 	public void onClick$createExcel(Event event) throws InterruptedException{
 		try {
 			List<MonitorBean> beans = new ArrayList<MonitorBean>();
-			String msg = "是否导出全部检测器信息？点击'是'保存全部信息;点击'否'保存当前页信息";
+			String msg = Labels.getLabel("AllInfoDerivedDetectorSaveCurrentInfo");
 			int option = Messagebox.show(msg,"提示",Messagebox.YES|Messagebox.NO,Messagebox.INFORMATION);
 			if(option == Messagebox.YES){
 				int i = 0;
@@ -86,7 +87,7 @@ public class MonitorImfoComposer extends GenericForwardComposer{
 			}
 			final Window win = (Window) Executions.createComponents(
 					"/main/report/monitorreport/exportmonitorreport.zul", null, null);
-			win.setTitle("导出报表");
+			win.setTitle(Labels.getLabel("ExportReport"));
 			win.setAttribute("dataSource", beans);
 			win.setMaximizable(false);
 			win.setClosable(true);
@@ -101,7 +102,7 @@ public class MonitorImfoComposer extends GenericForwardComposer{
 		try{
 			final Window win = (Window) Executions.createComponents(
 					"/main/report/MonitorFilter.zul", null, null);
-			win.setTitle("监测器筛选");
+			win.setTitle(Labels.getLabel("MonitorScreen"));
 			win.setAttribute("listbox", listbox);
 			win.setMaximizable(false);
 			win.setClosable(true);
@@ -143,7 +144,7 @@ public class MonitorImfoComposer extends GenericForwardComposer{
 			return;
 		}
 		MonitorBean mbean = (MonitorBean) item.getValue();
-		moreInfo.setTitle("监测器详细信息: " + mbean.getMonitorName());
+		moreInfo.setTitle(Labels.getLabel("MonitorDetails:") + mbean.getMonitorName());
 		groupName.setValue(mbean.getGroupName());
 		entityName.setValue(mbean.getEntityName());
 		type.setValue(mbean.getMonitorType());
@@ -155,7 +156,7 @@ public class MonitorImfoComposer extends GenericForwardComposer{
 	}
 	
 	private void clear(){
-		moreInfo.setTitle("监测器详细信息");
+		moreInfo.setTitle(Labels.getLabel("MonitorDetails"));
 		groupName.setValue("");
 		entityName.setValue("");
 		type.setValue("");

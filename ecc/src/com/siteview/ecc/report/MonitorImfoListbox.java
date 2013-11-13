@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zul.Listcell;
 import org.zkoss.zul.Listitem;
@@ -29,8 +30,9 @@ public class MonitorImfoListbox extends AbstractListbox {
 
 	@Override
 	public List<String> getListheader() {
-		return new ArrayList<String>(Arrays.asList(new String[] { "监测器名称",
-				"组名称","IP地址","设备名", "类型", "监测频率", "阀值", "最近一次时间"/*,"状态统计"*/}));
+		return new ArrayList<String>(Arrays.asList(new String[] { Labels.getLabel("MonitorName"),
+				Labels.getLabel("GroupNameTile"),Labels.getLabel("IPAddress"),Labels.getLabel("DeviceName"), Labels.getLabel("Type"), 
+				Labels.getLabel("MonitoringFrequency"), Labels.getLabel("Threshold"), Labels.getLabel("LastTime")/*,"状态统计"*/}));
 	}
 
 	@Override
@@ -61,7 +63,7 @@ public class MonitorImfoListbox extends AbstractListbox {
 				Listitem item = new Listitem();
 				item.setValue(tmpKey);
 				for(String head : listhead){
-					if(head.equals("监测器名称")){
+					if(head.equals(Labels.getLabel("MonitorName"))){
 //						Listcell cell = new Listcell(tmpKey.getMonitorName());
 //						cell.setTooltiptext(tmpKey.getMonitorName());
 //						cell.setParent(item);
@@ -71,7 +73,7 @@ public class MonitorImfoListbox extends AbstractListbox {
 						cell.appendChild(c);
 						cell.setParent(item);
 					}
-					if(head.equals("IP地址")){
+					if(head.equals(Labels.getLabel("IPAddress"))){
 						String ip = "";
 						int index = entityName.indexOf("(");
 						if(index>0)
@@ -80,12 +82,12 @@ public class MonitorImfoListbox extends AbstractListbox {
 						cell.setTooltiptext(ip);
 						cell.setParent(item);
 					}
-					if(head.equals("组名称")){
+					if(head.equals(Labels.getLabel("GroupNameTile"))){
 						Listcell cell = new Listcell(tmpKey.getGroupName());
 						cell.setTooltiptext(tmpKey.getGroupName());
 						cell.setParent(item);
 					}
-					if(head.equals("设备名")){
+					if(head.equals(Labels.getLabel("DeviceName"))){
 //						Listcell cell = new Listcell(tmpKey.getEntityName());
 //						cell.setTooltiptext(tmpKey.getEntityName());
 //						cell.setParent(item);
@@ -95,22 +97,22 @@ public class MonitorImfoListbox extends AbstractListbox {
 						cell.appendChild(c2);
 						cell.setParent(item);
 					}
-					if(head.equals("类型")){
+					if(head.equals(Labels.getLabel("Type"))){
 						Listcell cell = new Listcell(tmpKey.getMonitorName());
 						cell.setTooltiptext(tmpKey.getMonitorName());
 						cell.setParent(item);
 					}
-					if(head.equals("监测频率")){
+					if(head.equals(Labels.getLabel("MonitoringFrequency"))){
 						Listcell cell = new Listcell(tmpKey.getFrequency());
 						cell.setTooltiptext(tmpKey.getFrequency());
 						cell.setParent(item);
 					}
-					if(head.equals("阀值")){
+					if(head.equals(Labels.getLabel("Threshold"))){
 						Listcell cell = new Listcell(tmpKey.getKeyValue());
 						cell.setTooltiptext(tmpKey.getKeyValue());
 						cell.setParent(item);
 					}
-					if(head.equals("最近一次时间")){
+					if(head.equals(Labels.getLabel("LastTime"))){
 						Listcell cell = new Listcell(tmpKey.getLatestUpdate());
 						cell.setTooltiptext(tmpKey.getLatestUpdate());
 						cell.setParent(item);

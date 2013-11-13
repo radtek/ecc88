@@ -18,6 +18,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import org.zkoss.util.media.AMedia;
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zhtml.Filedownload;
 import org.zkoss.zhtml.Fileupload;
 import org.zkoss.zk.ui.Executions;
@@ -112,11 +113,11 @@ public class SelectErrorExl {
 		if(fileType.equals("html")){
 			boolean flag = ChartUtil.saveAsHtml(subDir+"report.jasper",subDir,sb.toString(), parameter, new ComparereportDatasource(l));
 //			logger.info(flag);
-			InsertInto(fileType,title,"不存在");
+			InsertInto(fileType,title,Labels.getLabel("NotExist"));
 		}else if(fileType.equals("pdf")){
 			AMedia media = ChartUtil.saveAsPdf(subDir+"report.jasper",sb.toString(), parameter, new ComparereportDatasource(l));
 			Filedownload.save(media);	
-			InsertInto(fileType,title,"不存在");
+			InsertInto(fileType,title,Labels.getLabel("NotExist"));
 		}else{
 			AMedia media = ChartUtil.saveAsXls(subDir+"report.jasper", title,parameter, new ComparereportDatasource(l));
 			//下载到本地 Filedownload.save(media);
@@ -152,8 +153,8 @@ public class SelectErrorExl {
 			data.setName(title);
 			data.setTitle(title);
 			data.setData(Toolkit.getToolkit().formatDate(beginDate)+"~"+Toolkit.getToolkit().formatDate(endDate));
-			data.setResult("存在");
-			data.setUsername("暂时空缺");
+			data.setResult(Labels.getLabel("Exist"));
+			data.setUsername(Labels.getLabel("TemporaryVacancy"));
 			//cxy 2013/04/02
 			dao.inserts(data);
 		}

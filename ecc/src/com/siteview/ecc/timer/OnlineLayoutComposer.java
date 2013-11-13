@@ -9,6 +9,7 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
@@ -112,17 +113,17 @@ public class OnlineLayoutComposer extends GenericForwardComposer {
 			{
 				case OnlineEvent.TYPE_ONLINE:
 					row.appendChild(new Label(e.getOnOrOffUserName()));
-					row.appendChild(new Label("上线"));
+					row.appendChild(new Label("  "+Labels.getLabel("OnLineS")));
 					break;
 				case OnlineEvent.TYPE_OFFLINE:
 					row.appendChild(new Label(e.getOnOrOffUserName()));
-					row.appendChild(new Label("下线"));
+					row.appendChild(new Label(Labels.getLabel("OffAssemblyLine")));
 					break;
 				case OnlineEvent.TYPE_MESSAGE:
 					Label sender=new Label();
 					sender.setStyle("font-weight:bold;");
 					if(e.getFromUserid()==null)
-						sender.setValue("系统：");
+						sender.setValue(Labels.getLabel("System:"));
 					else	
 						sender.setValue(e.getFromUserName()+"：");
 					row.appendChild(sender);
@@ -224,47 +225,47 @@ public class OnlineLayoutComposer extends GenericForwardComposer {
 		
 		Calendar calendar=Calendar.getInstance();
 		calendar.setTimeInMillis(eccStatistic.getStartTime());
-		StringBuffer sb=new StringBuffer("启动时间：");
-		sb.append(calendar.get(calendar.YEAR)).append("年");
-		sb.append(calendar.get(calendar.MONTH)+1).append("月");
-		sb.append(calendar.get(calendar.DAY_OF_MONTH)).append("日");
+		StringBuffer sb=new StringBuffer(Labels.getLabel("StartTimeQ:"));
+		sb.append(calendar.get(calendar.YEAR)).append(Labels.getLabel("Year"));
+		sb.append(calendar.get(calendar.MONTH)+1).append(Labels.getLabel("Month"));
+		sb.append(calendar.get(calendar.DAY_OF_MONTH)).append(Labels.getLabel("Day"));
 		hbox.appendChild(new Label(sb.toString()));
 		hbox.appendChild(new Space());
 		sb=new StringBuffer();
-		sb.append(calendar.get(calendar.HOUR_OF_DAY)).append("时");
-		sb.append(calendar.get(calendar.MINUTE)).append("分");
-		sb.append(calendar.get(calendar.SECOND)).append("秒");
+		sb.append(calendar.get(calendar.HOUR_OF_DAY)).append(Labels.getLabel("Hour"));
+		sb.append(calendar.get(calendar.MINUTE)).append(Labels.getLabel("Minute"));
+		sb.append(calendar.get(calendar.SECOND)).append(Labels.getLabel("Seconds"));
 		hbox.appendChild(new Label(sb.toString()));
 		
 		hbox=new Hbox();
 		onlineInfoDiv.appendChild(hbox);
 		calendar.setTimeInMillis(System.currentTimeMillis());
-		sb=new StringBuffer("当前时间：");
-		sb.append(calendar.get(calendar.YEAR)).append("年");
-		sb.append(calendar.get(calendar.MONTH)+1).append("月");
-		sb.append(calendar.get(calendar.DAY_OF_MONTH)).append("日");
+		sb=new StringBuffer(Labels.getLabel("CurrentTime:"));
+		sb.append(calendar.get(calendar.YEAR)).append(Labels.getLabel("Year"));
+		sb.append(calendar.get(calendar.MONTH)+1).append(Labels.getLabel("Month"));
+		sb.append(calendar.get(calendar.DAY_OF_MONTH)).append(Labels.getLabel("Day"));
 		hbox.appendChild(new Label(sb.toString()));
 		hbox.appendChild(new Space());
 		sb=new StringBuffer();
-		sb.append(calendar.get(calendar.HOUR_OF_DAY)).append("时");
-		sb.append(calendar.get(calendar.MINUTE)).append("分");
-		sb.append(calendar.get(calendar.SECOND)).append("秒");
+		sb.append(calendar.get(calendar.HOUR_OF_DAY)).append(Labels.getLabel("Hour"));
+		sb.append(calendar.get(calendar.MINUTE)).append(Labels.getLabel("Minute"));
+		sb.append(calendar.get(calendar.SECOND)).append(Labels.getLabel("Seconds"));
 		hbox.appendChild(new Label(sb.toString()));
 				
 		File win = new File("/");
 		hbox=new Hbox();
 		onlineInfoDiv.appendChild(hbox);
-		hbox.appendChild(new Label("内存总量："+(int)(Runtime.getRuntime().maxMemory()/1048576)+"Mb,"));
-		hbox.appendChild(new Label("可用内存："+(int)(Runtime.getRuntime().freeMemory()/1048576)+"Mb,"));
-		hbox.appendChild(new Label("磁盘总量："+(int)(win.getTotalSpace()/1048576)+"Mb,"));
-		hbox.appendChild(new Label("剩余磁盘："+(int)(win.getFreeSpace()/1048576)+"Mb"));
+		hbox.appendChild(new Label(Labels.getLabel("AmountOfMemory:")+(int)(Runtime.getRuntime().maxMemory()/1048576)+"Mb,"));
+		hbox.appendChild(new Label(Labels.getLabel("AvailableMemory:")+(int)(Runtime.getRuntime().freeMemory()/1048576)+"Mb,"));
+		hbox.appendChild(new Label(Labels.getLabel("DiskTotal:")+(int)(win.getTotalSpace()/1048576)+"Mb,"));
+		hbox.appendChild(new Label(Labels.getLabel("RemainingDisk:")+(int)(win.getFreeSpace()/1048576)+"Mb"));
 		
 		hbox=new Hbox();
 		onlineInfoDiv.appendChild(hbox);
-		hbox.appendChild(new Label("   web容器活动桌面数："+eccStatistic.getActiveDesktopCount()+","));
-		hbox.appendChild(new Label("活动会话数："+eccStatistic.getActiveSessionCount()+","));		
-		hbox.appendChild(new Label("历史桌面数："+eccStatistic.getTotalDesktopCount()+","));
-		hbox.appendChild(new Label("历史会话数："+eccStatistic.getTotalSessionCount()+""));
+		hbox.appendChild(new Label(Labels.getLabel("WebContainerNumberDesktop:")+eccStatistic.getActiveDesktopCount()+","));
+		hbox.appendChild(new Label(Labels.getLabel("NumberOfActiveSessions:")+eccStatistic.getActiveSessionCount()+","));		
+		hbox.appendChild(new Label(Labels.getLabel("HistoryOfNumberOfDesktop:")+eccStatistic.getTotalDesktopCount()+","));
+		hbox.appendChild(new Label(Labels.getLabel("HistoricalSessions:")+eccStatistic.getTotalSessionCount()+""));
 		//hbox.appendChild(new Label("平均会话数："+eccStatistic.getAverageSessionCount()));
 	}
 }

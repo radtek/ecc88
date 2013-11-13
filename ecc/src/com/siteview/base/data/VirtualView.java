@@ -44,9 +44,9 @@ public class VirtualView implements Serializable
 	 */
 	public final static String							DefaultView		= Labels.getLabel("Defaultview");// "defaultVirtualView";
 																													
-	public final static String							CreateNewView	= "（新建虚拟视图）";
-	public final static String							Garbage			= "垃圾箱，拖入删除";
-	public final static String							NewVirGroup		= "虚拟组，拖走添加";
+	public final static String							CreateNewView	= Labels.getLabel("NewVirtualView");
+	public final static String							Garbage			= Labels.getLabel("GarbageBoxIntoDelete");
+	public final static String							NewVirGroup		= Labels.getLabel("VirtualGroupDragAdd");
 
 	public final static String							GarbageType		= "garbage";
 	public final static String							NewVirGroupType	= "newVirGroup";
@@ -866,7 +866,7 @@ public class VirtualView implements Serializable
 				if(zul_name==null || zul_name.isEmpty())
 					zul_name= zul_type;
 				if(zul_type.equals(VirtualItem.VirtualGroup.zulType))
-					zul_name= "虚拟组：" + zul_name;
+					zul_name= Labels.getLabel("VirtualGroup:") + zul_name;
 				
 				ZulItem zi= VirtualItem.allZulItem.get(zul_type);
 				if(zi==null)

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 import org.apache.log4j.Logger;
+import org.zkoss.util.resource.Labels;
 
 public class MonitorFilterCondition {
 	private final static Logger logger = Logger.getLogger(MonitorFilterCondition.class);
@@ -344,12 +345,12 @@ public class MonitorFilterCondition {
 	 * @return
 	 */
 	public boolean freqOperator(String src) {
-		if (freq == null || freq.equals("监测频率"))
+		if (freq == null || freq.equals(Labels.getLabel("MonitoringFrequency")))
 			return true;
 	
-		if((src.endsWith("分钟")&&freq.endsWith("分钟")) || (src.endsWith("小时")&&freq.endsWith("小时"))){
-			int si = src.indexOf("分钟") > 0 ? src.indexOf("分钟") : src.indexOf("小时");
-			int di = freq.indexOf("分钟") > 0 ? freq.indexOf("分钟") :freq.indexOf("小时");
+		if((src.endsWith(Labels.getLabel("MinuteZ"))&&freq.endsWith(Labels.getLabel("MinuteZ"))) || (src.endsWith(Labels.getLabel("HourX"))&&freq.endsWith(Labels.getLabel("HourX")))){
+			int si = src.indexOf(Labels.getLabel("MinuteZ")) > 0 ? src.indexOf(Labels.getLabel("MinuteZ")) : src.indexOf(Labels.getLabel("HourX"));
+			int di = freq.indexOf(Labels.getLabel("MinuteZ")) > 0 ? freq.indexOf(Labels.getLabel("MinuteZ")) :freq.indexOf(Labels.getLabel("HourX"));
 			if (si <= 0 || di <= 0)
 				return true;
 			double fs = Double
@@ -371,10 +372,10 @@ public class MonitorFilterCondition {
 			} else if (oper.equals("like")) {
 				return fd == fs;
 			}
-		}else if(src.endsWith("小时")&& freq.endsWith("分钟")){
+		}else if(src.endsWith(Labels.getLabel("HourX"))&& freq.endsWith(Labels.getLabel("MinuteZ"))){
 			if(oper.equals("=")||oper.equals("<=")||oper.equals("<") || oper.equals("like")) return false;
 			else return true;
-		}else if(src.endsWith("分钟")&& freq.endsWith("小时")){
+		}else if(src.endsWith(Labels.getLabel("MinuteZ"))&& freq.endsWith(Labels.getLabel("HourX"))){
 			if(oper.equals("=")||oper.equals(">=")||oper.equals(">") || oper.equals("like")) return false;
 			else return true;
 		}

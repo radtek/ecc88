@@ -9,6 +9,7 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.zkoss.util.media.AMedia;
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zhtml.Filedownload;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.Event;
@@ -121,13 +122,13 @@ public class CompareExportWindow extends Window {
 			ReportDataDaoImpl dao=new ReportDataDaoImpl();
 			ErrorLogsBean data=new ErrorLogsBean ();
 			data.setType(fileType);
-			data.setTarget("标识");
+			data.setTarget(Labels.getLabel("Identification"));
 			data.setTime((SDF.format(new Date())).toString());
 			data.setName(sb.toString());
 			data.setTitle(sb.toString());
 			data.setData(Toolkit.getToolkit().formatDate(beginDate)+"~"+Toolkit.getToolkit().formatDate(endDate));
-			data.setResult("存在");
-			data.setUsername("暂时空缺");
+			data.setResult(Labels.getLabel("Exist"));
+			data.setUsername(Labels.getLabel("TemporaryVacancy"));
 			//cxy 2013/04/02			
 //			dao.inserts(data);
 		}

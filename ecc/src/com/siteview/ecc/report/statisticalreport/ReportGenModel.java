@@ -191,11 +191,11 @@ public class ReportGenModel extends ListModelList implements ListitemRenderer{
 		cell.setParent(parent);
 		if(item.isValid())
 		{
-				cell.setLabel("´æÔÚ");
+				cell.setLabel(Labels.getLabel("Exist"));
 		}
 		else
 		{
-			cell.setLabel("²»´æÔÚ");
+			cell.setLabel(Labels.getLabel("NotExist"));
 			parent.setStyle("color:gray");
 		}
 		cell=new Listcell();

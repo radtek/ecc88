@@ -1,5 +1,6 @@
 package com.siteview.ecc.alert.dao.type;
 
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zul.Image;
 import org.zkoss.zul.Label;
@@ -46,17 +47,17 @@ public enum AlertState implements TypeInterface{
 	@Override
 	public String getDisplayString() {
 		if (this == Disable){
-			return "禁止";
+			return Labels.getLabel("Disable");
 		}else if (this == Enable){
-			return "启动中";
+			return Labels.getLabel("StartIn");
 		}
-		return "不知道";
+		return Labels.getLabel("Don'tKnow");
 	}
 	@Override
 	public String getStringVaule() {
 		if (this == Enable){
 			return "Enable";
 		}
-		return "禁止";
+		return Labels.getLabel("Disable");
 	}
 }

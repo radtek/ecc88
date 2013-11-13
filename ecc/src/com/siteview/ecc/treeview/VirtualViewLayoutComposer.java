@@ -5,6 +5,7 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Components;
 import org.zkoss.zk.ui.Executions;
@@ -350,13 +351,13 @@ public class VirtualViewLayoutComposer extends GenericForwardComposer implements
 			
 			final Window win = (Window) Executions.createComponents(
 					"editVirtualGroupName.zul", null, null);
-			win.setTitle("新建虚拟视图，名称不能为空");
+			win.setTitle(Labels.getLabel("CreateNewVirtualViewNameCannotEmpty"));
 			win.setClosable(true);
-			((Label)win.getFellow("label")).setValue("视图名称*:");
+			((Label)win.getFellow("label")).setValue(Labels.getLabel("ViewName*:"));
 			Button btnAdd = (Button)win.getFellow("btnAddName");
 			Button btnCancel = (Button)win.getFellow("btnCancelAdd");
-			btnAdd.setLabel("保存");
-			btnCancel.setLabel("取消");
+			btnAdd.setLabel(Labels.getLabel("Save"));
+			btnCancel.setLabel(Labels.getLabel("Cancel"));
 			btnAdd.setImage("/main/images/button/ico/save_bt.gif");
 			btnCancel.setImage("/main/images/button/ico/close_bt.gif");
 			btnAdd.setSclass("btnDefault");

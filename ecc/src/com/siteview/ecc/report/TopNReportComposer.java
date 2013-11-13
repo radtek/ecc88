@@ -145,7 +145,7 @@ public class TopNReportComposer extends GenericForwardComposer
 		try {
 			for(TopNBean m : model.getTopNData()){
 				Image image = null;
-				if(m.getDeny().equals("ÔÊÐí")){
+				if(m.getDeny().equals(Labels.getLabel("Enable"))){
 					image = new Image("/main/images/button/ico/enable_bt.gif");
 				}else{
 					image = new Image("/main/images/button/ico/disable_bt.gif");

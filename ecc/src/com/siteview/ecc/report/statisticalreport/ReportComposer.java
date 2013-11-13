@@ -723,12 +723,12 @@ ComposerExt ,ListitemRenderer {
 		if("Yes".equals(item.getDeny()))
 		{
 			img=new Image("/main/images/button/ico/disable_bt.gif");
-			img.setTooltiptext("½ûÖ¹");
+			img.setTooltiptext(Labels.getLabel("Disable"));
 		}
 		else
 		{
 			img=new Image("/main/images/button/ico/enable_bt.gif");
-			img.setTooltiptext("ÔÊÐí");
+			img.setTooltiptext(Labels.getLabel("Enable"));
 
 		}
 		img.setParent(cell);

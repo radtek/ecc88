@@ -46,6 +46,7 @@ import org.jfree.ui.HorizontalAlignment;
 import org.jfree.ui.RectangleEdge;
 import org.jfree.ui.RectangleInsets;
 import org.jfree.ui.VerticalAlignment;
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zul.Label;
 import org.zkoss.zul.Listbox;
@@ -148,7 +149,7 @@ public class CreateReportImpl implements CreateReport {
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			show(this.getClass().getName() + "初始化报告数据发生异常:" + ex.getMessage());
+			show(this.getClass().getName() + Labels.getLabel("InitializeReportDataAbnormal:") + ex.getMessage());
 		}
 		return rl;
 	}
@@ -181,7 +182,7 @@ public class CreateReportImpl implements CreateReport {
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			show(this.getClass().getName() + "初始化报告数据发生异常:" + ex.getMessage());
+			show(this.getClass().getName() + Labels.getLabel("InitializeReportDataAbnormal:") + ex.getMessage());
 		}
 		return rl;
 	}
@@ -202,7 +203,7 @@ public class CreateReportImpl implements CreateReport {
 			String max = simpleReport1.getReturnValue("max", i);
 			String min = simpleReport1.getReturnValue("min", i);
 			String average = simpleReport1.getReturnValue("average", i);
-			keyvalue.put("subtitle", "最大值" + max + "平均值" + average + "最小值" + min);
+			keyvalue.put("subtitle", Labels.getLabel("MaximumValue") + max + Labels.getLabel("AverageValue") + average + Labels.getLabel("MinimumValue") + min);
 			keyvalue.put("title", simpleReport1.getReturnValue("ReturnName", i));
 			keyvalue.put("maxvalue", max);
 			keyvalue.put("minvalue", min);
@@ -256,7 +257,7 @@ public class CreateReportImpl implements CreateReport {
 							+ (min1 - min2);
 				}
 			}
-			keyvalue.put("subtitle", "最大值" + max + "平均值" + average + "最小值" + min +"\r\n"+"监测频率:"+fr+"分钟  " +" 监测时间:"+time);
+			keyvalue.put("subtitle", Labels.getLabel("MaximumValue") + max + Labels.getLabel("AverageValue") + average + Labels.getLabel("MinimumValue") + min +"\r\n"+Labels.getLabel("MonitoringFrequency:")+fr+Labels.getLabel("MinuteZ") +Labels.getLabel("MonitoringTime:")+time);
 			String MonitorName=simpleReport1.getReturnValue(nodeid, "MonitorName", i);
 			keyvalue.put("title", MonitorName+"["+simpleReport1.getReturnValue(nodeid, "ReturnName", i)+"]");
 			keyvalue.put("ytitle",simpleReport1.getReturnValue(nodeid, "ReturnName", i));
@@ -289,7 +290,7 @@ public class CreateReportImpl implements CreateReport {
 			String max = simpleReport1.getReturnValue("max", i);
 			String min = simpleReport1.getReturnValue("min", i);
 			String average = simpleReport1.getReturnValue("average", i);
-			keyvalue.put("subtitle", "最大值" + max + "平均值" + average + "最小值" + min);
+			keyvalue.put("subtitle", Labels.getLabel("MaximumValue") + max + Labels.getLabel("AverageValue") + average + Labels.getLabel("MinimumValue") + min);
 			keyvalue.put("title", simpleReport1.getReturnValue("ReturnName", i));
 			keyvalue.put("maxvalue", max);
 			keyvalue.put("minvalue", min);

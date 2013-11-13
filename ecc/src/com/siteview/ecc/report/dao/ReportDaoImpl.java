@@ -193,9 +193,9 @@ public class ReportDaoImpl extends GenericAutowireComposer {
 
 						a[2] = ret.get("Period");// Ê±¼ä¶Î
 						if (ret.get("Deny")!=null && ret.get("Deny").equals("Yes")) {// ×´Ì¬
-							a[3] = "½ûÖ¹";
+							a[3] = Labels.getLabel("Disable");
 						} else {
-							a[3] = "ÔÊÐí";
+							a[3] = Labels.getLabel("Enable");
 						}
 						a[5] = ret.get("fileType");
 						if (a[5] == null)

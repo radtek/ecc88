@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Executions;
 
 import com.siteview.ecc.monitorbrower.MonitorBean;
@@ -31,9 +32,9 @@ public class TopTenErrorImpl implements TopTen{
 		
 		for (MonitorBean bean : list){
 			Map<String, IComponent> map = new HashMap<String, IComponent>();
-			map.put("id", new MonitorLinkImpl(bean,bean.getMonitorId()));
-			map.put("状态", new MonitorStatusImpl(bean.getStatus()));
-			map.put("名称", new TextImpl(bean.getMonitorName()));
+			map.put(Labels.getLabel("ID"), new MonitorLinkImpl(bean,bean.getMonitorId()));
+			map.put(Labels.getLabel("State"), new MonitorStatusImpl(bean.getStatus()));
+			map.put(Labels.getLabel("Name"), new TextImpl(bean.getMonitorName()));
 //			map.put("数量", new NumberImpl(12,bean.getErrorPersent() + "%",bean.getStatus()));
 			retlist.add(map);
 		}
@@ -43,16 +44,16 @@ public class TopTenErrorImpl implements TopTen{
 	@Override
 	public List<String> getTitles() throws Exception {
 		List<String> retlist = new LinkedList<String>();
-		retlist.add("id");
-		retlist.add("状态");
-		retlist.add("名称");
+		retlist.add(Labels.getLabel("ID"));
+		retlist.add(Labels.getLabel("State"));
+		retlist.add(Labels.getLabel("Name"));
 //		retlist.add("数量");
 		return retlist;
 	}
 
 	@Override
 	public String getCaption() throws Exception {
-		return "Top 10 出错最多的检测器";
+		return Labels.getLabel("DetectorTop10MakeMostMistakes");
 	}
 	
 }

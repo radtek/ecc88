@@ -4,6 +4,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Desktop;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.DropEvent;
@@ -85,12 +86,12 @@ public class DropOnTreeEditting implements EventListener
 				
 				final Window win = (Window) Executions.createComponents(
 						"editVirtualGroupName.zul", null, null);
-				win.setTitle("编辑视图，名称不能为空");
-				((Label)win.getFellow("label")).setValue("视图名称:");
+				win.setTitle(Labels.getLabel("EditViewNameCannotEmpty"));
+				((Label)win.getFellow("label")).setValue(Labels.getLabel("ViewName*:"));
 				Button btnAddName = (Button)win.getFellow("btnAddName");
 				Button btnCancelAdd = (Button)win.getFellow("btnCancelAdd");
-				btnAddName.setLabel("保存");
-				btnCancelAdd.setLabel("取消");
+				btnAddName.setLabel(Labels.getLabel("Save"));
+				btnCancelAdd.setLabel(Labels.getLabel("Cancel"));
 				btnAddName.setImage("/main/images/button/ico/save_bt.gif");
 				btnCancelAdd.setImage("/main/images/button/ico/close_bt.gif");
 				btnAddName.setSclass("btnDefault");
