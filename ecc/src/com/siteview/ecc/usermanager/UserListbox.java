@@ -189,7 +189,7 @@ public class UserListbox extends AbstractListbox {
 		@Override
 		public void onEvent(Event arg0) throws Exception {
 			// TODO Auto-generated method stub
-			Messagebox.show("管理员无需授权！", "提示", Messagebox.OK, Messagebox.INFORMATION);
+			Messagebox.show(Labels.getLabel("AdministratorWithoutAuthorization"), "提示", Messagebox.OK, Messagebox.INFORMATION);
 		}
 	}
 	
@@ -198,7 +198,7 @@ public class UserListbox extends AbstractListbox {
 		@Override
 		public void onEvent(Event arg0) throws Exception {
 			// TODO Auto-generated method stub
-			Messagebox.show("普通用户无法授权！", "提示", Messagebox.OK, Messagebox.INFORMATION);
+			Messagebox.show(Labels.getLabel("OrdinaryUsersNotAuthorized"), "提示", Messagebox.OK, Messagebox.INFORMATION);
 		}
 	}
 	public Map<String, Map<String, String>> getUserListData(){

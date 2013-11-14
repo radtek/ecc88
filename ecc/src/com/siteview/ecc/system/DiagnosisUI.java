@@ -2,6 +2,7 @@ package com.siteview.ecc.system;
 
 import java.util.List;
 
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zul.Listbox;
 import org.zkoss.zul.Listitem;
 import org.zkoss.zul.Messagebox;
@@ -20,7 +21,7 @@ public class DiagnosisUI extends AbstractWindow {
 			init();
 		} catch (Exception e) {
 			e.printStackTrace();
-			Messagebox.show("初始化数据出错，有可能是连接服务器或者网络问题，请刷新页面后重试！", "错误", Messagebox.OK, Messagebox.ERROR);
+			Messagebox.show(Labels.getLabel("InitialErrorProblemsRefreshPageAgain"), "错误", Messagebox.OK, Messagebox.ERROR);
 		}
 	}
 	public void init() throws Exception {
@@ -63,7 +64,7 @@ public class DiagnosisUI extends AbstractWindow {
 				}
 			}
 		}
-		throw new Exception("请选择好你要诊断的项目！");
+		throw new Exception(Labels.getLabel("PChooseDiagnosisProject"));
 
 	}
 

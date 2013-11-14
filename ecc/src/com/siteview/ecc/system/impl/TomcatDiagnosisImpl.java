@@ -12,16 +12,16 @@ public class TomcatDiagnosisImpl extends Diagnosis {
 	
 	public TomcatDiagnosisImpl(){
 		if (map.size()==0){
-			map.put("os.name","操作系统的名称" );
-			map.put("sun.os.patch.level","操作系统版本");
-			map.put("java.version","Java 运行时环境版本");
-			map.put("java.home","Java 安装目录" );
-			map.put("java.class.path","Java 类路径" );
-			map.put("java.library.path","加载库时搜索的路径列表 ");
-			map.put("java.io.tmpdir","默认的临时文件路径" );
-			map.put("user.name","用户的账户名称");
-			map.put("user.home","用户的主目录");
-			map.put("user.dir","用户的当前工作目录");
+			map.put("os.name",Labels.getLabel("NameOfOperatingSystem") );
+			map.put("sun.os.patch.level",Labels.getLabel("OperatingSystemVersion"));
+			map.put("java.version",Labels.getLabel("VersionOfJavaRuntimeEnvironment"));
+			map.put("java.home",Labels.getLabel("JavaInstallationDirectory") );
+			map.put("java.class.path",Labels.getLabel("JavaClassPath") );
+			map.put("java.library.path",Labels.getLabel("PathListLibraryWhenSearchLoad"));
+			map.put("java.io.tmpdir",Labels.getLabel("TemporaryFileDefaultPath") );
+			map.put("user.name",Labels.getLabel("UserAccountName"));
+			map.put("user.home",Labels.getLabel("User'sHomeDirectory"));
+			map.put("user.dir",Labels.getLabel("CurrentWorkingDirectoryOfUser"));
 		}
 	}
 	
@@ -49,17 +49,17 @@ public class TomcatDiagnosisImpl extends Diagnosis {
 		long freeMemory = Runtime.getRuntime().freeMemory();
 		long usedMemory = totalMemory - freeMemory;
 
-		getResultList().add("分配给  Tomcat 的内存:" + totalMemory / 1024 / 1024 + "M");
-		getResultList().add("Tomcat 的最大可使用内存:" + maxMemory / 1024 / 1024 + "M");
-		getResultList().add("Tomcat 已经使用的内存:" + usedMemory / 1024 / 1024 + "M");
-		getResultList().add("Tomcat 剩余的内存:" + freeMemory / 1024 / 1024 + "M");
+		getResultList().add(Labels.getLabel("AssignedTomcatMemory:") + totalMemory / 1024 / 1024 + "M");
+		getResultList().add(Labels.getLabel("TomcatCanUseMemory:") + maxMemory / 1024 / 1024 + "M");
+		getResultList().add(Labels.getLabel("TomcatUsedMemory:") + usedMemory / 1024 / 1024 + "M");
+		getResultList().add(Labels.getLabel("TomcatRemainingMemory:") + freeMemory / 1024 / 1024 + "M");
 		
 		if (OS.isWinNT() == false)
-			throw new Exception("系统必须在 Windows NT platform (Windows NT/2000/2003/XP)下使用!");
+			throw new Exception(Labels.getLabel("SystemWindowsNTPlatformUsing"));
 		if ((maxMemory / 1024 / 1024) < 500)
-			throw new Exception("Tomcat 的最大可使用内存推荐大于500M!");
+			throw new Exception(Labels.getLabel("TomcatMemoryRecommendedMore500M"));
 		if ((usedMemory / 1024 / 1024) > 128)
-			throw new Exception("Tomcat 已经使用的内存太多了!");
+			throw new Exception(Labels.getLabel("TomcatUsedMuchMemory"));
 
 	}
 

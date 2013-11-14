@@ -1,3 +1,4 @@
+//2013-11-14-汤影-翻译中文
 package com.siteview.ecc.treeview.windows;
 
 import java.util.ArrayList;
@@ -252,7 +253,7 @@ public class AddMonitor extends GenericForwardComposer
 				vbox = new Vbox();
 				Label labelh = new Label();
 				labelh.setId("lbp" + idcount);
-				labelh.setValue("监测器的显示名称");
+				labelh.setValue(Labels.getLabel("DisplayNameOfMonitor"));
 				labelh.setSclass("helplabel");
 				labelh.setVisible(false);
 				idcount++;
@@ -306,7 +307,7 @@ public class AddMonitor extends GenericForwardComposer
 				vbox = new Vbox();
 				Label labelh = new Label();
 				labelh.setId("lbp" + idcount);
-				labelh.setValue("监测器的显示名称");
+				labelh.setValue(Labels.getLabel("DisplayNameOfMonitor"));
 				labelh.setSclass("helplabel");
 				labelh.setVisible(false);
 				idcount++;
@@ -658,7 +659,7 @@ public class AddMonitor extends GenericForwardComposer
 						btnplok.setVisible(true);
 					}
 					cbitem = new Comboitem();
-					cbitem.setLabel("正在获取数据...");
+					cbitem.setLabel(Labels.getLabel("GettingData..."));
 					cbitem.setValue("1");
 					cbitem.setParent(cb);
 					cb.setSelectedIndex(0);
@@ -946,30 +947,30 @@ public class AddMonitor extends GenericForwardComposer
 		String message = "";
 		if (tbtitle.getValue() == null || tbtitle.getValue().trim().isEmpty())
 		{
-			return "请输入标题";
+			return Labels.getLabel("PleaseEnterTitle");
 		}
 		if (tberror.getValue() == null || tberror.getValue().trim().isEmpty())
 		{
-			return "请输入错误的阀值";
+			return Labels.getLabel("PleaseInputErrorThreshold");
 		}
 		if (tbdanger.getValue() == null || tbdanger.getValue().trim().isEmpty())
 		{
-			return "请输入警报的阀值";
+			return Labels.getLabel("PleaseEnterAlarmThreshold");
 		}
 		if (tbnormal.getValue() == null || tbnormal.getValue().trim().isEmpty())
 		{
-			return "请输入正常的阀值";
+			return Labels.getLabel("PleaseEnterNormalValue");
 		}
 		if (!tbErrorFrequency.getValue().trim().isEmpty())
 		{
 			if (!tbErrorFrequency.getValue().trim().matches(REG_DIGIT))
 			{
-				return "请输入正确的错误监测频率(数字)";
+				return Labels.getLabel("PleaseErrorFrequencyMonitoringCorrect(digital)");
 			}
 		}
 		
 		if(componentFrequency != null && componentFrequency instanceof SvdbTextBox && (((SvdbTextBox)componentFrequency).getValue() == null || ((SvdbTextBox)componentFrequency).getValue().trim().isEmpty())){
-			return "请输入监测频率";
+			return Labels.getLabel("PleaseInputMonitoringFrequency");
 		}
 		
 		for (Map<String, String> item : monitorTemplate.get_Parameter_Items())
@@ -999,17 +1000,17 @@ public class AddMonitor extends GenericForwardComposer
 				message = item.get("sv_tip");
 				if (message == null)
 				{
-					message = "请检查输入的" + item.get("sv_label") + "是否正确";
+					message = Labels.getLabel("PleaseCheckYourInput") + item.get("sv_label") + Labels.getLabel("WhetherRight");
 				}
 				return message;
 			}
 			if ("false".equals(item.get("sv_allownull")) && "true".equals(item.get("sv_isnumeric")) && !svControl.getSvdbValue().matches(REG_DIGIT))
 			{
-				message = item.get("sv_tip") + "(数字)";
+				message = item.get("sv_tip") + Labels.getLabel("(digital)");
 				;
-				if ("null(数字)".equals(message))
+				if (Labels.getLabel("Null(digital)").equals(message))
 				{
-					message = "请检查输入的" + item.get("sv_label") + "是否正确";
+					message = Labels.getLabel("PleaseCheckYourInput") + item.get("sv_label") + Labels.getLabel("WhetherRight");
 				}
 				return message;
 			}
@@ -1045,17 +1046,17 @@ public class AddMonitor extends GenericForwardComposer
 				message = item.get("sv_tip");
 				if (message == null)
 				{
-					message = "请检查输入的" + item.get("sv_label") + "是否正确";
+					message = Labels.getLabel("PleaseCheckYourInput") + item.get("sv_label") + Labels.getLabel("WhetherRight");
 				}
 				return message;
 			}
 			if ("false".equals(item.get("sv_allownull")) && "true".equals(item.get("sv_isnumeric")) && !svControl.getSvdbValue().matches(REG_DIGIT))
 			{
-				message = item.get("sv_tip") + "(数字)";
+				message = item.get("sv_tip") + Labels.getLabel("(digital)");
 				;
-				if (message == "null(数字)")
+				if (message == Labels.getLabel("Null(digital)"))
 				{
-					message = "请检查输入的" + item.get("sv_label") + "是否正确";
+					message = Labels.getLabel("PleaseCheckYourInput") + item.get("sv_label") + Labels.getLabel("WhetherRight");
 				}
 				return message;
 			}
@@ -1547,12 +1548,12 @@ public class AddMonitor extends GenericForwardComposer
 		if (cbdydata != null)
 		{
 //			templateId = (String) WAddMonitor.getAttribute("templateId");
-			if (cbdydata.getItemCount() == 0 || cbdydata.getText().equals("正在获取数据..."))
+			if (cbdydata.getItemCount() == 0 || cbdydata.getText().equals(Labels.getLabel("GettingData...")))
 			{
 				
 				try
 				{
-					Messagebox.show("没有可以添加的监测器！", "提示", Messagebox.OK, Messagebox.EXCLAMATION);
+					Messagebox.show(Labels.getLabel("CanNotAddMonitor"), "提示", Messagebox.OK, Messagebox.EXCLAMATION);
 				} catch (InterruptedException e)
 				{
 					// TODO Auto-generated catch block
@@ -1567,19 +1568,19 @@ public class AddMonitor extends GenericForwardComposer
 			if (!message.equals(""))
 			{
 				Messagebox.show(message, "提示", Messagebox.OK, Messagebox.EXCLAMATION);
-				if("请输入标题".equals(message)){
+				if(Labels.getLabel("PleaseEnterTitle").equals(message)){
 					tbtitle.focus();
-				}else if("请输入错误的阀值".equals(message)){
+				}else if(Labels.getLabel("PleaseInputErrorThreshold=").equals(message)){
 					tberror.focus();
-				}else if("请输入警报的阀值".equals(message)){
+				}else if(Labels.getLabel("PleaseEnterAlarmThreshold").equals(message)){
 					tbdanger.focus();
-				}else if("请输入正常的阀值".equals(message)){
+				}else if(Labels.getLabel("PleaseEnterNormalValue").equals(message)){
 					tbnormal.focus();
-				}else if("请输入正确的错误监测频率(数字)".equals(message)){
+				}else if(Labels.getLabel("PleaseErrorFrequencyMonitoringCorrect(digital)").equals(message)){
 					tbErrorFrequency.focus();
-				}else if(message.contains("请检查输入的")){
+				}else if(message.contains(Labels.getLabel("PleaseCheckYourInput"))){
 					control.focus();
-				}else if(message.contains("请输入监测频率")){
+				}else if(message.contains(Labels.getLabel("PleaseInputMonitoringFrequency"))){
 					componentFrequency.focus();
 				}
 				return;
@@ -1599,7 +1600,7 @@ public class AddMonitor extends GenericForwardComposer
 			String templateId = (String)WAddMonitor.getAttribute("templateId");
 			int point = 0;
 			boolean isNetDevice = false;
-			Map<String, String> netDeviceTemplate = TemplateManager.getEntityGroupTemplateLabel().get("网络设备");
+			Map<String, String> netDeviceTemplate = TemplateManager.getEntityGroupTemplateLabel().get(Labels.getLabel("NetworkEquipment"));
 			for(String deviceId : netDeviceTemplate.keySet()){
 				if(deviceId!=null && deviceId.equals(templateId)){
 					isNetDevice = true;
@@ -1612,7 +1613,7 @@ public class AddMonitor extends GenericForwardComposer
 				point += ids.length/30 + 1;
 				if(availableDevicePoint == 0 || availableDevicePoint < point){
 					try {
-						Messagebox.show("点数不足，无法进行操作", "提示", Messagebox.OK,	Messagebox.INFORMATION);
+						Messagebox.show(Labels.getLabel("LackPointsUnablePerformOperation"), "提示", Messagebox.OK,	Messagebox.INFORMATION);
 						return;
 					} catch (InterruptedException e) {
 						e.printStackTrace();
@@ -1622,7 +1623,7 @@ public class AddMonitor extends GenericForwardComposer
 				point += ids.length;
 				if(availablePoint == 0 || availablePoint < point){
 					try {
-						Messagebox.show("点数不足，无法进行操作", "提示", Messagebox.OK,	Messagebox.INFORMATION);
+						Messagebox.show(Labels.getLabel("LackPointsUnablePerformOperation"), "提示", Messagebox.OK,	Messagebox.INFORMATION);
 						return;
 					} catch (InterruptedException e) {
 						e.printStackTrace();
@@ -1665,11 +1666,11 @@ public class AddMonitor extends GenericForwardComposer
 
 				if (isedit )
 				{
-					minfo = "编辑监测器：" + name + "(" + node.getSvId() + ") " ;
+					minfo = Labels.getLabel("EditMonitor:") + name + "(" + node.getSvId() + ") " ;
 					AppendOperateLog.addOneLog(loginname, minfo, OpTypeId.edit, OpObjectId.monitor);
 				} else
 				{
-					minfo = "添加监测器：" + name+ "(" +id + ") parent is " + node.getName() + "(" + node.getSvId() + ")";
+					minfo = Labels.getLabel("AddMonitor:") + name+ "(" +id + ") parent is " + node.getName() + "(" + node.getSvId() + ")";
 					AppendOperateLog.addOneLog(loginname, minfo, OpTypeId.add, OpObjectId.monitor);
 				}
 				//增加 添加 编辑 监视器后显示 该监视器的功能 
@@ -1708,7 +1709,7 @@ public class AddMonitor extends GenericForwardComposer
 			}
 			if (smessage.contains("Less permission"))
 			{
-				smessage = "您的监测器点数不够!";
+				smessage = Labels.getLabel("MonitorPointsNotEnough");
 			}
 			try
 			{
@@ -1847,7 +1848,7 @@ public class AddMonitor extends GenericForwardComposer
 				
 				try
 				{
-					Messagebox.show("没有可以添加的监测器！", "提示", Messagebox.OK, Messagebox.EXCLAMATION);
+					Messagebox.show(Labels.getLabel("CanNotAddMonitor"), "提示", Messagebox.OK, Messagebox.EXCLAMATION);
 				} catch (InterruptedException e)
 				{
 					// TODO Auto-generated catch block

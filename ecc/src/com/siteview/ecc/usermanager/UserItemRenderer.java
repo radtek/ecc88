@@ -11,6 +11,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zul.ListModelList;
@@ -148,7 +149,7 @@ public class UserItemRenderer extends ListModelList implements ListitemRenderer 
 		@Override
 		public void onEvent(Event arg0) throws Exception {
 			// TODO Auto-generated method stub
-			Messagebox.show("管理员无需授权！", "提示", Messagebox.OK, Messagebox.INFORMATION);
+			Messagebox.show(Labels.getLabel("AdministratorWithoutAuthorization"), "提示", Messagebox.OK, Messagebox.INFORMATION);
 		}
 	}
 	
@@ -157,7 +158,7 @@ public class UserItemRenderer extends ListModelList implements ListitemRenderer 
 		@Override
 		public void onEvent(Event arg0) throws Exception {
 			// TODO Auto-generated method stub
-			Messagebox.show("普通用户无法授权！", "提示", Messagebox.OK, Messagebox.INFORMATION);
+			Messagebox.show(Labels.getLabel("OrdinaryUsersNotAuthorized"), "提示", Messagebox.OK, Messagebox.INFORMATION);
 		}
 	}
 	

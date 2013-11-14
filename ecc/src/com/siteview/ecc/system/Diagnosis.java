@@ -5,11 +5,13 @@ import java.util.Date;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import org.zkoss.util.resource.Labels;
+
 public abstract class Diagnosis {
-	private final static String SUCCESS = "不存在问题!";
-	private final static String FAILURE = "存在问题:";
-	private final static String BEGIN = "开始时间:";
-	private final static String TESTING = "诊断进行中......";
+	private final static String SUCCESS = Labels.getLabel("ThereNoProblem");
+	private final static String FAILURE = Labels.getLabel("ExistingProblems:");
+	private final static String BEGIN = Labels.getLabel("StartTime:");
+	private final static String TESTING = Labels.getLabel("Diagnosising......");
 	private final static SimpleDateFormat DATE_TO_STRING = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
 	private List<String> retlist = new CopyOnWriteArrayList<String>();
 	

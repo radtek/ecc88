@@ -66,7 +66,7 @@
 									if(!showMore.isVisible()){
 										template.setHeight("505px");				
 										showMore.setVisible(true);
-										self.setLabel("隐   藏");	 
+										self.setLabel(Labels.getLabel("Hidden"));	 
 									}
 									else{
 									template.setHeight("275px");
@@ -86,21 +86,21 @@
 					<caption label="${c:l('DescriptionList')}" />
 					<label id="intro"  
 								height="220px" width="485px" multiline="true">
-								<attribute name="value">注意：
-系统模板不可以删除和修改你可以拷贝参数，请不要随意输入“@”和两个“@”间的参数变量,可以参考系统模板进行添加。
-Web模板参数变量如下：
-@UserName@ : 表示用户名  @Pwd@ : 表示密码 @Phone@ : 表示电话号码 @Content@ ： 短信表示内容 
-短信内容参数如下：
-@FullPathGroup@ :监测点所在设备所在组的全部路径名称
-@Status@监测器点的状态
-@AllGroup@ :监测点所在设备所在组名称
-@Group@监测点所在组下
-@Device@ :监测点所在设备的名称
-@monitor@ :监测点名称
-@MonitorDes@ :监测点报警描述，在监测点高级设置中设置
-@Time@ : 报警时间
-@Status@ :监测点状态 : 危险、正常、错误
-@Log@ :日志内容
+								<attribute name="value">${c:l('EmailTemplateSet1')}
+${c:l('EmailTemplateSet2')}
+${c:l('WebMsgTemplateSet3')}
+${c:l('WebMsgTemplateSet4')}
+${c:l('WebMsgTemplateSet5')}
+${c:l('WebMsgTemplateSet6')}
+${c:l('EmailTemplateSet4')}
+${c:l('EmailTemplateSet5')}
+${c:l('EmailTemplateSet6')}
+${c:l('EmailTemplateSet7')}
+${c:l('EmailTemplateSet8')}
+${c:l('WebMsgTemplateSet7')}
+${c:l('EmailTemplateSet11')}
+${c:l('WebMsgTemplateSet8')}
+${c:l('WebMsgTemplateSet9')}
 </attribute>
 							</label>
 				</groupbox>

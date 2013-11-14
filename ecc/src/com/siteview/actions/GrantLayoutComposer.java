@@ -3,6 +3,7 @@ package com.siteview.actions;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Page;
 import org.zkoss.zk.ui.event.Event;
@@ -142,16 +143,16 @@ public class GrantLayoutComposer extends GenericForwardComposer implements
 		panelList.clear();
 
 		if (dispPanel(INode.SE)){
-			panelList.put(INode.SE, makePanel("SE操作权限", INode.SE));
+			panelList.put(INode.SE, makePanel(Labels.getLabel("SEPermissions"), INode.SE));
 		}
 		if (dispPanel(INode.GROUP)){
-			panelList.put(INode.GROUP, makePanel("组操作权限", INode.GROUP));
+			panelList.put(INode.GROUP, makePanel(Labels.getLabel("GroupOperatingAuthority"), INode.GROUP));
 		}
 		if (dispPanel(INode.ENTITY)){
-			panelList.put(INode.ENTITY, makePanel("设备操作权限", INode.ENTITY));
+			panelList.put(INode.ENTITY, makePanel(Labels.getLabel("EquipmentOperationAuthority"), INode.ENTITY));
 		}
 		if (dispPanel("monitor")){
-			panelList.put(INode.MONITOR, makePanel("监测器操作权限", INode.MONITOR));
+			panelList.put(INode.MONITOR, makePanel(Labels.getLabel("MonitorOperatingAuthority"), INode.MONITOR));
 		}
 /*		if (dispPanel_alert("Alert")){
 			panelList.put("alert", makePanel("报警操作权限", "alert"));
@@ -160,16 +161,16 @@ public class GrantLayoutComposer extends GenericForwardComposer implements
 			panelList.put("report", makePanel("报表操作权限", "report"));
 		}*/
 		if (dispPanel_alertRule("AlertRule")){
-			panelList.put("alertRule", makePanel("报警规则操作权限", "alertRule"));
+			panelList.put("alertRule", makePanel(Labels.getLabel("AlarmRulesOperatingAuthority"), "alertRule"));
 		}
 		if (dispPanel_alertStrategy("AlertStrategy")){
-			panelList.put("alertStrategy", makePanel("报警策略操作权限", "alertStrategy"));
+			panelList.put("alertStrategy", makePanel(Labels.getLabel("AlarmStrategyOperatingAuthority"), "alertStrategy"));
 		}
 		if (dispPanel_statisticReport("ReportStatistic")){
-			panelList.put("reportStatistic", makePanel("统计报告操作权限", "reportStatistic"));
+			panelList.put("reportStatistic", makePanel(Labels.getLabel("StatisticalReportOperatingAuthority"), "reportStatistic"));
 		}
 		if (dispPanel_topNReport("ReportTopN")){
-			panelList.put("reportTopN", makePanel("TopN报告操作权限", "reportTopN"));
+			panelList.put("reportTopN", makePanel(Labels.getLabel("TopNReportOperatingAuthority"), "reportTopN"));
 		}
 	}
 

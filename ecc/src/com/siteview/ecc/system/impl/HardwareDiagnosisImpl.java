@@ -21,19 +21,19 @@ public class HardwareDiagnosisImpl extends Diagnosis {
         // 已使用的物理内存    
         long usedPhysicalMemorySize = (osmxb.getTotalPhysicalMemorySize() - osmxb.getFreePhysicalMemorySize());
 
-		getResultList().add("CPU类型:" + osmxb.getArch());
-		getResultList().add("处理器数目:" + osmxb.getAvailableProcessors());
-		getResultList().add("总物理内存:" + totalPhysicalMemorySize / 1024 / 1024 + "M");
-		getResultList().add("空闲内存:" + freePhysicalMemorySize / 1024 / 1024 + "M");
-		getResultList().add("已使用的物理内存:" + usedPhysicalMemorySize / 1024 / 1024 + "M");
+		getResultList().add(Labels.getLabel("CPUType:") + osmxb.getArch());
+		getResultList().add(Labels.getLabel("NumberOfProcessors:") + osmxb.getAvailableProcessors());
+		getResultList().add(Labels.getLabel("TotalPhysicalMemory:") + totalPhysicalMemorySize / 1024 / 1024 + "M");
+		getResultList().add(Labels.getLabel("FreeMemory:") + freePhysicalMemorySize / 1024 / 1024 + "M");
+		getResultList().add(Labels.getLabel("PhysicalMemoryUsed:") + usedPhysicalMemorySize / 1024 / 1024 + "M");
 		File file = new File("/");
 		if("".equals(file.getName())){
-			getResultList().add("程序运行所在驱动器  容量:" + file.getTotalSpace()/1024/1024/1024 + "G");
-			getResultList().add("程序运行所在驱动器  可用空间:" + file.getUsableSpace()/1024/1024/1024 + "G");		
+			getResultList().add(Labels.getLabel("RunDriveCapacity:") + file.getTotalSpace()/1024/1024/1024 + "G");
+			getResultList().add(Labels.getLabel("FreeSpaceOnDriveProgram:") + file.getUsableSpace()/1024/1024/1024 + "G");		
 
 		}else{
-			getResultList().add("程序运行所在驱动器(" + file.getName() + ")容量:" + file.getTotalSpace()/1024/1024/1024 + "G");
-			getResultList().add("程序运行所在驱动器(" + file.getName() + ")可用空间:" + file.getUsableSpace()/1024/1024/1024 + "G");		
+			getResultList().add(Labels.getLabel("RunDriver")+(" + file.getName() + ")+Labels.getLabel("Capacity:") + file.getTotalSpace()/1024/1024/1024 + "G");
+			getResultList().add(Labels.getLabel("RunDriver")+(" + file.getName() + ")+Labels.getLabel("AvailableSpace:") + file.getUsableSpace()/1024/1024/1024 + "G");		
 
 		}
 	
@@ -65,11 +65,11 @@ public class HardwareDiagnosisImpl extends Diagnosis {
 		
 		
 		if ((totalPhysicalMemorySize / 1024 / 1024) < 2000)
-			throw new Exception("总的物理内存推荐至少2G!");
+			throw new Exception(Labels.getLabel("RecommendLeast2GTotalPhysicalMemory"));
 		if ((freePhysicalMemorySize / 1024 / 1024) < 200)
-			throw new Exception("空闲内存不足了!小于200M");
+			throw new Exception(Labels.getLabel("FreeMemoryLess200M"));
 		if ((file.getUsableSpace() / 1024 / 1024) < 500)
-			throw new Exception("程序运行所在驱动器(" + file.getName() + ")可用空间不足了!小于500M");
+			throw new Exception(Labels.getLabel("RunDriver")+(" + file.getName() + ")+Labels.getLabel("NotEnoughFreeSpaceLess500M"));
         
 	}
 

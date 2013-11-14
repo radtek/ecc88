@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeSet;
 
+import org.zkoss.util.resource.Labels;
+
 import javolution.util.FastList;
 import javolution.util.FastMap;
 
@@ -263,9 +265,9 @@ public class VirtualManager
 		{
 			String errorMessage = e.getMessage();
 			if(errorMessage.contains("is not exis")){
-				throw new Exception("文件不存在");
+				throw new Exception(Labels.getLabel("FileNotExist"));
 			}else if(errorMessage.contains("is empty")){
-				throw new Exception("文件存在，但为空");
+				throw new Exception(Labels.getLabel("FileExistsButEmpty"));
 			}
 //			if(errorMessage.contains("allVirtualViewName.ini")){
 //				throw new Exception("The file is allVirtualViewName.ini");
