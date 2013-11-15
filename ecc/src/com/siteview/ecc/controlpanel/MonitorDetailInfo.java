@@ -28,6 +28,7 @@ import org.jfree.data.time.TimeSeries;
 import org.jfree.data.time.TimeSeriesCollection;
 import org.jfree.data.xy.XYDataset;
 import org.zkoss.calendar.Calendars;
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zhtml.Messagebox;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
@@ -1067,12 +1068,12 @@ public class MonitorDetailInfo extends GenericForwardComposer {
 		Listitem item = new Listitem();
 		TooltipPopup tp = getTooltipPopup();
 		tp.setTitle(simpleReport.getPropertyValue("MonitorName"));
-		tp.addDescription("正常(%)", simpleReport
+		tp.addDescription(Labels.getLabel("Normal(%)"), simpleReport
 				.getPropertyValue("okPercent"));
 		tp
-				.addDescription("危险(%)", simpleReport
+				.addDescription(Labels.getLabel("Warning(%)"), simpleReport
 						.getPropertyValue("warnPercent"));
-		tp.addDescription("错误(%)", simpleReport.getPropertyValue("errorPercent"));
+		tp.addDescription(Labels.getLabel("Error(%)"), simpleReport.getPropertyValue("errorPercent"));
 
 		item.setTooltip(tp);
 		getrLc(simpleReport.getPropertyValue("MonitorName"), item);
@@ -1082,50 +1083,50 @@ public class MonitorDetailInfo extends GenericForwardComposer {
 		String latestStatus = simpleReport.getPropertyValue("latestStatus");
 		if (latestStatus != null) {
 			if (latestStatus.equals("ok")) {
-				latestStatus = "正常";
+				latestStatus = Labels.getLabel("Good");
 			} else if (latestStatus.equals("error")) {
-				latestStatus = "错误";
+				latestStatus = Labels.getLabel("Error");
 			} else
-				latestStatus = "警告";
+				latestStatus = Labels.getLabel("WarningS");
 		}
-		tp.addDescription("最新", latestStatus);
+		tp.addDescription(Labels.getLabel("Newest"), latestStatus);
 		getrLc(latestStatus, item);
 		getrLc(simpleReport.getPropertyValue("errorCondition"), item);
-		tp.addDescription("阀值", simpleReport.getPropertyValue("errorCondition"));
+		tp.addDescription(Labels.getLabel("Threshold"), simpleReport.getPropertyValue("errorCondition"));
 		clearDateListbox(runtimeReport);
 		Listhead lh = new Listhead();
 		Listheader lher = new Listheader();
-		lher.setLabel("名称");
+		lher.setLabel(Labels.getLabel("Name"));
 		lher.setWidth("100px");
 		lher.setSort("auto");
 		lher.setAlign("left");
 		lh.appendChild(lher);
 		lher = new Listheader();
-		lher.setLabel("正常运行时间(%)");
+		lher.setLabel(Labels.getLabel("Uptime(%)"));
 		lher.setWidth("150px");
 		lher.setSort("auto");
 		lher.setAlign("left");
 		lh.appendChild(lher);
 		lher = new Listheader();
-		lher.setLabel("危险(%)");
+		lher.setLabel(Labels.getLabel("Warning(%)"));
 		lher.setWidth("70px");
 		lher.setSort("auto");
 		lher.setAlign("left");
 		lh.appendChild(lher);
 		lher = new Listheader();
-		lher.setLabel("错误(%)");
+		lher.setLabel(Labels.getLabel("Error(%)"));
 		lher.setWidth("70px");
 		lher.setSort("auto");
 		lher.setAlign("left");
 		lh.appendChild(lher);
 		lher = new Listheader();
-		lher.setLabel("最新");
+		lher.setLabel(Labels.getLabel("Newest"));
 		lher.setWidth("70px");
 		lher.setSort("auto");
 		lher.setAlign("left");
 		lh.appendChild(lher);
 		lher = new Listheader();
-		lher.setLabel("阀值");
+		lher.setLabel(Labels.getLabel("Threshold"));
 		lher.setWidth("200px");
 		lher.setSort("auto");
 		lher.setAlign("left");
@@ -1195,37 +1196,37 @@ public class MonitorDetailInfo extends GenericForwardComposer {
 		}
 		Listhead cLh = new Listhead();
 		Listheader cLher = new Listheader();
-		cLher.setLabel("名称");
+		cLher.setLabel(Labels.getLabel("Name"));
 		cLher.setSort("auto");
 		cLher.setAlign("left");
 		cLh.appendChild(cLher);
 		cLher = new Listheader();
-		cLher.setLabel("测量");
+		cLher.setLabel(Labels.getLabel("Measurement"));
 		cLher.setSort("auto");
 		cLher.setAlign("left");
 		cLh.appendChild(cLher);
 		cLher = new Listheader();
-		cLher.setLabel("最大值");
+		cLher.setLabel(Labels.getLabel("MaximumValue"));
 		cLher.setSort("auto");
 		cLher.setAlign("left");
 		cLh.appendChild(cLher);
 		cLher = new Listheader();
-		cLher.setLabel("最小值");
+		cLher.setLabel(Labels.getLabel("MinimumValue"));
 		cLher.setSort("auto");
 		cLher.setAlign("left");
 		cLh.appendChild(cLher);
 		cLher = new Listheader();
-		cLher.setLabel("平均值");
+		cLher.setLabel(Labels.getLabel("AverageValue"));
 		cLher.setSort("auto");
 		cLher.setAlign("left");
 		cLh.appendChild(cLher);
 		cLher = new Listheader();
-		cLher.setLabel("最近一次");
+		cLher.setLabel(Labels.getLabel("ARecent"));
 		cLher.setSort("auto");
 		cLher.setAlign("left");
 		cLh.appendChild(cLher);
 		cLher = new Listheader();
-		cLher.setLabel("最大值时间");
+		cLher.setLabel(Labels.getLabel("MaximumTime"));
 		cLher.setSort("auto");
 		cLher.setAlign("left");
 		cLh.appendChild(cLher);
@@ -1290,7 +1291,7 @@ public class MonitorDetailInfo extends GenericForwardComposer {
 		} catch (Exception e) {
 			e.printStackTrace();
 			try {
-				Messagebox.show("请输入完整的查询条件", "提示", Messagebox.OK,
+				Messagebox.show(Labels.getLabel("PCompleteQueryConditions"), "提示", Messagebox.OK,
 						Messagebox.INFORMATION);
 			} catch (InterruptedException e1) {}
 		}
@@ -2181,7 +2182,7 @@ class checkDataReportSelectListener implements EventListener {
 		String min = report.getReturnValue("min", index);
 		String max = report.getReturnValue("max", index);
 		String average = report.getReturnValue("average", index);
-		String subtitle = "最小值：" + min + "最大值：" + max + "平均值：" + average;
+		String subtitle = Labels.getLabel("MinimumValue:") + min + Labels.getLabel("MaximumValue:") + max + Labels.getLabel("AverageValue:") + average;
 		String name = report.getReturnValue("ReturnName", index) == null ? ""
 				: report.getReturnValue("ReturnName", index);
 		XYDataset data = buildDataset(index, name);
@@ -2204,7 +2205,7 @@ class checkDataReportSelectListener implements EventListener {
 		String min = report.getReturnValue("min", index);
 		String max = report.getReturnValue("max", index);
 		String average = report.getReturnValue("average", index);
-		String subtitle = "最小值：" + min + "最大值：" + max + "平均值：" + average;
+		String subtitle = Labels.getLabel("MinimumValue:") + min + Labels.getLabel("MaximumValue:") + max + Labels.getLabel("AverageValue:") + average;
 		String name = report.getReturnValue("ReturnName", index) == null ? ""
 				: report.getReturnValue("ReturnName", index);
 		XYDataset data = buildDataset(index, name);
@@ -2227,7 +2228,7 @@ class checkDataReportSelectListener implements EventListener {
 		String min = report.getReturnValue("min", index);
 		String max = report.getReturnValue("max", index);
 		String average = report.getReturnValue("average", index);
-		String subtitle = "最小值：" + min + "最大值：" + max + "平均值：" + average;
+		String subtitle = Labels.getLabel("MinimumValue:") + min + Labels.getLabel("MaximumValue:") + max + Labels.getLabel("AverageValue:") + average;
 		String name = report.getReturnValue("ReturnName", index) == null ? ""
 				: report.getReturnValue("ReturnName", index);
 		XYDataset data = buildDataset(index, name);
