@@ -19,6 +19,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
 import org.jfree.data.xy.XYDataset;
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.Session;
@@ -119,16 +120,16 @@ public class MonitorReport extends GenericForwardComposer implements
 			e.printStackTrace();
 		}
 		if (w == null) {
-			error_message = "未登录或无效的会话！";
+			error_message = Labels.getLabel("UnknownInvalidSession");
 			return;
 		}
 		INode n = w.getNode(monitorId);
 		if (n == null) {
-			error_message = "节点不存在或无权访问！";
+			error_message = Labels.getLabel("NodeNotExistAccess");
 			return;
 		}
 		if (!n.getType().equals(INode.MONITOR)) {
-			error_message = "节点类型非法！";
+			error_message = Labels.getLabel("NodeTypeIllegal");
 			return;
 		}
 //		MonitorInfo info = w.getMonitorInfo(n);
@@ -156,7 +157,7 @@ public class MonitorReport extends GenericForwardComposer implements
 //		} catch (Exception e) {}
 //		
 		if (error_message != null) {
-			System.err.println("详细信息错误"+error_message);
+			System.err.println(Labels.getLabel("DetailedErrorMessage")+error_message);
 			return;
 		}
 		Listbox listtj1 = (Listbox) WMonitorInfo.getFellow("listtj");
@@ -530,7 +531,7 @@ public class MonitorReport extends GenericForwardComposer implements
 			// win.setMaximized(true);
 			win.setAttribute("monitorId", monitorId);
 			win.setClosable(true);
-			win.setTitle("详细信息");
+			win.setTitle(Labels.getLabel("DetailedInformation"));
 			try {
 				win.doModal();
 			} catch (Exception e) {

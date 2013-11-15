@@ -1,3 +1,4 @@
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
 <zk xmlns:h="http://www.w3.org/1999/xhtml">
 <window title="" border="normal" id="monitordetailwindow"
 	closable="true" apply="com.siteview.ecc.controlpanel.MonitorDetailInfo"
@@ -18,11 +19,11 @@
 	</zscript>
 	<tabbox id="box">
 		<tabs>
-			<tab label="图表"  id="tbmap"/>
-			<tab label="数据" id="tbdata"/>
-			<tab label="趋势报表" id="tbreport"/>
-			<!-- tab label="日历视图" id="tbfish"/-->
-			<tab label="鱼眼视图" id="tbfisheye"/>
+			<tab label="${c:l('Chart')}"  id="tbmap"/>
+			<tab label="${c:l('Data')}" id="tbdata"/>
+			<tab label="${c:l('TrendReport')}" id="tbreport"/>
+			<!-- tab label="${c:l('CalendarView')}" id="tbfish"/-->
+			<tab label="${c:l('FisheyeView')}" id="tbfisheye"/>
 		</tabs>
 		<tabpanels>
 			<tabpanel>
@@ -49,7 +50,7 @@
 									</columns>
 									<rows style="border:none">
 										<row zclass="none" height="27px">
-											开始时间:
+											<label value="${c:l('StartTime:')}"/>
 											<hbox>
 												<datebox width="75px"
 													format="yyyy-MM-dd" value="${stime }" id="createBegin_Date"
@@ -59,7 +60,7 @@
 													style="font-size:10pt;vertical-align:text-bottom" />
 											</hbox>
 											<space width="50px" />
-											结束时间:
+											<label value="${c:l('EndTime:')}"/>
 											<hbox>
 												<datebox width="75px"
 													value="${etime}" format="yyyy-MM-dd" id="createEnd_Date"
@@ -72,13 +73,13 @@
 											<space width="20px" />
 											<hbox>
 												<button width="74px"
-													height="23px" sclass="btnDefault" label="筛选"
+													height="23px" sclass="btnDefault" label="${c:l('Screening')}"
 													id="filterdata" image="/main/images/settings.gif" />
 												<button width="74px"
-													height="23px" sclass="btnDefault" label="重新获取数据"
+													height="23px" sclass="btnDefault" label="${c:l('ToObtainData')}"
 													id="regetdata" />
 												<button width="74px"
-													height="23px" sclass="btnDefault" label="关闭"
+													height="23px" sclass="btnDefault" label="${c:l('Close')}"
 													image="/main/images/button/ico/close_bt.gif"
 													id="regetclose" />
 											</hbox>
@@ -111,27 +112,27 @@
 			<tabpanel>
 				<groupbox style="margin-left:5px;margin-right:5px"
 					id="g3">
-					<caption label="数据状态"></caption>
+					<caption label="${c:l('StatusData')}"></caption>
 					<vbox>
 						<hbox align="center">
 							<radiogroup id="dataToShow"
 								draggable="true">
-								<radio label="全部" value="all" id="r1"
+								<radio label="${c:l('All')}" value="all" id="r1"
 									 checked="true" />
 								<space width="10px" />
-								<radio label="错误" value="bad" id="r2" />
+								<radio label="${c:l('Error')}" value="bad" id="r2" />
 								<space width="10px" />
-								<radio label="危险" value="warning"
+								<radio label="${c:l('Warning')}" value="warning"
 									id="r3" />
 								<space width="10px" />
-								<radio label="正常" value="ok" id="r4" />
+								<radio label="${c:l('Good')}" value="ok" id="r4" />
 								<space width="10px" />
-								<radio label="禁止" value="disable"
+								<radio label="${c:l('Disable')}" value="disable"
 									id="r5" />
 							</radiogroup>
 							<space width="40px" />
 							<button width="74px" height="23px"
-								sclass="btnDefault" label="关闭"
+								sclass="btnDefault" label="${c:l('Close')}"
 								image="/main/images/button/ico/close_bt.gif"
 								id="dataclose" style="margin-left:10px" />
 						</hbox>
@@ -142,7 +143,7 @@
 
 				<groupbox style="margin-left:5px;margin-right:5px"
 					id="g4">
-					<caption label="数据"></caption>
+					<caption label="${c:l('Data')}"></caption>
 					<listbox id="datalistbox"
 						style="background: white; border: 0; overflow: auto; width: 100%; position: relative;">
 					</listbox>
@@ -151,7 +152,7 @@
 			<tabpanel>
 				<groupbox closable="false" open="true"
 					style="margin-left:3px;margin-right:3px">
-					<caption label="查询条件" />
+					<caption label="${c:l('QueryConditions')}" />
 
 					<grid oddRowSclass="none" style="border:0">
 						<columns>
@@ -161,55 +162,55 @@
 						<rows>
 							<row zclass="none" height="20px">
 								<hbox id="toolbarbox">
-									<toolbarbutton label="2小时" id="tbbt1"
+									<toolbarbutton label="${c:l('TwoHours')}" id="tbbt1"
 										onFocus="onChangeStyle(self)"
 										style="line-height:18px;vertical-align:bottom" />
 									<space width="10px" />
-									<toolbarbutton label="4小时" id="tbbt2"
+									<toolbarbutton label="${c:l('FourHours')}" id="tbbt2"
 										onFocus="onChangeStyle(self)"
 										style="line-height:18px;vertical-align:bottom" />
 									<space width="10px" />
-									<toolbarbutton label="8小时" id="tbbt3"
+									<toolbarbutton label="${c:l('EightHours')}" id="tbbt3"
 										onFocus="onChangeStyle(self)"
 										style="line-height:18px;vertical-align:bottom" />
 									<space width="10px" />
-									<toolbarbutton label="1天" id="tbbt4"
+									<toolbarbutton label="${c:l('OneDays')}" id="tbbt4"
 										onFocus="onChangeStyle(self)"
 										style="line-height:18px;vertical-align:bottom" />
 									<space width="10px" />
-									<toolbarbutton label="2天" id="tbbt5"
+									<toolbarbutton label="${c:l('TwoDays')}" id="tbbt5"
 										onFocus="onChangeStyle(self)"
 										style="line-height:18px;vertical-align:bottom" />
 									<space width="10px" />
-									<toolbarbutton label="3天" id="tbbt6"
+									<toolbarbutton label="${c:l('ThreeDays')}" id="tbbt6"
 										onFocus="onChangeStyle(self)"
 										style="line-height:18px;vertical-align:bottom" />
 									<space width="10px" />
-									<toolbarbutton label="5天" id="tbbt7"
+									<toolbarbutton label="${c:l('FiveDays')}" id="tbbt7"
 										onFocus="onChangeStyle(self)"
 										style="line-height:18px;vertical-align:bottom" />
 									<space width="10px" />
-									<toolbarbutton label="本周" id="tbbt8"
+									<toolbarbutton label="${c:l('ThisWeek')}" id="tbbt8"
 										onFocus="onChangeStyle(self)"
 										style="line-height:18px;vertical-align:bottom" />
 									<space width="10px" />
-									<toolbarbutton label="1周" id="tbbt9"
+									<toolbarbutton label="${c:l('OneWeeks')}" id="tbbt9"
 										onFocus="onChangeStyle(self)"
 										style="line-height:18px;vertical-align:bottom" />
 									<space width="10px" />
-									<toolbarbutton label="1个月"
+									<toolbarbutton label="${c:l('OneMonths')}"
 										id="tbbt10" onFocus="onChangeStyle(self)"
 										style="line-height:18px;vertical-align:bottom" />
 									<space width="10px" />
-									<toolbarbutton label="2个月"
+									<toolbarbutton label="${c:l('TwoMonths')}"
 										id="tbbt11" onFocus="onChangeStyle(self)"
 										style="line-height:18px;vertical-align:bottom" />
 									<space width="10px" />
-									<toolbarbutton label="6个月"
+									<toolbarbutton label="${c:l('SixMonths')}"
 										id="tbbt12" onFocus="onChangeStyle(self)"
 										style="line-height:18px;vertical-align:bottom" />
 									<space width="10px" />
-									<toolbarbutton label="当天"
+									<toolbarbutton label="${c:l('SameDay')}"
 										id="tbbt13" onFocus="onChangeStyle(self)"
 										style="line-height:18px;vertical-align:bottom" />
 								</hbox>
@@ -236,7 +237,7 @@
 										<rows>
 											<row zclass="none"
 												height="35px">
-												开始时间：
+												<label value="${c:l('StartTime:')}"/>
 												<datebox width="75px"
 													format="yyyy-MM-dd" id="start" height="18px" value="${c2.time}"
 													style="font-size:10pt;" />
@@ -260,7 +261,7 @@
 										<rows>
 											<row zclass="none"
 												height="35px">
-												结束时间：
+												<label value="${c:l('EndTime:')}"/>
 												<datebox width="75px"
 													format="yyyy-MM-dd" id="end" height="18px"
 													style="font-size:10pt;" />
@@ -283,10 +284,10 @@
 											<row zclass="none"
 												height="35px">
 												<button id="searchBtn"
-													label="查询" image="/main/images/button/ico/query_bt.gif"
+													label="${c:l('Query')}" image="/main/images/button/ico/query_bt.gif"
 													sclass="btnDefault" width="74px" height="23px" />
 												<button width="74px"
-													height="23px" sclass="btnDefault" label="关闭"
+													height="23px" sclass="btnDefault" label="${c:l('Close')}"
 													id="trendcyclose"
 													image="/main/images/button/ico/close_bt.gif"
 													style="margin-left:10px" />
@@ -301,7 +302,7 @@
 
 
 				<separator width="1px" height="12px" />
-				<panel sclass="ecc-panel" title="运行情况表" 
+				<panel sclass="ecc-panel" title="${c:l('RunningStatusTable')}"
 					style="margin-left:3px;margin-right:3px">
 					<panelchildren>
 						<listbox id="runtimeReport"
@@ -309,7 +310,7 @@
 						</listbox>
 					</panelchildren>
 				</panel>
-				<panel sclass="ecc-panel" title="监测数据统计表" 
+				<panel sclass="ecc-panel" title="${c:l('StatisticalTableMonitoringData')}"
 					style="margin-left:3px;margin-right:3px">
 					<panelchildren>
 						<listbox id="checkDataReport" fixedLayout="true"
@@ -326,12 +327,12 @@
 			<div style="margin-left:3px;margin-right:3px" >
 				<hbox>
 					<space width="400px"/>
-					<button width="74px" height="18px" sclass="btnDefault" label="关闭"
+					<button width="74px" height="18px" sclass="btnDefault" label="${c:l('Close')}"
 					image="/main/images/button/ico/close_bt.gif"
 					id="fisheyeclose" style="margin-right:50px;" visible="false"/>
 				</hbox>
 			<applet id="fisheyeapplet" codebase="/ecc/main/applet" archive="fisheye.jar,piccolox.jar,piccolo.jar"  sessionid="${sessionScope.usersessionid}" nodeid="${nodeid}" date="${nowString}"  width="100%" height="560px" />
-			<label>如果想使用该功能，请在客户端安装　</label><h:a style="font-size:9pt;"  href="http://www.java.com/en/download/manual.jsp" target="_blank">Java Runtime Environment 1.6.0_04  以上版本</h:a>
+			<label value="${c:l('UseFeatureInstalledOnClient')}">　</label><h:a style="font-size:9pt;"  href="http://www.java.com/en/download/manual.jsp" target="_blank">Java Runtime Environment 1.6.0_04  以上版本</h:a>
 			</div>
 			</tabpanel>
 		</tabpanels>

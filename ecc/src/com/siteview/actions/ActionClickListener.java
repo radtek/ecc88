@@ -202,7 +202,7 @@ public class ActionClickListener implements EventListener
 		{
 			if(eccTreeItem.getChildRen().size()<1)
 			{
-				Message.showInfo("没有可以测试的监测器！");
+				Message.showInfo(Labels.getLabel("NoTestMonitor"));
 			}else{
 				final Window win = (Window) Executions.createComponents(EntityTest_TargetUrl, null, null);
 				win.setAttribute("inode", eccTreeItem.getValue());
@@ -218,7 +218,7 @@ public class ActionClickListener implements EventListener
 				int mcount = children.size();
 				if (mcount == 0)
 				{
-					Message.showInfo("没有可以刷新的监测器！");
+					Message.showInfo(Labels.getLabel("NoTestMonitor"));
 					return;
 				}
 				final Window win = (Window) Executions.createComponents(EntityRefreshi_TargetUrl, null, null);

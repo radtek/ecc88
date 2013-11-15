@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zhtml.Messagebox;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.SuspendNotAllowedException;
@@ -95,7 +96,7 @@ public class FilterMonitorComposer extends GenericForwardComposer {
 					Map<String, String> typeInfo = queryMonitorTypeInfo();
 					Listitem itm = new Listitem();
 					itm.setId("99999");
-					Listcell cell = new Listcell("所有类型");
+					Listcell cell = new Listcell(Labels.getLabel("AllTypes"));
 					cell.setParent(itm);
 					itm.setParent(this.monitorType);
 
@@ -162,7 +163,7 @@ public class FilterMonitorComposer extends GenericForwardComposer {
 		try {
 			String title = this.filterName.getValue().trim();
 			if (title.isEmpty()) {
-				Messagebox.show("报告标题不能为空,请重新输入!", "提示", Messagebox.OK,
+				Messagebox.show(Labels.getLabel("ReportTitleCannotEmptyInputAgain"), "提示", Messagebox.OK,
 						Messagebox.INFORMATION);
 				filterName.focus();
 				return;
@@ -177,7 +178,7 @@ public class FilterMonitorComposer extends GenericForwardComposer {
 			String monitorState = this.showAndHidden.getSelectedItem().getId();
 
 			Listitem typeitem = monitorType.getSelectedItem();
-			String monitorTypeName = "所有类型";
+			String monitorTypeName = Labels.getLabel("AllTypes");
 			String monitorType = "99999";
 			if (typeitem != null) {
 				monitorTypeName = typeitem.getLabel();
@@ -221,15 +222,15 @@ public class FilterMonitorComposer extends GenericForwardComposer {
 			View view = Toolkit.getToolkit().getSvdbView(
 					event.getTarget().getDesktop());
 			String loginname = view.getLoginName();
-			String minfo = loginname + " " + "在"
-					+ OpObjectId.monitor_browser.name + "中进行了  "
-					+ OpTypeId.edit.name + "操作，编辑筛选条件: " + title;
+			String minfo = loginname + " " + Labels.getLabel("In")
+					+ OpObjectId.monitor_browser.name + Labels.getLabel("Conducting")
+					+ OpTypeId.edit.name + Labels.getLabel("OperationEditFilter:") + title;
 			AppendOperateLog.addOneLog(loginname, minfo, OpTypeId.edit,
 					OpObjectId.monitor_browser);
 
 			composer.getShowMonitorData().setTitle(title);
 		} catch (Exception e) {
-			Messagebox.show("报告标题不能为空,请重新输入!", "提示", Messagebox.OK,
+			Messagebox.show(Labels.getLabel("ReportTitleCannotEmptyInputAgain"), "提示", Messagebox.OK,
 					Messagebox.INFORMATION);
 			e.printStackTrace();
 		}
