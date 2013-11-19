@@ -9,6 +9,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.zkoss.lang.reflect.FusionInvoker;
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zhtml.Messagebox;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Components;
@@ -190,7 +191,7 @@ public class EccLayoutComposer extends GenericForwardComposer implements
 			composer.refreshByView(tree, monitorItem);
 		}else if(event != null && !isClickImg && "locateEntityCombox".equals(event.getTarget().getId())){
 			try {
-				Messagebox.show("该设备不存在", "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("DeviceDoesNotExist"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

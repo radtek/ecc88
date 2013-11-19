@@ -115,7 +115,7 @@ public class TaskDaoImplAbsolute extends GenericForwardComposer {
 			win.setAttribute("reTaskList", reTaskList);
 			win.doModal();
 		}catch(Exception e){
-			Messagebox.show(Labels.getLabel("AddAbsoluteTimeTaskPlanWrong"), "错误", Messagebox.OK,
+			Messagebox.show(Labels.getLabel("AddAbsoluteTimeTaskPlanWrong"), Labels.getLabel("Error"), Messagebox.OK,
 					Messagebox.ERROR);
 		}
 	}
@@ -176,13 +176,13 @@ public class TaskDaoImplAbsolute extends GenericForwardComposer {
 		Set<Listitem> s = Listbox.getSelectedItems();
 		if (s.size()< 1){
 			try{
-				Messagebox.show(Labels.getLabel("NotSelectAnyTask"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("NotSelectAnyTask"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			}catch(Exception e){}
 			return;
 		}
 		int i = 0;
 		try{
-			i = Messagebox.show(Labels.getLabel("SureToDeleteSelectedTask"), "询问", Messagebox.OK
+			i = Messagebox.show(Labels.getLabel("SureToDeleteSelectedTask"), Labels.getLabel("Ask"), Messagebox.OK
 					| Messagebox.CANCEL, Messagebox.QUESTION);
 		}catch(Exception e){}
 		
@@ -205,7 +205,7 @@ public class TaskDaoImplAbsolute extends GenericForwardComposer {
 						String temp = map.get("1");
 						if( temp != null  || !"".equals(temp.trim())){
 							if( name.equals(temp)){
-								Messagebox.show(Labels.getLabel("TaskPlan")+name+Labels.getLabel("UsedNotOperationReSelection"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+								Messagebox.show(Labels.getLabel("TaskPlan")+name+Labels.getLabel("UsedNotOperationReSelection"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 								deleteflag = false;
 								break;
 							}
@@ -220,7 +220,7 @@ public class TaskDaoImplAbsolute extends GenericForwardComposer {
 						AppendOperateLog.addOneLog(loginname, minfo, OpTypeId.del,
 						OpObjectId.absolute_task);
 					}catch(Exception e){
-						Messagebox.show(Labels.getLabel("DeleteAbsoluteTimeTaskPlan")+name+Labels.getLabel("IsError"), "错误", Messagebox.OK,
+						Messagebox.show(Labels.getLabel("DeleteAbsoluteTimeTaskPlan")+name+Labels.getLabel("IsError"), Labels.getLabel("Error"), Messagebox.OK,
 								Messagebox.ERROR);
 					}
 				}

@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.zkoss.util.media.AMedia;
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zhtml.Filedownload;
 import org.zkoss.zhtml.Messagebox;
 
@@ -37,19 +38,19 @@ public class ExportMonitorReportComposer extends GenericForwardComposer {
 			AMedia media = null;
 			
 			if (reporttype.equals("pdf")) {
-				media = ChartUtil.saveAsPdf(jasperpath, "监测器信息报告",parameters,
+				media = ChartUtil.saveAsPdf(jasperpath,Labels.getLabel("MonitorInformationReport"),parameters,
 						dataSource);
 			} else if (reporttype.equals("xls")) {
-				media = ChartUtil.saveAsXls(jasperpath,"监测器信息报告", parameters,
+				media = ChartUtil.saveAsXls(jasperpath,Labels.getLabel("MonitorInformationReport"), parameters,
 						dataSource);
 			} else if (reporttype.equals("html")) {
-				media = ChartUtil.saveAsHtml(jasperpath,"监测器信息报告", parameters,
+				media = ChartUtil.saveAsHtml(jasperpath,Labels.getLabel("MonitorInformationReport"), parameters,
 						dataSource);
 			}
 			Filedownload.save(media);
 			exportmonitorreport.detach();
 		} catch (Exception e) {
-			Messagebox.show(e.getMessage(), "错误", Messagebox.OK, Messagebox.ERROR);
+			Messagebox.show(e.getMessage(), Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 		}
 	}
 }

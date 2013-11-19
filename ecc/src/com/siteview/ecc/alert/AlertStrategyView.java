@@ -65,14 +65,14 @@ public class AlertStrategyView extends Window {
 			Window win = null;
 			if (button.getId().startsWith("add")) {
 				win = (Window) Executions.createComponents("/main/alert/strategy.zul", null, null);
-				win.setTitle("新建策略");
+				win.setTitle(Labels.getLabel("NewStrategy"));
 			} else if (button.getId().startsWith("edit")) {
 				if (item == null) {
-					Messagebox.show(Labels.getLabel("ChooseEditStrategy"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+					Messagebox.show(Labels.getLabel("ChooseEditStrategy"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 					return;
 				}
 				win = (Window) Executions.createComponents("/main/alert/strategy.zul", null, null);
-				win.setTitle("编辑策略");
+				win.setTitle(Labels.getLabel("EditingStrategy"));
 				win.setAttribute("selectedItem", item.getValue());
 			}
 			win.setVisible(true);
@@ -97,7 +97,7 @@ public class AlertStrategyView extends Window {
 		try{
 			Listitem item = getAlertStrategyList().getSelectedItem();
 			if (item == null) {
-				Messagebox.show(Labels.getLabel("SelectpolicyDelete"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("SelectpolicyDelete"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				return;
 			}
 			int ret = Message.showQuestion(Labels.getLabel("SureDeleteSelectedRecords?"));

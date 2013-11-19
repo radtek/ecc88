@@ -451,12 +451,12 @@ public class SetBatch extends GenericForwardComposer
 	{
 		if (((MonitorSelectTree) monitorTree).getSelectedIds().size() == 0)
 		{
-			Messagebox.show(Labels.getLabel("SelectMonitor"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+			Messagebox.show(Labels.getLabel("SelectMonitor"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			return;
 		}
 		final Window win = (Window) Executions.createComponents(Alert_TargetUrl, null, null);
 		// 此处加上属性列表
-		win.setTitle("编辑错误条件");
+		win.setTitle(Labels.getLabel("EditErrorConditions"));
 		win.setAttribute("tb", tberror);
 		win.setAttribute("monitorTemplate", monitorTemplate);
 		try
@@ -464,7 +464,7 @@ public class SetBatch extends GenericForwardComposer
 			win.doModal();
 		} catch (Exception e)
 		{
-			Messagebox.show(e.getMessage(), "错误", Messagebox.OK, Messagebox.ERROR);
+			Messagebox.show(e.getMessage(), Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 		}
 	}
 	
@@ -472,12 +472,12 @@ public class SetBatch extends GenericForwardComposer
 	{
 		if (((MonitorSelectTree) monitorTree).getSelectedIds().size() == 0)
 		{
-			Messagebox.show(Labels.getLabel("SelectMonitor"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+			Messagebox.show(Labels.getLabel("SelectMonitor"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			return;
 		}
 		final Window win = (Window) Executions.createComponents(Alert_TargetUrl, null, null);
 		// 此处加上属性列表
-		win.setTitle("编辑警告条件");
+		win.setTitle(Labels.getLabel("EditWarningCondition"));
 		win.setAttribute("tb", tbdanger);
 		win.setAttribute("monitorTemplate", monitorTemplate);
 		try
@@ -485,7 +485,7 @@ public class SetBatch extends GenericForwardComposer
 			win.doModal();
 		} catch (Exception e)
 		{
-			Messagebox.show(e.getMessage(), "错误", Messagebox.OK, Messagebox.ERROR);
+			Messagebox.show(e.getMessage(), Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 		}
 	}
 	
@@ -493,12 +493,12 @@ public class SetBatch extends GenericForwardComposer
 	{
 		if (((MonitorSelectTree) monitorTree).getSelectedIds().size() == 0)
 		{
-			Messagebox.show(Labels.getLabel("SelectMonitor"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+			Messagebox.show(Labels.getLabel("SelectMonitor"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			return;
 		}
 		final Window win = (Window) Executions.createComponents(Alert_TargetUrl, null, null);
 		// 此处加上属性列表
-		win.setTitle("编辑正常条件");
+		win.setTitle(Labels.getLabel("EditNormalConditions"));
 		win.setAttribute("tb", tbnormal);
 		win.setAttribute("monitorTemplate", monitorTemplate);
 		try
@@ -506,7 +506,7 @@ public class SetBatch extends GenericForwardComposer
 			win.doModal();
 		} catch (Exception e)
 		{
-			Messagebox.show(e.getMessage(), "错误", Messagebox.OK, Messagebox.ERROR);
+			Messagebox.show(e.getMessage(), Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 		}
 		
 	}
@@ -521,7 +521,7 @@ public class SetBatch extends GenericForwardComposer
 			win.doModal();
 		} catch (Exception e) {
 			try{
-				Messagebox.show(e.getMessage(), "错误", Messagebox.OK,Messagebox.ERROR);
+				Messagebox.show(e.getMessage(), Labels.getLabel("Error"), Messagebox.OK,Messagebox.ERROR);
 			}catch(Exception e1){
 			}
 		}
@@ -611,7 +611,7 @@ public class SetBatch extends GenericForwardComposer
 		try{
 			if (((MonitorSelectTree) monitorTree).getSelectedIds().size() == 0)
 			{
-				Messagebox.show(Labels.getLabel("SelectMonitor"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("SelectMonitor"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				return false;
 			}
 			String panelId = tabbox.getSelectedPanel().getId();
@@ -619,7 +619,7 @@ public class SetBatch extends GenericForwardComposer
 			{
 				if (ibFrequency.getValue() == null)
 				{
-					Messagebox.show(Labels.getLabel("MonitorFrequencyNotModified"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+					Messagebox.show(Labels.getLabel("MonitorFrequencyNotModified"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 					ibFrequency.setFocus(true);
 					return false;
 				}
@@ -628,7 +628,7 @@ public class SetBatch extends GenericForwardComposer
 			{
 				if (ibErrorFrequency.getValue() == null)
 				{
-					Messagebox.show(Labels.getLabel("ErrorCheckFrequencyNotModified"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+					Messagebox.show(Labels.getLabel("ErrorCheckFrequencyNotModified"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 					ibErrorFrequency.setFocus(true);
 					return false;
 				}
@@ -637,7 +637,7 @@ public class SetBatch extends GenericForwardComposer
 			{
 				if (tberror.getValue().equals("") && tbnormal.getValue().equals("") && tbdanger.getValue().equals(""))
 				{
-					Messagebox.show(Labels.getLabel("ThresholdNotModified"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+					Messagebox.show(Labels.getLabel("ThresholdNotModified"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 					return false;
 				}
 			}
@@ -645,19 +645,19 @@ public class SetBatch extends GenericForwardComposer
 			{
 				if (tberror.getValue().equals(""))
 				{
-					Messagebox.show(Labels.getLabel("InputErrorThreshold"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+					Messagebox.show(Labels.getLabel("InputErrorThreshold"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 					tberror.setFocus(true);
 					return false;
 				}
 				if (tbdanger.getValue().equals(""))
 				{
-					Messagebox.show(Labels.getLabel("EnterWarningThreshold"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+					Messagebox.show(Labels.getLabel("EnterWarningThreshold"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 					tbdanger.setFocus(true);
 					return false;
 				}
 				if (tbnormal.getValue().equals(""))
 				{
-					Messagebox.show(Labels.getLabel("EnterNormalThreshold"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+					Messagebox.show(Labels.getLabel("EnterNormalThreshold"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 					tbnormal.setFocus(true);
 					return false;
 				}
@@ -715,7 +715,7 @@ public class SetBatch extends GenericForwardComposer
 	{
 		View view = Toolkit.getToolkit().getSvdbView(Executions.getCurrent().getDesktop());
 		String loginname = view.getLoginName();
-		String minfo=loginname+" "+"在"+OpObjectId.monitor_set.name+"中进行了  "+OpTypeId.edit.name+"操作 ";
+		String minfo=loginname+" "+Labels.getLabel("In")+OpObjectId.monitor_set.name+Labels.getLabel("Conducting")+OpTypeId.edit.name+Labels.getLabel("Operation");
 		AppendOperateLog.addOneLog(loginname, minfo, OpTypeId.edit, OpObjectId.monitor_set);
 	}
 

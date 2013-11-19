@@ -224,7 +224,7 @@ public class TopNReportComposer extends GenericForwardComposer
 			
 			try
 			{
-				Messagebox.show(Labels.getLabel("SelectAReport"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("SelectAReport"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			} catch (InterruptedException e)
 			{
 				e.printStackTrace();
@@ -233,7 +233,7 @@ public class TopNReportComposer extends GenericForwardComposer
 		}
 		try
 		{
-			int ret = Messagebox.show(Labels.getLabel("SureToDeleteSelectedRecords"), "提示", Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION);
+			int ret = Messagebox.show(Labels.getLabel("SureToDeleteSelectedRecords"), Labels.getLabel("Prompt"), Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION);
 			
 			if (ret == Messagebox.CANCEL)
 				return;
@@ -337,12 +337,12 @@ public class TopNReportComposer extends GenericForwardComposer
 			}
 			refreshInifile();
 			String loginname = view.getLoginName();
-			String minfo = loginname + " " + "在" + OpObjectId.topn_report.name + "中进行了  " + OpTypeId.edit.name + "操作。";
+			String minfo = loginname + " " + Labels.getLabel("In") + OpObjectId.topn_report.name + Labels.getLabel("Conducting") + OpTypeId.edit.name + Labels.getLabel("Operation.");
 			AppendOperateLog.addOneLog(loginname, minfo, OpTypeId.edit, OpObjectId.topn_report);
 		}else
 		{
 			try{
-				Messagebox.show("用户:"+view.getLoginName()+" 没有  编辑TopN报告  的权限!", "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("User:")+view.getLoginName()+Labels.getLabel("NoEditorTopNReportPermissions"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				return;
 			}catch(Exception e){}
 		}
@@ -356,12 +356,12 @@ public class TopNReportComposer extends GenericForwardComposer
 	{
 		if(topNList.getSelectedCount()<=0){
 			try {
-				Messagebox.show(Labels.getLabel("SelectAReport"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("SelectAReport"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			} catch (InterruptedException e) {}
 			return;
 		}
 		try{
-			int ret = Messagebox.show(Labels.getLabel("SureToDeleteSelectedRecords"), "询问", Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION);
+			int ret = Messagebox.show(Labels.getLabel("SureToDeleteSelectedRecords"), Labels.getLabel("Ask"), Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION);
 			if (ret == Messagebox.CANCEL)
 				return;
 			Set<Listitem> items = topNList.getSelectedItems();
@@ -409,7 +409,7 @@ public class TopNReportComposer extends GenericForwardComposer
 		}
 			View view = Toolkit.getToolkit().getSvdbView(Executions.getCurrent().getDesktop());
 			String loginname = view.getLoginName();
-			String minfo = loginname + " " + "在" + OpObjectId.topn_report.name + "中进行了  " + OpTypeId.del.name + "操作。";
+			String minfo = loginname + " " + Labels.getLabel("In") + OpObjectId.topn_report.name + Labels.getLabel("Conducting") + OpTypeId.del.name + Labels.getLabel("Operation.");
 			AppendOperateLog.addOneLog(loginname, minfo, OpTypeId.del, OpObjectId.topn_report);
 			// 刷新页面
 			refreshInifile();
@@ -428,7 +428,7 @@ public class TopNReportComposer extends GenericForwardComposer
 	{
 		if(topNList.getSelectedCount()<=0){
 			try {
-				Messagebox.show(Labels.getLabel("SelectAReport"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("SelectAReport"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -470,7 +470,7 @@ public class TopNReportComposer extends GenericForwardComposer
 		
 		View view = Toolkit.getToolkit().getSvdbView(event.getTarget().getDesktop());
 		String loginname = view.getLoginName();
-		String minfo = loginname + " " + "在" + OpObjectId.topn_report.name + "中进行了  " + OpTypeId.enable.name + "操作。";
+		String minfo = loginname + " " + Labels.getLabel("In") + OpObjectId.topn_report.name + Labels.getLabel("Conducting") + OpTypeId.enable.name + Labels.getLabel("Operation.");
 		AppendOperateLog.addOneLog(loginname, minfo, OpTypeId.enable, OpObjectId.topn_report);
 		// 刷新页面
 		refreshiControl();
@@ -485,7 +485,7 @@ public class TopNReportComposer extends GenericForwardComposer
 	{
 		if(topNList.getSelectedCount()<=0){
 			try {
-				Messagebox.show(Labels.getLabel("SelectAReport"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("SelectAReport"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -524,7 +524,7 @@ public class TopNReportComposer extends GenericForwardComposer
 		}
 		View view = Toolkit.getToolkit().getSvdbView(event.getTarget().getDesktop());
 		String loginname = view.getLoginName();
-		String minfo = loginname + " " + "在" + OpObjectId.topn_report.name + "中进行了  " + OpTypeId.diable.name + "操作。";
+		String minfo = loginname + " " + Labels.getLabel("In") + OpObjectId.topn_report.name + Labels.getLabel("Conducting") + OpTypeId.diable.name + Labels.getLabel("Operation.");
 		AppendOperateLog.addOneLog(loginname, minfo, OpTypeId.diable, OpObjectId.topn_report);
 		
 		// 刷新页面
@@ -554,7 +554,7 @@ public class TopNReportComposer extends GenericForwardComposer
 		{
 			try
 			{
-				Messagebox.show(Labels.getLabel("SelectAReport"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("SelectAReport"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			} catch (InterruptedException e)
 			{
 				e.printStackTrace();
@@ -591,7 +591,7 @@ public class TopNReportComposer extends GenericForwardComposer
 			tmStart = Toolkit.getToolkit().delDay(new Date(), 1);
 		else
 		{
-			Toolkit.getToolkit().showError("报告区间不支持:");
+			Toolkit.getToolkit().showError(Labels.getLabel("ReportIntervalNotSupport"));
 			return;
 		}
 		
@@ -611,7 +611,7 @@ public class TopNReportComposer extends GenericForwardComposer
 		
 		//addlog
 //		View view = Toolkit.getToolkit().getSvdbView(event.getTarget().getDesktop());
-		String minfo=loginname+" "+"在"+OpObjectId.topn_report.name+"中进行了手动生成报告操作.";
+		String minfo=loginname+" "+Labels.getLabel("In")+OpObjectId.topn_report.name+Labels.getLabel("InManualGenerationReports");
 		AppendOperateLog.addOneLog(loginname, minfo, OpTypeId.add, OpObjectId.topn_report);
 		onSelecttopNList(event);
 	}

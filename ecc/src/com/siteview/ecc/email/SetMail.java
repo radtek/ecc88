@@ -205,27 +205,27 @@ public class SetMail extends GenericAutowireComposer {
 			password = strPassword.getValue().trim();
 			
 			if("".equals(mailServer)){
-				Messagebox.show("发送服务器SMTP不能为空！", "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("SendingServerSMTPCannotEmpty"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				strMailServer.setFocus(true);
 				return;
 			}
 			if("".equals(mailFrom)){
-				Messagebox.show("发送方Email地址不能为空！", "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("SenderEmailAddressCanNotEmpty"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				strMailFrom.setFocus(true);
 				return;
 			}
 			if("".equals(backupServer)){
-				Messagebox.show("备份发送服务器不能为空！", "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("BackupServerCannotEmpty"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				strBackupServer.setFocus(true);
 				return;
 			}
 			if("".equals(user)){
-				Messagebox.show("身份验证用户名不能为空！", "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("AuthenticationUserNameCannotEmpty"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				strUser.setFocus(true);
 				return;
 			}
 			if("".equals(password)){
-				Messagebox.show("身份验证密码不能为空！", "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("AuthenticationPasswordCannotEmpty"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				strPassword.setFocus(true);
 				return;
 			}
@@ -235,7 +235,7 @@ public class SetMail extends GenericAutowireComposer {
 			Pattern regex = Pattern.compile("^\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$");
 			Matcher matcher = regex.matcher(mailFrom);
 			if (!matcher.matches()) {
-				Messagebox.show("请输入正确的Email地址！", "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("PEnterValidEmailAddress"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				strMailFrom.setFocus(true);
 				return;
 			}
@@ -261,7 +261,7 @@ public class SetMail extends GenericAutowireComposer {
 			ini.saveChange();
 			applyButton.setDisabled(true);
 		}catch(Exception e){
-			Messagebox.show(e.getMessage(),"错误", Messagebox.OK, Messagebox.ERROR);
+			Messagebox.show(e.getMessage(),Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 		}
 	}
 
@@ -293,7 +293,7 @@ public class SetMail extends GenericAutowireComposer {
 			eccBody.setSrc(null);
 			eccBody.setSrc(targetUrl);
 		}catch(Exception e){
-			Messagebox.show(e.getMessage(),"错误", Messagebox.OK, Messagebox.ERROR);
+			Messagebox.show(e.getMessage(),Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 		}
 	}
 
@@ -304,7 +304,7 @@ public class SetMail extends GenericAutowireComposer {
 			eccBody.setSrc(null);
 			eccBody.setSrc(targetUrl);
 		}catch(Exception e){
-			Messagebox.show(e.getMessage(),"错误", Messagebox.OK, Messagebox.ERROR);
+			Messagebox.show(e.getMessage(),Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 		}
 
 	}
@@ -313,7 +313,7 @@ public class SetMail extends GenericAutowireComposer {
 		try{
 			if (listbox_data.getSelectedItems().size() <= 0) {
 				try {
-					Messagebox.show(Labels.getLabel("EmailSetDisable"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+					Messagebox.show(Labels.getLabel("EmailSetDisable"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				} catch (InterruptedException x) {}
 				return;
 			}
@@ -334,14 +334,14 @@ public class SetMail extends GenericAutowireComposer {
 				if ("1".equals(flag)) {
 					ini.setKeyValue(section, "bCheck", "0");
 					ini.saveChange();
-					String minfo=loginname+" "+"在"+OpObjectId.mail_set.name+"中进行了  "+OpTypeId.enable.name+"操作，允许的信息项为： "+name;
+					String minfo=loginname+" "+Labels.getLabel("In")+OpObjectId.mail_set.name+Labels.getLabel("Conducting")+OpTypeId.enable.name+Labels.getLabel("OperationInformationAllowsFor:")+name;
 					AppendOperateLog.addOneLog(loginname, minfo, OpTypeId.enable, OpObjectId.mail_set);	
 				}
 			}
 			reFresh();
 		}catch(Exception e){
 			e.printStackTrace();
-			Messagebox.show(e.getMessage(),"错误", Messagebox.OK, Messagebox.ERROR);
+			Messagebox.show(e.getMessage(),Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 		}
 	}
 
@@ -349,7 +349,7 @@ public class SetMail extends GenericAutowireComposer {
 		try{
 			if (listbox_data.getSelectedItems().size() <= 0) {
 				try {
-					Messagebox.show(Labels.getLabel("EmailSetDisable"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+					Messagebox.show(Labels.getLabel("EmailSetDisable"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				} catch (Exception x) {}
 				return;
 			}
@@ -369,14 +369,14 @@ public class SetMail extends GenericAutowireComposer {
 				if ("0".equals(flag)) {
 					ini.setKeyValue(section, "bCheck", "1");
 					ini.saveChange();
-					String minfo=loginname+" "+"在"+OpObjectId.mail_set.name+"中进行了  "+OpTypeId.diable.name+"操作，禁止的信息项为： "+name;
+					String minfo=loginname+" "+Labels.getLabel("In")+OpObjectId.mail_set.name+Labels.getLabel("Conducting")+OpTypeId.diable.name+Labels.getLabel("OperationInformationItemsProhibitedFor:")+name;
 					AppendOperateLog.addOneLog(loginname, minfo, OpTypeId.diable, OpObjectId.mail_set);	
 				}
 			}
 			reFresh();
 		}catch(Exception e){
 			e.printStackTrace();
-			Messagebox.show(e.getMessage(),"错误", Messagebox.OK, Messagebox.ERROR);
+			Messagebox.show(e.getMessage(),Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 		}
 	}
 	/**
@@ -442,7 +442,7 @@ public class SetMail extends GenericAutowireComposer {
 		try{
 			if (listbox_data.getSelectedItems().size() <= 0) {
 				try {
-					Messagebox.show(Labels.getLabel("EmailSetDisable"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+					Messagebox.show(Labels.getLabel("EmailSetDisable"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				} catch (Exception x) {}
 				return;
 			}
@@ -453,7 +453,7 @@ public class SetMail extends GenericAutowireComposer {
 			
 			int i = 0;
 			try{
-				i = Messagebox.show("删除将会进行，是否继续?", "询问", Messagebox.OK| Messagebox.CANCEL, Messagebox.QUESTION);
+				i = Messagebox.show(Labels.getLabel("DeleteWillWantContinue"), Labels.getLabel("Ask"), Messagebox.OK| Messagebox.CANCEL, Messagebox.QUESTION);
 			}catch(Exception e){}
 			if (i == Messagebox.CANCEL) {
 				return;
@@ -477,7 +477,7 @@ public class SetMail extends GenericAutowireComposer {
 				boolean flag = false;
 				for(String a:usingEmaillist){
 					if(name.equals(a)){
-						Messagebox.show("报警正在使用 "+name+"，不能操作，请重选！", "提示", Messagebox.OK, Messagebox.INFORMATION);
+						Messagebox.show(Labels.getLabel("AlarmInUse")+name+Labels.getLabel("NotOperationGravitySeparation"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 						flag = true;
 						break;
 					}
@@ -485,13 +485,13 @@ public class SetMail extends GenericAutowireComposer {
 				if(!flag){
 					ini.deleteSection(section);
 					ini.saveChange();
-					String minfo=loginname+" "+"在"+OpObjectId.mail_set.name+"中进行了  "+OpTypeId.del.name+"操作，删除的信息项为： "+name;
+					String minfo=loginname+" "+Labels.getLabel("In")+OpObjectId.mail_set.name+Labels.getLabel("Conducting")+OpTypeId.del.name+Labels.getLabel("OperationInformationDeleteFor:")+name;
 					AppendOperateLog.addOneLog(loginname, minfo, OpTypeId.del, OpObjectId.mail_set);
 				}
 			}
 			reFresh();
 		}catch(Exception e){
-			Messagebox.show(e.getMessage(),"错误", Messagebox.OK, Messagebox.ERROR);
+			Messagebox.show(e.getMessage(),Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 		}
 	}
 
@@ -504,7 +504,7 @@ public class SetMail extends GenericAutowireComposer {
 					"/main/setting/editEmailSet.zul", null, null);
 			win2.doModal();
 		} catch (Exception e) {
-			Messagebox.show(e.getMessage(),"错误", Messagebox.OK, Messagebox.ERROR);
+			Messagebox.show(e.getMessage(),Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 		}
 	}
 
@@ -523,7 +523,7 @@ public class SetMail extends GenericAutowireComposer {
 			win.setAttribute("password", strPassword.getValue().trim());
 			win.doModal();
 		}catch(Exception e){
-			Messagebox.show(e.getMessage(),"错误", Messagebox.OK, Messagebox.ERROR);
+			Messagebox.show(e.getMessage(),Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 		}
 
 	}

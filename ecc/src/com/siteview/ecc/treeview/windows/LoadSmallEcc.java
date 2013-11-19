@@ -10,6 +10,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.jruby.libraries.RbConfigLibrary;
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.Session;
 import org.zkoss.zk.ui.util.GenericForwardComposer;
@@ -91,7 +92,7 @@ public class LoadSmallEcc extends GenericForwardComposer
 		String temp = smallUrlValue.getValue().trim();
 		if("".equals(temp)){
 			try{
-				Messagebox.show("输入的地址为空!", "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("EnterAddressForEmpty"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			}catch(Exception e){}
 			return;
 		}
@@ -99,7 +100,7 @@ public class LoadSmallEcc extends GenericForwardComposer
 		Matcher matcher = regex.matcher(temp);
 		if (!matcher.matches()) {
 			try{
-				Messagebox.show("输入的地址格式不正确!", "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("AddressFormatNotCorrect"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			}catch(Exception e){}
 			return;
 		}

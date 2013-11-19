@@ -27,6 +27,7 @@ import java.awt.image.BufferedImage;
 
 import org.apache.log4j.Logger;
 import org.zkoss.lang.Threads;
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Desktop;
 import org.zkoss.zk.ui.DesktopUnavailableException;
@@ -46,7 +47,7 @@ public class CometServerPush {
 			throws InterruptedException {
 		final Desktop desktop = Executions.getCurrent().getDesktop();
 		if (desktop.isServerPushEnabled()) {
-			Messagebox.show("Already started", "提示", Messagebox.OK, Messagebox.INFORMATION);
+			Messagebox.show("Already started", Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 		} else {
 			desktop.enableServerPush(true);
 			new WorkingThread(info, listbox).start();
@@ -58,7 +59,7 @@ public class CometServerPush {
 		if (desktop.isServerPushEnabled()) {
 			desktop.enableServerPush(false);
 		} else {
-			Messagebox.show("Already stopped", "提示", Messagebox.OK, Messagebox.INFORMATION);
+			Messagebox.show("Already stopped", Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 		}
 	}
 

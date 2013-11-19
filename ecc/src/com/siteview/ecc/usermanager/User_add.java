@@ -78,39 +78,39 @@ public class User_add extends GenericAutowireComposer {
 			String LDAPSecurityPrincipal_str 	= LDAPSecurityPrincipal.getValue().trim();
 			
 			if ("".equals(loginName_str)) {
-				Messagebox.show(Labels.getLabel("PFillLoginName"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("PFillLoginName"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				loginName.setFocus(true);
 				return;
 			}
 			if ("".equals(userName_str)) {
-				Messagebox.show(Labels.getLabel("PFillUserName"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("PFillUserName"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				userName.setFocus(true);
 				return;
 			}
 			if ("".equals(pwd_str)) {
-				Messagebox.show(Labels.getLabel("PFillPassword"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("PFillPassword"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				pwd.setFocus(true);
 				return;
 			}
 			if ("".equals(confirmPwd_str)) {
-				Messagebox.show(Labels.getLabel("PFillConfirmationPassword"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("PFillConfirmationPassword"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				confirmPwd.setFocus(true);
 				return;
 			}
 			if (pwd_str.equals(confirmPwd_str)==false) {
-				Messagebox.show(Labels.getLabel("PasswordConfirmationNotMatchInputAgain"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("PasswordConfirmationNotMatchInputAgain"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				confirmPwd.setFocus(true);
 				return;
 			}
 			//分两种情况 处理
 			if(ldapCheck.isChecked() ){
 				if ("".equals(LDAPProviderUrl_str)) {
-					Messagebox.show(Labels.getLabel("PFillLDAPCertification"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+					Messagebox.show(Labels.getLabel("PFillLDAPCertification"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 					LDAPProviderUrl.setFocus(true);
 					return;
 				}
 				if ("".equals(LDAPSecurityPrincipal_str)) {
-					Messagebox.show(Labels.getLabel("PFillLDAPCertificationRules"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+					Messagebox.show(Labels.getLabel("PFillLDAPCertificationRules"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 					LDAPSecurityPrincipal.setFocus(true);
 					return;
 				}
@@ -130,7 +130,7 @@ public class User_add extends GenericAutowireComposer {
 			}
 			for(String loginNameString:loginNamelist){//只是检测登录名是否已经存在
 				if(loginName_str.equals(loginNameString)){
-					Messagebox.show(Labels.getLabel("LoginNameExistsChangeLoginName"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+					Messagebox.show(Labels.getLabel("LoginNameExistsChangeLoginName"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 					loginName.setFocus(true);
 					return;
 				}
@@ -159,7 +159,7 @@ public class User_add extends GenericAutowireComposer {
 				} catch (Exception e)
 				{
 					e.printStackTrace();
-					Messagebox.show(e.toString(), "提示", Messagebox.OK, Messagebox.INFORMATION);
+					Messagebox.show(e.toString(), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 					throw e;
 				}
 			}
@@ -195,7 +195,7 @@ public class User_add extends GenericAutowireComposer {
 			eccBody.setSrc(targetUrl);
 		} catch (Exception e) {
 			e.printStackTrace();
-			Messagebox.show(e.getMessage(),"错误", Messagebox.OK, Messagebox.ERROR);
+			Messagebox.show(e.getMessage(),Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 		}
 	}	
 /*	

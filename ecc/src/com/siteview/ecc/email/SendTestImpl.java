@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Session;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.util.GenericForwardComposer;
@@ -81,17 +82,17 @@ public class SendTestImpl extends GenericForwardComposer{
 			Matcher matcher = regex.matcher(strmailTo);
 			
     		if(("").equals(mailTo.getValue().trim())){
-    			Messagebox.show("Email地址不能为空！", "提示", Messagebox.OK, Messagebox.INFORMATION);
+    			Messagebox.show(Labels.getLabel("EmailAddressNotEmpty"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
     			return;
 	    	}else if(!matcher.matches()){
-	    		Messagebox.show(strmailTo+" 非法的Email地址！", "提示", Messagebox.OK, Messagebox.INFORMATION);
+	    		Messagebox.show(strmailTo+Labels.getLabel("InvalidEmailAddress"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 	    		return;
 	    	}
 			this.emailTest(mailServer,mailTo.getValue(),mailFrom,user,password,backupServer,content.getValue());
-			messageLabel.setValue(strmailTo+" 发送成功");	messageLabel.setStyle("color:green");		
+			messageLabel.setValue(strmailTo+Labels.getLabel("SendSuccess"));	messageLabel.setStyle("color:green");		
 		}catch (Exception e) {
 			// TODO Auto-generated catch block
-			messageLabel.setValue(this.mailTo.getValue().trim()+" 发送失败");messageLabel.setStyle("color:red");
+			messageLabel.setValue(this.mailTo.getValue().trim()+Labels.getLabel("SendFailed"));messageLabel.setStyle("color:red");
 			e.printStackTrace();
 		}
     }

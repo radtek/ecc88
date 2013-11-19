@@ -29,6 +29,7 @@ import org.jfree.chart.plot.PiePlot3D;
 import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.general.PieDataset;
 import org.jfree.util.Rotation;
+import org.zkoss.util.resource.Labels;
 
 import com.siteview.ecc.report.beans.StateBean;
 
@@ -77,11 +78,11 @@ public class ImageDatasource implements JRDataSource {
 	}
 	private PieDataset createDataset(StateBean sb) {
 		DefaultPieDataset localDefaultPieDataset = new DefaultPieDataset();
-		localDefaultPieDataset.setValue("Õý³£", sb.getOk());
-		localDefaultPieDataset.setValue("¾¯¸æ", sb.getWarn());
-		localDefaultPieDataset.setValue("´íÎó", sb.getError());
-		localDefaultPieDataset.setValue("½ûÖ¹", sb.getDisable());
-		localDefaultPieDataset.setValue("Í£Ö¹", sb.getBad());
+		localDefaultPieDataset.setValue(Labels.getLabel("Good"), sb.getOk());
+		localDefaultPieDataset.setValue(Labels.getLabel("WarningG"), sb.getWarn());
+		localDefaultPieDataset.setValue(Labels.getLabel("Error"), sb.getError());
+		localDefaultPieDataset.setValue(Labels.getLabel("Disable"), sb.getDisable());
+		localDefaultPieDataset.setValue(Labels.getLabel("Stop"), sb.getBad());
 		return localDefaultPieDataset;
 	}
 	public InputStream create3DPieChart(String title,PieDataset data,int pngwidth,int pngheight) throws IOException{

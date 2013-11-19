@@ -181,7 +181,7 @@ public class addEntity extends GenericForwardComposer
 				String templateId = (String) WAddEntity.getAttribute("templateId");
 				this.entityTemplate = TemplateManager.getEntityTemplate(templateId);
 				String templatename = entityTemplate.get_sv_name();
-				WAddEntity.setTitle("添加(" + templatename + ")设备");
+				WAddEntity.setTitle(Labels.getLabel("Add")+(" + templatename + ")+Labels.getLabel("Equipment"));
 				CreateUI();
 				if (node.getType().equals(INode.GROUP))
 				{
@@ -493,7 +493,7 @@ public class addEntity extends GenericForwardComposer
 				} else
 				{
 					cbitem = new Comboitem();
-					cbitem.setLabel("正在获取数据...");
+					cbitem.setLabel(Labels.getLabel("GettingData..."));
 					cbitem.setValue("1");
 					cbitem.setParent(cb);
 					cb.setSelectedIndex(0);
@@ -544,13 +544,13 @@ public class addEntity extends GenericForwardComposer
 		}
 		label = new Label();
 		label.setId("lbl_title");
-		label.setValue("标题*:");
+		label.setValue(Labels.getLabel("Title*:"));
 		tbTitle = new SvdbTextBox();
 		tbTitle.setWidth("350px");
 		tbTitle.setHeight("15px");
 		tbTitle.setName("tb_title");
 		tbTitle.setSvdbField("sv_name");
-		tbTitle.setHelptext("设备的显示名称");
+		tbTitle.setHelptext(Labels.getLabel("DisplayNameEquipment"));
 		tbTitle.addEventListener("onChange", new EventListener(){
 			@Override
 			public void onEvent(Event event) throws Exception {
@@ -568,7 +568,7 @@ public class addEntity extends GenericForwardComposer
 		vbox = new Vbox();
 		Label labelh = new Label();
 		labelh.setId("lbp" + idcount);
-		labelh.setValue("设备的显示名称");
+		labelh.setValue(Labels.getLabel("DisplayNameEquipment"));
 		labelh.setSclass("helplabel");
 		labelh.setVisible(false);
 		idcount++;
@@ -907,7 +907,7 @@ public class addEntity extends GenericForwardComposer
 				message = item.get("sv_tip");
 				if (message == null)
 				{
-					message = "请检查输入的" + item.get("sv_label") + "是否正确";
+					message = Labels.getLabel("PleaseCheckYourInput") + item.get("sv_label") + Labels.getLabel("WhetherRight");
 				}
 				return message;
 			}
@@ -915,10 +915,10 @@ public class addEntity extends GenericForwardComposer
 			{
 				
 				control.focus();
-				message = item.get("sv_tip") + "(数字)";
-				if (message == "null(数字)")
+				message = item.get("sv_tip") + Labels.getLabel("(digital)");
+				if (message == Labels.getLabel("Null(digital)"))
 				{
-					message = "请检查输入的" + item.get("sv_label") + "是否正确";
+					message = Labels.getLabel("PleaseCheckYourInput") + item.get("sv_label") + Labels.getLabel("WhetherRight");
 				}
 				return message;
 			}
@@ -928,7 +928,7 @@ public class addEntity extends GenericForwardComposer
 		message = "";
 		if (tbTitle.getSvdbValue().trim().isEmpty())
 		{
-			message = "标题不能为空";
+			message = Labels.getLabel("TitleCannotEmptyN");
 			return message;
 		}
 		return null;
@@ -1047,11 +1047,11 @@ public class addEntity extends GenericForwardComposer
 
 				if (isedit )
 				{
-					minfo = "编辑设备：" + name + "(" + node.getSvId() + ") " ;
+					minfo = Labels.getLabel("EditingEquipment:") + name + "(" + node.getSvId() + ") " ;
 					AppendOperateLog.addOneLog(loginname, minfo, OpTypeId.edit, OpObjectId.entity);
 				} else
 				{
-					minfo = "添加设备：" + name+ "(" +id + ") parent is " + node.getName() + "(" + node.getSvId() + ")";
+					minfo = Labels.getLabel("AddingEquipment:") + name+ "(" +id + ") parent is " + node.getName() + "(" + node.getSvId() + ")";
 					AppendOperateLog.addOneLog(loginname, minfo, OpTypeId.add, OpObjectId.entity);
 				}
 				Session session = Executions.getCurrent().getDesktop().getSession();
@@ -1102,10 +1102,10 @@ public class addEntity extends GenericForwardComposer
 			savedata();
 		} catch (Exception e) {
 			try {
-				Messagebox.show(e.getMessage(), "提示", Messagebox.OK, Messagebox.EXCLAMATION);
-				if(e.getMessage().contains("请检查输入的")){
+				Messagebox.show(e.getMessage(), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.EXCLAMATION);
+				if(e.getMessage().contains(Labels.getLabel("PleaseCheckYourInput"))){
 					control.focus();
-				}else if("标题不能为空".equals(e.getMessage())){
+				}else if(Labels.getLabel("TitleCannotEmptyN").equals(e.getMessage())){
 					tbTitle.focus();
 				}
 			} catch (InterruptedException e1) {
@@ -1121,10 +1121,10 @@ public class addEntity extends GenericForwardComposer
 			savedata();
 		} catch (Exception e) {
 			try {
-				Messagebox.show(e.getMessage(), "提示", Messagebox.OK, Messagebox.EXCLAMATION);
-				if(e.getMessage().contains("请检查输入的")){
+				Messagebox.show(e.getMessage(), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.EXCLAMATION);
+				if(e.getMessage().contains(Labels.getLabel("PleaseCheckYourInput"))){
 					control.focus();
-				}else if("标题不能为空".equals(e.getMessage())){
+				}else if(Labels.getLabel("TitleCannotEmptyN").equals(e.getMessage())){
 					tbTitle.focus();
 				}
 			} catch (InterruptedException e1) {
@@ -1139,10 +1139,10 @@ public class addEntity extends GenericForwardComposer
 			savedata();
 		} catch (Exception e) {
 			try {
-				Messagebox.show(e.getMessage(), "提示", Messagebox.OK, Messagebox.EXCLAMATION);
-				if(e.getMessage().contains("请检查输入的")){
+				Messagebox.show(e.getMessage(), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.EXCLAMATION);
+				if(e.getMessage().contains(Labels.getLabel("PleaseCheckYourInput"))){
 					control.focus();
-				}else if("标题不能为空".equals(e.getMessage())){
+				}else if(Labels.getLabel("TitleCannotEmptyN").equals(e.getMessage())){
 					tbTitle.focus();
 				}
 			} catch (InterruptedException e1) {

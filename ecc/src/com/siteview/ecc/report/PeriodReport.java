@@ -76,17 +76,17 @@ public class PeriodReport extends GenericForwardComposer {
 	}
 	public void onClick$exportButton(Event event) throws InterruptedException{
 		if(this.getNode()==null){
-			Messagebox.show(ErrorMessage.UNSELECT_MONITOR, "提示", Messagebox.OK, Messagebox.INFORMATION);
+			Messagebox.show(ErrorMessage.UNSELECT_MONITOR, Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			return;
 		}	
 		if(this.getStarttime().after(this.getEndtime())){
-			Messagebox.show(ErrorMessage.TIME_ERROR, "提示", Messagebox.OK,
+			Messagebox.show(ErrorMessage.TIME_ERROR, Labels.getLabel("Prompt"), Messagebox.OK,
 					Messagebox.INFORMATION);
 			return;
 		}
 		
 		if (this.getStarttime().after(new Date())) {
-			Messagebox.show("没有您要显示的数据！", "提示", Messagebox.OK,
+			Messagebox.show(Labels.getLabel("Don'tWantDisplayData"), Labels.getLabel("Prompt"), Messagebox.OK,
 					Messagebox.INFORMATION);
 			return;
 		}
@@ -104,12 +104,12 @@ public class PeriodReport extends GenericForwardComposer {
 	public void onClick$seachButton(Event event) throws InterruptedException{
 		try {
 			if(this.getNode()==null){
-				Messagebox.show(ErrorMessage.UNSELECT_MONITOR, "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(ErrorMessage.UNSELECT_MONITOR, Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				return;
 			}
 			
 			if(this.getStarttime().after(this.getEndtime())){
-				Messagebox.show(ErrorMessage.TIME_ERROR, "提示", Messagebox.OK,
+				Messagebox.show(ErrorMessage.TIME_ERROR, Labels.getLabel("Prompt"), Messagebox.OK,
 						Messagebox.INFORMATION);
 				return;
 			}
@@ -122,7 +122,7 @@ public class PeriodReport extends GenericForwardComposer {
 			build();
 		} catch (Exception e) {
 			e.printStackTrace();
-			Messagebox.show(e.getMessage(), "提示", Messagebox.OK, Messagebox.INFORMATION);
+			Messagebox.show(e.getMessage(), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 		}
 	}
 
@@ -135,12 +135,12 @@ public class PeriodReport extends GenericForwardComposer {
 			if(tmpNode==null||!tmpNode.getType().equals(INode.MONITOR)) return;
 			this.setNode(tmpNode);
 			if(this.getNode()==null){
-				Messagebox.show(ErrorMessage.UNSELECT_MONITOR, "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(ErrorMessage.UNSELECT_MONITOR, Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				return;
 			}
 			
 			if(this.getStarttime().after(this.getEndtime())){
-				Messagebox.show(ErrorMessage.TIME_ERROR, "提示", Messagebox.OK,
+				Messagebox.show(ErrorMessage.TIME_ERROR, Labels.getLabel("Prompt"), Messagebox.OK,
 						Messagebox.INFORMATION);
 				return;
 			}
@@ -152,7 +152,7 @@ public class PeriodReport extends GenericForwardComposer {
 			
 			build();
 		} catch (Exception e) {
-			Messagebox.show(e.getMessage(), "提示", Messagebox.OK, Messagebox.INFORMATION);
+			Messagebox.show(e.getMessage(), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			e.printStackTrace();
 		}
 	}

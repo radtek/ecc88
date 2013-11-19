@@ -2,6 +2,7 @@ package com.siteview.ecc.util;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zul.Messagebox;
 
 /**
@@ -21,7 +22,7 @@ public class Message {
 	 */
 	public static void showInfo(String value) {
 		try {
-			Messagebox.show(value, "提示", Messagebox.OK, Messagebox.INFORMATION);
+			Messagebox.show(value, Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 		} catch (InterruptedException e) {
 			log.error(e);
 		}
@@ -35,7 +36,7 @@ public class Message {
 	 */
 	public static int showQuestion(String value) {
 		try {
-			return Messagebox.show(value, "询问", Messagebox.OK | Messagebox.NO,
+			return Messagebox.show(value, Labels.getLabel("Ask"), Messagebox.OK | Messagebox.NO,
 					Messagebox.QUESTION);
 		} catch (InterruptedException e) {
 			log.error(e);
@@ -50,7 +51,7 @@ public class Message {
 	 */
 	public static void showWarning(String value) {
 		try {
-			Messagebox.show(value, "警告", Messagebox.OK, Messagebox.EXCLAMATION);
+			Messagebox.show(value, Labels.getLabel("WarningG"), Messagebox.OK, Messagebox.EXCLAMATION);
 		} catch (InterruptedException e) {
 			log.error(e);
 		}
@@ -63,7 +64,7 @@ public class Message {
 	 */
 	public static void showError(String value) {
 		try {
-			Messagebox.show(value, "错误", Messagebox.OK, Messagebox.ERROR);
+			Messagebox.show(value, Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 		} catch (InterruptedException e) {
 			log.error(e);
 		}

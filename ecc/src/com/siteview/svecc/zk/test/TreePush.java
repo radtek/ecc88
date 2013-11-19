@@ -3,6 +3,7 @@ package com.siteview.svecc.zk.test;
 import java.util.HashMap;
 import java.util.List;
 
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Desktop;
 import org.zkoss.zk.ui.Executions;
@@ -33,7 +34,7 @@ public class TreePush
 		View view = SVDBViewFactory.getView(username, password);
 		if (desktop.isServerPushEnabled())
 		{
-			Messagebox.show("Already started", "提示", Messagebox.OK, Messagebox.INFORMATION);
+			Messagebox.show("Already started", Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 		} else
 		{
 			desktop.enableServerPush(true);
@@ -48,7 +49,7 @@ public class TreePush
 		View view = SVDBViewFactory.getView(desktop.getSession().getAttribute("usersessionid").toString());
 		if (desktop.isServerPushEnabled())
 		{
-			Messagebox.show("Already started", "提示", Messagebox.OK, Messagebox.INFORMATION);
+			Messagebox.show("Already started", Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 		} else
 		{
 			desktop.enableServerPush(true);
@@ -85,7 +86,7 @@ public class TreePush
 			desktop.enableServerPush(false);
 		} else
 		{
-			Messagebox.show("Already stopped", "提示", Messagebox.OK, Messagebox.INFORMATION);
+			Messagebox.show("Already stopped", Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 		}
 	}
 	
@@ -138,7 +139,7 @@ class WorkingThread extends Thread
 			if (!e.getSelectedItems().isEmpty())
 			{
 				INode node = (INode) ((Treeitem) (e.getSelectedItems().iterator().next())).getAttribute("obj");
-				Messagebox.show(node.getName(), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(node.getName(), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				String type = node.getType();
 				String id = node.getSvId();
 				

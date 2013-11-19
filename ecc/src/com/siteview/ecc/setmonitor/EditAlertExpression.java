@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeSet;
 
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.util.GenericForwardComposer;
 import org.zkoss.zul.Button;
 import org.zkoss.zul.Combobox;
@@ -121,18 +122,18 @@ public class EditAlertExpression extends GenericForwardComposer {
 		String paramvalue = v1.getValue();
 		try {
 			if (expr.getSelectedItem() == null) {
-				Messagebox.show("项目表达式不能为空！", "提示", Messagebox.OK,
+				Messagebox.show(Labels.getLabel("ProjectExpressionCannotEmpty"), Labels.getLabel("Prompt"), Messagebox.OK,
 						Messagebox.INFORMATION);
 				return;
 			}
 			if (paramvalue.isEmpty()) {
-				Messagebox.show("项目表达式的值不能为空！", "提示", Messagebox.OK,
+				Messagebox.show(Labels.getLabel("ProjectExpressionValueCannotEmpty"), Labels.getLabel("Prompt"), Messagebox.OK,
 						Messagebox.INFORMATION);
 				return;
 			}
 			if (fh.getSelectedItem() == null) {
 
-				Messagebox.show("操作符不能为空！", "提示", Messagebox.OK,
+				Messagebox.show(Labels.getLabel("OperatorCanNotEmpty"), Labels.getLabel("Prompt"), Messagebox.OK,
 						Messagebox.INFORMATION);
 				return;
 			}

@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zhtml.Messagebox;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.SuspendNotAllowedException;
@@ -290,7 +291,7 @@ public class ProcessMonitor extends Window{
 				win.setAttribute("eccTimer", timer);
 				win.doModal();
 			} catch (Exception e) {
-				Messagebox.show(e.getMessage(), "´íÎó", Messagebox.OK,
+				Messagebox.show(e.getMessage(), Labels.getLabel("Error"), Messagebox.OK,
 						Messagebox.ERROR);
 			}
 		}

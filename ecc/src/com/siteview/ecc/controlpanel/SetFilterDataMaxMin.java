@@ -1,5 +1,6 @@
 package com.siteview.ecc.controlpanel;
 
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.Session;
 import org.zkoss.zk.ui.WrongValueException;
@@ -62,7 +63,7 @@ public class SetFilterDataMaxMin extends GenericForwardComposer {
 		
 		if(maxValue<=minValue){
 			try{
-				Messagebox.show("最大值不能     小于或等于     最小值！", "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("MaximumValueNotLessThanEqualMinimumValue"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				return;
 			}catch(Exception e){}
 		}

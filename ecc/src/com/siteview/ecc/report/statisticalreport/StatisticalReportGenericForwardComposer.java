@@ -384,7 +384,7 @@ public class StatisticalReportGenericForwardComposer extends GenericForwardCompo
 		String strZipDirPath = null;// "c:\\xxx.zip";// FIXME 需要发送附件到对方邮箱
 		if (strMailTo == null || strMailTo.equals("") || strMailTo.contains(" ")) {
 			try {
-				Messagebox.show("该报告中没有相关E_MAIL地址信息!", "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("NoE_MAILAddressInformationReport"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			} catch (InterruptedException e) {
 			}
 			return;
@@ -414,16 +414,16 @@ public class StatisticalReportGenericForwardComposer extends GenericForwardCompo
 			themail.setNamePass(strUser, strPassword);
 			boolean ret = themail.sendout();
 			if (ret) {
-				Messagebox.show("邮件发送成功!", "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("SendMailSuccess"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			} else {
 				try {
-					Messagebox.show("发送邮件不成功!", "提示", Messagebox.OK, Messagebox.INFORMATION);
+					Messagebox.show(Labels.getLabel("SendMailFailed"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				} catch (InterruptedException e1) {
 				}
 			}
 		} catch (Exception e) {
 			try {
-				Messagebox.show("发送邮件不成功:" + e.getMessage(), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("SendMailFailed:") + e.getMessage(), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			} catch (InterruptedException e1) {
 			}
 		}

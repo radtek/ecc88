@@ -142,7 +142,7 @@ public class MessageTemplateSet extends GenericAutowireComposer {
 		
 		if(!validateTextbox(templateTextbox))
 		{
-			Messagebox.show(Labels.getLabel("TemplateNameCannotEmpty"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+			Messagebox.show(Labels.getLabel("TemplateNameCannotEmpty"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			templateTextbox.setValue(null);
 			templateTextbox.setFocus(true);
 			return;
@@ -155,7 +155,7 @@ public class MessageTemplateSet extends GenericAutowireComposer {
 		try{
 			for(String templateName:messageTemplateList){
 				if(templateName.equals(templateTextboxValue)){
-					Messagebox.show(Labels.getLabel("TemplateNameExists"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+					Messagebox.show(Labels.getLabel("TemplateNameExists"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 					templateTextbox.setFocus(true);
 					return;
 				}
@@ -186,7 +186,7 @@ public class MessageTemplateSet extends GenericAutowireComposer {
 			
 		}catch(Exception e){
 			try{
-				Messagebox.show(Labels.getLabel("AddMessageTemplateError:")+e.getMessage(),"错误", Messagebox.OK, Messagebox.ERROR);
+				Messagebox.show(Labels.getLabel("AddMessageTemplateError:")+e.getMessage(),Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 			}catch(Exception e2){}
 		}
 	}
@@ -195,7 +195,7 @@ public class MessageTemplateSet extends GenericAutowireComposer {
 		Listitem selectedItem = templateList.getSelectedItem();
 		if(selectedItem == null){
 			try{
-				Messagebox.show(Labels.getLabel("PChooseDeleteMessageTemplate"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("PChooseDeleteMessageTemplate"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			}catch(Exception e){}
 			return;
 		}
@@ -211,7 +211,7 @@ public class MessageTemplateSet extends GenericAutowireComposer {
 				for(String s : usingSmsTemplate){
 					if( s != null  || !"".equals(s.trim())){
 						if( s.equals(templateName)){
-							Messagebox.show(Labels.getLabel("SMSTemplatesUsingAlarm")+templateName+Labels.getLabel("CanNotOperatePSelectedAgain"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+							Messagebox.show(Labels.getLabel("SMSTemplatesUsingAlarm")+templateName+Labels.getLabel("CanNotOperatePSelectedAgain"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 							return;
 						}
 					}
@@ -221,7 +221,7 @@ public class MessageTemplateSet extends GenericAutowireComposer {
 				for(String s : usingSmsSet){
 					if( s != null  || !"".equals(s.trim())){
 						if( s.equals(templateName)){
-							Messagebox.show(Labels.getLabel("SMSTemplatesUsingSMSSettings")+templateName+Labels.getLabel("CanNotOperatePSelectedAgain"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+							Messagebox.show(Labels.getLabel("SMSTemplatesUsingSMSSettings")+templateName+Labels.getLabel("CanNotOperatePSelectedAgain"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 							return;
 						}
 					}
@@ -239,13 +239,13 @@ public class MessageTemplateSet extends GenericAutowireComposer {
 
 			}else{
 				try{
-					Messagebox.show(Labels.getLabel("SystemCustomTemplatesNotDeleted") , "提示", Messagebox.OK, Messagebox.INFORMATION);
+					Messagebox.show(Labels.getLabel("SystemCustomTemplatesNotDeleted") , Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				}catch(Exception e){}
 				return;
 			}
 		}catch(Exception e){
 			try{
-				Messagebox.show(Labels.getLabel("DeleteMessageTemplateError:")+e.getMessage(),"错误", Messagebox.OK, Messagebox.ERROR);
+				Messagebox.show(Labels.getLabel("DeleteMessageTemplateError:")+e.getMessage(),Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 			}catch(Exception e2){}
 		}
 	}
@@ -254,7 +254,7 @@ public class MessageTemplateSet extends GenericAutowireComposer {
 		Listitem selectedItem = templateList.getSelectedItem();
 		if(selectedItem == null){
 			try{
-				Messagebox.show(Labels.getLabel("PChooseUpdateMessageTemplate"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("PChooseUpdateMessageTemplate"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			}catch(Exception e){}
 			return;
 		}
@@ -278,17 +278,17 @@ public class MessageTemplateSet extends GenericAutowireComposer {
 				String minfo=loginname+" "+Labels.getLabel("In")+OpObjectId.message_template.name+Labels.getLabel("Conducting")+OpTypeId.edit.name+Labels.getLabel("EmailTemplateOperationEditMessageTemplate:")+templateTextbox.getValue();
 				AppendOperateLog.addOneLog(loginname, minfo, OpTypeId.edit, OpObjectId.message_template);
 				try{
-					Messagebox.show(Labels.getLabel("UpdateSuccess"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+					Messagebox.show(Labels.getLabel("UpdateSuccess"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				}catch(Exception e){}
 			}else{
 				try{
-					Messagebox.show(Labels.getLabel("SystemCustomTemplatesNotUpdated"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+					Messagebox.show(Labels.getLabel("SystemCustomTemplatesNotUpdated"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				}catch(Exception e){}
 				return;
 			}
 		}catch(Exception e){
 			try{
-				Messagebox.show(Labels.getLabel("UpdateMessageTemplateError:")+e.getMessage(),"错误", Messagebox.OK, Messagebox.ERROR);
+				Messagebox.show(Labels.getLabel("UpdateMessageTemplateError:")+e.getMessage(),Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 			}catch(Exception e2){	
 			}
 		}

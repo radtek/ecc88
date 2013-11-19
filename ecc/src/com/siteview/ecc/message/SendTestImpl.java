@@ -81,7 +81,7 @@ public class SendTestImpl extends GenericForwardComposer
 		String mobileValue = phoneNum.getValue().toString();			
 		if ("".endsWith(mobileValue.trim())) {
 			try{
-				Messagebox.show(Labels.getLabel("MobilePhoneNumberCanNotEmpty"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("MobilePhoneNumberCanNotEmpty"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			}catch(Exception e){}
 			phoneNum.setValue(null);
 			phoneNum.setFocus(true);
@@ -95,7 +95,7 @@ public class SendTestImpl extends GenericForwardComposer
 			}
 		}catch(Exception e){
 			e.printStackTrace();
-			Messagebox.show(Labels.getLabel("MobilePhoneNumberNotCorrect"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+			Messagebox.show(Labels.getLabel("MobilePhoneNumberNotCorrect"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			phoneNum.setFocus(true);
 			return;
 		}
@@ -153,7 +153,7 @@ public class SendTestImpl extends GenericForwardComposer
 								messageLabel.setStyle("color:red");
 								try
 								{
-									Messagebox.show(templength[1], "提示", Messagebox.OK, Messagebox.EXCLAMATION);
+									Messagebox.show(templength[1], Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.EXCLAMATION);
 								} catch (Exception e)
 								{
 								}
@@ -206,7 +206,7 @@ public class SendTestImpl extends GenericForwardComposer
 								messageLabel.setStyle("color:red");
 								try
 								{
-									Messagebox.show(templength[1], "提示", Messagebox.OK, Messagebox.EXCLAMATION);
+									Messagebox.show(templength[1], Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.EXCLAMATION);
 								} catch (Exception e)
 								{
 								}

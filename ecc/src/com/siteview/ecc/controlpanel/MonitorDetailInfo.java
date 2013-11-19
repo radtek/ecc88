@@ -279,9 +279,9 @@ public class MonitorDetailInfo extends GenericForwardComposer {
 			startdate = getImageStartTime();
 			enddate = getImageEndTime();
 			if (startdate.after(enddate)) {
-				throw new Exception("开始时间大于结束时间,无法筛选数据！");
+				throw new Exception(Labels.getLabel("StartTimeGreaterThanEndTimeNotScreeningData"));
 			}else if(isSameDate(startdate, enddate)){
-				throw new Exception("开始时间与结束时间相同,无法筛选数据！");
+				throw new Exception(Labels.getLabel("SameStartTimeAndEndTimeNotScreeningData"));
 			}
 
 			final Window win = (Window) Executions.createComponents(
@@ -293,7 +293,7 @@ public class MonitorDetailInfo extends GenericForwardComposer {
 			onSelectRadio();
 			
 		} catch (Exception e) {
-			Messagebox.show(e.getMessage(), "错误", Messagebox.OK,Messagebox.ERROR);
+			Messagebox.show(e.getMessage(), Labels.getLabel("Error"), Messagebox.OK,Messagebox.ERROR);
 		}
 	}
 	
@@ -498,7 +498,7 @@ public class MonitorDetailInfo extends GenericForwardComposer {
 
 			if (startdate.after(enddate)) {
 				try {
-					Messagebox.show(ErrorMessage.TIME_ERROR, "提示", Messagebox.OK,
+					Messagebox.show(ErrorMessage.TIME_ERROR, Labels.getLabel("Prompt"), Messagebox.OK,
 							Messagebox.INFORMATION);
 				} catch (InterruptedException e) {
 				}
@@ -513,7 +513,7 @@ public class MonitorDetailInfo extends GenericForwardComposer {
 			}
 			if (isSameDate(startdate, enddate)) {
 				try {
-					Messagebox.show("开始时间与结束时间相同", "提示", Messagebox.OK,
+					Messagebox.show(Labels.getLabel("SameStartTimeAndEndTime"), Labels.getLabel("Prompt"), Messagebox.OK,
 							Messagebox.INFORMATION);
 				} catch (InterruptedException e) {
 				}
@@ -539,7 +539,7 @@ public class MonitorDetailInfo extends GenericForwardComposer {
 		}catch(Exception e){
 			e.printStackTrace();
 			try {
-				Messagebox.show("请输入完整的查询条件", "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("PCompleteQueryConditions"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			} catch (InterruptedException e1) {}
 		}
 	}
@@ -1254,7 +1254,7 @@ public class MonitorDetailInfo extends GenericForwardComposer {
 			dataStartDate = startdate;
 			dataEndDate = enddate;
 			if (startdate.after(enddate)) {
-				Messagebox.show(ErrorMessage.TIME_ERROR, "提示", Messagebox.OK,
+				Messagebox.show(ErrorMessage.TIME_ERROR, Labels.getLabel("Prompt"), Messagebox.OK,
 						Messagebox.INFORMATION);
 //				ChartUtil.clearListbox(runtimeReport);
 //				ChartUtil.clearListbox(checkDataReport);
@@ -1264,7 +1264,7 @@ public class MonitorDetailInfo extends GenericForwardComposer {
 			logger.info(startdate.getTime());
 			logger.info(enddate.getTime());
 			if (isSameDate(startdate, enddate)) {
-				Messagebox.show("开始时间与结束时间相同", "提示", Messagebox.OK,
+				Messagebox.show(Labels.getLabel("SameStartTimeAndEndTime"), Labels.getLabel("Prompt"), Messagebox.OK,
 						Messagebox.INFORMATION);
 //				ChartUtil.clearListbox(runtimeReport);
 //				ChartUtil.clearListbox(checkDataReport);
@@ -1291,7 +1291,7 @@ public class MonitorDetailInfo extends GenericForwardComposer {
 		} catch (Exception e) {
 			e.printStackTrace();
 			try {
-				Messagebox.show(Labels.getLabel("PCompleteQueryConditions"), "提示", Messagebox.OK,
+				Messagebox.show(Labels.getLabel("PCompleteQueryConditions"), Labels.getLabel("Prompt"), Messagebox.OK,
 						Messagebox.INFORMATION);
 			} catch (InterruptedException e1) {}
 		}

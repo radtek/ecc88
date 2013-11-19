@@ -156,27 +156,27 @@ public class EditPerTask extends GenericForwardComposer {
 		String nameTextboxValue = nameTextbox.getValue().trim();
 		
 		if ("".equals(nameTextboxValue)) {
-			Messagebox.show(Labels.getLabel("TaskNameCannotEmpty"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+			Messagebox.show(Labels.getLabel("TaskNameCannotEmpty"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			nameTextbox.focus();
 			return;
 		} else if (((String) editPerTask.getAttribute("flag")).equals("add") && perTaskList.contains(nameTextboxValue)) {
-			Messagebox.show(Labels.getLabel("NameExistsInputAgain"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+			Messagebox.show(Labels.getLabel("NameExistsInputAgain"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			nameTextbox.focus();
 			return;
 		} else if (((String)editPerTask.getAttribute("flag")).equals("add") && (abTaskList.contains(nameTextboxValue) || reTaskList.contains(nameTextboxValue))){
 			try{
-				Messagebox.show(Labels.getLabel("NameExistsInOtherTaskInputAgain"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("NameExistsInOtherTaskInputAgain"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			}catch(Exception e){}
 			nameTextbox.focus();
 			return;
 		}
-		if(cb0.isChecked()&&(tb01.getValue().compareTo(tb02.getValue()) >= 0)) {Messagebox.show(Labels.getLabel("EndTimeGreaterThanStartTime"), "提示", Messagebox.OK, Messagebox.INFORMATION); return;}
-		if(cb1.isChecked()&&(tb11.getValue().compareTo(tb12.getValue()) >= 0)) {Messagebox.show(Labels.getLabel("EndTimeGreaterThanStartTime"), "提示", Messagebox.OK, Messagebox.INFORMATION); return;}
-		if(cb2.isChecked()&&(tb21.getValue().compareTo(tb22.getValue()) >= 0)) {Messagebox.show(Labels.getLabel("EndTimeGreaterThanStartTime"), "提示", Messagebox.OK, Messagebox.INFORMATION); return;}
-		if(cb3.isChecked()&&(tb31.getValue().compareTo(tb32.getValue()) >= 0)) {Messagebox.show(Labels.getLabel("EndTimeGreaterThanStartTime"), "提示", Messagebox.OK, Messagebox.INFORMATION); return;}
-		if(cb4.isChecked()&&(tb41.getValue().compareTo(tb42.getValue()) >= 0)) {Messagebox.show(Labels.getLabel("EndTimeGreaterThanStartTime"), "提示", Messagebox.OK, Messagebox.INFORMATION); return;}
-		if(cb5.isChecked()&&(tb51.getValue().compareTo(tb52.getValue()) >= 0)) {Messagebox.show(Labels.getLabel("EndTimeGreaterThanStartTime"), "提示", Messagebox.OK, Messagebox.INFORMATION); return;}
-		if(cb6.isChecked()&&(tb61.getValue().compareTo(tb62.getValue()) >= 0)) {Messagebox.show(Labels.getLabel("EndTimeGreaterThanStartTime"), "提示", Messagebox.OK, Messagebox.INFORMATION); return;}
+		if(cb0.isChecked()&&(tb01.getValue().compareTo(tb02.getValue()) >= 0)) {Messagebox.show(Labels.getLabel("EndTimeGreaterThanStartTime"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION); return;}
+		if(cb1.isChecked()&&(tb11.getValue().compareTo(tb12.getValue()) >= 0)) {Messagebox.show(Labels.getLabel("EndTimeGreaterThanStartTime"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION); return;}
+		if(cb2.isChecked()&&(tb21.getValue().compareTo(tb22.getValue()) >= 0)) {Messagebox.show(Labels.getLabel("EndTimeGreaterThanStartTime"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION); return;}
+		if(cb3.isChecked()&&(tb31.getValue().compareTo(tb32.getValue()) >= 0)) {Messagebox.show(Labels.getLabel("EndTimeGreaterThanStartTime"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION); return;}
+		if(cb4.isChecked()&&(tb41.getValue().compareTo(tb42.getValue()) >= 0)) {Messagebox.show(Labels.getLabel("EndTimeGreaterThanStartTime"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION); return;}
+		if(cb5.isChecked()&&(tb51.getValue().compareTo(tb52.getValue()) >= 0)) {Messagebox.show(Labels.getLabel("EndTimeGreaterThanStartTime"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION); return;}
+		if(cb6.isChecked()&&(tb61.getValue().compareTo(tb62.getValue()) >= 0)) {Messagebox.show(Labels.getLabel("EndTimeGreaterThanStartTime"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION); return;}
 		
 //		if ((tb01.getValue().compareTo(tb02.getValue()) >= 0
 //				|| tb11.getValue().compareTo(tb12.getValue()) >= 0

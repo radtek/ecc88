@@ -220,7 +220,7 @@ public class MonitorInfoListbox extends AbstractListbox {
 				win.setAttribute("eccTimer", timer);
 				win.doModal();
 			} catch (Exception e) {
-				Messagebox.show(e.getMessage(), "´íÎó", Messagebox.OK,
+				Messagebox.show(e.getMessage(), Labels.getLabel("Error"), Messagebox.OK,
 						Messagebox.ERROR);
 			}
 		}

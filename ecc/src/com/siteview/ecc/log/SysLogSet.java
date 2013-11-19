@@ -231,7 +231,7 @@ public class SysLogSet extends GenericAutowireComposer {
 		
 		calDel.set(Calendar.HOUR_OF_DAY, t.get(Calendar.HOUR_OF_DAY));
 		calDel.set(Calendar.MINUTE, t.get(Calendar.MINUTE));
-		if(Messagebox.show(Labels.getLabel("SureDelete")+calDel.get(Calendar.YEAR)+Labels.getLabel("Year")+(calDel.get(Calendar.MONTH)+1)+Labels.getLabel("Month")+calDel.get(Calendar.DAY_OF_MONTH)+Labels.getLabel("Day")+calDel.get(Calendar.HOUR_OF_DAY)+Labels.getLabel("0Clock")+calDel.get(Calendar.MINUTE)+Labels.getLabel("Minute")+Labels.getLabel("PreviousRecord"), "询问", Messagebox.OK | Messagebox.CANCEL,
+		if(Messagebox.show(Labels.getLabel("SureDelete")+calDel.get(Calendar.YEAR)+Labels.getLabel("Year")+(calDel.get(Calendar.MONTH)+1)+Labels.getLabel("Month")+calDel.get(Calendar.DAY_OF_MONTH)+Labels.getLabel("Day")+calDel.get(Calendar.HOUR_OF_DAY)+Labels.getLabel("0Clock")+calDel.get(Calendar.MINUTE)+Labels.getLabel("Minute")+Labels.getLabel("PreviousRecord"), Labels.getLabel("Ask"), Messagebox.OK | Messagebox.CANCEL,
 				Messagebox.QUESTION)==Messagebox.OK){
 			HashMap<String, String> ndata = new HashMap<String, String>();
 		ndata.put("dowhat", "DeleteRecords");
@@ -249,7 +249,7 @@ public class SysLogSet extends GenericAutowireComposer {
 		String minfo = loginname + Labels.getLabel("In") + OpObjectId.syslog_set.name + Labels.getLabel("Conducting")+OpTypeId.del.name+Labels.getLabel("SystemLogOperation");
 		AppendOperateLog.addOneLog(loginname, minfo, OpTypeId.del, OpObjectId.syslog_set);
 
-		Messagebox.show(String.valueOf(ret.getFmap().size()-1)+Labels.getLabel("RecordsDeleted"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+		Messagebox.show(String.valueOf(ret.getFmap().size()-1)+Labels.getLabel("RecordsDeleted"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 		
 		}
 		
@@ -260,11 +260,11 @@ public class SysLogSet extends GenericAutowireComposer {
 	public void onApplyDate(Event event) throws Exception {
 		try{
 			if((dateTextbox.getValue())==null){
-				Messagebox.show(Labels.getLabel("InputNumberNotEmpty"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("InputNumberNotEmpty"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				return;
 			}
 			if(dateTextbox.getValue().intValue()<1){
-				Messagebox.show(Labels.getLabel("InputIntegerGreaterThan0Days"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("InputIntegerGreaterThan0Days"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				return;
 			}
 			String text=dateTextbox.getValue().toString();

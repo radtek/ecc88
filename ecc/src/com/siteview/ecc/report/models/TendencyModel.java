@@ -3,6 +3,7 @@ package com.siteview.ecc.report.models;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Listcell;
 import org.zkoss.zul.Listitem;
@@ -40,11 +41,11 @@ public class TendencyModel extends ListModelList implements ListitemRenderer {
 		String newdate = report.getPropertyValue("latestStatus");
 		if(newdate!=null){
 			if(newdate.equals("ok")){
-				bean.setNewDate("Õý³£");
+				bean.setNewDate(Labels.getLabel("Good"));
 			}else if(newdate.equals("error")){
-				bean.setNewDate("´íÎó");
+				bean.setNewDate(Labels.getLabel("Error"));
 			}else
-				bean.setNewDate("¾¯¸æ");
+				bean.setNewDate(Labels.getLabel("WarningG"));
 		}
 		bean.setOk(report.getPropertyValue("okPercent"));
 		bean.setName(report.getPropertyValue("MonitorName"));

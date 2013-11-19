@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.SuspendNotAllowedException;
 import org.zkoss.zk.ui.util.GenericForwardComposer;
@@ -272,7 +273,7 @@ public class PLAddMonitor extends GenericForwardComposer
 		{
 			try
 			{
-				Messagebox.show("没有可以添加的监测器！", "提示", Messagebox.OK, Messagebox.EXCLAMATION);
+				Messagebox.show(Labels.getLabel("CanNotAddMonitor"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.EXCLAMATION);
 			} catch (InterruptedException e)
 			{
 				// TODO Auto-generated catch block
@@ -296,7 +297,7 @@ public class PLAddMonitor extends GenericForwardComposer
 			point += lbmonitor.getSelectedCount()/30 + 1;
 			if(availableDevicePoint == 0 || availableDevicePoint < point){
 				try {
-					Messagebox.show("点数不足，无法进行操作", "提示", Messagebox.OK,	Messagebox.INFORMATION);
+					Messagebox.show(Labels.getLabel("LackPointsUnablePerformOperation"), Labels.getLabel("Prompt"), Messagebox.OK,	Messagebox.INFORMATION);
 					return;
 				} catch (InterruptedException e) {
 					e.printStackTrace();
@@ -306,7 +307,7 @@ public class PLAddMonitor extends GenericForwardComposer
 			point += lbmonitor.getSelectedCount();
 			if(availablePoint == 0 || availablePoint < point){
 				try {
-					Messagebox.show("点数不足，无法进行操作", "提示", Messagebox.OK,	Messagebox.INFORMATION);
+					Messagebox.show(Labels.getLabel("LackPointsUnablePerformOperation"), Labels.getLabel("Prompt"), Messagebox.OK,	Messagebox.INFORMATION);
 					return;
 				} catch (InterruptedException e) {
 					e.printStackTrace();
@@ -353,11 +354,11 @@ public class PLAddMonitor extends GenericForwardComposer
 					}
 					if (smessage.contains("Less permission"))
 					{
-						smessage = "您的监测器点数不够!";
+						smessage = Labels.getLabel("MonitorPointsNotEnough");
 					}
 					try
 					{
-						Messagebox.show(smessage, "提示", Messagebox.OK, Messagebox.EXCLAMATION);
+						Messagebox.show(smessage, Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.EXCLAMATION);
 					} catch (InterruptedException e2)
 					{
 						// TODO Auto-generated catch block
@@ -385,7 +386,7 @@ public class PLAddMonitor extends GenericForwardComposer
 			String loginname = view.getLoginName();
             String name=entityedit.getName();
 			String id=entityedit.getSvId();
-			String	minfo = "批量添加监测器：" +"(" +ids.toString() + ") parent is " + name + "(" + id + ")";
+			String	minfo = Labels.getLabel("AddBatchMonitor:") +"(" +ids.toString() + ") parent is " + name + "(" + id + ")";
 				AppendOperateLog.addOneLog(loginname, minfo, OpTypeId.many_add, OpObjectId.monitor);
 			
 		

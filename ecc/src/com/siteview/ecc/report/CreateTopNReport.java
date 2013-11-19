@@ -147,7 +147,7 @@ public class CreateTopNReport extends GenericForwardComposer {
 		String strZipDirPath = null;// "c:\\xxx.zip";// FIXME 需要发送附件到对方邮箱
 		if (strMailTo == null || strMailTo.equals("") || strMailTo.contains(" ")) {
 			try {
-				Messagebox.show(Labels.getLabel("NoE_MAILAddressInformationReport"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("NoE_MAILAddressInformationReport"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			} catch (InterruptedException e) {
 			}
 			return;
@@ -177,16 +177,16 @@ public class CreateTopNReport extends GenericForwardComposer {
 			themail.setNamePass(strUser, strPassword);
 			boolean ret = themail.sendout();
 			if (ret) {
-				Messagebox.show(Labels.getLabel("SendMailSuccess"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("SendMailSuccess"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			} else {
 				try {
-					Messagebox.show(Labels.getLabel("SendMailFailed"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+					Messagebox.show(Labels.getLabel("SendMailFailed"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				} catch (InterruptedException e1) {
 				}
 			}
 		} catch (Exception e) {
 			try {
-				Messagebox.show(Labels.getLabel("SendMailFailed:") + e.getMessage(), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("SendMailFailed:") + e.getMessage(), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			} catch (InterruptedException e1) {
 			}
 		}

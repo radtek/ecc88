@@ -6,6 +6,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.util.GenericForwardComposer;
@@ -352,7 +353,7 @@ public class RefreshMonitors extends GenericForwardComposer
 			
 			if(ncount==30)
 			{
-				int r = Messagebox.show("暂时无法获取刷新数据，是否继续等待刷新？", "询问", Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION);
+				int r = Messagebox.show(Labels.getLabel("TemporarilyUnableGetRefreshedDataWhetherContinueWaitRefresh"), Labels.getLabel("Ask"), Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION);
 			   if(r==Messagebox.CANCEL)
 			   {
 				   try

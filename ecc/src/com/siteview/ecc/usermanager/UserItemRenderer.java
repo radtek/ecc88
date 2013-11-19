@@ -139,7 +139,7 @@ public class UserItemRenderer extends ListModelList implements ListitemRenderer 
 
 			} catch (Exception e) {
 				e.printStackTrace();
-				Messagebox.show(e.getMessage(),"错误", Messagebox.OK, Messagebox.ERROR);
+				Messagebox.show(e.getMessage(),Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 			}
 		}
 	}
@@ -149,7 +149,7 @@ public class UserItemRenderer extends ListModelList implements ListitemRenderer 
 		@Override
 		public void onEvent(Event arg0) throws Exception {
 			// TODO Auto-generated method stub
-			Messagebox.show(Labels.getLabel("AdministratorWithoutAuthorization"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+			Messagebox.show(Labels.getLabel("AdministratorWithoutAuthorization"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 		}
 	}
 	
@@ -158,7 +158,7 @@ public class UserItemRenderer extends ListModelList implements ListitemRenderer 
 		@Override
 		public void onEvent(Event arg0) throws Exception {
 			// TODO Auto-generated method stub
-			Messagebox.show(Labels.getLabel("OrdinaryUsersNotAuthorized"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+			Messagebox.show(Labels.getLabel("OrdinaryUsersNotAuthorized"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 		}
 	}
 	

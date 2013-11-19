@@ -77,13 +77,13 @@ public class GeneralSet extends GenericAutowireComposer {
 			}
 			
 			if("".equals(ipValue)){
-				Messagebox.show(Labels.getLabel("IPAddressEmpty"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("IPAddressEmpty"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				return;
 			}
 			Pattern regex = Pattern.compile("^([1-9]|[1-9]\\d|1\\d{2}|2[0-1]\\d|22[0-3])(\\.(\\d|[1-9]\\d|1\\d{2}|2[0-4]\\d|25[0-5])){3}(,([1-9]|[1-9]\\d|1\\d{2}|2[0-1]\\d|22[0-3])(\\.(\\d|[1-9]\\d|1\\d{2}|2[0-4]\\d|25[0-5])){3})*$");
 			Matcher matcher = regex.matcher(ipValue);
 			if (!matcher.matches()) {
-				Messagebox.show("IP地址格式不正确，多个IP地址请用\",\"隔开", "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("IPAddressFormatNotCorrectMultipleIPAddressesUseSeparated"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				return;
 			}
 			IniFile ini = new IniFile("general.ini");

@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.util.GenericForwardComposer;
@@ -177,7 +178,7 @@ public class SysLogQuery extends GenericForwardComposer {
 			table = new java.util.ArrayList(); // table.size() <1
 			SyslogItemRender model = new SyslogItemRender(table);
 			MakelistData(syslogListbox, model, model);
-			Messagebox.show(ErrorMessage.TIME_ERROR, "提示", Messagebox.OK,
+			Messagebox.show(ErrorMessage.TIME_ERROR, Labels.getLabel("Prompt"), Messagebox.OK,
 					Messagebox.INFORMATION);
 			return;
 		}
@@ -217,7 +218,7 @@ public class SysLogQuery extends GenericForwardComposer {
 		try {
 			qr = new SyslogQureyRecords("QueryRecordsByTime", byTime);
 		} catch (Exception e) {
-			Messagebox.show(e.getMessage(), "错误", Messagebox.OK, Messagebox.ERROR);
+			Messagebox.show(e.getMessage(), Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 			return;
 		}
 		v_fmap = qr.getV_map();
@@ -573,7 +574,7 @@ public class SysLogQuery extends GenericForwardComposer {
 			MakelistData(syslogListbox, model, model);
 		}
 		if(table==null || table.size()<=0)
-			Messagebox.show(ErrorMessage.NODATA, "提示", Messagebox.OK, Messagebox.INFORMATION);
+			Messagebox.show(ErrorMessage.NODATA, Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 		SyslogItemRender model = new SyslogItemRender(table);
 		MakelistData(syslogListbox, model, model);
 	}
@@ -607,7 +608,7 @@ public class SysLogQuery extends GenericForwardComposer {
 			table = new java.util.ArrayList(); // table.size() <1
 			SyslogItemRender model = new SyslogItemRender(table);
 			MakelistData(syslogListbox, model, model);
-			Messagebox.show(ErrorMessage.TIME_ERROR, "提示", Messagebox.OK,
+			Messagebox.show(ErrorMessage.TIME_ERROR, Labels.getLabel("Prompt"), Messagebox.OK,
 					Messagebox.INFORMATION);
 			return;
 		}
@@ -647,7 +648,7 @@ public class SysLogQuery extends GenericForwardComposer {
 		try {
 			qr = new SyslogQureyRecords("QueryRecordsByTime", byTime);
 		} catch (Exception e) {
-			Messagebox.show(e.getMessage(), "错误", Messagebox.OK, Messagebox.ERROR);
+			Messagebox.show(e.getMessage(), Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 			return;
 		}
 		v_fmap = qr.getV_map();
@@ -1007,7 +1008,7 @@ public class SysLogQuery extends GenericForwardComposer {
 			MakelistData(syslogListbox, model, model);// 跟新页面的数据
 		}
 		if(table==null || table.size()<=0){
-			Messagebox.show(ErrorMessage.NODATA, "提示", Messagebox.OK, Messagebox.INFORMATION);
+			Messagebox.show(ErrorMessage.NODATA, Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			SyslogItemRender model = new SyslogItemRender(table);
 			MakelistData(syslogListbox, model, model);// 跟新页面的数据			
 			reportlist.addAll(table);

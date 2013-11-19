@@ -1222,7 +1222,7 @@ public class AddMonitor extends GenericForwardComposer
 			String sv_relation = expr.get("sv_relation" + i);
 			if (sv_relation != null && i!=condtionCount)
 			{
-				sv_relation = sv_relation.equals("or") ? "或 " : "与 ";
+				sv_relation = sv_relation.equals("or") ? Labels.getLabel("Or") : Labels.getLabel("And");
 			}
 			AlertExpression.append(label);
 			AlertExpression.append(operate);
@@ -1553,7 +1553,7 @@ public class AddMonitor extends GenericForwardComposer
 				
 				try
 				{
-					Messagebox.show(Labels.getLabel("CanNotAddMonitor"), "提示", Messagebox.OK, Messagebox.EXCLAMATION);
+					Messagebox.show(Labels.getLabel("CanNotAddMonitor"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.EXCLAMATION);
 				} catch (InterruptedException e)
 				{
 					// TODO Auto-generated catch block
@@ -1567,7 +1567,7 @@ public class AddMonitor extends GenericForwardComposer
 			String message = Validate();
 			if (!message.equals(""))
 			{
-				Messagebox.show(message, "提示", Messagebox.OK, Messagebox.EXCLAMATION);
+				Messagebox.show(message, Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.EXCLAMATION);
 				if(Labels.getLabel("PleaseEnterTitle").equals(message)){
 					tbtitle.focus();
 				}else if(Labels.getLabel("PleaseInputErrorThreshold=").equals(message)){
@@ -1613,7 +1613,7 @@ public class AddMonitor extends GenericForwardComposer
 				point += ids.length/30 + 1;
 				if(availableDevicePoint == 0 || availableDevicePoint < point){
 					try {
-						Messagebox.show(Labels.getLabel("LackPointsUnablePerformOperation"), "提示", Messagebox.OK,	Messagebox.INFORMATION);
+						Messagebox.show(Labels.getLabel("LackPointsUnablePerformOperation"), Labels.getLabel("Prompt"), Messagebox.OK,	Messagebox.INFORMATION);
 						return;
 					} catch (InterruptedException e) {
 						e.printStackTrace();
@@ -1623,7 +1623,7 @@ public class AddMonitor extends GenericForwardComposer
 				point += ids.length;
 				if(availablePoint == 0 || availablePoint < point){
 					try {
-						Messagebox.show(Labels.getLabel("LackPointsUnablePerformOperation"), "提示", Messagebox.OK,	Messagebox.INFORMATION);
+						Messagebox.show(Labels.getLabel("LackPointsUnablePerformOperation"), Labels.getLabel("Prompt"), Messagebox.OK,	Messagebox.INFORMATION);
 						return;
 					} catch (InterruptedException e) {
 						e.printStackTrace();
@@ -1713,7 +1713,7 @@ public class AddMonitor extends GenericForwardComposer
 			}
 			try
 			{
-				Messagebox.show(smessage, "提示", Messagebox.OK, Messagebox.EXCLAMATION);
+				Messagebox.show(smessage, Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.EXCLAMATION);
 			} catch (InterruptedException e1)
 			{
 				// TODO Auto-generated catch block
@@ -1843,12 +1843,12 @@ public class AddMonitor extends GenericForwardComposer
 	{
 		if (cbdydata != null)
 		{
-			if (cbdydata.getItemCount() == 0 || cbdydata.getText().equals("正在获取数据..."))
+			if (cbdydata.getItemCount() == 0 || cbdydata.getText().equals(Labels.getLabel("GettingData...")))
 			{
 				
 				try
 				{
-					Messagebox.show(Labels.getLabel("CanNotAddMonitor"), "提示", Messagebox.OK, Messagebox.EXCLAMATION);
+					Messagebox.show(Labels.getLabel("CanNotAddMonitor"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.EXCLAMATION);
 				} catch (InterruptedException e)
 				{
 					// TODO Auto-generated catch block

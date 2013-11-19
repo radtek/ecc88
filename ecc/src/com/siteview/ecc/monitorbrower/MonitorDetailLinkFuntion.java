@@ -3,6 +3,7 @@ package com.siteview.ecc.monitorbrower;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zhtml.Messagebox;
 import org.zkoss.zk.ui.Desktop;
 import org.zkoss.zk.ui.Executions;
@@ -74,20 +75,20 @@ public class MonitorDetailLinkFuntion implements EventListener
 				if(this.subMenuId!=null&&!this.subMenuId.equals("")){
 					url = url+"?subMenuId="+this.subMenuId;
 				}else{
-					Messagebox.show("获取该监测器(编号为："+this.monitorId+")数据出现异常", "提示", Messagebox.OK,Messagebox.INFORMATION);
+					Messagebox.show(Labels.getLabel("GetsMonitorNumber:")+this.monitorId+Labels.getLabel("AbnormalData"), Labels.getLabel("Prompt"), Messagebox.OK,Messagebox.INFORMATION);
 					return;
 				}
 				eccBody.setSrc(url);
 			}else{
 				try{
-					Messagebox.show("获取该监测器(编号为："+this.monitorId+")数据出现异常,该监测器可能已经被删除", "提示", Messagebox.OK,Messagebox.INFORMATION);
+					Messagebox.show(Labels.getLabel("GetsMonitorNumber:")+this.monitorId+Labels.getLabel("AbnormalDataMonitorHaveDeleted"), Labels.getLabel("Prompt"), Messagebox.OK,Messagebox.INFORMATION);
 				}catch(Exception ee){}
 			}
 
 		}catch(Exception e){
 			e.printStackTrace();
 			try{
-				Messagebox.show("获取该监测器(编号为："+this.monitorId+")数据出现异常,该监测器可能已经被删除", "提示", Messagebox.OK,Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("GetsMonitorNumber:")+this.monitorId+Labels.getLabel("AbnormalDataMonitorHaveDeleted"), Labels.getLabel("Prompt"), Messagebox.OK,Messagebox.INFORMATION);
 			}catch(Exception ee){}
 		}
 	}

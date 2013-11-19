@@ -91,12 +91,12 @@ public class EditDutySet extends GenericAutowireComposer {
 		IniFilePack ini=new IniFilePack("watchsheetcfg.ini");
 
 		if ("".equals(newTableNameValue)) {
-			Messagebox.show(Labels.getLabel("DutyTableNameCannotEmptyString"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+			Messagebox.show(Labels.getLabel("DutyTableNameCannotEmptyString"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			newTableName.setFocus(true);
 			return;
 		}
 		if ("".equals(newDescriptionValue)) {
-			Messagebox.show(Labels.getLabel("DescriptionNotEmptyStrings"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+			Messagebox.show(Labels.getLabel("DescriptionNotEmptyStrings"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			newDescription.setFocus(true);
 			return;
 		}
@@ -112,7 +112,7 @@ public class EditDutySet extends GenericAutowireComposer {
 			keyValue=(String) keyIterator.next();
 			if(keyValue.equals(newTableNameValue)){
 				try{
-					Messagebox.show(Labels.getLabel("DutyTableNameExistsPChangeDutyTableName"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+					Messagebox.show(Labels.getLabel("DutyTableNameExistsPChangeDutyTableName"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				}catch(Exception e){}
 				newTableName.setValue(null);
 				newTableName.setFocus(true);
@@ -145,7 +145,7 @@ public class EditDutySet extends GenericAutowireComposer {
 			
 			onRefresh();
 		}catch(Exception e){
-			Messagebox.show(e.getMessage(),"错误", Messagebox.OK, Messagebox.ERROR);
+			Messagebox.show(e.getMessage(),Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 		}
 	}
 	
@@ -156,7 +156,7 @@ public class EditDutySet extends GenericAutowireComposer {
 			eccBody.setSrc(null);
 			eccBody.setSrc(targetUrl);
 		}catch(Exception e){
-			Messagebox.show(e.getMessage(),"错误", Messagebox.OK, Messagebox.ERROR);
+			Messagebox.show(e.getMessage(),Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 		}
 	}
 }

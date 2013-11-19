@@ -263,7 +263,7 @@ public class ControlLayoutComposer extends GenericForwardComposer implements
 			if(index != -1){
 				monitor_listbox.setSelectedIndex(index);
 			}else{
-				Messagebox.show(Labels.getLabel("CannotJumpMonitorDeleted"), "ÌבÊ¾", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("CannotJumpMonitorDeleted"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				monitor_listbox.setSelectedIndex(0);
 			}
 			

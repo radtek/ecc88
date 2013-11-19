@@ -42,18 +42,18 @@ public class AddDutySet extends GenericAutowireComposer {
 		
 		if("".equals(tableNameValue))
 		{
-			Messagebox.show(Labels.getLabel("DutyTableNameCannotEmptyString"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+			Messagebox.show(Labels.getLabel("DutyTableNameCannotEmptyString"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			tableName.setFocus(true);
 			return;
 		}
 		if("".equals(descriptionValue)){
-			Messagebox.show(Labels.getLabel("DescriptionNotEmptyStrings"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+			Messagebox.show(Labels.getLabel("DescriptionNotEmptyStrings"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			description.setFocus(true);
 			return;
 		}
 		
 		if("".equals(dutyTypeValue)) {
-			Messagebox.show(Labels.getLabel("NotChosenDutyType"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+			Messagebox.show(Labels.getLabel("NotChosenDutyType"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			dutyType.setFocus(true);
 			return;
 		}
@@ -68,7 +68,7 @@ public class AddDutySet extends GenericAutowireComposer {
 		while (keyIterator.hasNext()) {
 			String key=(String) keyIterator.next();
 			if(tableNameValue.equals(key)){
-				Messagebox.show(Labels.getLabel("DutyTableNameExistsPChangeDutyTableName"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("DutyTableNameExistsPChangeDutyTableName"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				tableName.setFocus(true);
 				return;
 			}
@@ -92,7 +92,7 @@ public class AddDutySet extends GenericAutowireComposer {
 			
 			onRefresh();
 		}catch(Exception e){
-			Messagebox.show(e.getMessage(),"错误", Messagebox.OK, Messagebox.ERROR);
+			Messagebox.show(e.getMessage(),Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 		}
 
 	}
@@ -104,7 +104,7 @@ public class AddDutySet extends GenericAutowireComposer {
 			eccBody.setSrc(null);
 			eccBody.setSrc(targetUrl);
 		}catch(Exception e){
-			Messagebox.show(e.getMessage(),"错误", Messagebox.OK, Messagebox.ERROR);
+			Messagebox.show(e.getMessage(),Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 		}
 	}
 	

@@ -133,7 +133,7 @@ ComposerExt ,ListitemRenderer {
 				
 				if(genlistbox.getSelectedCount()<=0){
 					try {
-						Messagebox.show(Labels.getLabel("SelectAReport"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+						Messagebox.show(Labels.getLabel("SelectAReport"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
@@ -142,7 +142,7 @@ ComposerExt ,ListitemRenderer {
 				
 				try
 				{
-					int ret = Messagebox.show("你确认要删除选中的报告日志记录吗？", "提示", Messagebox.OK
+					int ret = Messagebox.show(Labels.getLabel("SureWantDeleteSelectedReportLog"), Labels.getLabel("Prompt"), Messagebox.OK
 							| Messagebox.CANCEL, Messagebox.QUESTION);
 					
 					if (ret == Messagebox.CANCEL)
@@ -338,7 +338,7 @@ ComposerExt ,ListitemRenderer {
 		View view = Toolkit.getToolkit().getSvdbView(Executions.getCurrent().getDesktop());
 		if(direportlistbox.getSelectedCount()<=0){
 			try {
-				Messagebox.show(Labels.getLabel("SelectAReport"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("SelectAReport"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -347,7 +347,7 @@ ComposerExt ,ListitemRenderer {
 
 		try
 		{
-			int ret = Messagebox.show(Labels.getLabel("FrontDelete")+direportlistbox.getSelectedCount()+Labels.getLabel("LaterDetele"), "提示", Messagebox.OK
+			int ret = Messagebox.show(Labels.getLabel("FrontDelete")+direportlistbox.getSelectedCount()+Labels.getLabel("LaterDetele"), Labels.getLabel("Prompt"), Messagebox.OK
 					| Messagebox.CANCEL, Messagebox.QUESTION);
 			
 			if (ret == Messagebox.CANCEL)
@@ -447,7 +447,7 @@ ComposerExt ,ListitemRenderer {
 	{
 		if(direportlistbox.getSelectedItem()==null){
 			try {
-				Messagebox.show(Labels.getLabel("SelectAReport"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("SelectAReport"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -486,7 +486,7 @@ ComposerExt ,ListitemRenderer {
 	public void onDenyeport(Event event) {
 		if(direportlistbox.getSelectedItem()==null){
 			try {
-				Messagebox.show(Labels.getLabel("SelectAReport"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("SelectAReport"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -525,7 +525,7 @@ ComposerExt ,ListitemRenderer {
 	public void onCreateReport(Event event) throws Exception {
 		if(direportlistbox.getSelectedItem()==null){
 			try {
-				Messagebox.show(Labels.getLabel("SelectAReport"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("SelectAReport"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -631,14 +631,14 @@ ComposerExt ,ListitemRenderer {
 				return;
 			}
 			String loginname = view.getLoginName();
-			String minfo = loginname + " " + "在" + OpObjectId.statistic_report.name
-					+ "中进行了  " + OpTypeId.edit.name + "操作。";
+			String minfo = loginname + " " + Labels.getLabel("In") + OpObjectId.statistic_report.name
+					+ Labels.getLabel("Conducting") + OpTypeId.edit.name + Labels.getLabel("Operation.");
 			AppendOperateLog.addOneLog(loginname, minfo, OpTypeId.edit,
 					OpObjectId.statistic_report);
 		}else
 		{
 			try{
-				Messagebox.show("用户:"+view.getLoginName()+" 没有  编辑统计报告  的权限!", "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("User:")+view.getLoginName()+Labels.getLabel("NoStatisticalReportEditingPermissions"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				return;
 			}catch(Exception e){}
 		}

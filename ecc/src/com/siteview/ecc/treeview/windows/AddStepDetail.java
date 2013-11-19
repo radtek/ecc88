@@ -2,6 +2,7 @@ package com.siteview.ecc.treeview.windows;
 
 import java.util.HashMap;
 
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.util.GenericForwardComposer;
 import org.zkoss.zul.Button;
 import org.zkoss.zul.Combobox;
@@ -181,7 +182,7 @@ public class AddStepDetail extends GenericForwardComposer
 				name=tbUrl.getValue();
 				if(name=="")
 				{
-				Messagebox.show("URL不能为空" , "提示", Messagebox.OK , Messagebox.EXCLAMATION);	
+				Messagebox.show(Labels.getLabel("URLCannotEmpty") , Labels.getLabel("Prompt"), Messagebox.OK , Messagebox.EXCLAMATION);	
 				return;	
 				}
 				type="url";
@@ -191,7 +192,7 @@ public class AddStepDetail extends GenericForwardComposer
 				name=cbLinks.getValue();
 				if(name=="")
 				{
-				Messagebox.show("请选择links" , "提示", Messagebox.OK , Messagebox.EXCLAMATION);	
+				Messagebox.show(Labels.getLabel("PSelectLinks") , Labels.getLabel("Prompt"), Messagebox.OK , Messagebox.EXCLAMATION);	
 				return;	
 				}
 				type="link";
@@ -201,7 +202,7 @@ public class AddStepDetail extends GenericForwardComposer
 				name=cbForms.getValue();
 				if(name=="")
 				{
-				Messagebox.show("请选择Forms" , "提示", Messagebox.OK , Messagebox.EXCLAMATION);	
+				Messagebox.show(Labels.getLabel("PSelectForms") , Labels.getLabel("Prompt"), Messagebox.OK , Messagebox.EXCLAMATION);	
 				return;	
 				}
 				type="form";

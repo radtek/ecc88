@@ -229,12 +229,12 @@ public class SetMessage extends GenericAutowireComposer
 			String strUser = userName.getValue().trim();
 			String strPwd = pwd.getValue().trim();
 			if ("".equals(strUser)){
-				Messagebox.show(Labels.getLabel("WithRequired"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("WithRequired"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				userName.setFocus(true);
 				return;
 			}
 			if ("".equals(strPwd)){
-				Messagebox.show(Labels.getLabel("WithRequired"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("WithRequired"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				pwd.setFocus(true);
 				return;
 			}
@@ -242,12 +242,12 @@ public class SetMessage extends GenericAutowireComposer
 				strMsg = webMessageLength.getValue().toString();
 				if ("".equals(strMsg) || Integer.parseInt(strMsg) > 70 || Integer.parseInt(strMsg) < 1)
 				{
-					Messagebox.show(Labels.getLabel("MessageLengtnSet"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+					Messagebox.show(Labels.getLabel("MessageLengtnSet"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 					webMessageLength.setFocus(true);
 					return;
 				}
 			} else{
-				Messagebox.show(Labels.getLabel("WithRequired"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("WithRequired"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				webMessageLength.setFocus(true);
 				return;
 			}
@@ -420,7 +420,7 @@ public class SetMessage extends GenericAutowireComposer
 		if (listbox_data.getSelectedItems().size() <= 0)
 		{
 			try{
-				Messagebox.show(Labels.getLabel("NotSelectedMessageSettingsOperationNotComplete"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("NotSelectedMessageSettingsOperationNotComplete"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			} catch (Exception e){}
 			return;
 		}
@@ -459,7 +459,7 @@ public class SetMessage extends GenericAutowireComposer
 		if (listbox_data.getSelectedItems().size() <= 0)
 		{
 			try{
-				Messagebox.show(Labels.getLabel("NotSelectedMessageSettingsOperationNotComplete"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("NotSelectedMessageSettingsOperationNotComplete"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			} catch (Exception e){}
 			return;
 		}
@@ -498,7 +498,7 @@ public class SetMessage extends GenericAutowireComposer
 		if (listbox_data.getSelectedItems().size() <= 0)
 		{
 			try{
-				Messagebox.show(Labels.getLabel("NotSelectedMessageSettingsOperationNotComplete"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("NotSelectedMessageSettingsOperationNotComplete"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			} catch (Exception e){}
 			return;
 		}
@@ -506,7 +506,7 @@ public class SetMessage extends GenericAutowireComposer
 		String section = listbox_data.getSelectedItem().getId();
 		int i = 0;
 		try{
-			i = Messagebox.show(Labels.getLabel("DeleteWillWantContinue"), "询问", Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION);
+			i = Messagebox.show(Labels.getLabel("DeleteWillWantContinue"), Labels.getLabel("Ask"), Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION);
 		} catch (Exception e){}
 		
 		if (i == 1)
@@ -551,7 +551,7 @@ public class SetMessage extends GenericAutowireComposer
 		{
 			e.printStackTrace();
 			try{
-				Messagebox.show(Labels.getLabel("NotSelectedMessageSettingsOperationNotComplete"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("NotSelectedMessageSettingsOperationNotComplete"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			} catch (InterruptedException e1){
 				e1.printStackTrace();
 			}
@@ -570,7 +570,7 @@ public class SetMessage extends GenericAutowireComposer
 	{
 		Object objectPort = comNum.getSelectedItem().getValue();
 		if(objectPort == null){
-			Messagebox.show(Labels.getLabel("PSelectPortNumber"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+			Messagebox.show(Labels.getLabel("PSelectPortNumber"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			return;
 		}
 		String strPort = (String)objectPort;
@@ -581,12 +581,12 @@ public class SetMessage extends GenericAutowireComposer
 			strMessageLength = messageLength.getValue().toString();
 			if ("".equals(strMessageLength)|| Integer.parseInt(strMessageLength) > 70 || Integer.parseInt(strMessageLength) < 1)
 			{
-				Messagebox.show(Labels.getLabel("MessageLengtnSet"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("MessageLengtnSet"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				messageLength.setFocus(true);
 				return;
 			}
 		}else{
-			Messagebox.show(Labels.getLabel("WithRequired"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+			Messagebox.show(Labels.getLabel("WithRequired"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			messageLength.setFocus(true);
 			return;
 		}
@@ -690,7 +690,7 @@ public class SetMessage extends GenericAutowireComposer
 		// dll发送短信,写入interfacedll.ini
 		// key 为DllName,DllInfo,DllFunParam
 		if(libName.getSelectedItem() == null){
-			Messagebox.show(Labels.getLabel("DynamicLibraryNameEmpty"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+			Messagebox.show(Labels.getLabel("DynamicLibraryNameEmpty"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			return;
 		}
 		String DllNameValue = libName.getSelectedItem().getLabel();

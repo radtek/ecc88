@@ -116,17 +116,17 @@ public class WebTemplateSet extends GenericAutowireComposer {
 		String templateTextboxValue = 	templateTextbox.getValue().trim();
 		
 		if(!validateTextbox(messageTitle)){
-			Messagebox.show(Labels.getLabel("WebSendTemplateCannotEmpty"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+			Messagebox.show(Labels.getLabel("WebSendTemplateCannotEmpty"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			messageTitle.focus();
 			return;
 		}
 		if(!validateTextbox(contentTextbox)){
-			Messagebox.show(Labels.getLabel("MessagecannotEmpty"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+			Messagebox.show(Labels.getLabel("MessagecannotEmpty"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			contentTextbox.focus();
 			return;
 		}
 		if(!validateTextbox(templateTextbox)){
-			Messagebox.show(Labels.getLabel("TemplateNameCannotEmptyInputAgain"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+			Messagebox.show(Labels.getLabel("TemplateNameCannotEmptyInputAgain"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			templateTextbox.focus();
 			return;
 		}
@@ -137,7 +137,7 @@ public class WebTemplateSet extends GenericAutowireComposer {
 			for(String webTemplateName:webMessageTemplateList){
 				if(webTemplateName.equals(templateTextboxValue)){
 					try{
-						Messagebox.show(Labels.getLabel("TemplateNameExists"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+						Messagebox.show(Labels.getLabel("TemplateNameExists"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 					}catch(Exception e){}
 					templateTextbox.setFocus(true);
 					return;
@@ -167,7 +167,7 @@ public class WebTemplateSet extends GenericAutowireComposer {
 			templateTextbox.setValue(null);
 			}catch(Exception e){
 				try{
-					Messagebox.show(Labels.getLabel("AddWEBSMSTemplateError:")+e.getMessage(),"错误", Messagebox.OK, Messagebox.ERROR);
+					Messagebox.show(Labels.getLabel("AddWEBSMSTemplateError:")+e.getMessage(),Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 				}catch(Exception e2){}
 			}
 	}
@@ -208,14 +208,14 @@ public class WebTemplateSet extends GenericAutowireComposer {
 		Listitem selectedItem = templateList.getSelectedItem();
 		if(selectedItem == null){
 			try{
-				Messagebox.show(Labels.getLabel("PChooseRemoveWEBSMSTemplate"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("PChooseRemoveWEBSMSTemplate"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			}catch(Exception e){}
 			return;
 		}
 		String webTemplateName = selectedItem.getId().trim();
 		if(templateList.getSelectedItem().getId().equals("WebDefine")){
 			try{
-				Messagebox.show(Labels.getLabel("SystemCustomTemplatesNotDeleted") , "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("SystemCustomTemplatesNotDeleted") , Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			}catch(Exception e){}
 			return;
 		}
@@ -228,7 +228,7 @@ public class WebTemplateSet extends GenericAutowireComposer {
 			for(String s : usingSmsTemplate){
 				if( s != null  || !"".equals(s.trim())){
 					if( webTemplateName.equals(s)){
-						Messagebox.show(Labels.getLabel("WebSMSTemplatesUsingAlarm")+webTemplateName+Labels.getLabel("CanNotOperatePSelectedAgain"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+						Messagebox.show(Labels.getLabel("WebSMSTemplatesUsingAlarm")+webTemplateName+Labels.getLabel("CanNotOperatePSelectedAgain"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 						return;
 					}
 				}
@@ -246,7 +246,7 @@ public class WebTemplateSet extends GenericAutowireComposer {
 			
 		}catch(Exception e){
 			try{
-				Messagebox.show(Labels.getLabel("DeleteWEBSMSTemplateError:")+e.getMessage(),"错误", Messagebox.OK, Messagebox.ERROR);
+				Messagebox.show(Labels.getLabel("DeleteWEBSMSTemplateError:")+e.getMessage(),Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 			}catch(Exception e2){}
 		}
 	}
@@ -255,14 +255,14 @@ public class WebTemplateSet extends GenericAutowireComposer {
 		Listitem selectedItem = templateList.getSelectedItem();
 		if(selectedItem == null){
 			try{
-				Messagebox.show(Labels.getLabel("PChooseRemoveWEBSMSTemplate"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("PChooseRemoveWEBSMSTemplate"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			}catch(Exception e){}
 			return;
 		}
 		
 		if(templateList.getSelectedItem().getId().equals("WebDefine")){
 			try{
-				Messagebox.show(Labels.getLabel("SystemCustomTemplatesNotUpdated") , "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("SystemCustomTemplatesNotUpdated") , Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			}catch(Exception e){}
 			return;
 		}
@@ -282,12 +282,12 @@ public class WebTemplateSet extends GenericAutowireComposer {
 			String minfo=loginname+" "+Labels.getLabel("In")+OpObjectId.message_template.name+Labels.getLabel("Conducting")+OpTypeId.edit.name+Labels.getLabel("WebSMSTemplateOperationEditWebSMSTemplate:")+templateTextbox.getValue();
 			AppendOperateLog.addOneLog(loginname, minfo, OpTypeId.edit, OpObjectId.message_template);	
 			try{
-				Messagebox.show(Labels.getLabel("UpdateSuccess"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("UpdateSuccess"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			}catch(Exception e){}
 			}
 		}catch(Exception e){
 			try{
-				Messagebox.show(Labels.getLabel("UpdateWEBSMSTemplateError:")+e.getMessage(),"错误", Messagebox.OK, Messagebox.ERROR);
+				Messagebox.show(Labels.getLabel("UpdateWEBSMSTemplateError:")+e.getMessage(),Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 			}catch(Exception e2){	
 			}
 		}

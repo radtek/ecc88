@@ -211,13 +211,13 @@ public class DutytableSet extends GenericAutowireComposer {
 				path = "/main/setting/addDutyInfo_month.zul";
 			}
 			if("".equals(path)){
-				throw new Exception("无法获取 值班表的类型");
+				throw new Exception(Labels.getLabel("UnableGetTypeDutyTable"));
 			}
 			final Window win2 = (Window) Executions.createComponents(path, null, null);
 			win2.doModal();
 		}catch(Exception e){
 			e.printStackTrace();
-			Messagebox.show(e.getMessage(),"错误", Messagebox.OK, Messagebox.ERROR);
+			Messagebox.show(e.getMessage(),Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 		}
 	}
 	
@@ -231,10 +231,10 @@ public class DutytableSet extends GenericAutowireComposer {
 		try{
 			String section = "";
 			if(listbox_data.getSelectedItems().size()<1){
-				Messagebox.show(Labels.getLabel("NotSelectedDeleteItems"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("NotSelectedDeleteItems"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				return;
 			}
-			if(Messagebox.CANCEL == Messagebox.show(Labels.getLabel("DeleteWillWantContinue"), "询问", Messagebox.OK| Messagebox.CANCEL, Messagebox.QUESTION)){
+			if(Messagebox.CANCEL == Messagebox.show(Labels.getLabel("DeleteWillWantContinue"), Labels.getLabel("Ask"), Messagebox.OK| Messagebox.CANCEL, Messagebox.QUESTION)){
 				return;
 			}
 			
@@ -253,13 +253,13 @@ public class DutytableSet extends GenericAutowireComposer {
 					AppendOperateLog.addOneLog(loginname, minfo, OpTypeId.del, OpObjectId.duty_set);
 				}catch(Exception e){
 					e.printStackTrace();
-					Messagebox.show(e.getMessage(),"错误", Messagebox.OK, Messagebox.ERROR);
+					Messagebox.show(e.getMessage(),Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 				}
 			}
 			reFresh();
 		}catch(Exception e){
 			e.printStackTrace();
-			Messagebox.show(e.getMessage(),"错误", Messagebox.OK, Messagebox.ERROR);
+			Messagebox.show(e.getMessage(),Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 		}
 	}
 	public void reFresh() throws Exception{
@@ -269,7 +269,7 @@ public class DutytableSet extends GenericAutowireComposer {
 			eccBody.setSrc(null);
 			eccBody.setSrc(targetUrl);
 		}catch(Exception e){
-			Messagebox.show(e.getMessage(),"错误", Messagebox.OK, Messagebox.ERROR);
+			Messagebox.show(e.getMessage(),Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 		}
 	}
 	//clear listbox
@@ -339,7 +339,7 @@ public class DutytableSet extends GenericAutowireComposer {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			Messagebox.show(e.getMessage(),"错误", Messagebox.OK, Messagebox.ERROR);
+			Messagebox.show(e.getMessage(),Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 		}
 	}
 	//clear listheader
@@ -733,10 +733,10 @@ public class DutytableSet extends GenericAutowireComposer {
 	public void onDelInfo(Event event)throws Exception{
 		try{
 			if(dutyInof.getSelectedItems().size()<1){
-				Messagebox.show(Labels.getLabel("NotSelectedDeleteItems"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("NotSelectedDeleteItems"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				return;
 			}
-			if(Messagebox.CANCEL == Messagebox.show(Labels.getLabel("DeleteWillWantContinue"), "询问", Messagebox.OK| Messagebox.CANCEL, Messagebox.QUESTION)){
+			if(Messagebox.CANCEL == Messagebox.show(Labels.getLabel("DeleteWillWantContinue"), Labels.getLabel("Ask"), Messagebox.OK| Messagebox.CANCEL, Messagebox.QUESTION)){
 				return;
 			}
 			this.edit_fatrher_section = (String)dutyInof.getSelectedItem().getAttribute(DutyConstant.Edit_DutyFather_Section);
@@ -769,7 +769,7 @@ public class DutytableSet extends GenericAutowireComposer {
 			
 		}catch(Exception e){
 			e.printStackTrace();
-			Messagebox.show(e.getMessage(),"错误", Messagebox.OK, Messagebox.ERROR);
+			Messagebox.show(e.getMessage(),Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 		}
 	}
 }

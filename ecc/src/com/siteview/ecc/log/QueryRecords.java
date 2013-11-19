@@ -121,7 +121,7 @@ public class QueryRecords {
 				
 			}
 			if(i==0)
-				Messagebox.show(Labels.getLabel("Returns0Records"), "ÌבÊ¾", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("Returns0Records"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 
 		}
 	}

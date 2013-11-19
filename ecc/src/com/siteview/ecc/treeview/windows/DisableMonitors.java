@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.Session;
 import org.zkoss.zk.ui.util.GenericForwardComposer;
@@ -172,7 +173,7 @@ public class DisableMonitors extends GenericForwardComposer
 				
 				try
 				{
-					Messagebox.show("起始时间应该小于结束时间！", "提示", Messagebox.OK, Messagebox.EXCLAMATION);
+					Messagebox.show(Labels.getLabel("StartingTimeLessThanEndTime"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.EXCLAMATION);
 				} catch (InterruptedException e)
 				{
 					// TODO Auto-generated catch block
@@ -185,7 +186,7 @@ public class DisableMonitors extends GenericForwardComposer
 			{
 				try
 				{
-					Messagebox.show("禁止的时间段应该包含未来的时间！", "提示", Messagebox.OK, Messagebox.EXCLAMATION);
+					Messagebox.show(Labels.getLabel("TimeProhibitedShouldIncludedFutureTime"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.EXCLAMATION);
 				} catch (InterruptedException e)
 				{
 					// TODO Auto-generated catch block
@@ -219,7 +220,7 @@ public class DisableMonitors extends GenericForwardComposer
 					mint=lmint.toString();
 					Long lsenc=ls-lhour*60*60-lmint*60;
 					senc=lsenc.toString();
-					Messagebox.show("还有 "+hour+" 小时 "+mint+" 分钟  "+ senc+" 秒设备才会禁止监测！", "提示", Messagebox.OK, Messagebox.INFORMATION);
+					Messagebox.show(Labels.getLabel("Also")+hour+Labels.getLabel("HourX")+mint+Labels.getLabel("MinuteZ")+ senc+Labels.getLabel("SecondsForbiddenMonitoringEquipment"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				} catch (InterruptedException e)
 				{
 					// TODO Auto-generated catch block
@@ -234,11 +235,11 @@ public class DisableMonitors extends GenericForwardComposer
 				String minfo = "";
 				if (idss.indexOf(",") != -1)
 				{
-					minfo = "禁止设备：" + "(" + idss.toString() + ")";
+					minfo = Labels.getLabel("ProhibitedEquipment:") + "(" + idss.toString() + ")";
 					AppendOperateLog.addOneLog(loginname, minfo, OpTypeId.diable, OpObjectId.entity);
 				} else
 				{
-					minfo = "禁止设备：" + node.getName() + "(" + node.getSvId() + ")";
+					minfo = Labels.getLabel("ProhibitedEquipment:") + node.getName() + "(" + node.getSvId() + ")";
 					AppendOperateLog.addOneLog(loginname, minfo, OpTypeId.diable, OpObjectId.entity);
 				}
 			}else //监测器 部分
@@ -247,11 +248,11 @@ public class DisableMonitors extends GenericForwardComposer
 				String minfo = "";
 				if (idss.indexOf(",") != -1)
 				{
-					minfo = "禁止监测：" + "(" + idss.toString() + ")";
+					minfo = Labels.getLabel("NoMonitoring:") + "(" + idss.toString() + ")";
 					AppendOperateLog.addOneLog(loginname, minfo, OpTypeId.diable, OpObjectId.monitor);
 				} else
 				{
-					minfo = "禁止监测：" + node.getName() + "(" + node.getSvId() + ")";
+					minfo = Labels.getLabel("NoMonitoring:") + node.getName() + "(" + node.getSvId() + ")";
 					AppendOperateLog.addOneLog(loginname, minfo, OpTypeId.diable, OpObjectId.monitor);
 				}
 			}
@@ -274,7 +275,7 @@ public class DisableMonitors extends GenericForwardComposer
 		{
 			try
 			{
-				Messagebox.show("禁止监测失败：" + node.getName(), "提示", Messagebox.OK, Messagebox.EXCLAMATION);
+				Messagebox.show(Labels.getLabel("NoMonitoringFailure:") + node.getName(), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.EXCLAMATION);
 			} catch (InterruptedException e)
 			{
 				// TODO Auto-generated catch block

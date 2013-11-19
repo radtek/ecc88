@@ -94,7 +94,7 @@ public class SetMessage_add extends GenericAutowireComposer {
 	public void onSave(Event event)throws Exception{
 		if (name.getValue() == null || name.getValue().trim().isEmpty()) {
 			try{
-				Messagebox.show(Labels.getLabel("PFillName"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("PFillName"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			}catch(Exception e){}
 			name.setValue(null);
 			name.setFocus(true);
@@ -121,7 +121,7 @@ public class SetMessage_add extends GenericAutowireComposer {
 		for(int m=0;m<emailNameList.length;m++){
 			if(emailNameList[m]!=null&&emailNameList[m].equals(name.getValue().trim())){
 				try{
-					Messagebox.show(Labels.getLabel("ThisInformationNameExists"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+					Messagebox.show(Labels.getLabel("ThisInformationNameExists"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				}catch(Exception e){}
 				name.setFocus(true);
 				return;
@@ -131,7 +131,7 @@ public class SetMessage_add extends GenericAutowireComposer {
 		String mobileValue = mobileNum.getValue().toString();			
 		if ("".endsWith(mobileValue.trim())) {
 			try{
-				Messagebox.show(Labels.getLabel("MobilePhoneNumberCanNotEmpty"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("MobilePhoneNumberCanNotEmpty"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			}catch(Exception e){}
 			mobileNum.setValue(null);
 			mobileNum.setFocus(true);
@@ -146,7 +146,7 @@ public class SetMessage_add extends GenericAutowireComposer {
 				throw new Exception("");
 			}
 		}catch(Exception e){
-			Messagebox.show(Labels.getLabel("MobilePhoneNumberNotCorrect"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+			Messagebox.show(Labels.getLabel("MobilePhoneNumberNotCorrect"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			mobileNum.setFocus(true);
 			return;
 		}
@@ -154,7 +154,7 @@ public class SetMessage_add extends GenericAutowireComposer {
 		
 		if(taskPlan.getValue() == null||taskPlan.getValue().isEmpty()){
 			try{
-				Messagebox.show(Labels.getLabel("TaskPlanNotSetValue"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("TaskPlanNotSetValue"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			}catch(Exception e){}
 			return;
 		}
@@ -183,7 +183,7 @@ public class SetMessage_add extends GenericAutowireComposer {
 			onReFresh();
 			
 		}catch(Exception e){
-			Messagebox.show(e.getMessage(),"错误", Messagebox.OK, Messagebox.ERROR);
+			Messagebox.show(e.getMessage(),Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 		}
 	}
 	
@@ -259,7 +259,7 @@ public class SetMessage_add extends GenericAutowireComposer {
 		}
 		if(!flag){
 			try{
-				Messagebox.show(Labels.getLabel("TemplateNotSetValueOfInformation"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("TemplateNotSetValueOfInformation"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			}catch(Exception e){}
 			return 0;
 		}
@@ -317,7 +317,7 @@ public class SetMessage_add extends GenericAutowireComposer {
 		}
 		if(!flag){
 			try{
-				Messagebox.show(Labels.getLabel("TaskPlanNotSetValue"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("TaskPlanNotSetValue"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			}catch(Exception e){}
 			return 0;
 		}

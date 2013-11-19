@@ -41,6 +41,7 @@ import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.renderer.category.BarRenderer3D;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.xy.XYDataset;
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zhtml.Messagebox;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zul.Filedownload;
@@ -109,7 +110,7 @@ public class ExportReport {
 			}
 		} catch (Exception e) {
 			try {
-				Messagebox.show(e.getMessage(), "´íÎó", Messagebox.OK, Messagebox.ERROR);
+				Messagebox.show(e.getMessage(), Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 			} catch (InterruptedException e1) {
 				e1.printStackTrace();
 			}
@@ -302,16 +303,16 @@ public class ExportReport {
 				String state = dstrs.get(D).status;
 				String dstr = dstrs.get(D).value;
 				if (state.equals("ok")) {
-					state = "Õý³£";
+					state = Labels.getLabel("Good");
 					oklist.add(new com.siteview.ecc.simplereport.HistoryBean(filename,Toolkit.getToolkit().formatDate(D), dstr, state));
 				} else if (state.equals("error")) {
-					state = "´íÎó";
+					state = Labels.getLabel("Error");
 					errorlist.add(new com.siteview.ecc.simplereport.HistoryBean(filename, Toolkit.getToolkit().formatDate(D), dstr, state));
 				} else if (state.equals("disable")) {
-					state = "½ûÖ¹";
+					state = Labels.getLabel("Disable");
 					disablelist.add(new com.siteview.ecc.simplereport.HistoryBean(filename, Toolkit.getToolkit().formatDate(D), dstr, state));
 				} else if (state.equals("warning")) {
-					state = "Î£ÏÕ";
+					state = Labels.getLabel("Warning");
 					dangerlist.add(new com.siteview.ecc.simplereport.HistoryBean(filename, Toolkit.getToolkit().formatDate(D), dstr, state));
 				} else {
 					elselist.add(new com.siteview.ecc.simplereport.HistoryBean(filename, Toolkit.getToolkit().formatDate(D), dstr, state));
@@ -635,17 +636,17 @@ public class ExportReport {
 					String state = dstrs.get(D).status;
 					String dstr = dstrs.get(D).value;
 					if (state.equals("ok")) {
-						state = "Õý³£";
+						state = Labels.getLabel("Good");
 						oklist.add(new com.siteview.ecc.simplereport.HistoryBean(rd.getPropertyValue(id, "MonitorName"),
 								Toolkit.getToolkit().formatDate(D), dstr, state));
 					} else if (state.equals("error")) {
-						state = "´íÎó";
+						state = Labels.getLabel("Error");
 						errorlist.add(new com.siteview.ecc.simplereport.HistoryBean(rd.getPropertyValue(id, "MonitorName"), Toolkit.getToolkit().formatDate(D), dstr, state));
 					} else if (state.equals("disable")) {
-						state = "½ûÖ¹";
+						state = Labels.getLabel("Disable");
 						disablelist.add(new com.siteview.ecc.simplereport.HistoryBean(rd.getPropertyValue(id, "MonitorName"),Toolkit.getToolkit().formatDate(D), dstr, state));
 					} else if (state.equals("warning")) {
-						state = "Î£ÏÕ";
+						state = Labels.getLabel("Warning");
 						dangerlist.add(new com.siteview.ecc.simplereport.HistoryBean(rd.getPropertyValue(id, "MonitorName"), Toolkit.getToolkit().formatDate(D), dstr, state));
 					} else {
 						elselist.add(new com.siteview.ecc.simplereport.HistoryBean(rd.getPropertyValue(id, "MonitorName"), Toolkit.getToolkit().formatDate(D), dstr, state));

@@ -157,7 +157,7 @@ public class EmailTemplate extends GenericAutowireComposer {
 			
 			if(!validateTextbox(templateTextbox)){
 				try{
-					Messagebox.show(Labels.getLabel("TemplateNameCannotEmptyInputAgain"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+					Messagebox.show(Labels.getLabel("TemplateNameCannotEmptyInputAgain"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				}catch(Exception e){}
 				templateTextbox.setFocus(true);
 				return;
@@ -165,7 +165,7 @@ public class EmailTemplate extends GenericAutowireComposer {
 			for(String templateName:emailTemplateList){
 				if(templateName.equals(templateTextboxValue)){
 					try{
-						Messagebox.show(Labels.getLabel("TemplateNameExistsPChangeTemplateName"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+						Messagebox.show(Labels.getLabel("TemplateNameExistsPChangeTemplateName"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 					}catch(Exception e){}
 					templateTextbox.setValue(null);
 					templateTextbox.setFocus(true);
@@ -197,7 +197,7 @@ public class EmailTemplate extends GenericAutowireComposer {
 			refresh();
 			templateTextbox.setValue(null);
 		}catch(Exception e){
-			Messagebox.show(e.getMessage(),"错误", Messagebox.OK, Messagebox.ERROR);
+			Messagebox.show(e.getMessage(),Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 		}
 	}
 
@@ -206,7 +206,7 @@ public class EmailTemplate extends GenericAutowireComposer {
 			Listitem selectedItem = templateList.getSelectedItem();
 			if(selectedItem == null){
 				try{
-					Messagebox.show(Labels.getLabel("PChooseDeleteEmailTemplate"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+					Messagebox.show(Labels.getLabel("PChooseDeleteEmailTemplate"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				}catch(Exception e){}
 				return;
 			}
@@ -223,7 +223,7 @@ public class EmailTemplate extends GenericAutowireComposer {
 				for(String s : usingEmailTemplateAlarm){
 					if( s != null  || !"".equals(s.trim())){
 						if( templateName.equals(s)){
-							Messagebox.show(Labels.getLabel("AlarmEmailTemplateUsed")+templateName+Labels.getLabel("CanNotOperatePSelectedAgain"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+							Messagebox.show(Labels.getLabel("AlarmEmailTemplateUsed")+templateName+Labels.getLabel("CanNotOperatePSelectedAgain"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 							return;
 						}
 					}
@@ -231,7 +231,7 @@ public class EmailTemplate extends GenericAutowireComposer {
 				for(String s : usingEmailTemplateSet){
 					if( s != null  || !"".equals(s.trim())){
 						if( templateName.equals(s)){
-							Messagebox.show(Labels.getLabel("MailSettingsAreUsingEmailTemplate")+templateName+Labels.getLabel("CanNotOperatePSelectedAgain"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+							Messagebox.show(Labels.getLabel("MailSettingsAreUsingEmailTemplate")+templateName+Labels.getLabel("CanNotOperatePSelectedAgain"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 							return;
 						}
 					}
@@ -241,19 +241,19 @@ public class EmailTemplate extends GenericAutowireComposer {
 				
 				View view = Toolkit.getToolkit().getSvdbView(event.getTarget().getDesktop());
 				String loginname = view.getLoginName();
-				String minfo=loginname+" "+"在"+OpObjectId.email_template.name+"中进行了  "+OpTypeId.del.name+"邮件模板操作，删除的信息项为： "+templateName;
+				String minfo=loginname+" "+Labels.getLabel("In")+OpObjectId.email_template.name+Labels.getLabel("Conducting")+OpTypeId.del.name+Labels.getLabel("EmailTemplateOperationInformationDeleteFor:")+templateName;
 				AppendOperateLog.addOneLog(loginname, minfo, OpTypeId.del, OpObjectId.email_template);				
 				
 				emailTemplateList.remove(templateName);
 				refresh();	
 			}else{
 				try{
-					Messagebox.show(Labels.getLabel("SystemCustomTemplatesNotDeleted"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+					Messagebox.show(Labels.getLabel("SystemCustomTemplatesNotDeleted"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				}catch(Exception e){}
 				return;
 			}
 		}catch(Exception e){
-			Messagebox.show(e.getMessage(),"错误", Messagebox.OK, Messagebox.ERROR);
+			Messagebox.show(e.getMessage(),Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 		}
 	}
 	
@@ -262,7 +262,7 @@ public class EmailTemplate extends GenericAutowireComposer {
 			Listitem selectedItem = templateList.getSelectedItem();
 			if(selectedItem == null){
 				try{
-					Messagebox.show(Labels.getLabel("PchooseUpdateEmailTemplate"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+					Messagebox.show(Labels.getLabel("PchooseUpdateEmailTemplate"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				}catch(Exception e){}
 				return;
 			}
@@ -282,14 +282,14 @@ public class EmailTemplate extends GenericAutowireComposer {
 
 				View view = Toolkit.getToolkit().getSvdbView(event.getTarget().getDesktop());
 				String loginname = view.getLoginName();
-				String minfo=loginname+" "+"在"+OpObjectId.email_template.name+"中进行了  "+OpTypeId.edit.name+"邮件模板操作，编辑的信息项为： "+templateTextbox.getValue();
+				String minfo=loginname+" "+Labels.getLabel("In")+OpObjectId.email_template.name+Labels.getLabel("Conducting")+OpTypeId.edit.name+Labels.getLabel("EmailTemplateOperationInformationDeleteFor:")+templateTextbox.getValue();
 				AppendOperateLog.addOneLog(loginname, minfo, OpTypeId.edit, OpObjectId.email_template);		
 				try{
-					Messagebox.show(Labels.getLabel("UpdateSuccess"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+					Messagebox.show(Labels.getLabel("UpdateSuccess"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				}catch(Exception e){}
 			}else{
 				try{
-					Messagebox.show(Labels.getLabel("SystemCustomTemplatesNotUpdated"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+					Messagebox.show(Labels.getLabel("SystemCustomTemplatesNotUpdated"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				}catch(Exception e){}
 			}
 			templateTextbox.setValue(null);

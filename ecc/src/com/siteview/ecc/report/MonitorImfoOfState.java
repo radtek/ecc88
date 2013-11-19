@@ -86,7 +86,7 @@ public class MonitorImfoOfState extends Window {
 				}});
 		} catch (Exception e) {
 			e.printStackTrace();
-			Messagebox.show(e.getMessage(), "错误", Messagebox.OK,
+			Messagebox.show(e.getMessage(), Labels.getLabel("Error"), Messagebox.OK,
 					Messagebox.ERROR);
 		}
 	}
@@ -115,12 +115,12 @@ public class MonitorImfoOfState extends Window {
 			View view = Toolkit.getToolkit().getSvdbView(getDesktop());
 			INode node = this.getSelectedNode();
 			if (node == null) {
-				Messagebox.show(ErrorMessage.UNSELECT_MONITOR, "提示", Messagebox.OK,
+				Messagebox.show(ErrorMessage.UNSELECT_MONITOR, Labels.getLabel("Prompt"), Messagebox.OK,
 						Messagebox.INFORMATION);
 				return;
 			}
 			if (getBeginDatabox().getValue().after(getEndDatabox().getValue())) {
-				Messagebox.show(ErrorMessage.TIME_ERROR, "提示", Messagebox.OK,
+				Messagebox.show(ErrorMessage.TIME_ERROR, Labels.getLabel("Prompt"), Messagebox.OK,
 						Messagebox.INFORMATION);
 				return;
 			}
@@ -385,12 +385,12 @@ public class MonitorImfoOfState extends Window {
 				Date begin_date = view.getBeginDatabox().getValue();
 				Date end_date = view.getEndDatabox().getValue();
 				if (view.getSelectedNode()==null) {
-					Messagebox.show(ErrorMessage.UNSELECT_MONITOR, "提示",
+					Messagebox.show(ErrorMessage.UNSELECT_MONITOR, Labels.getLabel("Prompt"),
 							Messagebox.OK, Messagebox.INFORMATION);
 					return;
 				}
 				if (begin_date.after(end_date)) {
-					Messagebox.show(ErrorMessage.TIME_ERROR, "提示", Messagebox.OK,
+					Messagebox.show(ErrorMessage.TIME_ERROR, Labels.getLabel("Prompt"), Messagebox.OK,
 							Messagebox.INFORMATION);
 					return;
 				}

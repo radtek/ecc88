@@ -94,7 +94,7 @@ public class User_edit extends GenericAutowireComposer {
 		}catch(Exception e)
 		{
 			e.printStackTrace();
-			Messagebox.show(e.getMessage(),"错误", Messagebox.OK, Messagebox.ERROR);
+			Messagebox.show(e.getMessage(),Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 		}
 	}
 
@@ -120,39 +120,39 @@ public class User_edit extends GenericAutowireComposer {
 			String LDAPProviderUrl_str			= LDAPProviderUrl.getValue().trim();
 			String LDAPSecurityPrincipal_str 	= LDAPSecurityPrincipal.getValue().trim();
 			if ("".equals(loginName_str)) {
-				Messagebox.show(Labels.getLabel("PFillLoginName"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("PFillLoginName"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				loginName.setFocus(true);
 				return;
 			}
 			if ("".equals(userName_str)) {
-				Messagebox.show(Labels.getLabel("PFillUserName"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("PFillUserName"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				userName.setFocus(true);
 				return;
 			}
 			if ("".equals(pwd_str)) {
-				Messagebox.show(Labels.getLabel("PFillPassword"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("PFillPassword"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				pwd.setFocus(true);
 				return;
 			}
 			if ("".equals(confirmPwd_str)) {
-				Messagebox.show(Labels.getLabel("PFillConfirmationPassword"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("PFillConfirmationPassword"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				confirmPwd.setFocus(true);
 				return;
 			}
 			if (confirmPwd_str.equals(pwd_str)==false) {
-				Messagebox.show(Labels.getLabel("PasswordConfirmationNotMatchInputAgain"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("PasswordConfirmationNotMatchInputAgain"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				confirmPwd.setFocus(true);
 				return;
 			}
 			//分两种情况 处理
 			if(ldapCheck.isChecked() ){
 				if ("".equals(LDAPProviderUrl_str)) {
-					Messagebox.show(Labels.getLabel("PFillLDAPCertification"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+					Messagebox.show(Labels.getLabel("PFillLDAPCertification"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 					LDAPProviderUrl.setFocus(true);
 					return;
 				}
 				if ("".equals(LDAPSecurityPrincipal_str)) {
-					Messagebox.show(Labels.getLabel("PFillLDAPCertificationRules"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+					Messagebox.show(Labels.getLabel("PFillLDAPCertificationRules"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 					LDAPSecurityPrincipal.setFocus(true);
 					return;
 				}
@@ -180,7 +180,7 @@ public class User_edit extends GenericAutowireComposer {
 					LdapAuth.addLdapUser_onlyAdd(LDAPProviderUrl_str, LDAPSecurityPrincipal_str, ini, edit_section);
 				} catch (Exception e){
 					e.printStackTrace();
-					Messagebox.show(e.toString(), "提示", Messagebox.OK, Messagebox.INFORMATION);
+					Messagebox.show(e.toString(), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 					throw e;
 				}
 			}else{
@@ -192,7 +192,7 @@ public class User_edit extends GenericAutowireComposer {
 			Manager.instantUpdate();
 			
 			String loginname = view.getLoginName();
-			String minfo=loginname+" "+"在"+OpObjectId.user_manage.name+"中进行了  "+OpTypeId.edit.name+"操作，"+OpTypeId.edit.name+"了 "+userName.getValue();
+			String minfo=loginname+" "+Labels.getLabel("In")+OpObjectId.user_manage.name+Labels.getLabel("Conducting")+OpTypeId.edit.name+Labels.getLabel("Operation.")+OpTypeId.edit.name+"了 "+userName.getValue();
 			AppendOperateLog.addOneLog(loginname, minfo, OpTypeId.edit, OpObjectId.user_manage);	
 			
 			session.setAttribute(UserConstant.ADD_USERID,edit_section);
@@ -204,7 +204,7 @@ public class User_edit extends GenericAutowireComposer {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			Messagebox.show(e.getMessage(),"错误", Messagebox.OK, Messagebox.ERROR);
+			Messagebox.show(e.getMessage(),Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 			
 		}
 	}

@@ -215,12 +215,12 @@ public class SetDataBase extends GenericAutowireComposer {
 		// 该删除只是删除listbox中的现实数据，不修改ini
 		if (param.getSelectedCount() == 0) {
 			try{
-				Messagebox.show(Labels.getLabel("Pselectparametersdeleted"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("Pselectparametersdeleted"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			}catch(Exception e){}
 			return;
 		}
 		try{
-			if (Messagebox.show(Labels.getLabel("SureWantDeleteSelectedParameter"), "询问", Messagebox.OK
+			if (Messagebox.show(Labels.getLabel("SureWantDeleteSelectedParameter"), Labels.getLabel("Ask"), Messagebox.OK
 					| Messagebox.CANCEL, Messagebox.QUESTION) == Messagebox.OK) {
 				Set s = param.getSelectedItems();
 				Object[] arr = s.toArray();
@@ -245,7 +245,7 @@ public class SetDataBase extends GenericAutowireComposer {
 		// 该添加只是添加listbox中的现实数据，不修改ini
 		if (param.getChildren().size() >= 4)
 			try{
-				Messagebox.show(Labels.getLabel("ParameterCannotMoreThanThree"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("ParameterCannotMoreThanThree"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			}catch(Exception e){}
 			
 		else {
@@ -308,7 +308,7 @@ public class SetDataBase extends GenericAutowireComposer {
 			
 			if (connectString.getValue() == null || connectString.getValue().trim().equals("")) {
 				try{
-					Messagebox.show(Labels.getLabel("ConnectionStringNotEmpty"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+					Messagebox.show(Labels.getLabel("ConnectionStringNotEmpty"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				}catch(Exception e){}
 				return;
 			}
@@ -317,7 +317,7 @@ public class SetDataBase extends GenericAutowireComposer {
 			List<?> l = param.getChildren();
 			if (l.size() > 4 || l.size() < 3) {
 				try{
-					Messagebox.show(Labels.getLabel("NumberParametersOnly2Or3"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+					Messagebox.show(Labels.getLabel("NumberParametersOnly2Or3"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				}catch(Exception e){}
 				return;
 			}
@@ -347,7 +347,7 @@ public class SetDataBase extends GenericAutowireComposer {
 					al[2].add(String.valueOf(((Intbox) (((Listcell) l1.get(2)).getChildren()).get(0)).getValue()));
 				else {
 					try{
-						Messagebox.show(Labels.getLabel("LengthOfParameterCannotEmpty"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+						Messagebox.show(Labels.getLabel("LengthOfParameterCannotEmpty"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 					}catch(Exception e){}
 					return;
 				}
@@ -357,25 +357,25 @@ public class SetDataBase extends GenericAutowireComposer {
 			for (int j = 0; j < i; j++) {
 				if (al[3].get(j).equals(Labels.getLabel("SendTime")) && !al[1].get(j).equals("DateTime")) {
 					try{
-						Messagebox.show(Labels.getLabel("TransmissionTimeOnlyDateTimeType"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+						Messagebox.show(Labels.getLabel("TransmissionTimeOnlyDateTimeType"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 					}catch(Exception e){}
 					return;
 				}
 			}
 			if (!al[3].contains(Labels.getLabel("PhoneNumber"))) {
 				try{
-					Messagebox.show(Labels.getLabel("ParameterMustIncludedPhoneNumber"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+					Messagebox.show(Labels.getLabel("ParameterMustIncludedPhoneNumber"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				}catch(Exception e){}
 				return;
 			} else if (!al[3].contains(Labels.getLabel("ContentOfMessage"))) {
 				try{
-					Messagebox.show(Labels.getLabel("ParameterMustContainMessageContent"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+					Messagebox.show(Labels.getLabel("ParameterMustContainMessageContent"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				}catch(Exception e){}
 				return;
 			}
 			if (al[3].get(0).equals(al[3].get(1))) {
 				try{
-					Messagebox.show(Labels.getLabel("ParameterContainsSameItemDifferent"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+					Messagebox.show(Labels.getLabel("ParameterContainsSameItemDifferent"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				}catch(Exception e){}
 				return;
 			}
@@ -383,7 +383,7 @@ public class SetDataBase extends GenericAutowireComposer {
 				if (al[3].get(0).equals(al[3].get(2))
 						|| al[3].get(1).equals(al[3].get(2))) {
 					try{
-						Messagebox.show(Labels.getLabel("ParameterContainsSameItemDifferent"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+						Messagebox.show(Labels.getLabel("ParameterContainsSameItemDifferent"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 					}catch(Exception e){}
 					return;
 				}
@@ -405,7 +405,7 @@ public class SetDataBase extends GenericAutowireComposer {
 				if(dbTableName.getValue() == null || dbTableName.getValue().trim().equals(""))
 				{
 					try{
-						Messagebox.show(Labels.getLabel("TableNameCannotEmpty"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+						Messagebox.show(Labels.getLabel("TableNameCannotEmpty"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 					}catch(Exception e){}
 					return;
 				}
@@ -415,7 +415,7 @@ public class SetDataBase extends GenericAutowireComposer {
 				ini.setKeyValue("DataBaseConfig", "InsertWay", "0");
 				if (storedName.getValue() == null || storedName.getValue().trim().equals("")) {
 					try{
-						Messagebox.show(Labels.getLabel("StoredProcedureNameCannotEmpty"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+						Messagebox.show(Labels.getLabel("StoredProcedureNameCannotEmpty"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 					}catch(Exception e){}
 					return;
 				} 

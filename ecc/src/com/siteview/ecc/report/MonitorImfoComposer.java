@@ -39,7 +39,7 @@ public class MonitorImfoComposer extends GenericForwardComposer{
 			onSelect$listbox(event);
 		}catch(Exception e){
 			e.printStackTrace();
-			Messagebox.show(e.getMessage(),"¥ÌŒÛ",Messagebox.OK,Messagebox.ERROR);
+			Messagebox.show(e.getMessage(),Labels.getLabel("Error"),Messagebox.OK,Messagebox.ERROR);
 		}
 	}
 	public void onPaging$listbox(Event event) throws InterruptedException{
@@ -52,7 +52,7 @@ public class MonitorImfoComposer extends GenericForwardComposer{
 			onSelect$listbox(event);
 		}catch(Exception e){
 			e.printStackTrace();
-			Messagebox.show(e.getMessage(),"¥ÌŒÛ",Messagebox.OK,Messagebox.ERROR);
+			Messagebox.show(e.getMessage(),Labels.getLabel("Error"),Messagebox.OK,Messagebox.ERROR);
 		}
 	}
 
@@ -60,7 +60,7 @@ public class MonitorImfoComposer extends GenericForwardComposer{
 		try {
 			List<MonitorBean> beans = new ArrayList<MonitorBean>();
 			String msg = Labels.getLabel("AllInfoDerivedDetectorSaveCurrentInfo");
-			int option = Messagebox.show(msg,"Ã· æ",Messagebox.YES|Messagebox.NO,Messagebox.INFORMATION);
+			int option = Messagebox.show(msg,Labels.getLabel("Prompt"),Messagebox.YES|Messagebox.NO,Messagebox.INFORMATION);
 			if(option == Messagebox.YES){
 				int i = 0;
 				while(i<listbox.getItemCount()){
@@ -94,7 +94,7 @@ public class MonitorImfoComposer extends GenericForwardComposer{
 			win.doModal();
 		} catch (Exception e) {
 			e.printStackTrace();
-			Messagebox.show(e.getMessage(),"¥ÌŒÛ",Messagebox.OK,Messagebox.ERROR);
+			Messagebox.show(e.getMessage(),Labels.getLabel("Error"),Messagebox.OK,Messagebox.ERROR);
 		} 
 	}
 	
@@ -112,7 +112,7 @@ public class MonitorImfoComposer extends GenericForwardComposer{
 			onSelect$listbox(event);
 		}catch(Exception e){
 			e.printStackTrace();
-			Messagebox.show(e.getMessage(),"¥ÌŒÛ",Messagebox.OK,Messagebox.ERROR);
+			Messagebox.show(e.getMessage(),Labels.getLabel("Error"),Messagebox.OK,Messagebox.ERROR);
 		}
 	}
 	
@@ -124,7 +124,7 @@ public class MonitorImfoComposer extends GenericForwardComposer{
 			onCreate$monitorInfo(event);
 		}catch(Exception e){
 			e.printStackTrace();
-			Messagebox.show(e.getMessage(),"¥ÌŒÛ",Messagebox.OK,Messagebox.ERROR);
+			Messagebox.show(e.getMessage(),Labels.getLabel("Error"),Messagebox.OK,Messagebox.ERROR);
 		}
 	}
 	
@@ -134,7 +134,7 @@ public class MonitorImfoComposer extends GenericForwardComposer{
 			setDetailMonitorInfo(item);
 		}catch(Exception e){
 			e.printStackTrace();
-			Messagebox.show(e.getMessage(),"¥ÌŒÛ",Messagebox.OK,Messagebox.ERROR);
+			Messagebox.show(e.getMessage(),Labels.getLabel("Error"),Messagebox.OK,Messagebox.ERROR);
 		}
 	}
 

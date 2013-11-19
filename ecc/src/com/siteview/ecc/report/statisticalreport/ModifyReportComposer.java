@@ -207,7 +207,7 @@ public class ModifyReportComposer extends GenericForwardComposer {
 	public void onSaveTheModifyReport(Event event) {
 		try {
 			if (Title.getValue() == null || Title.getValue().equals("")) {
-				Messagebox.show(Labels.getLabel("ReportTitleCannotEmptyInputAgain"), "提示", Messagebox.OK,
+				Messagebox.show(Labels.getLabel("ReportTitleCannotEmptyInputAgain"), Labels.getLabel("Prompt"), Messagebox.OK,
 						Messagebox.INFORMATION);
 				Title.focus();
 				return;
@@ -216,7 +216,7 @@ public class ModifyReportComposer extends GenericForwardComposer {
 				String existName = ini.getValue(section, "Title");
 				if(!title.equals(Title.getValue().trim())
 						&& Title.getValue().trim().equals(existName)){
-					Messagebox.show(Labels.getLabel("ReportNameExistsInputAgain"), "提示", Messagebox.OK,
+					Messagebox.show(Labels.getLabel("ReportNameExistsInputAgain"), Labels.getLabel("Prompt"), Messagebox.OK,
 							Messagebox.INFORMATION);
 					Title.focus();
 					return;
@@ -263,7 +263,7 @@ public class ModifyReportComposer extends GenericForwardComposer {
 					ini.deleteKey(sections, "EmailSend");
 				}
 			} catch (Exception x) {
-				Messagebox.show(Labels.getLabel("E_MailFormatNotCorrectInputAgain"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("E_MailFormatNotCorrectInputAgain"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				EmailSend.focus();
 				return;
 			}			
@@ -311,7 +311,7 @@ public class ModifyReportComposer extends GenericForwardComposer {
 
 			String nodeids = getNodeids();
 			if (nodeids == null) {
-				Messagebox.show("请选择监测器!", "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("SelectMonitor"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				return;
 			}
 			ini.setKeyValue(sections, "GroupRight", nodeids);

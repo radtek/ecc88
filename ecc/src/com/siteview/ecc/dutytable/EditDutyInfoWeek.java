@@ -109,7 +109,7 @@ public class EditDutyInfoWeek extends GenericAutowireComposer {
 			String mobileValue 	= 	mobilePhoneNum.getValue().toString();			
 			if ("".endsWith(mobileValue.trim())) {
 				try{
-					Messagebox.show(Labels.getLabel("MobilePhoneNumberCanNotEmpty"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+					Messagebox.show(Labels.getLabel("MobilePhoneNumberCanNotEmpty"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				}catch(Exception e){}
 				mobilePhoneNum.setValue(null);
 				mobilePhoneNum.setFocus(true);
@@ -124,14 +124,14 @@ public class EditDutyInfoWeek extends GenericAutowireComposer {
 				}
 			}catch(Exception e){
 				e.printStackTrace();
-				Messagebox.show(Labels.getLabel("MobilePhoneNumberNotCorrect"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("MobilePhoneNumberNotCorrect"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				mobilePhoneNum.setFocus(true);
 				return;
 			}
 			
 			if(alarmEmailbox.getValue()== null ||alarmEmailbox.getValue().trim().isEmpty() || alarmEmailbox.getValue().trim().equals(""))
 			{
-				Messagebox.show(Labels.getLabel("DetailedInformationAlarmReceivingMailboxCannotEmpty"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("DetailedInformationAlarmReceivingMailboxCannotEmpty"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				alarmEmailbox.setFocus(true);
 				return;
 			}
@@ -140,25 +140,25 @@ public class EditDutyInfoWeek extends GenericAutowireComposer {
 			Matcher matcher = regex.matcher(alarmEmailbox.getValue());
 			boolean isMatched = matcher.matches();
 			if(!isMatched){
-				Messagebox.show(Labels.getLabel("MessageNotCorrectFormat"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("MessageNotCorrectFormat"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				alarmEmailbox.setValue("");
 				alarmEmailbox.setFocus(true);
 				return;
 			}
 			Object weekObject = weekValue.getSelectedItem().getValue();
 			if(weekObject == null) {
-				Messagebox.show(Labels.getLabel("NotChosenDutyWeekValue"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("NotChosenDutyWeekValue"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				return;
 			}
 			String weekString = (String)weekObject;
 			
 			if (beginduty.getValue() == null||"".equals(beginduty.getValue())) {
-				Messagebox.show(Labels.getLabel("NotChosenStartTime"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("NotChosenStartTime"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				beginduty.setFocus(true);
 				return;
 			}
 			if (endduty.getValue() == null||"".equals(endduty.getValue())) {
-				Messagebox.show(Labels.getLabel("NotChosenEndTime"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("NotChosenEndTime"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				endduty.setFocus(true);
 				return;
 			}
@@ -182,7 +182,7 @@ public class EditDutyInfoWeek extends GenericAutowireComposer {
 			}
 		
 			if(Integer.parseInt(beginTime)>Integer.parseInt(endTime)){
-				Messagebox.show(Labels.getLabel("StartTimeGreaterThanOrEqualEndTimeWrongChoice"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("StartTimeGreaterThanOrEqualEndTimeWrongChoice"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				beginduty.setValue(null);
 				beginduty.setFocus(true);
 				return;
@@ -213,7 +213,7 @@ public class EditDutyInfoWeek extends GenericAutowireComposer {
 			
 		}catch(Exception e){
 			e.printStackTrace();
-			Messagebox.show(e.getMessage(),"错误", Messagebox.OK, Messagebox.ERROR);
+			Messagebox.show(e.getMessage(),Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 		}
 	}
 }

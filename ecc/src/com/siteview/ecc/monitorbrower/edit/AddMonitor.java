@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.HtmlBasedComponent;
 import org.zkoss.zk.ui.SuspendNotAllowedException;
@@ -145,9 +146,9 @@ public class AddMonitor extends GenericForwardComposer {
 				this.monitorEdit = view.getMonitorEdit(node);
 				this.monitorTemplate = this.monitorEdit.getMonitorTemplate();
 				String templatename = monitorTemplate.get_sv_name();
-				WAddMonitor.setTitle("编辑(" + templatename + ")监测器");
+				WAddMonitor.setTitle(Labels.getLabel("Editor")+(" + templatename + ")+Labels.getLabel("Monitor"));
 				entityname.setValue(enname);
-				btnok.setLabel("保存");
+				btnok.setLabel(Labels.getLabel("Save"));
 				btnadd.setVisible(false);
 			} else {
 				templateId = (String) WAddMonitor.getAttribute("templateId");
@@ -157,7 +158,7 @@ public class AddMonitor extends GenericForwardComposer {
 				entityedit = this.view.getEntityEdit(node);
 				this.monitorEdit = entityinfo.AddMonitor(templateId);
 				String templatename = monitorTemplate.get_sv_name();
-				WAddMonitor.setTitle("添加(" + templatename + ")监测器");
+				WAddMonitor.setTitle(Labels.getLabel("Add")+(" + templatename + ")+Labels.getLabel("Monitor"));
 				String ename = node.getName();
 				entityname.setValue(ename);
 				btndefault.setVisible(false);
@@ -168,7 +169,7 @@ public class AddMonitor extends GenericForwardComposer {
 			BuildParamterForm(advancerow, this.monitorTemplate
 					.get_Advance_Parameter_Items(), false);
 			if (isedit) {
-				Label lb = new Label("监测器标题*:");
+				Label lb = new Label(Labels.getLabel("MonitorTitle*:"));
 				String svname = this.monitorEdit.getName();
 				tbtitle = new SvdbTextBox();
 				tbtitle.setValue(svname);
@@ -176,7 +177,7 @@ public class AddMonitor extends GenericForwardComposer {
 				vbox = new Vbox();
 				Label labelh = new Label();
 				labelh.setId("lbp" + idcount);
-				labelh.setValue("监测器的显示名称");
+				labelh.setValue(Labels.getLabel("DisplayNameOfMonitor"));
 				labelh.setSclass("helplabel");
 				labelh.setVisible(false);
 				idcount++;
@@ -223,7 +224,7 @@ public class AddMonitor extends GenericForwardComposer {
 					}
 				}
 			} else {
-				Label lb = new Label("监测器标题*:");
+				Label lb = new Label(Labels.getLabel("MonitorTitle*:"));
 				String svname = this.monitorTemplate.get_sv_name();
 				tbtitle = new SvdbTextBox();
 				tbtitle.setValue(svname);
@@ -231,7 +232,7 @@ public class AddMonitor extends GenericForwardComposer {
 				vbox = new Vbox();
 				Label labelh = new Label();
 				labelh.setId("lbp" + idcount);
-				labelh.setValue("监测器的显示名称");
+				labelh.setValue(Labels.getLabel("DisplayNameOfMonitor"));
 				labelh.setSclass("helplabel");
 				labelh.setVisible(false);
 				idcount++;
@@ -538,7 +539,7 @@ public class AddMonitor extends GenericForwardComposer {
 						btnplok.setVisible(true);
 					}
 					cbitem = new Comboitem();
-					cbitem.setLabel("正在获取数据...");
+					cbitem.setLabel(Labels.getLabel("GettingData..."));
 					cbitem.setValue("1");
 					cbitem.setParent(cb);
 					cb.setSelectedIndex(0);
@@ -772,24 +773,24 @@ public class AddMonitor extends GenericForwardComposer {
 		double value;
 		if (tbtitle.getValue() == null || tbtitle.getValue().isEmpty()) {
 			tbtitle.focus();
-			return "请输入标题";
+			return Labels.getLabel("PleaseEnterTitle");
 		}
 		if (tberror.getValue() == null || tberror.getValue().isEmpty()) {
 			tberror.focus();
-			return "请输入错误的阀值";
+			return Labels.getLabel("PleaseInputErrorThreshold");
 		}
 		if (tbdanger.getValue() == null || tbdanger.getValue().isEmpty()) {
 			tbdanger.focus();
-			return "请输入警报的阀值";
+			return Labels.getLabel("PleaseEnterAlarmThreshold");
 		}
 		if (tbnormal.getValue() == null || tbnormal.getValue().isEmpty()) {
 			tbnormal.focus();
-			return "请输入正常的阀值";
+			return Labels.getLabel("PleaseEnterNormalValue");
 		}
 		if (!tbErrorFrequency.getValue().isEmpty()) {
 			if (!tbErrorFrequency.getValue().matches(REG_DIGIT)) {
 				tbErrorFrequency.focus();
-				return "请输入正确的错误监测频率(数字)";
+				return Labels.getLabel("PleaseErrorFrequencyMonitoringCorrect(digital)");
 			}
 		}
 
@@ -815,7 +816,7 @@ public class AddMonitor extends GenericForwardComposer {
 				control.focus();
 				message = item.get("sv_tip");
 				if (message == null) {
-					message = "请检查输入的" + item.get("sv_label") + "是否正确";
+					message = Labels.getLabel("PleaseCheckYourInput") + item.get("sv_label") + Labels.getLabel("WhetherRight");
 				}
 				return message;
 			}
@@ -824,10 +825,10 @@ public class AddMonitor extends GenericForwardComposer {
 					&& !svControl.getSvdbValue().matches(REG_DIGIT)) {
 
 				control.focus();
-				message = item.get("sv_tip") + "(数字)";
+				message = item.get("sv_tip") + Labels.getLabel("(digital)");
 				;
-				if (message == "null(数字)") {
-					message = "请检查输入的" + item.get("sv_label") + "是否正确";
+				if (message == Labels.getLabel("Null(digital)")) {
+					message = Labels.getLabel("PleaseCheckYourInput") + item.get("sv_label") + Labels.getLabel("WhetherRight");
 				}
 				return message;
 			}
@@ -857,7 +858,7 @@ public class AddMonitor extends GenericForwardComposer {
 				control.focus();
 				message = item.get("sv_tip");
 				if (message == null) {
-					message = "请检查输入的" + item.get("sv_label") + "是否正确";
+					message = Labels.getLabel("PleaseCheckYourInput") + item.get("sv_label") + Labels.getLabel("WhetherRight");
 				}
 				return message;
 			}
@@ -866,10 +867,10 @@ public class AddMonitor extends GenericForwardComposer {
 					&& !svControl.getSvdbValue().matches(REG_DIGIT)) {
 
 				control.focus();
-				message = item.get("sv_tip") + "(数字)";
+				message = item.get("sv_tip") + Labels.getLabel("(digital)");
 				;
-				if (message == "null(数字)") {
-					message = "请检查输入的" + item.get("sv_label") + "是否正确";
+				if (message == Labels.getLabel("Null(digital)")) {
+					message = Labels.getLabel("PleaseCheckYourInput") + item.get("sv_label") + Labels.getLabel("WhetherRight");
 				}
 				return message;
 			}
@@ -1241,7 +1242,7 @@ public class AddMonitor extends GenericForwardComposer {
 		try {
 			win.doModal();
 		} catch (Exception e) {
-			Messagebox.show(e.getMessage(), "错误", Messagebox.OK,
+			Messagebox.show(e.getMessage(), Labels.getLabel("Error"), Messagebox.OK,
 					Messagebox.ERROR);
 		}
 	}
@@ -1254,7 +1255,7 @@ public class AddMonitor extends GenericForwardComposer {
 		try {
 			win.doModal();
 		} catch (SuspendNotAllowedException e) {
-			Messagebox.show(e.getMessage(), "错误", Messagebox.OK,
+			Messagebox.show(e.getMessage(), Labels.getLabel("Error"), Messagebox.OK,
 					Messagebox.ERROR);
 		}
 	}
@@ -1267,7 +1268,7 @@ public class AddMonitor extends GenericForwardComposer {
 		try {
 			win.doModal();
 		} catch (Exception e) {
-			Messagebox.show(e.getMessage(), "错误", Messagebox.OK,
+			Messagebox.show(e.getMessage(), Labels.getLabel("Error"), Messagebox.OK,
 					Messagebox.ERROR);
 		}
 	}
@@ -1282,10 +1283,10 @@ public class AddMonitor extends GenericForwardComposer {
 		}
 		if (cbdydata != null) {
 			if (cbdydata.getItemCount() == 0
-					|| cbdydata.getText().equals("正在获取数据...")) {
+					|| cbdydata.getText().equals(Labels.getLabel("GettingData..."))) {
 
 				try {
-					Messagebox.show("没有可以添加的监测器！", "提示", Messagebox.OK,
+					Messagebox.show(Labels.getLabel("CanNotAddMonitor"), Labels.getLabel("Prompt"), Messagebox.OK,
 							Messagebox.EXCLAMATION);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
@@ -1297,7 +1298,7 @@ public class AddMonitor extends GenericForwardComposer {
 		try {
 			String message = Validate();
 			if (!message.equals("")) {
-				Messagebox.show(message, "提示", Messagebox.OK,
+				Messagebox.show(message, Labels.getLabel("Prompt"), Messagebox.OK,
 						Messagebox.EXCLAMATION);
 				return;
 			}
@@ -1329,10 +1330,10 @@ public class AddMonitor extends GenericForwardComposer {
 				return;
 			}
 			if (smessage.contains("Less permission")) {
-				smessage = "您的监测器点数不够!";
+				smessage = Labels.getLabel("MonitorPointsNotEnough");
 			}
 			try {
-				Messagebox.show(smessage, "提示", Messagebox.OK,
+				Messagebox.show(smessage, Labels.getLabel("Prompt"), Messagebox.OK,
 						Messagebox.EXCLAMATION);
 			} catch (InterruptedException e1) {
 				// TODO Auto-generated catch block
@@ -1379,10 +1380,10 @@ public class AddMonitor extends GenericForwardComposer {
 	public void onClick$btnplok() throws Exception {
 		if (cbdydata != null) {
 			if (cbdydata.getItemCount() == 0
-					|| cbdydata.getText().equals("正在获取数据...")) {
+					|| cbdydata.getText().equals(Labels.getLabel("GettingData..."))) {
 
 				try {
-					Messagebox.show("没有可以添加的监测器！", "提示", Messagebox.OK,
+					Messagebox.show(Labels.getLabel("CanNotAddMonitor"), Labels.getLabel("Prompt"), Messagebox.OK,
 							Messagebox.EXCLAMATION);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
@@ -1402,7 +1403,7 @@ public class AddMonitor extends GenericForwardComposer {
 		try {
 			win.doModal();
 		} catch (SuspendNotAllowedException e) {
-			Messagebox.show(e.getMessage(),"错误", Messagebox.OK, Messagebox.ERROR);
+			Messagebox.show(e.getMessage(),Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 		}
 	}
 }

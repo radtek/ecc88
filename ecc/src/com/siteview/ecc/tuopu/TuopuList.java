@@ -3,6 +3,7 @@ package com.siteview.ecc.tuopu;
 import java.util.Iterator;
 
 import org.apache.log4j.Logger;
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
@@ -59,7 +60,7 @@ public class TuopuList extends GenericForwardComposer
 		{
 			ini.load();
 			if("".equals(showname.getValue().trim())){
-				Messagebox.show("显示名称不能为空！", "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("DisplayNameCannotEmpty"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				return;
 			}
 			ini.setKeyValue("filename", name.getValue(), showname.getValue().trim());
@@ -67,7 +68,7 @@ public class TuopuList extends GenericForwardComposer
 			
 			View view = Toolkit.getToolkit().getSvdbView(Executions.getCurrent().getDesktop());
 			String loginname = view.getLoginName();
-			String minfo = loginname + "在" + OpObjectId.tupo_view.name + "中进行了"+OpTypeId.edit.name+""+OpObjectId.tupo_view.name+"操作";
+			String minfo = loginname + Labels.getLabel("In") + OpObjectId.tupo_view.name + Labels.getLabel("Conducting")+OpTypeId.edit.name+""+OpObjectId.tupo_view.name+Labels.getLabel("Operation");
 			AppendOperateLog.addOneLog(loginname, minfo, OpTypeId.edit, OpObjectId.tupo_view);
 
 			
@@ -104,14 +105,14 @@ public class TuopuList extends GenericForwardComposer
 			String strName = "", strTmp = "";
 			
 			if(tuopListBox.getSelectedItem() == null){
-				Messagebox.show("请选择相应拓扑视图","提示",Messagebox.OK,Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("PSelectAppropriateTopologyView"),Labels.getLabel("Prompt"),Messagebox.OK,Messagebox.INFORMATION);
 			}else{
 				Iterator itr = tuopListBox.getSelectedItems().iterator();
 				
 				IniFile ini = new IniFile("tuopfile.ini");
 				ini.load();
 
-				if(Messagebox.OK == Messagebox.show("是否删除所选视图？", "询问", Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION))
+				if(Messagebox.OK == Messagebox.show(Labels.getLabel("DoWantDeleteSelectedView"), Labels.getLabel("Ask"), Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION))
 				{
 			        while (itr.hasNext()) 
 			        {
@@ -139,7 +140,7 @@ public class TuopuList extends GenericForwardComposer
 			        }
 					View view = Toolkit.getToolkit().getSvdbView(Executions.getCurrent().getDesktop());
 					String loginname = view.getLoginName();
-					String minfo = loginname + "在" + OpObjectId.tupo_view.name + "中进行了"+OpTypeId.del.name+""+OpObjectId.tupo_view.name+"操作";
+					String minfo = loginname + Labels.getLabel("In") + OpObjectId.tupo_view.name + Labels.getLabel("Conducting")+OpTypeId.del.name+""+OpObjectId.tupo_view.name+Labels.getLabel("Operation");
 					AppendOperateLog.addOneLog(loginname, minfo, OpTypeId.del, OpObjectId.tupo_view);
 			        ini.saveChange();
 			        ((TuopulistModel)tuopListBox.getModel()).refresh();
@@ -170,7 +171,7 @@ public class TuopuList extends GenericForwardComposer
 	{
 		try 
 		{
-			Messagebox.show("暂时只用简单排序！", "询问", Messagebox.OK, Messagebox.QUESTION);
+			Messagebox.show(Labels.getLabel("TemporarilyOnlySimpleSorting"), Labels.getLabel("Ask"), Messagebox.OK, Messagebox.QUESTION);
 		}
 		catch (InterruptedException e) 
 		{

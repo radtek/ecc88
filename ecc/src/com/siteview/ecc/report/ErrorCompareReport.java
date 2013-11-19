@@ -325,14 +325,14 @@ public class ErrorCompareReport extends GenericForwardComposer {
 		setExport(true);
 		System.out.println("错误报表导出开始..............................");
 		if (getNodeids() == null || getNodeids().size() == 0) {
-			Messagebox.show(ErrorMessage.UNSELECT_MONITOR, "提示", Messagebox.OK,
+			Messagebox.show(ErrorMessage.UNSELECT_MONITOR, Labels.getLabel("Prompt"), Messagebox.OK,
 					Messagebox.INFORMATION);
 			ChartUtil.clearComponent(maptable);
 			ChartUtil.clearListbox(runtimeState);
 			return;
 		}
 		if(starttime.getValue().after(endtime.getValue())){
-			Messagebox.show(ErrorMessage.TIME_ERROR, "提示", Messagebox.OK,
+			Messagebox.show(ErrorMessage.TIME_ERROR, Labels.getLabel("Prompt"), Messagebox.OK,
 					Messagebox.INFORMATION);
 			ChartUtil.clearComponent(maptable);
 			ChartUtil.clearListbox(runtimeState);
@@ -351,7 +351,7 @@ public class ErrorCompareReport extends GenericForwardComposer {
 			System.out.println("错误报表导出开始获取ReportDate.............................."+rdList);
 			SelectErrorExl SelectErrorExl=new SelectErrorExl(rdList, nodes, starttime.getValue(), endtime.getValue());
 			System.out.println("错误报表导出结束..............................");
-			Messagebox.show("查询且导出数据结束", "提示", Messagebox.OK,
+			Messagebox.show(Labels.getLabel("QueryAndExportDataEnd"), Labels.getLabel("Prompt"), Messagebox.OK,
 					Messagebox.INFORMATION);
 			init();
 		} catch (Exception e) {
@@ -364,17 +364,17 @@ public class ErrorCompareReport extends GenericForwardComposer {
 	public void onClick$exportButton(Event event) throws Exception {
 		try{
 			if(!isExport()){
-				Messagebox.show("没有要显示的数据！", "提示", Messagebox.OK,
+				Messagebox.show(Labels.getLabel("NoDataToDisplayed"), Labels.getLabel("Prompt"), Messagebox.OK,
 						Messagebox.INFORMATION);
 				return;
 			}
 			if (getNodeids() == null || getNodeids().size() == 0) {
-				Messagebox.show(ErrorMessage.UNSELECT_MONITOR, "提示", Messagebox.OK,
+				Messagebox.show(ErrorMessage.UNSELECT_MONITOR, Labels.getLabel("Prompt"), Messagebox.OK,
 						Messagebox.INFORMATION);
 				return;
 			}
 			if(starttime.getValue().after(endtime.getValue())){
-				Messagebox.show(ErrorMessage.TIME_ERROR, "提示", Messagebox.OK,
+				Messagebox.show(ErrorMessage.TIME_ERROR, Labels.getLabel("Prompt"), Messagebox.OK,
 						Messagebox.INFORMATION);
 				ChartUtil.clearComponent(maptable);
 				return;
@@ -404,7 +404,7 @@ public class ErrorCompareReport extends GenericForwardComposer {
 				}
 			}
 		}
-		Messagebox.show("请选择好你要操作的对象", "错误", Messagebox.OK, Messagebox.ERROR);
+		Messagebox.show(Labels.getLabel("ObjectSelectOperation"), Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 
 	}
 	//批量删除

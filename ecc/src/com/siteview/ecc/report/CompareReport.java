@@ -162,14 +162,14 @@ public class CompareReport extends GenericForwardComposer {
 	public void onClick$seachButton(Event event) throws InterruptedException {
 		setExport(true);
 		if (getNodeids() == null || getNodeids().size() == 0) {
-			Messagebox.show(ErrorMessage.UNSELECT_MONITOR, "提示", Messagebox.OK,
+			Messagebox.show(ErrorMessage.UNSELECT_MONITOR, Labels.getLabel("Prompt"), Messagebox.OK,
 					Messagebox.INFORMATION);
 			ChartUtil.clearComponent(maptable);
 			ChartUtil.clearListbox(runtimeState);
 			return;
 		}
 		if(starttime.getValue().after(endtime.getValue())){
-			Messagebox.show(ErrorMessage.TIME_ERROR, "提示", Messagebox.OK,
+			Messagebox.show(ErrorMessage.TIME_ERROR, Labels.getLabel("Prompt"), Messagebox.OK,
 					Messagebox.INFORMATION);
 			ChartUtil.clearComponent(maptable);
 			ChartUtil.clearListbox(runtimeState);
@@ -198,17 +198,17 @@ public class CompareReport extends GenericForwardComposer {
 
 	public void onClick$exportButton(Event event) throws Exception {
 		if(!isExport()){
-			Messagebox.show("没有要显示的数据！", "提示", Messagebox.OK,
+			Messagebox.show(Labels.getLabel("NoDataToDisplayed"), Labels.getLabel("Prompt"), Messagebox.OK,
 					Messagebox.INFORMATION);
 			return;
 		}
 		if (getNodeids() == null || getNodeids().size() == 0) {
-			Messagebox.show(ErrorMessage.UNSELECT_MONITOR, "提示", Messagebox.OK,
+			Messagebox.show(ErrorMessage.UNSELECT_MONITOR, Labels.getLabel("Prompt"), Messagebox.OK,
 					Messagebox.INFORMATION);
 			return;
 		}
 		if(starttime.getValue().after(endtime.getValue())){
-			Messagebox.show(ErrorMessage.TIME_ERROR, "提示", Messagebox.OK,
+			Messagebox.show(ErrorMessage.TIME_ERROR, Labels.getLabel("Prompt"), Messagebox.OK,
 					Messagebox.INFORMATION);
 			ChartUtil.clearComponent(maptable);
 			return;

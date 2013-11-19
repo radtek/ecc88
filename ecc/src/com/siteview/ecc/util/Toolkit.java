@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Desktop;
 import org.zkoss.zk.ui.Execution;
 import org.zkoss.zk.ui.Executions;
@@ -154,17 +155,17 @@ public class Toolkit
 		switch(status)
 		{
 			case EccTreeItem.STATUS_OK:
-				return "正常";
+				return Labels.getLabel("Good");
 			case EccTreeItem.STATUS_ERROR:
-				return "错误";
+				return Labels.getLabel("Error");
 			case EccTreeItem.STATUS_WARNING:
-				return "危险";
+				return Labels.getLabel("Warning");
 			case EccTreeItem.STATUS_DISABLED:
-				return "禁止";
+				return Labels.getLabel("Disable");
 			case EccTreeItem.STATUS_BAD:
-				return "定义错误";
+				return Labels.getLabel("DefinitionError");
 			case EccTreeItem.STATUS_NULL:
-				return "无数据";
+				return Labels.getLabel("NoDataN");
 		}
 		return "null";	
 	}

@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import org.zkoss.util.resource.Labels;
+
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRField;
 
@@ -87,13 +89,13 @@ public class HistoryDataSource extends EccDataSource
 		{
 			if (dstrItem.status.equals("error"))
 			{
-				return "´íÎó";
+				return Labels.getLabel("Error");
 			}
 			if (dstrItem.status.equals("warning"))
 			{
-				return "Î£ÏÕ";
+				return Labels.getLabel("Warning");
 			}
-			return "Õý³£";
+			return Labels.getLabel("Good");
 			
 		} else if ("datev".equals(fieldName))
 		{

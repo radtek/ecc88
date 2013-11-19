@@ -198,7 +198,7 @@ public class SetMessage_Edit extends GenericAutowireComposer {
 		String mobileValue = mobileNum.getValue().toString();			
 		if ("".endsWith(mobileValue.trim())) {
 			try{
-				Messagebox.show(Labels.getLabel("MobilePhoneNumberCanNotEmpty"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("MobilePhoneNumberCanNotEmpty"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			}catch(Exception e){}
 			mobileNum.setValue(null);
 			mobileNum.setFocus(true);
@@ -213,19 +213,19 @@ public class SetMessage_Edit extends GenericAutowireComposer {
 				throw new Exception("");
 			}
 		}catch(Exception e){
-			Messagebox.show(Labels.getLabel("MobilePhoneNumberNotCorrect"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+			Messagebox.show(Labels.getLabel("MobilePhoneNumberNotCorrect"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			mobileNum.setFocus(true);
 			return;
 		}
 		if(messageTemplater.getValue() == null||messageTemplater.getValue().isEmpty()){
 			try{
-				Messagebox.show(Labels.getLabel("TemplateNotSetValueOfInformation"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("TemplateNotSetValueOfInformation"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			}catch(Exception e){}
 			return;
 		}
 		if(taskPlan.getValue() == null||taskPlan.getValue().isEmpty()){
 			try{
-				Messagebox.show(Labels.getLabel("TaskPlanNotSetValue"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("TaskPlanNotSetValue"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			}catch(Exception e){}
 			return;
 		}
@@ -343,7 +343,7 @@ public class SetMessage_Edit extends GenericAutowireComposer {
 		}
 		if(!flag){
 			try{
-				Messagebox.show(Labels.getLabel("TemplateNotSetValueOfInformation"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("TemplateNotSetValueOfInformation"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			}catch(Exception e){}
 			return 0;
 		}
@@ -407,7 +407,7 @@ public class SetMessage_Edit extends GenericAutowireComposer {
 		}
 		if(!flag){
 			try{
-				Messagebox.show(Labels.getLabel("TaskPlanNotSetValue"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("TaskPlanNotSetValue"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			}catch(Exception e){}
 			return 0;
 		}

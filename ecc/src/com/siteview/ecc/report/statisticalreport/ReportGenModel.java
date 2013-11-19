@@ -209,7 +209,7 @@ public class ReportGenModel extends ListModelList implements ListitemRenderer{
 			public void onEvent(Event event) throws Exception {
 				try
 				{
-					int ret = Messagebox.show(Labels.getLabel("SureToDeleteSelectedRecords"), "ÌבÊ¾", Messagebox.OK
+					int ret = Messagebox.show(Labels.getLabel("SureToDeleteSelectedRecords"), Labels.getLabel("Prompt"), Messagebox.OK
 							| Messagebox.CANCEL, Messagebox.QUESTION);
 					
 					if (ret == Messagebox.CANCEL)

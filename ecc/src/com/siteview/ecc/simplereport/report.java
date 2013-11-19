@@ -19,6 +19,7 @@ import javax.imageio.ImageIO;
 import javax.imageio.stream.ImageOutputStream;
 
 import org.jfree.data.xy.XYDataset;
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.util.GenericForwardComposer;
 import org.zkoss.zkex.zul.Jasperreport;
@@ -149,19 +150,19 @@ public class report extends GenericForwardComposer
 				String dstr = dstrs.get(D).value;
 				if (state.equals("ok"))
 				{
-					state = "Õý³£";
+					state = Labels.getLabel("Good");
 					oklist.add(new com.siteview.ecc.simplereport.HistoryBean(monitorName, D.toLocaleString(), dstr, state));
 				} else if (state.equals("error"))
 				{
-					state = "´íÎó";
+					state = Labels.getLabel("Error");
 					errorlist.add(new com.siteview.ecc.simplereport.HistoryBean(monitorName, D.toLocaleString(), dstr, state));
 				} else if (state.equals("disable"))
 				{
-					state = "½ûÖ¹";
+					state = Labels.getLabel("Disable");
 					disablelist.add(new com.siteview.ecc.simplereport.HistoryBean(monitorName, D.toLocaleString(), dstr, state));
 				} else if (state.equals("warning"))
 				{
-					state = "Î£ÏÕ";
+					state = Labels.getLabel("Warning");
 					dangerlist.add(new com.siteview.ecc.simplereport.HistoryBean(monitorName, D.toLocaleString(), dstr, state));
 				} else
 				{

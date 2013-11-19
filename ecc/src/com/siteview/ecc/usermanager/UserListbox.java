@@ -179,7 +179,7 @@ public class UserListbox extends AbstractListbox {
 
 			} catch (Exception e) {
 				e.printStackTrace();
-				Messagebox.show(e.getMessage(),"错误", Messagebox.OK, Messagebox.ERROR);
+				Messagebox.show(e.getMessage(),Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 			}
 		}
 	}
@@ -189,7 +189,7 @@ public class UserListbox extends AbstractListbox {
 		@Override
 		public void onEvent(Event arg0) throws Exception {
 			// TODO Auto-generated method stub
-			Messagebox.show(Labels.getLabel("AdministratorWithoutAuthorization"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+			Messagebox.show(Labels.getLabel("AdministratorWithoutAuthorization"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 		}
 	}
 	
@@ -198,7 +198,7 @@ public class UserListbox extends AbstractListbox {
 		@Override
 		public void onEvent(Event arg0) throws Exception {
 			// TODO Auto-generated method stub
-			Messagebox.show(Labels.getLabel("OrdinaryUsersNotAuthorized"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+			Messagebox.show(Labels.getLabel("OrdinaryUsersNotAuthorized"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 		}
 	}
 	public Map<String, Map<String, String>> getUserListData(){

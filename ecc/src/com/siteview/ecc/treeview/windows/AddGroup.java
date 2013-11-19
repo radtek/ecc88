@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.jruby.libraries.RbConfigLibrary;
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.Session;
 import org.zkoss.zk.ui.util.GenericForwardComposer;
@@ -158,7 +159,7 @@ public class AddGroup extends GenericForwardComposer
 		{
 			try
 			{
-				Messagebox.show("组名称不能为空！", "提示", Messagebox.OK, Messagebox.EXCLAMATION);
+				Messagebox.show(Labels.getLabel("GroupNameCannotEmpty"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.EXCLAMATION);
 				tbname.focus();
 				return;
 			} catch (InterruptedException e)

@@ -106,17 +106,17 @@ public class EditAbTask extends GenericForwardComposer {
 		String nameTextboxValue = nameTextbox.getValue().trim();
 		
 	    if ("".equals(nameTextboxValue)){
-			Messagebox.show(Labels.getLabel("TaskNameCannotEmpty"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+			Messagebox.show(Labels.getLabel("TaskNameCannotEmpty"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			nameTextbox.focus();
 			return;
 		} 
 		if(((String)editAbTask.getAttribute("flag")).equals("add")&&(abTaskList.contains(nameTextboxValue)))
 		{
-			Messagebox.show(Labels.getLabel("NameExistsInputAgain"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+			Messagebox.show(Labels.getLabel("NameExistsInputAgain"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			nameTextbox.focus();
 			return;
 		}else if(((String)editAbTask.getAttribute("flag")).equals("add") && (perTaskList.contains(nameTextboxValue) || reTaskList.contains(nameTextboxValue))){
-			Messagebox.show(Labels.getLabel("NameExistsInOtherTaskInputAgain"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+			Messagebox.show(Labels.getLabel("NameExistsInOtherTaskInputAgain"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			nameTextbox.focus();
 			return;
 		}else{

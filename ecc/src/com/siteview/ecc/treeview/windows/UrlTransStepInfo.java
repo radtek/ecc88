@@ -2,6 +2,7 @@ package com.siteview.ecc.treeview.windows;
 
 import java.util.List;
 
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.util.GenericForwardComposer;
 import org.zkoss.zul.Listbox;
@@ -50,7 +51,7 @@ public class UrlTransStepInfo extends GenericForwardComposer
 		{
 			try
 			{
-				Messagebox.show("超过步数上限！", "提示", Messagebox.OK, Messagebox.EXCLAMATION);
+				Messagebox.show(Labels.getLabel("MoreStepNumberLimit"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.EXCLAMATION);
 			} catch (InterruptedException e)
 			{
 				// TODO Auto-generated catch block
@@ -88,7 +89,7 @@ public class UrlTransStepInfo extends GenericForwardComposer
 		{
 			try
 			{
-				Messagebox.show("请选择删除行！", "提示", Messagebox.OK, Messagebox.EXCLAMATION);
+				Messagebox.show(Labels.getLabel("PSelectDeleteRow"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.EXCLAMATION);
 			} catch (InterruptedException e)
 			{
 				// TODO Auto-generated catch block
@@ -100,7 +101,7 @@ public class UrlTransStepInfo extends GenericForwardComposer
 		{
 			try
 			{
-				Messagebox.show("只能删除一行！", "提示", Messagebox.OK, Messagebox.EXCLAMATION);
+				Messagebox.show(Labels.getLabel("YouCanDeleteARow"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.EXCLAMATION);
 			} catch (InterruptedException e)
 			{
 				// TODO Auto-generated catch block
@@ -112,7 +113,7 @@ public class UrlTransStepInfo extends GenericForwardComposer
 		{
 			try
 			{
-				Messagebox.show("只能删除最后一行！", "提示", Messagebox.OK, Messagebox.EXCLAMATION);
+				Messagebox.show(Labels.getLabel("YouCanDeleteLastLine"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.EXCLAMATION);
 			} catch (InterruptedException e)
 			{
 				// TODO Auto-generated catch block
@@ -123,7 +124,7 @@ public class UrlTransStepInfo extends GenericForwardComposer
 		int r;
 		try
 		{
-			r = Messagebox.show("是否删除步信息？" , "询问", Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION);
+			r = Messagebox.show(Labels.getLabel("DoWantDeleteInformation") , Labels.getLabel("Ask"), Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION);
 			if (r == Messagebox.CANCEL)
 			{
 				return;

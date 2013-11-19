@@ -1,6 +1,7 @@
 package com.siteview.ecc.treeview;
 
 
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.util.GenericForwardComposer;
 import org.zkoss.zul.Button;
 import org.zkoss.zul.Messagebox;
@@ -24,7 +25,7 @@ public class EditVirtualGroupName extends GenericForwardComposer
 		try 
 		{
 			if("".equals(name.getValue().trim())){
-				Messagebox.show("虚拟视图名称不能为空","提示",Messagebox.OK,Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("VirtualViewNameCannotEmpty"),Labels.getLabel("Prompt"),Messagebox.OK,Messagebox.INFORMATION);
 				name.setFocus(true);
 				return;
 			}

@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.Session;
 import org.zkoss.zk.ui.event.Event;
@@ -121,7 +122,7 @@ public class TopnSelectTree extends Tree {
 			//初始化树
 			initTree();
 		} catch (Exception e) {
-			Messagebox.show(e.getMessage(), "错误", Messagebox.OK, Messagebox.ERROR);
+			Messagebox.show(e.getMessage(), Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 		}
 	}
 	
@@ -192,7 +193,7 @@ public class TopnSelectTree extends Tree {
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
-				Messagebox.show(e.getMessage(), "错误", Messagebox.OK, Messagebox.ERROR);
+				Messagebox.show(e.getMessage(), Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 			}
 		}
 		
@@ -211,7 +212,7 @@ public class TopnSelectTree extends Tree {
 			if (obj instanceof EccTreeItem){
 				localnode = (EccTreeItem)obj;
 			}else{
-				throw new Exception("该节点不包含预定的合法的数据:" + obj !=null ? obj.getClass().getName() : "NULL");
+				throw new Exception(Labels.getLabel("NodeNotContainValidData:") + obj !=null ? obj.getClass().getName() : "NULL");
 			}
 		}
 		@Override
@@ -225,7 +226,7 @@ public class TopnSelectTree extends Tree {
 				reflash();
 			} catch (Exception e) {
 				e.printStackTrace();
-				Messagebox.show(e.getMessage(), "错误", Messagebox.OK, Messagebox.ERROR);
+				Messagebox.show(e.getMessage(), Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 			}
 		}
 		/**

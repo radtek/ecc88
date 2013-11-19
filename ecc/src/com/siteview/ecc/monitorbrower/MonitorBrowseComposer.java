@@ -105,7 +105,7 @@ public class MonitorBrowseComposer extends GenericForwardComposer {
 			showMonitorFilter.setActivePage(index
 					/ showMonitorFilter.getPageSize());
 		} catch (Exception e) {
-			Messagebox.show(e.getMessage(), "提示", Messagebox.OK,
+			Messagebox.show(e.getMessage(), Labels.getLabel("Prompt"), Messagebox.OK,
 					Messagebox.ERROR);
 			e.printStackTrace();
 		}
@@ -132,7 +132,7 @@ public class MonitorBrowseComposer extends GenericForwardComposer {
 			showMonitorData.setTitle(bean.getTitile());
 			refreshMonitorListbox();
 		} catch (Exception e) {
-			Messagebox.show(e.getMessage(), "提示", Messagebox.OK,
+			Messagebox.show(e.getMessage(), Labels.getLabel("Prompt"), Messagebox.OK,
 					Messagebox.ERROR);
 			e.printStackTrace();
 		}
@@ -166,11 +166,11 @@ public class MonitorBrowseComposer extends GenericForwardComposer {
 		try {
 			Listitem item = showMonitorFilter.getSelectedItem();
 			if (item == null) {
-				Messagebox.show(Labels.getLabel("SelectOptionDelete"), "提示", Messagebox.YES,
+				Messagebox.show(Labels.getLabel("SelectOptionDelete"), Labels.getLabel("Prompt"), Messagebox.YES,
 						Messagebox.INFORMATION);
 				return;
 			}
-			int ret = Messagebox.show(Labels.getLabel("SureToDeleteSelectedRecords"), "询问", Messagebox.OK
+			int ret = Messagebox.show(Labels.getLabel("SureToDeleteSelectedRecords"), Labels.getLabel("Ask"), Messagebox.OK
 					| Messagebox.CANCEL, Messagebox.QUESTION);
 			if (ret == Messagebox.CANCEL)
 				return;
@@ -209,7 +209,7 @@ public class MonitorBrowseComposer extends GenericForwardComposer {
 				}
 			}
 		} catch (InterruptedException e) {
-			Messagebox.show(e.getMessage(), "错误", Messagebox.OK,
+			Messagebox.show(e.getMessage(), Labels.getLabel("Error"), Messagebox.OK,
 					Messagebox.ERROR);
 			e.printStackTrace();
 		}
@@ -236,7 +236,7 @@ public class MonitorBrowseComposer extends GenericForwardComposer {
 			onCreate$showMonitorFilter(event);
 			refreshMonitorListbox();
 		} catch (Exception e) {
-			Messagebox.show(e.getMessage(), "错误", Messagebox.OK,
+			Messagebox.show(e.getMessage(), Labels.getLabel("Error"), Messagebox.OK,
 					Messagebox.ERROR);
 			e.printStackTrace();
 		}
@@ -261,7 +261,7 @@ public class MonitorBrowseComposer extends GenericForwardComposer {
 				refreshMonitorListbox();
 			}
 		} catch (Exception e) {
-			Messagebox.show(e.getMessage(), "错误", Messagebox.OK,
+			Messagebox.show(e.getMessage(), Labels.getLabel("Error"), Messagebox.OK,
 					Messagebox.ERROR);
 			e.printStackTrace();
 		}
@@ -271,7 +271,7 @@ public class MonitorBrowseComposer extends GenericForwardComposer {
 		try {
 			Listitem item = showMonitorFilter.getSelectedItem();
 			if (item == null) {
-				Messagebox.show(Labels.getLabel("SelectOptionGenerateExcle"), "提示", Messagebox.YES,
+				Messagebox.show(Labels.getLabel("SelectOptionGenerateExcle"), Labels.getLabel("Prompt"), Messagebox.YES,
 						Messagebox.INFORMATION);
 				return;
 			}

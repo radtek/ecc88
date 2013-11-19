@@ -21,7 +21,7 @@ public class DiagnosisUI extends AbstractWindow {
 			init();
 		} catch (Exception e) {
 			e.printStackTrace();
-			Messagebox.show(Labels.getLabel("InitialErrorProblemsRefreshPageAgain"), "´íÎó", Messagebox.OK, Messagebox.ERROR);
+			Messagebox.show(Labels.getLabel("InitialErrorProblemsRefreshPageAgain"), Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 		}
 	}
 	public void init() throws Exception {
@@ -49,7 +49,7 @@ public class DiagnosisUI extends AbstractWindow {
 				new RunThread(diagnosis).start();
 			}
 		} catch (Exception e) {
-			Messagebox.show(e.getMessage(), "´íÎó", Messagebox.OK, Messagebox.ERROR);
+			Messagebox.show(e.getMessage(), Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 		}
 		
 	}

@@ -238,7 +238,7 @@ public class ReportDaoImpl extends GenericAutowireComposer {
 		try {
 			win.doModal();
 		} catch (Exception e) {
-			Messagebox.show(e.getMessage(), "错误", Messagebox.OK,
+			Messagebox.show(e.getMessage(), Labels.getLabel("Error"), Messagebox.OK,
 					Messagebox.ERROR);
 		}
 
@@ -256,7 +256,7 @@ public class ReportDaoImpl extends GenericAutowireComposer {
 		try {
 			String title = Title.getValue().trim();
 			if("".equals(title)){
-				Messagebox.show(Labels.getLabel("ReportTitleCannotEmptyInputAgain"), "提示", Messagebox.OK,
+				Messagebox.show(Labels.getLabel("ReportTitleCannotEmptyInputAgain"), Labels.getLabel("Prompt"), Messagebox.OK,
 						Messagebox.INFORMATION);
 				Title.focus();
 				return;
@@ -265,7 +265,7 @@ public class ReportDaoImpl extends GenericAutowireComposer {
 			for(String section : ini.getSectionList()){
 				String existName = ini.getValue(section, "Title");
 				if(title.equals(existName)){
-					Messagebox.show(Labels.getLabel("ReportNameExistsInputAgain"), "提示", Messagebox.OK,
+					Messagebox.show(Labels.getLabel("ReportNameExistsInputAgain"), Labels.getLabel("Prompt"), Messagebox.OK,
 							Messagebox.INFORMATION);
 					Title.focus();
 					return;
@@ -273,13 +273,13 @@ public class ReportDaoImpl extends GenericAutowireComposer {
 			}
 			String nodeids = getNodeids();
 			if (nodeids == null) {
-				Messagebox.show(Labels.getLabel("SelectMonitor"), "提示", Messagebox.OK,
+				Messagebox.show(Labels.getLabel("SelectMonitor"), Labels.getLabel("Prompt"), Messagebox.OK,
 						Messagebox.INFORMATION);
 				return;
 			}
 			String email = EmailSend.getValue();
 			if (!"".equals(email)&&!BaseTools.validateEmail(email)) {
-					Messagebox.show(Labels.getLabel("E_MailFormatNotCorrectInputAgain"), "提示", Messagebox.OK,
+					Messagebox.show(Labels.getLabel("E_MailFormatNotCorrectInputAgain"), Labels.getLabel("Prompt"), Messagebox.OK,
 							Messagebox.INFORMATION);
 					EmailSend.focus();
 					return;				
@@ -378,9 +378,9 @@ public class ReportDaoImpl extends GenericAutowireComposer {
 			View view = Toolkit.getToolkit().getSvdbView(
 					event.getTarget().getDesktop());
 			String loginname = view.getLoginName();
-			String minfo = loginname + " " + "在"
-					+ OpObjectId.statistic_report.name + "中进行了  "
-					+ OpTypeId.add.name + "操作。";
+			String minfo = loginname + " " + Labels.getLabel("In")
+					+ OpObjectId.statistic_report.name + Labels.getLabel("Conducting")
+					+ OpTypeId.add.name + Labels.getLabel("Operation.");
 			AppendOperateLog.addOneLog(loginname, minfo, OpTypeId.add,
 					OpObjectId.statistic_report);
 		} catch (WrongValueException e) {
@@ -402,13 +402,13 @@ public class ReportDaoImpl extends GenericAutowireComposer {
 		if (direportlistbox.getSelectedItems() == null
 				|| direportlistbox.getSelectedCount() < 1) {
 			try {
-				Messagebox.show(Labels.getLabel("SelectAReport"), "提示", Messagebox.OK,
+				Messagebox.show(Labels.getLabel("SelectAReport"), Labels.getLabel("Prompt"), Messagebox.OK,
 						Messagebox.INFORMATION);
 			} catch (InterruptedException e) {
 			}
 			return;
 		}
-		int ret = Messagebox.show(Labels.getLabel("SureToDeleteSelectedRecords"), "提示", Messagebox.OK
+		int ret = Messagebox.show(Labels.getLabel("SureToDeleteSelectedRecords"), Labels.getLabel("Prompt"), Messagebox.OK
 				| Messagebox.CANCEL, Messagebox.QUESTION);
 		if (ret == Messagebox.CANCEL)
 			return;
@@ -434,8 +434,8 @@ public class ReportDaoImpl extends GenericAutowireComposer {
 		View view = Toolkit.getToolkit().getSvdbView(
 				event.getTarget().getDesktop());
 		String loginname = view.getLoginName();
-		String minfo = loginname + " " + "在" + OpObjectId.statistic_report.name
-				+ "中进行了  " + OpTypeId.del.name + "操作。";
+		String minfo = loginname + " " + Labels.getLabel("In") + OpObjectId.statistic_report.name
+				+ Labels.getLabel("Conducting") + OpTypeId.del.name + Labels.getLabel("Operation.");
 		AppendOperateLog.addOneLog(loginname, minfo, OpTypeId.del,
 				OpObjectId.statistic_report);
 	}
@@ -460,15 +460,15 @@ public class ReportDaoImpl extends GenericAutowireComposer {
 			try {
 				win.doModal();
 			} catch (Exception e) {
-				Messagebox.show(e.getMessage(), "错误", Messagebox.OK,
+				Messagebox.show(e.getMessage(), Labels.getLabel("Error"), Messagebox.OK,
 						Messagebox.ERROR);
 			}
 		}
 		View view = Toolkit.getToolkit().getSvdbView(
 				event.getTarget().getDesktop());
 		String loginname = view.getLoginName();
-		String minfo = loginname + " " + "在" + OpObjectId.statistic_report.name
-				+ "中进行了  " + OpTypeId.edit.name + "操作。";
+		String minfo = loginname + " " + Labels.getLabel("In") + OpObjectId.statistic_report.name
+				+ Labels.getLabel("Conducting") + OpTypeId.edit.name + Labels.getLabel("Operation.");
 		AppendOperateLog.addOneLog(loginname, minfo, OpTypeId.edit,
 				OpObjectId.statistic_report);
 	}
@@ -502,8 +502,8 @@ public class ReportDaoImpl extends GenericAutowireComposer {
 		View view = Toolkit.getToolkit().getSvdbView(
 				event.getTarget().getDesktop());
 		String loginname = view.getLoginName();
-		String minfo = loginname + " " + "在" + OpObjectId.statistic_report.name
-				+ "中进行了  " + OpTypeId.diable.name + "操作。";
+		String minfo = loginname + " " + Labels.getLabel("In") + OpObjectId.statistic_report.name
+				+ Labels.getLabel("Conducting") + OpTypeId.diable.name + Labels.getLabel("Operation.");
 		AppendOperateLog.addOneLog(loginname, minfo, OpTypeId.diable,
 				OpObjectId.statistic_report);
 
@@ -543,8 +543,8 @@ public class ReportDaoImpl extends GenericAutowireComposer {
 		View view = Toolkit.getToolkit().getSvdbView(
 				event.getTarget().getDesktop());
 		String loginname = view.getLoginName();
-		String minfo = loginname + " " + "在" + OpObjectId.statistic_report.name
-				+ "中进行了  " + OpTypeId.enable.name + "操作。";
+		String minfo = loginname + " " + Labels.getLabel("In") + OpObjectId.statistic_report.name
+				+ Labels.getLabel("Conducting") + OpTypeId.enable.name + Labels.getLabel("Operation.");
 		AppendOperateLog.addOneLog(loginname, minfo, OpTypeId.enable,
 				OpObjectId.statistic_report);
 
@@ -589,7 +589,7 @@ public class ReportDaoImpl extends GenericAutowireComposer {
 		Listitem selelist = direportlistbox.getSelectedItem(); // 获取用户选中的报告
 		if (selelist == null || !selelist.isSelected()) {
 			try {
-				Messagebox.show("请选择报告名称!", "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("PSelectReportName"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			} catch (InterruptedException e) {
 			}
 		} else {
@@ -616,7 +616,7 @@ public class ReportDaoImpl extends GenericAutowireComposer {
 			}
 			else
 			{
-				Toolkit.getToolkit().showError("报告区间不支持:");
+				Toolkit.getToolkit().showError(Labels.getLabel("ReportIntervalNotSupport"));
 				return;
 			}
 			StatsReport createReport=new StatsReport(reportID,reportDefine,tmStart,tmEnd,view,Calendar.getInstance());
@@ -630,7 +630,7 @@ public class ReportDaoImpl extends GenericAutowireComposer {
 			win.setVisible(true);
 			win.doModal();
 			
-			String minfo=loginname+" 在"+OpObjectId.statistic_report.name+"中进行了手动生成报告操作。";
+			String minfo=loginname+Labels.getLabel("In")+OpObjectId.statistic_report.name+Labels.getLabel("InManuallyGeneratedReportOperation");
 			AppendOperateLog.addOneLog(loginname, minfo, OpTypeId.add, OpObjectId.statistic_report);
 		}
 	}
@@ -639,7 +639,7 @@ public class ReportDaoImpl extends GenericAutowireComposer {
 		Listitem selelist = direportlistbox.getSelectedItem(); // 获取用户选中的报告
 		if (selelist == null || !selelist.isSelected()) {
 			try {
-				Messagebox.show("请选择报告名称!", "提示", Messagebox.OK,
+				Messagebox.show(Labels.getLabel("PSelectReportName"), Labels.getLabel("Prompt"), Messagebox.OK,
 						Messagebox.INFORMATION);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
@@ -655,15 +655,15 @@ public class ReportDaoImpl extends GenericAutowireComposer {
 				// win.doHighlighted();
 				win.doModal();
 			} catch (Exception e) {
-				Messagebox.show(e.getMessage(), "错误", Messagebox.OK,
+				Messagebox.show(e.getMessage(), Labels.getLabel("Error"), Messagebox.OK,
 						Messagebox.ERROR);
 			}
 		}
 		View view = Toolkit.getToolkit().getSvdbView(
 				event.getTarget().getDesktop());
 		String loginname = view.getLoginName();
-		String minfo = loginname + " " + "在" + OpObjectId.statistic_report.name
-				+ "中进行了  " + "手动生成报表操作。";
+		String minfo = loginname + " " + Labels.getLabel("In") + OpObjectId.statistic_report.name
+				+ Labels.getLabel("Conducting") + Labels.getLabel("ReportGenerationOperationManual");
 		AppendOperateLog.addOneLog(loginname, minfo, OpTypeId.enable,
 				OpObjectId.statistic_report);
 	}
@@ -678,7 +678,7 @@ public class ReportDaoImpl extends GenericAutowireComposer {
 		Listitem selelist = direportlistbox.getSelectedItem(); // 获取用户选中的报告
 		if (selelist == null || !selelist.isSelected()) {
 			try {
-				Messagebox.show("请选择报告名称!", "提示", Messagebox.OK,
+				Messagebox.show(Labels.getLabel("PSelectReportName"), Labels.getLabel("Prompt"), Messagebox.OK,
 						Messagebox.INFORMATION);
 				return;
 			} catch (InterruptedException e) {
@@ -703,7 +703,7 @@ public class ReportDaoImpl extends GenericAutowireComposer {
 			try {
 				win.doModal();
 			} catch (SuspendNotAllowedException e) {
-				Messagebox.show(e.getMessage(), "错误", Messagebox.OK,
+				Messagebox.show(e.getMessage(), Labels.getLabel("Error"), Messagebox.OK,
 						Messagebox.ERROR);
 			}
 		}
@@ -801,7 +801,7 @@ public class ReportDaoImpl extends GenericAutowireComposer {
 		String downLoadUrl=StatsReport.getDownLoadUrl(createTimeInMillis,reportFileID,fileType);
 		if(downLoadUrl.equals(""))
 		{
-			Toolkit.getToolkit().showError("无效的报表联结!");
+			Toolkit.getToolkit().showError(Labels.getLabel("InvalidReportLink"));
 			return;
 		}
 		
@@ -870,7 +870,7 @@ public class ReportDaoImpl extends GenericAutowireComposer {
 		try {
 			// Messagebox.show(nodeid);
 			if (nodeid == null || nodeid.equals("")) {
-				Messagebox.show("您没有选择监测器!", "提示", Messagebox.OK,
+				Messagebox.show(Labels.getLabel("YouNoChoiceMonitor"), Labels.getLabel("Prompt"), Messagebox.OK,
 						Messagebox.INFORMATION);
 				return;
 			}
@@ -890,7 +890,7 @@ public class ReportDaoImpl extends GenericAutowireComposer {
 	public void onCheckThisBox(Event event) {
 		if (Parameter.isChecked()) {
 			try {
-				Messagebox.show("选择此项后，生成报告过程中将占用大量的系统资源，可能导致系统错误!", "提示",
+				Messagebox.show(Labels.getLabel("SelectingOptionSRCSE"), Labels.getLabel("Prompt"),
 						Messagebox.OK, Messagebox.INFORMATION);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
@@ -909,7 +909,7 @@ public class ReportDaoImpl extends GenericAutowireComposer {
 				.getSession().getAttribute("myREPORTNODEID");
 		try {
 			if (nodeid == null || nodeid.equals("")) {
-				Messagebox.show(Labels.getLabel("SelectMonitor"), "提示", Messagebox.OK,
+				Messagebox.show(Labels.getLabel("SelectMonitor"), Labels.getLabel("Prompt"), Messagebox.OK,
 						Messagebox.INFORMATION);
 				return;
 			}
@@ -933,7 +933,7 @@ public class ReportDaoImpl extends GenericAutowireComposer {
 			// win.doHighlighted();
 			win.doModal();
 		} catch (SuspendNotAllowedException e) {
-			Messagebox.show(e.getMessage(), "错误", Messagebox.OK,
+			Messagebox.show(e.getMessage(), Labels.getLabel("Error"), Messagebox.OK,
 					Messagebox.ERROR);
 		}
 	}

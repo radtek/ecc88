@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.jruby.libraries.RbConfigLibrary;
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.Session;
 import org.zkoss.zk.ui.util.GenericForwardComposer;
@@ -141,7 +142,7 @@ public class TeleBackup extends GenericForwardComposer
 			win.setClosable(true);
 			win.doModal();
 		} catch (Exception e) {
-			Messagebox.show(e.getMessage(), "´íÎó", Messagebox.OK,Messagebox.ERROR);
+			Messagebox.show(e.getMessage(), Labels.getLabel("Error"), Messagebox.OK,Messagebox.ERROR);
 		}
 	}
 	

@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import org.apache.log4j.Logger;
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.SuspendNotAllowedException;
 import org.zkoss.zk.ui.event.Event;
@@ -741,11 +742,11 @@ public class MonitorsFastAdd extends GenericForwardComposer
 					}
 					if (smessage.contains("Less permission"))
 					{
-						smessage = "您的监测器点数不够!";
+						smessage = Labels.getLabel("MonitorPointsNotEnough");
 					}
 					try
 					{
-						Messagebox.show("保存监测器失败!", "提示", Messagebox.OK, Messagebox.EXCLAMATION);
+						Messagebox.show(Labels.getLabel("KeepMonitorFailed"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.EXCLAMATION);
 						System.err.print(smessage);
 						return;
 					} catch (InterruptedException e2)
@@ -814,11 +815,11 @@ public class MonitorsFastAdd extends GenericForwardComposer
 							}
 							if (smessage.contains("Less permission"))
 							{
-								smessage = "您的监测器点数不够!";
+								smessage = Labels.getLabel("MonitorPointsNotEnough");
 							}
 							try
 							{
-								Messagebox.show("保存监测器失败！", "提示", Messagebox.OK, Messagebox.EXCLAMATION);
+								Messagebox.show(Labels.getLabel("KeepMonitorFailed"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.EXCLAMATION);
 								System.err.print(smessage);
 								return;
 							} catch (InterruptedException e2)
@@ -867,7 +868,7 @@ public class MonitorsFastAdd extends GenericForwardComposer
 			point += SelectedCheckboxs.size()/30 + 1;
 			if(availableDevicePoint == 0 || availableDevicePoint < point){
 				try {
-					Messagebox.show("点数不足，无法进行操作", "提示", Messagebox.OK,	Messagebox.INFORMATION);
+					Messagebox.show(Labels.getLabel("LackPointsUnablePerformOperation"), Labels.getLabel("Prompt"), Messagebox.OK,	Messagebox.INFORMATION);
 					return;
 				} catch (InterruptedException e) {
 					e.printStackTrace();
@@ -877,7 +878,7 @@ public class MonitorsFastAdd extends GenericForwardComposer
 			point += SelectedCheckboxs.size();
 			if(availablePoint == 0 || availablePoint < point){
 				try {
-					Messagebox.show("点数不足，无法进行操作", "提示", Messagebox.OK,	Messagebox.INFORMATION);
+					Messagebox.show(Labels.getLabel("LackPointsUnablePerformOperation"), Labels.getLabel("Prompt"), Messagebox.OK,	Messagebox.INFORMATION);
 					return;
 				} catch (InterruptedException e) {
 					e.printStackTrace();
@@ -907,7 +908,7 @@ public class MonitorsFastAdd extends GenericForwardComposer
 				String loginname = view.getLoginName();
                 String name=entityedit.getName();
 				String id=entityedit.getSvId();
-				String	minfo = "快速添加监测器：" +"(" +ids.toString() + ") parent is " + name + "(" + id + ")";
+				String	minfo = Labels.getLabel("QuicklyAddMonitor:") +"(" +ids.toString() + ") parent is " + name + "(" + id + ")";
 					AppendOperateLog.addOneLog(loginname, minfo, OpTypeId.fast_add, OpObjectId.monitor);
 				
 			

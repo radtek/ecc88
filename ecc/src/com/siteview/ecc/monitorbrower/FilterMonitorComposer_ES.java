@@ -103,7 +103,7 @@ public class FilterMonitorComposer_ES extends GenericForwardComposer {
 			win.setClosable(true);
 			win.doModal();
 		} catch (Exception e) {
-			Messagebox.show(e.getMessage(), "错误", Messagebox.OK,
+			Messagebox.show(e.getMessage(), Labels.getLabel("Error"), Messagebox.OK,
 					Messagebox.ERROR);
 			e.printStackTrace();
 		}
@@ -133,7 +133,7 @@ public class FilterMonitorComposer_ES extends GenericForwardComposer {
 			String cvName = this.makeRandomCVName(System.currentTimeMillis());
 			String title = this.filterName.getValue().trim();
 			if (title == null || title.trim().equals("")) {
-				Messagebox.show(Labels.getLabel("EnterCustomFilterName"), "提示", Messagebox.OK,
+				Messagebox.show(Labels.getLabel("EnterCustomFilterName"), Labels.getLabel("Prompt"), Messagebox.OK,
 						Messagebox.INFORMATION);
 				filterName.setFocus(true);
 				return;
@@ -147,7 +147,7 @@ public class FilterMonitorComposer_ES extends GenericForwardComposer {
 			String monitorName = this.monitorName.getValue().trim();
 			for (CVBean bk : bs) {
 				if (bk.getTitile().equals(title)) {
-					Messagebox.show(Labels.getLabel("FilterName:") + title + Labels.getLabel("AlreadyExists"), "提示",
+					Messagebox.show(Labels.getLabel("FilterName:") + title + Labels.getLabel("AlreadyExists"), Labels.getLabel("Prompt"),
 							Messagebox.OK, Messagebox.INFORMATION);
 					filterName.setFocus(true);
 					return;

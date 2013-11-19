@@ -165,7 +165,7 @@ public class SetUser extends GenericAutowireComposer {
 			win.doModal();
 		}catch(Exception e){
 			e.printStackTrace();
-			Messagebox.show(e.getMessage(),"错误", Messagebox.OK, Messagebox.ERROR);
+			Messagebox.show(e.getMessage(),Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 		}
 	}
 	
@@ -178,14 +178,14 @@ public class SetUser extends GenericAutowireComposer {
 			eccBody.setSrc(targetUrl);
 		}catch(Exception e){
 			e.printStackTrace();
-			Messagebox.show(e.getMessage(),"错误", Messagebox.OK, Messagebox.ERROR);
+			Messagebox.show(e.getMessage(),Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 		}
 	}
 	
 	public void onPermite(Event event) throws Exception{
 		try {
 			if(listbox_data.getSelectedItems().size()<=0){
-				Messagebox.show(Labels.getLabel("NotSelectedUsersOperationNotComplete"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("NotSelectedUsersOperationNotComplete"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				return;
 			}
 			View view = Toolkit.getToolkit().getSvdbView(event.getTarget().getDesktop());
@@ -213,7 +213,7 @@ public class SetUser extends GenericAutowireComposer {
 			refresh();
 		} catch (Exception e) {
 			e.printStackTrace();
-			Messagebox.show(e.getMessage(),"错误", Messagebox.OK, Messagebox.ERROR);
+			Messagebox.show(e.getMessage(),Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 		}
 	}
 
@@ -221,11 +221,11 @@ public class SetUser extends GenericAutowireComposer {
 		try{
 			if(listbox_data.getSelectedItems().size()<=0){
 				try{
-					Messagebox.show(Labels.getLabel("NotSelectedUsersOperationNotComplete"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+					Messagebox.show(Labels.getLabel("NotSelectedUsersOperationNotComplete"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				}catch(Exception e){}
 				return;
 			}
-			int i=	Messagebox.show(Labels.getLabel("DeleteWillWantContinue"), "询问", Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION);
+			int i=	Messagebox.show(Labels.getLabel("DeleteWillWantContinue"), Labels.getLabel("Ask"), Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION);
 			if(i==1){
 				View view = Toolkit.getToolkit().getSvdbView(event.getTarget().getDesktop());
 				List<UserEdit> userList = view.getAllUserEdit();
@@ -239,7 +239,7 @@ public class SetUser extends GenericAutowireComposer {
 					String isAdmin=ini.getValue(section, "nAdmin");
 					if("1".equals(isAdmin))
 					{
-						Messagebox.show(Labels.getLabel("AdministratorCannotDeleted"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+						Messagebox.show(Labels.getLabel("AdministratorCannotDeleted"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 						continue;
 					}
 					String userName = ini.getM_fmap().get(section).get("UserName");
@@ -252,14 +252,14 @@ public class SetUser extends GenericAutowireComposer {
 			}
 		}catch(Exception e){
 			e.printStackTrace();
-			Messagebox.show(e.getMessage(),"错误", Messagebox.OK, Messagebox.ERROR);
+			Messagebox.show(e.getMessage(),Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 		}
 	}
 
 	public void onHold(Event event) throws Exception{
 		try {
 			if(listbox_data.getSelectedItems().size()<=0){
-				Messagebox.show(Labels.getLabel("NotSelectedUsersOperationNotComplete"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("NotSelectedUsersOperationNotComplete"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				return;
 			}
 
@@ -276,7 +276,7 @@ public class SetUser extends GenericAutowireComposer {
 				String isAdmin=ini.getValue(section, "nAdmin");
 				if("1".equals(isAdmin))
 				{
-					Messagebox.show(Labels.getLabel("AdministratorCannotDisable"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+					Messagebox.show(Labels.getLabel("AdministratorCannotDisable"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 					continue;
 				}
 				String flag = ini.getM_fmap().get(section).get("nIsUse");
@@ -292,11 +292,11 @@ public class SetUser extends GenericAutowireComposer {
 			refresh();
 		} catch (Exception e) {
 			e.printStackTrace();
-			Messagebox.show(e.getMessage(),"错误", Messagebox.OK, Messagebox.ERROR);
+			Messagebox.show(e.getMessage(),Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 		}
 	}
 	
 	public void onShowAdminMsg() throws Exception{
-		Messagebox.show(Labels.getLabel("AdministratorWithoutAuthorization"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+		Messagebox.show(Labels.getLabel("AdministratorWithoutAuthorization"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 	}
 }

@@ -3,6 +3,7 @@ package com.siteview.ecc.monitorbrower;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zhtml.Messagebox;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.Session;
@@ -72,14 +73,14 @@ public class EntityLinkFuntion implements EventListener
 				eccBody.setSrc(url);
 			}else{
 				try{
-					Messagebox.show("获取该设备(编号为："+this.entityId+")数据出现异常,该设备可能已经被删除", "提示", Messagebox.OK,Messagebox.INFORMATION);
+					Messagebox.show(Labels.getLabel("GetDeviceNumber:")+this.entityId+Labels.getLabel("AbnormalDataDeviceHaveDeleted"), Labels.getLabel("Prompt"), Messagebox.OK,Messagebox.INFORMATION);
 				}catch(Exception ee){}
 			}
 			
 		}catch(Exception e){
 			e.printStackTrace();
 			try{
-				Messagebox.show("获取该设备(编号为："+this.entityId+")数据出现异常,该设备可能已经被删除", "提示", Messagebox.OK,Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("GetDeviceNumber:")+this.entityId+Labels.getLabel("AbnormalDataDeviceHaveDeleted"), Labels.getLabel("Prompt"), Messagebox.OK,Messagebox.INFORMATION);
 			}catch(Exception ee){}
 		}
 	}

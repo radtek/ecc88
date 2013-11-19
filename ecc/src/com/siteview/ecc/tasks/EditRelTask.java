@@ -636,16 +636,16 @@ public class EditRelTask extends GenericForwardComposer {
 		String nameTextboxValue = nameTextbox.getValue().trim();
 		
 		if ("".equals(nameTextboxValue)) {
-			Messagebox.show(Labels.getLabel("TaskNameCannotEmpty"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+			Messagebox.show(Labels.getLabel("TaskNameCannotEmpty"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			nameTextbox.focus();
 			return;
 		} else if (((String) editRelativeTask.getAttribute("flag")).equals("add") && reTaskList.contains(nameTextboxValue)) {
-			Messagebox.show(Labels.getLabel("NameExistsInputAgain"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+			Messagebox.show(Labels.getLabel("NameExistsInputAgain"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			nameTextbox.focus();
 			return;
 		} else if (((String)editRelativeTask.getAttribute("flag")).equals("add") && (abTaskList.contains(nameTextboxValue) || perTaskList.contains(nameTextboxValue))){
 			try{
-				Messagebox.show(Labels.getLabel("NameExistsInOtherTaskInputAgain"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("NameExistsInOtherTaskInputAgain"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			}catch(Exception e){}
 			nameTextbox.focus();
 			return;

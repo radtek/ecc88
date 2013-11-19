@@ -108,7 +108,7 @@ public class StrategyView extends Window {
 			this.detach();
 		} catch (Exception e) {
 			e.printStackTrace();
-			Messagebox.show(e.getMessage(), "ÌבÊ¾", Messagebox.OK, Messagebox.INFORMATION);
+			Messagebox.show(e.getMessage(), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 		}
 	}
 	

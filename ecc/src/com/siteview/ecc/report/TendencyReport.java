@@ -11,6 +11,7 @@ import org.jfree.data.time.Second;
 import org.jfree.data.time.TimeSeries;
 import org.jfree.data.time.TimeSeriesCollection;
 import org.jfree.data.xy.XYDataset;
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zhtml.Filedownload;
 import org.zkoss.zhtml.Messagebox;
 import org.zkoss.zk.ui.Component;
@@ -125,11 +126,11 @@ public class TendencyReport extends GenericForwardComposer {
 
 	public void onClick$exportReport(Event event) throws InterruptedException {
 		if(getTime(start, begin_Time).after(getTime(end, end_Time))){
-			Messagebox.show(ErrorMessage.TIME_ERROR, "提示", Messagebox.OK, Messagebox.INFORMATION);
+			Messagebox.show(ErrorMessage.TIME_ERROR, Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			return;
 		}
 		if (getSelectedNode() == null) {
-			Messagebox.show(ErrorMessage.UNSELECT_MONITOR, "提示", Messagebox.OK,
+			Messagebox.show(ErrorMessage.UNSELECT_MONITOR, Labels.getLabel("Prompt"), Messagebox.OK,
 					Messagebox.INFORMATION);
 			return;
 		}
@@ -160,7 +161,7 @@ public class TendencyReport extends GenericForwardComposer {
 		String select = dataToShow.getSelectedItem().getValue();
 		reportDate.setVisible(true);
 		if (getSelectedNode() == null) {
-			Messagebox.show(ErrorMessage.UNSELECT_MONITOR, "提示", Messagebox.OK,
+			Messagebox.show(ErrorMessage.UNSELECT_MONITOR, Labels.getLabel("Prompt"), Messagebox.OK,
 					Messagebox.INFORMATION);
 			return;
 		}
@@ -272,7 +273,7 @@ public class TendencyReport extends GenericForwardComposer {
 			throws Exception,
 			IOException {
 		if (getSelectedNode() == null) {
-			Messagebox.show(ErrorMessage.UNSELECT_MONITOR, "提示", Messagebox.OK,
+			Messagebox.show(ErrorMessage.UNSELECT_MONITOR, Labels.getLabel("Prompt"), Messagebox.OK,
 					Messagebox.INFORMATION);
 			return;
 		}
@@ -310,12 +311,12 @@ public class TendencyReport extends GenericForwardComposer {
 		
 		logger.info("screen width is :"+getScreenWidth()+"  and west size is : "+getTreeSize());
 		if(getTime(start, begin_Time).compareTo(getTime(end, end_Time))>=0){
-			Messagebox.show(ErrorMessage.TIME_ERROR, "提示", Messagebox.OK,Messagebox.INFORMATION);
+			Messagebox.show(ErrorMessage.TIME_ERROR, Labels.getLabel("Prompt"), Messagebox.OK,Messagebox.INFORMATION);
 			clear();
 			return;
 		}
 		if (getSelectedNode() == null) {
-			Messagebox.show(ErrorMessage.UNSELECT_MONITOR, "提示", Messagebox.OK,
+			Messagebox.show(ErrorMessage.UNSELECT_MONITOR, Labels.getLabel("Prompt"), Messagebox.OK,
 					Messagebox.INFORMATION);
 			clear();
 			return;

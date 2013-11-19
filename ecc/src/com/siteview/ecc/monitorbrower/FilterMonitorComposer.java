@@ -153,7 +153,7 @@ public class FilterMonitorComposer extends GenericForwardComposer {
 				}
 			}
 		} catch (Exception e) {
-			Messagebox.show(e.getMessage(), "提示", Messagebox.OK,
+			Messagebox.show(e.getMessage(), Labels.getLabel("Prompt"), Messagebox.OK,
 					Messagebox.ERROR);
 			e.printStackTrace();
 		}
@@ -163,7 +163,7 @@ public class FilterMonitorComposer extends GenericForwardComposer {
 		try {
 			String title = this.filterName.getValue().trim();
 			if (title.isEmpty()) {
-				Messagebox.show(Labels.getLabel("ReportTitleCannotEmptyInputAgain"), "提示", Messagebox.OK,
+				Messagebox.show(Labels.getLabel("ReportTitleCannotEmptyInputAgain"), Labels.getLabel("Prompt"), Messagebox.OK,
 						Messagebox.INFORMATION);
 				filterName.focus();
 				return;
@@ -230,7 +230,7 @@ public class FilterMonitorComposer extends GenericForwardComposer {
 
 			composer.getShowMonitorData().setTitle(title);
 		} catch (Exception e) {
-			Messagebox.show(Labels.getLabel("ReportTitleCannotEmptyInputAgain"), "提示", Messagebox.OK,
+			Messagebox.show(Labels.getLabel("ReportTitleCannotEmptyInputAgain"), Labels.getLabel("Prompt"), Messagebox.OK,
 					Messagebox.INFORMATION);
 			e.printStackTrace();
 		}

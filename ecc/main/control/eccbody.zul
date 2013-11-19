@@ -268,7 +268,7 @@
 												value="5" />
 											<listitem label="${c:l('Every10SecondsUpdates')}"
 												value="10" />
-											<listitem label="${c:l('Every12SecondsUpdates')}"
+											<listitem label="${c:l('Every15SecondsUpdates')}"
 												value="15" />
 											<listitem label="${c:l('Every20SecondsUpdates')}"
 												value="20" />

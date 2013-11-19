@@ -3,6 +3,7 @@ package com.siteview.ecc.monitorbrower;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.Session;
 import org.zkoss.zk.ui.event.Event;
@@ -123,7 +124,7 @@ public class GroupSelectTree extends Tree {
 			// ³õÊ¼»¯Ê÷
 			initTree();
 		} catch (Exception e) {
-			Messagebox.show(e.getMessage(), "´íÎó", Messagebox.OK,
+			Messagebox.show(e.getMessage(), Labels.getLabel("Error"), Messagebox.OK,
 					Messagebox.ERROR);
 		}
 	}
@@ -196,7 +197,7 @@ public class GroupSelectTree extends Tree {
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
-				Messagebox.show(e.getMessage(), "´íÎó", Messagebox.OK,
+				Messagebox.show(e.getMessage(), Labels.getLabel("Error"), Messagebox.OK,
 						Messagebox.ERROR);
 			}
 		}
@@ -246,7 +247,7 @@ public class GroupSelectTree extends Tree {
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
-				Messagebox.show(e.getMessage(), "´íÎó", Messagebox.OK,
+				Messagebox.show(e.getMessage(), Labels.getLabel("Error"), Messagebox.OK,
 						Messagebox.ERROR);
 			}
 		}

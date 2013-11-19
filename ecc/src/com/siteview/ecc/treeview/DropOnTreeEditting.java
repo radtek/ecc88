@@ -132,7 +132,7 @@ public class DropOnTreeEditting implements EventListener
 			String vname = getVirtualGroupName(zulname);
 			if (vname == null || vname.isEmpty())
 			{
-				Messagebox.show("虚拟组名称为空！", "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("VirtualGroupNameEmpty"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				vir.cancelAllChange();
 				return false;
 			}
@@ -163,8 +163,8 @@ public class DropOnTreeEditting implements EventListener
 		{
 			if (data.getType().equals(VirtualView.ViewEdittingType))
 			{
-				String vstr="确定要删除虚拟视图：\"" + data.getTitle() + "\"吗？";
-				if( Messagebox.OK != Messagebox.show(vstr, "询问", Messagebox.OK| Messagebox.CANCEL, Messagebox.QUESTION) )
+				String vstr=Labels.getLabel("SureDeleteVirtualView:") + data.getTitle() + Labels.getLabel("QN");
+				if( Messagebox.OK != Messagebox.show(vstr, Labels.getLabel("Ask"), Messagebox.OK| Messagebox.CANCEL, Messagebox.QUESTION) )
 					return false;
 				View view = Toolkit.getToolkit().getSvdbView(getDesktop().getSession());
 				view.deleteVirtualView(vir);
@@ -178,8 +178,8 @@ public class DropOnTreeEditting implements EventListener
 			
 			String ItemId= data.getItemId();
 			vir.deleteItem(ItemId);
-			String str="确定要删除\"" + data.getTitle() + "\"及其所有子孙吗？";
-			if( Messagebox.OK == Messagebox.show(str, "询问", Messagebox.OK| Messagebox.CANCEL, Messagebox.QUESTION) )
+			String str=Labels.getLabel("AreSureDelete") + data.getTitle() + Labels.getLabel("AndItsDescendants");
+			if( Messagebox.OK == Messagebox.show(str, Labels.getLabel("Ask"), Messagebox.OK| Messagebox.CANCEL, Messagebox.QUESTION) )
 			{
 				logger.info("virtual view: "+ vir.getViewName() +" ,delete: " +data.getTitle()+"(id:"+ ItemId+")");
 				EccTreeItem peccitem= (EccTreeItem)data_zk.getParentItem().getValue();
@@ -212,13 +212,13 @@ public class DropOnTreeEditting implements EventListener
 					"editVirtualGroupName.zul", null, null);
 			if (oldname!=null)
 			{
-				win.setTitle("重命名虚拟组，名称不能为空");
-				((Label) win.getFellow("label")).setValue("新的名称:");
-				((Button) win.getFellow("btnAddName")).setLabel("重命名");
+				win.setTitle(Labels.getLabel("RenameVirtualGroupNameCannotEmpty"));
+				((Label) win.getFellow("label")).setValue(Labels.getLabel("TNewName:"));
+				((Button) win.getFellow("btnAddName")).setLabel(Labels.getLabel("Rename"));
 
 				try
 				{
-					if(oldname.startsWith("虚拟组："))
+					if(oldname.startsWith(Labels.getLabel("VirtualGroup:")))
 						oldname= oldname.substring(4);
 				} catch (Exception e)
 				{
@@ -245,7 +245,7 @@ public class DropOnTreeEditting implements EventListener
 			return false;
 		if("monitor".equals(dtype) && !"entity".equals(ptype)){
 			try {
-				Messagebox.show("只能在设备下添加监测器！", "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("CanOnlyAddMonitorEquipment"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				return false;
 			} catch (InterruptedException e) {
 				e.printStackTrace();
@@ -253,7 +253,7 @@ public class DropOnTreeEditting implements EventListener
 		}
 		if("monitor".equals(dtype) && !parent.getId().equals(data.getParent().getId())){
 			try {
-				Messagebox.show("监测器不属于该设备，不允许添加！", "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("MonitorNotBelongEquipmentNotAllowAdd"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				return false;
 			} catch (InterruptedException e) {
 				e.printStackTrace();
@@ -278,7 +278,7 @@ public class DropOnTreeEditting implements EventListener
 			
 			if(isSame){
 				try {
-					Messagebox.show("已存在相同节点！", "提示", Messagebox.OK, Messagebox.INFORMATION);
+					Messagebox.show(Labels.getLabel("SameNodeAlreadyExists"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -321,8 +321,8 @@ public class DropOnTreeEditting implements EventListener
 				}
 				else
 				{
-					String str="确定要添加\"" + data.getTitle() + "\" 到\r\n \"" + parent.getTitle() + "\" 下吗？";
-					int mret= Messagebox.show(str, "询问", Messagebox.OK| Messagebox.CANCEL, Messagebox.QUESTION);
+					String str=Labels.getLabel("SureYouWantAdd") + data.getTitle() + Labels.getLabel("ToX") + parent.getTitle() + Labels.getLabel("QNN");
+					int mret= Messagebox.show(str, Labels.getLabel("Ask"), Messagebox.OK| Messagebox.CANCEL, Messagebox.QUESTION);
 					if( Messagebox.OK != mret)
 					{
 						vir.cancelAllChange();
@@ -406,7 +406,7 @@ public class DropOnTreeEditting implements EventListener
 		{
 			vir.moveItem(data.getItemId(), parent.getItemId());
 			String str="确定要移动\"" + data.getTitle() + "\" 及其所有子孙到\r\n \"" + parent.getTitle() + "\" 下吗？";
-			if( Messagebox.OK == Messagebox.show(str, "询问", Messagebox.OK| Messagebox.CANCEL, Messagebox.QUESTION) )
+			if( Messagebox.OK == Messagebox.show(str, Labels.getLabel("Ask"), Messagebox.OK| Messagebox.CANCEL, Messagebox.QUESTION) )
 			{
 				logger.info("virtual view: "+ vir.getViewName() +" ,move: " +data.getTitle()+"(id:"+ data.getId()+") to " + parent.getTitle() + "(id:" +parent.getId()+")");
 				reload(true, parent.getItemId(), data_zk.getTree(), vir);

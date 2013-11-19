@@ -253,7 +253,7 @@ public class EntityList extends GenericForwardComposer
 			int availableDevicePoint = new License().getAvalibelPoint();
 			if(isNetDevice && availableDevicePoint < 2){
 				try {
-					int i = Messagebox.show("点数已低于2点，是否继续", "询问", Messagebox.OK | Messagebox.CANCEL,	Messagebox.QUESTION);
+					int i = Messagebox.show(Labels.getLabel("PointsBelow2PointswhetherContinue"), Labels.getLabel("Ask"), Messagebox.OK | Messagebox.CANCEL,	Messagebox.QUESTION);
 					if(i == Messagebox.CANCEL){
 						return;
 					}
@@ -262,7 +262,7 @@ public class EntityList extends GenericForwardComposer
 				}
 			}else if(isNetDevice && availableDevicePoint < 1){
 				try {
-					Messagebox.show("点数不足，无法进行操作", "提示", Messagebox.OK,	Messagebox.INFORMATION);
+					Messagebox.show(Labels.getLabel("LackPointsUnablePerformOperation"), Labels.getLabel("Prompt"), Messagebox.OK,	Messagebox.INFORMATION);
 					return;
 				} catch (InterruptedException e) {
 					e.printStackTrace();

@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.UUID;
 
 import org.apache.log4j.Logger;
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
@@ -152,7 +153,7 @@ public class SubTuolistModel extends TuopulistModel{
 			IniFile ini = new IniFile("tuopfile.ini");
 			ini.load();
 
-			if(Messagebox.OK == Messagebox.show("是否删除所选视图？", "询问", Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION))
+			if(Messagebox.OK == Messagebox.show(Labels.getLabel("DoWantDeleteSelectedView"), Labels.getLabel("Ask"), Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION))
 			{
 	            if (item != null) 
 	            	

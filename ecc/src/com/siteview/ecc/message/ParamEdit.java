@@ -3,6 +3,7 @@
  */
 package com.siteview.ecc.message;
 
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.util.GenericAutowireComposer;
 import org.zkoss.zul.Combobox;
 import org.zkoss.zul.Groupbox;
@@ -45,13 +46,13 @@ public class ParamEdit extends GenericAutowireComposer {
 		"setDbPage").getFellow("setDbWin").getFellow("returnValue"));
 		if (exist.isChecked()) {
 			if(porcLength.getValue()==null||porcLength.getValue()<=0){
-				Messagebox.show("参数长度不正确！", "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("ParameterNotCorrectLength"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				return;
 			}
 			else {
 			
-			returnValue.setValue("参数类型：" + porcType.getValue() + "；    参数长度："
-					+ porcLength.getValue() + "；    参数描述：" + porcInfo.getValue());
+			returnValue.setValue(Labels.getLabel("ParameterType:") + porcType.getValue() + Labels.getLabel("ParameterLength")
+					+ porcLength.getValue() + Labels.getLabel("ParameterDescription") + porcInfo.getValue());
 
 			Window win = (Window) (parameditWin.getDesktop().getPage(
 					"setDbPage").getFellow("setDbWin"));

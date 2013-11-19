@@ -251,7 +251,7 @@ public class TableDaoImpl extends GenericAutowireComposer {
 			calEnd.set(Calendar.MINUTE, t1.get(Calendar.MINUTE));
 
 			if(calStart.compareTo(calEnd)>=0){
-				Messagebox.show(Labels.getLabel("StartTimeLessThanEndTime"), "ÌבÊ¾", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("StartTimeLessThanEndTime"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				return;
 			}
 			byCondition.setLimitType(false);

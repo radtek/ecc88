@@ -136,12 +136,12 @@ public class Email_add extends GenericAutowireComposer {
 				emailTemplateValue = "";
 			}
 			if ("".equals(emailNameValue)) {
-				Messagebox.show(Labels.getLabel("PFillName"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("PFillName"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				emailName.setFocus(true);
 				return;
 			}
 			if ("".equals(emailAddressValue)) {
-				Messagebox.show(Labels.getLabel("PFillEmailAddress"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("PFillEmailAddress"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				emailAddress.setFocus(true);
 				return;
 			}
@@ -171,7 +171,7 @@ public class Email_add extends GenericAutowireComposer {
 		
 			for(int m=0;m<emailNameList.length;m++){
 				if(emailNameList[m].trim().equals(emailNameValue)){
-					Messagebox.show("此名称已经存在！", "提示", Messagebox.OK, Messagebox.INFORMATION);
+					Messagebox.show(Labels.getLabel("ThisNameExists"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 					emailName.setFocus(true);
 					return;
 				}
@@ -182,13 +182,13 @@ public class Email_add extends GenericAutowireComposer {
 			Matcher matcher = regex.matcher(emailAddressValue);
 			boolean isMatched = matcher.matches();
 			if (!isMatched) {
-				Messagebox.show(Labels.getLabel("MessageNotCorrectFormat"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("MessageNotCorrectFormat"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				emailAddress.setFocus(true);
 				return ;
 			}
 			
 			if("".equals(taskPlainValue)){
-				Messagebox.show(Labels.getLabel("TaskPlanNotSetValue"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("TaskPlanNotSetValue"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				return ;
 			}
 			
@@ -214,12 +214,12 @@ public class Email_add extends GenericAutowireComposer {
 
 			View view = Toolkit.getToolkit().getSvdbView(event.getTarget().getDesktop());
 			String loginname = view.getLoginName();
-			String minfo=loginname+" "+"在"+OpObjectId.mail_set.name+"中进行了  "+OpTypeId.add.name+"操作，添加的信息项为： "+emailName.getValue();
+			String minfo=loginname+" "+Labels.getLabel("In")+OpObjectId.mail_set.name+Labels.getLabel("Conducting")+OpTypeId.add.name+Labels.getLabel("OperationInformationItemsAddedTo:")+emailName.getValue();
 			AppendOperateLog.addOneLog(loginname, minfo, OpTypeId.add, OpObjectId.mail_set);	
 			onFresh(event);
 		}catch(Exception e){
 			e.printStackTrace();
-			Messagebox.show(e.getMessage(),"错误", Messagebox.OK, Messagebox.ERROR);
+			Messagebox.show(e.getMessage(),Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 		}
 	}
 
@@ -289,7 +289,7 @@ public class Email_add extends GenericAutowireComposer {
 		}
 		if(!flag){
 			try{
-				Messagebox.show(Labels.getLabel("TaskPlanNotSetValue"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("TaskPlanNotSetValue"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			}catch(Exception e){}
 			return 0;
 		}

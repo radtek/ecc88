@@ -114,7 +114,7 @@ public class TaskDaoImplRelative extends GenericForwardComposer {
 			win.setTitle(Labels.getLabel("AddRelativeTimeTaskPlan"));
 			win.doModal();	
 		}catch(Exception e){
-			Messagebox.show(Labels.getLabel("AddRelativeTimeTaskPlanWrong"),"错误", Messagebox.OK, Messagebox.ERROR);
+			Messagebox.show(Labels.getLabel("AddRelativeTimeTaskPlanWrong"),Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 		}
 	}
 	public static ArrayList<HashMap<String,String>> getUsingTaskList()
@@ -171,13 +171,13 @@ public class TaskDaoImplRelative extends GenericForwardComposer {
 		String flag = delButton.getPage().getId();
 		if (s.size() == 0){
 			try{
-				Messagebox.show(Labels.getLabel("NotSelectAnyTask"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("NotSelectAnyTask"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			}catch(Exception e){}
 			return;
 		}
 		int i = 0;
 		try{
-			i = Messagebox.show(Labels.getLabel("SureToDeleteSelectedTask"), "询问", Messagebox.OK
+			i = Messagebox.show(Labels.getLabel("SureToDeleteSelectedTask"), Labels.getLabel("Ask"), Messagebox.OK
 					| Messagebox.CANCEL, Messagebox.QUESTION);
 		}catch(Exception e){}
 		
@@ -202,7 +202,7 @@ public class TaskDaoImplRelative extends GenericForwardComposer {
 						String temp = map.get("3");
 						if( temp != null  || !"".equals(temp.trim())){
 							if( name.equals(temp)){
-								Messagebox.show(Labels.getLabel("TaskPlan")+name+Labels.getLabel("UsedNotOperationReSelection"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+								Messagebox.show(Labels.getLabel("TaskPlan")+name+Labels.getLabel("UsedNotOperationReSelection"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 								deleteflag = false;
 								break;
 							}
@@ -217,7 +217,7 @@ public class TaskDaoImplRelative extends GenericForwardComposer {
 						AppendOperateLog.addOneLog(loginname, minfo, OpTypeId.del,
 						OpObjectId.relative_task);
 						}catch(Exception e){
-							Messagebox.show(Labels.getLabel("RemoveRelativeTimeTaskPlan")+name+Labels.getLabel("Error"),"错误", Messagebox.OK, Messagebox.ERROR);
+							Messagebox.show(Labels.getLabel("RemoveRelativeTimeTaskPlan")+name+Labels.getLabel("Error"),Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 						}
 				}
 			}

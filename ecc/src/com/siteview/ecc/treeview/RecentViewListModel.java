@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
 
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zhtml.Messagebox;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.Page;
@@ -216,11 +217,11 @@ class RecentlyViewMonitorEvent2 implements EventListener
 				try{
 					INode node = Toolkit.getToolkit().getSvdbView(Executions.getCurrent().getDesktop()).getNode(monitorId);
 					if (node == null)
-						throw new Exception("获取该监测器(编号为："+this.monitorId+")数据出现异常,该监测器可能已经被删除");
+						throw new Exception(Labels.getLabel("GetsMonitorNumber:")+this.monitorId+Labels.getLabel("AbnormalDataMonitorHaveDeleted"));
 				}catch(Exception e){
 					try{
 						
-						Messagebox.show(e.getMessage(), "提示", Messagebox.OK,Messagebox.INFORMATION);
+						Messagebox.show(e.getMessage(), Labels.getLabel("Prompt"), Messagebox.OK,Messagebox.INFORMATION);
 						return;
 					}catch(Exception ee){
 					}
@@ -235,7 +236,7 @@ class RecentlyViewMonitorEvent2 implements EventListener
 					clc.getActionMenuDiv().refreshAll(item.getParent());
 				}else{
 					//当前视图中不包含最近浏览的监测器，提示该检测器不存在于当前视图中
-					Messagebox.show("编号为："+this.monitorId+"的监测器不属于当前视图!", "提示", Messagebox.OK,Messagebox.INFORMATION);
+					Messagebox.show(Labels.getLabel("NumberI:")+this.monitorId+Labels.getLabel("MonitorNotBelongCurrentView"), Labels.getLabel("Prompt"), Messagebox.OK,Messagebox.INFORMATION);
 					return;
 				}
 			}else{
@@ -265,14 +266,14 @@ class RecentlyViewMonitorEvent2 implements EventListener
 						eccBody.setSrc(url);
 					}else{
 						try{
-							Messagebox.show("获取该设备(编号为："+this.entityId+")数据出现异常,该设备可能已经被删除", "提示", Messagebox.OK,Messagebox.INFORMATION);
+							Messagebox.show(Labels.getLabel("GetDeviceNumber:")+this.entityId+Labels.getLabel("AbnormalDataDeviceHaveDeleted"), Labels.getLabel("Prompt"), Messagebox.OK,Messagebox.INFORMATION);
 							return;
 						}catch(Exception ee){}
 					}
 				}catch(Exception e){
 					e.printStackTrace();
 					try{
-						Messagebox.show(e.getMessage(), "提示", Messagebox.OK,Messagebox.INFORMATION);
+						Messagebox.show(e.getMessage(), Labels.getLabel("Prompt"), Messagebox.OK,Messagebox.INFORMATION);
 					}catch(Exception ee){}
 				}
 			}		
@@ -314,7 +315,7 @@ class RecentlyViewMonitorEvent2 implements EventListener
 						}
 					}
 					if(monitorIdExit == false){
-						throw new Exception("获取该监测器(编号为："+this.monitorId+")数据出现异常,该监测器可能已经被删除");
+						throw new Exception(Labels.getLabel("GetsMonitorNumber:")+this.monitorId+Labels.getLabel("AbnormalDataMonitorHaveDeleted"));
 					}
 					treeItemList.add(item);
 					Treeitem parentTreeItem = item.getParentItem();

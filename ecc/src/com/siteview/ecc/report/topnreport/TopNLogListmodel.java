@@ -298,7 +298,7 @@ public class TopNLogListmodel extends ListModelList implements ListitemRenderer
 			// TODO Auto-generated method stub
 			try
 			{
-				int ret = Messagebox.show(Labels.getLabel("SureToDeleteSelectedRecords"), "ÌבÊ¾", Messagebox.OK
+				int ret = Messagebox.show(Labels.getLabel("SureToDeleteSelectedRecords"), Labels.getLabel("Prompt"), Messagebox.OK
 						| Messagebox.CANCEL, Messagebox.QUESTION);
 				
 				if (ret == Messagebox.CANCEL)

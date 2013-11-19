@@ -19,6 +19,7 @@ import net.sf.jasperreports.engine.export.JRXlsExporter;
 import net.sf.jasperreports.engine.export.JRXlsExporterParameter;
 
 import org.zkoss.util.media.AMedia;
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zhtml.Filedownload;
 import org.zkoss.zhtml.Messagebox;
 import org.zkoss.zk.ui.event.Event;
@@ -65,7 +66,7 @@ public class SyslogReportGenericForwardComposer  extends
 			Filedownload.save(media);
 			exportsyslogreport.detach();
 		}catch(Exception e){
-			Messagebox.show(e.getMessage(), "´íÎó", Messagebox.OK, Messagebox.ERROR);
+			Messagebox.show(e.getMessage(), Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 		}
 	}
 	/**

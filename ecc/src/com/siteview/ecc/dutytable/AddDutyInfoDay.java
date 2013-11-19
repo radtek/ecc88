@@ -62,7 +62,7 @@ public class AddDutyInfoDay extends GenericAutowireComposer {
 			String mobileValue 				= 	mobilePhoneNum.getValue().toString();			
 			if ("".endsWith(mobileValue.trim())) {
 				try{
-					Messagebox.show(Labels.getLabel("MobilePhoneNumberCanNotEmpty"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+					Messagebox.show(Labels.getLabel("MobilePhoneNumberCanNotEmpty"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				}catch(Exception e){}
 				mobilePhoneNum.setValue(null);
 				mobilePhoneNum.setFocus(true);
@@ -77,12 +77,12 @@ public class AddDutyInfoDay extends GenericAutowireComposer {
 				}
 			}catch(Exception e){
 				e.printStackTrace();
-				Messagebox.show(Labels.getLabel("MobilePhoneNumberNotCorrect"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("MobilePhoneNumberNotCorrect"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				mobilePhoneNum.setFocus(true);
 				return;
 			}
 			if ("".equals(alarmEmailboxValue)) {
-				Messagebox.show(Labels.getLabel("DetailedInformationAlarmReceivingMailboxCannotEmpty"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("DetailedInformationAlarmReceivingMailboxCannotEmpty"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				alarmEmailbox.setFocus(true);
 				return;
 			}
@@ -90,24 +90,24 @@ public class AddDutyInfoDay extends GenericAutowireComposer {
 			Pattern regex = Pattern.compile(check);
 			Matcher matcher = regex.matcher(alarmEmailboxValue);
 			if(!matcher.matches()){
-				Messagebox.show(Labels.getLabel("MessageNotCorrectFormat"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("MessageNotCorrectFormat"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				alarmEmailbox.setFocus(true);
 				return;
 			}
 
 			if (begindutyValue == null) {
-				Messagebox.show(Labels.getLabel("NotChosenStartTime"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("NotChosenStartTime"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				beginduty.setFocus(true);
 				return;
 			}
 			if (enddutyValue == null) {
-				Messagebox.show(Labels.getLabel("NotChosenEndTime"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("NotChosenEndTime"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				endduty.setFocus(true);
 				return;
 			}	
 
 			if(begindutyValue.compareTo(enddutyValue)>=0){
-				Messagebox.show(Labels.getLabel("StartTimeGreaterThanOrEqualEndTime"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("StartTimeGreaterThanOrEqualEndTime"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				endduty.setFocus(true);
 				return;
 			}
@@ -160,7 +160,7 @@ public class AddDutyInfoDay extends GenericAutowireComposer {
 			
 		}catch(Exception e){
 			e.printStackTrace();
-			Messagebox.show(e.getMessage(),"错误", Messagebox.OK, Messagebox.ERROR);
+			Messagebox.show(e.getMessage(),Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 		}
 	}
 	
@@ -175,7 +175,7 @@ public class AddDutyInfoDay extends GenericAutowireComposer {
 			eccBody.setSrc(null);
 			eccBody.setSrc(targetUrl);
 		}catch(Exception e){
-			Messagebox.show(e.getMessage(),"错误", Messagebox.OK, Messagebox.ERROR);
+			Messagebox.show(e.getMessage(),Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 		}
 	}
 	

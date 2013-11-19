@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.Session;
 import org.zkoss.zk.ui.event.Event;
@@ -147,7 +148,7 @@ public class MonitorSelectTree extends Tree {
 			this.addEventListener(Events.ON_SELECT, new TypeMenuOpenListener());
 		} catch (Exception e) {
 			e.printStackTrace();
-			Messagebox.show(e.getMessage(), "´íÎó", Messagebox.OK,
+			Messagebox.show(e.getMessage(), Labels.getLabel("Error"), Messagebox.OK,
 					Messagebox.ERROR);
 		}
 	}
@@ -355,7 +356,7 @@ public class MonitorSelectTree extends Tree {
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
-				Messagebox.show(e.getMessage(), "´íÎó", Messagebox.OK,
+				Messagebox.show(e.getMessage(), Labels.getLabel("Error"), Messagebox.OK,
 						Messagebox.ERROR);
 			}
 		}
@@ -403,7 +404,7 @@ public class MonitorSelectTree extends Tree {
 
 			} catch (Exception e) {
 				e.printStackTrace();
-				Messagebox.show(e.getMessage(), "´íÎó", Messagebox.OK,
+				Messagebox.show(e.getMessage(), Labels.getLabel("Error"), Messagebox.OK,
 						Messagebox.ERROR);
 			}
 		}

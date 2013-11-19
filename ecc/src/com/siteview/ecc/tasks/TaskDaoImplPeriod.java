@@ -116,7 +116,7 @@ public class TaskDaoImplPeriod extends GenericForwardComposer {
 			win.setAttribute("reTaskList", reTaskList);
 			win.doModal();
 		}catch(Exception e){
-			Messagebox.show(Labels.getLabel("AddTimeSlotTaskPlanWrong"), "错误", Messagebox.OK,Messagebox.ERROR);
+			Messagebox.show(Labels.getLabel("AddTimeSlotTaskPlanWrong"), Labels.getLabel("Error"), Messagebox.OK,Messagebox.ERROR);
 		}
 	}
 
@@ -174,10 +174,10 @@ public class TaskDaoImplPeriod extends GenericForwardComposer {
 	public void onDelButton(Event event) throws Exception  {
 		Set<Listitem> s = Listbox.getSelectedItems();
 		if (s.size() < 1){
-			Messagebox.show(Labels.getLabel("NotSelectAnyTask"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+			Messagebox.show(Labels.getLabel("NotSelectAnyTask"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			return;
 		}
-		if(Messagebox.CANCEL == Messagebox.show(Labels.getLabel("SureToDeleteSelectedTask"), "询问", Messagebox.OK| Messagebox.CANCEL, Messagebox.QUESTION)){
+		if(Messagebox.CANCEL == Messagebox.show(Labels.getLabel("SureToDeleteSelectedTask"), Labels.getLabel("Ask"), Messagebox.OK| Messagebox.CANCEL, Messagebox.QUESTION)){
 			return;
 		}
 		TaskPack tp = new TaskPack();
@@ -187,7 +187,7 @@ public class TaskDaoImplPeriod extends GenericForwardComposer {
 		for (Iterator<Listitem> it = s.iterator(); it.hasNext();) {
 			String name = it.next().getLabel();
 			if (name.equals("7*24")  || name.equals("5*8")){
-				Messagebox.show(Labels.getLabel("DefaultValue7*24And5*8NotDeleted"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("DefaultValue7*24And5*8NotDeleted"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				continue;
 			}
 			//abPage//绝对时间 1
@@ -200,7 +200,7 @@ public class TaskDaoImplPeriod extends GenericForwardComposer {
 					String temp = map.get("2");
 					if( temp != null  || !"".equals(temp.trim())){
 						if( name.equals(temp)){
-							Messagebox.show(Labels.getLabel("TaskPlan")+name+Labels.getLabel("UsedNotOperationReSelection"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+							Messagebox.show(Labels.getLabel("TaskPlan")+name+Labels.getLabel("UsedNotOperationReSelection"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 							deleteflag = false;
 							break;
 						}
@@ -216,7 +216,7 @@ public class TaskDaoImplPeriod extends GenericForwardComposer {
 						OpObjectId.time_task);
 
 				}catch(Exception e){
-					Messagebox.show(Labels.getLabel("TimeTimeSlotTaskPlan")+name+Labels.getLabel("IsError"), "错误", Messagebox.OK,
+					Messagebox.show(Labels.getLabel("TimeTimeSlotTaskPlan")+name+Labels.getLabel("IsError"), Labels.getLabel("Error"), Messagebox.OK,
 							Messagebox.ERROR);
 				}
 			}

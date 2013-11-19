@@ -128,7 +128,7 @@ public class EditTopNReport extends GenericForwardComposer
 		String ids = getNodeids();
 		if (ids == null || !ids.endsWith("")) {
 			try {
-				Messagebox.show(Labels.getLabel("SelectMonitor"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("SelectMonitor"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -139,7 +139,7 @@ public class EditTopNReport extends GenericForwardComposer
 		if(tit.equals(""))
 		{
 			try {
-				Messagebox.show(Labels.getLabel("TitleCannotEmpty"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("TitleCannotEmpty"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 				title.focus();
 			} catch (InterruptedException e) {
 				e.printStackTrace();
@@ -153,7 +153,7 @@ public class EditTopNReport extends GenericForwardComposer
 		    	if(tmpTitle.equals(tit))
 		    	{
 					try {
-						Messagebox.show(Labels.getLabel("ReportTitleExistsInputAgain"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+						Messagebox.show(Labels.getLabel("ReportTitleExistsInputAgain"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 						title.focus();
 					} catch (InterruptedException e) {
 						e.printStackTrace();
@@ -213,7 +213,7 @@ public class EditTopNReport extends GenericForwardComposer
 			}
 		} catch (Exception x) {
 			try {
-				Messagebox.show(Labels.getLabel("E_MailFormatNotCorrectInputAgain"), "提示", Messagebox.OK, Messagebox.INFORMATION);
+				Messagebox.show(Labels.getLabel("E_MailFormatNotCorrectInputAgain"), Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.INFORMATION);
 			} catch (InterruptedException e) {
 			}
 			return;

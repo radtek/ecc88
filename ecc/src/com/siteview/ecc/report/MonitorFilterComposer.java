@@ -66,7 +66,7 @@ public class MonitorFilterComposer  extends GenericForwardComposer{
 		try {
 			init();
 		} catch (Exception e) {
-			Messagebox.show(Labels.getLabel("ErrorInitializingWindowTryAgain"),"´íÎó",Messagebox.OK,Messagebox.ERROR);
+			Messagebox.show(Labels.getLabel("ErrorInitializingWindowTryAgain"),Labels.getLabel("Error"),Messagebox.OK,Messagebox.ERROR);
 			e.printStackTrace();
 		}
 	}

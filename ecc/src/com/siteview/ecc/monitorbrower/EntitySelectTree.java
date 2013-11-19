@@ -3,6 +3,7 @@ package com.siteview.ecc.monitorbrower;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.Session;
@@ -114,7 +115,7 @@ public class EntitySelectTree extends Tree {
 			//³õÊ¼»¯Ê÷
 			initTree();
 		} catch (Exception e) {
-			Messagebox.show(e.getMessage(), "´íÎó", Messagebox.OK, Messagebox.ERROR);
+			Messagebox.show(e.getMessage(), Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 		}
 	}
 	
@@ -185,7 +186,7 @@ public class EntitySelectTree extends Tree {
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
-				Messagebox.show(e.getMessage(), "´íÎó", Messagebox.OK, Messagebox.ERROR);
+				Messagebox.show(e.getMessage(), Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 			}
 		}
 		
@@ -219,7 +220,7 @@ public class EntitySelectTree extends Tree {
 				reflash();
 			} catch (Exception e) {
 				e.printStackTrace();
-				Messagebox.show(e.getMessage(), "´íÎó", Messagebox.OK, Messagebox.ERROR);
+				Messagebox.show(e.getMessage(), Labels.getLabel("Error"), Messagebox.OK, Messagebox.ERROR);
 			}
 		}
 		/**

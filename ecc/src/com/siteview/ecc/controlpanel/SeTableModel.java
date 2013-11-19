@@ -3,6 +3,7 @@ package com.siteview.ecc.controlpanel;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.Session;
 
@@ -23,17 +24,17 @@ public class SeTableModel extends EccListModel {
 		switch(idxCol)
 		{
 			case 0:
-				return "名称";
+				return Labels.getLabel("Name");
 			case 1:
-				return "设备总数";
+				return Labels.getLabel("EquipmentNumber");
 			case 2:
-				return "监测器总数";
+				return Labels.getLabel("MonitorsTotal");
 			case 3:
-				return "其中被禁止";
+				return Labels.getLabel("AmongThemForbidden");
 			case 4:
-				return "错误";
+				return Labels.getLabel("Error");
 			case 5:
-				return "危险";
+				return Labels.getLabel("Warning");
 		}
 		return "";
 	}
