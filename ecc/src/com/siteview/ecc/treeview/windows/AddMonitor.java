@@ -1600,7 +1600,9 @@ public class AddMonitor extends GenericForwardComposer
 			String templateId = (String)WAddMonitor.getAttribute("templateId");
 			int point = 0;
 			boolean isNetDevice = false;
-			Map<String, String> netDeviceTemplate = TemplateManager.getEntityGroupTemplateLabel().get(Labels.getLabel("NetworkEquipment"));
+			//cxy add monitor bug 2013/11/20
+			//Map<String, String> netDeviceTemplate = TemplateManager.getEntityGroupTemplateLabel().get(Labels.getLabel("NetworkEquipment"));
+			Map<String, String> netDeviceTemplate = TemplateManager.getEntityGroupTemplateLabel().get("Network Device");
 			for(String deviceId : netDeviceTemplate.keySet()){
 				if(deviceId!=null && deviceId.equals(templateId)){
 					isNetDevice = true;
