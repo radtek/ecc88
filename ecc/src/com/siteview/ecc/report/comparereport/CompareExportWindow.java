@@ -8,6 +8,7 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.zkoss.util.media.AMedia;
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zhtml.Filedownload;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
@@ -74,12 +75,12 @@ public class CompareExportWindow extends Window {
 					MonitorTemplate tmplate = null;
 					if(info!=null) tmplate = info.getMonitorTemplate();
 					if(tmplate!=null)
-					sb.append(tmplate.get_sv_name()).append("类型的监测器对比报告");
+					sb.append(tmplate.get_sv_name()).append(Labels.getLabel("ContrastReportMonitorType"));
 				}
 			}else if(reports.size()>1){
 				INode node = v.getNode(reports.get(0).getNodeidsArray()[0]);
 				INode node2 = v.getNode(reports.get(1).getNodeidsArray()[0]);
-				sb.append(node.getName()).append("与").append(node2.getName()).append("等监测器的对比报告");
+				sb.append(node.getName()).append(Labels.getLabel("And")).append(node2.getName()).append(Labels.getLabel("WaitComparisonReportMonitor"));
 			}
 			Map parameter = new HashMap();
 			parameter.put("title", sb.toString());

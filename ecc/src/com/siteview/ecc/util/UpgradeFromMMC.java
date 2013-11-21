@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Components;
 import org.zkoss.zk.ui.Page;
@@ -104,17 +105,17 @@ public class UpgradeFromMMC extends GenericForwardComposer implements ComposerEx
 		}
 		try
 		{
-			Event event = new Event("onMessage", message, "  开始升级... \n");
+			Event event = new Event("onMessage", message, Labels.getLabel("StartUpgrade"));
 			Events.sendEvent(message, event);
 			Clients.showBusy(null, true);
 			
 			upgradeUserIni();
-			message.setValue("\n  数据升级成功！ \n");
+			message.setValue(Labels.getLabel("DataUpdatedSuccessfully"));
 			Manager.instantUpdate();
 		} catch (Exception e)
 		{
 			e.printStackTrace();
-			message.setValue("  升级失败 ： \n");
+			message.setValue(Labels.getLabel("UpgradeFailed:"));
 			message.setValue(e.toString());
 		}
 		Clients.showBusy(null, false);
@@ -128,13 +129,13 @@ public class UpgradeFromMMC extends GenericForwardComposer implements ComposerEx
 			ArrayList<String> array = Manager.getOnlineLoginName();
 			if (array != null && !array.isEmpty())
 			{
-				error = "有其他用户在线，拒绝升级。请其他所有用户登出，然后执行本功能。";
+				error = Labels.getLabel("OtherUsersOnlineRefusedUpgradeOtherUsersLogOffAIF");
 				return error;
 			}
 			String sid = Manager.createView(name.getValue(), pwd.getValue());
 			View view = Manager.getView(sid);
 			if (!view.isAdmin())
-				error = "您的身份不是管理员，拒绝升级。请以管理员登陆，然后执行本功能。";
+				error = Labels.getLabel("IdentityNotAdministratorRefusedUpgradeReferAdminLogin");
 			Manager.invalidateView(sid);
 		} catch (WrongValueException e)
 		{

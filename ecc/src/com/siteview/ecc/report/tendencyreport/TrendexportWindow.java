@@ -8,6 +8,7 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.zkoss.util.media.AMedia;
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zhtml.Filedownload;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
@@ -57,7 +58,7 @@ public class TrendexportWindow extends Window {
 			List l1 = ReportServices.getRuntimeData(report);
 			List l2 = ReportServices.buildstreamimage(report);
 			Map parameter = new HashMap();
-			String title = report.getPropertyValue("MonitorName")+"的趋势报告";
+			String title = report.getPropertyValue("MonitorName")+Labels.getLabel("TrendReportD");
 			parameter.put("title", title);
 			parameter.put("subtitle", begin_Time.toLocaleString()+"~"+end_Time.toLocaleString());
 			parameter.put("SUBREPORT_DIR", subDir);
@@ -68,13 +69,13 @@ public class TrendexportWindow extends Window {
 			l.addAll(l2);
 			
 			if(fileType.equals("html")){
-				boolean flag = ChartUtil.saveAsHtml(subDir+"report.jasper",subDir,report.getPropertyValue("MonitorName")+"_趋势报告", parameter, new TendencyDataSource(l));
+				boolean flag = ChartUtil.saveAsHtml(subDir+"report.jasper",subDir,report.getPropertyValue("MonitorName")+Labels.getLabel("TrendReportH"), parameter, new TendencyDataSource(l));
 				logger.info(flag);
 			}else if(fileType.equals("pdf")){
-				AMedia media = ChartUtil.saveAsPdf(subDir+"report.jasper", report.getPropertyValue("MonitorName")+"_趋势报告",parameter, new TendencyDataSource(l));
+				AMedia media = ChartUtil.saveAsPdf(subDir+"report.jasper", report.getPropertyValue("MonitorName")+Labels.getLabel("TrendReportH"),parameter, new TendencyDataSource(l));
 				Filedownload.save(media);			
 			}else{
-				AMedia media = ChartUtil.saveAsXls(subDir+"report.jasper", report.getPropertyValue("MonitorName")+"_趋势报告",parameter, new TendencyDataSource(l));
+				AMedia media = ChartUtil.saveAsXls(subDir+"report.jasper", report.getPropertyValue("MonitorName")+Labels.getLabel("TrendReportH"),parameter, new TendencyDataSource(l));
 				Filedownload.save(media);				
 			}
 			window.detach();

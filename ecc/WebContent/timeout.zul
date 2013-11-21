@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
 <?page title="Session Timeout" ?>
-<window width="80%" title="会话超时" border="normal">
+<window width="80%" title="${c:l('SessionTimeout')}" border="normal">
 	<vbox>
-由于您太长时间没有进行操作或者刷新页面，会话过期，请重新登录.
+"${c:l('BecauseSessionExpiredLoginAgain')}"
 	<div style="margin-top: 10px"> 
-	<toolbarbutton href="index.jsp" label="点击重新登录"/>
+	<toolbarbutton href="index.jsp" label="${c:l('ClickLogInAgain')}"/>
 	</div>
 	</vbox>
 </window>

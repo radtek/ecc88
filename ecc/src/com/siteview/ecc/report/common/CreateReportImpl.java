@@ -526,26 +526,26 @@ public class CreateReportImpl implements CreateReport {
 		head.setSizable(true);
 		head.setParent(box);
 		// 名称 正常(%) 危险(%) 错误(%) 阀值 最新状态
-		Listheader column1 = new Listheader("名称");
+		Listheader column1 = new Listheader(Labels.getLabel("Name"));
 		column1.setSort("auto");
 		 column1.setWidth("30%");
 		column1.setParent(head);
-		Listheader column2 = new Listheader("正常(%)");
+		Listheader column2 = new Listheader(Labels.getLabel("Normal(%)"));
 		column2.setSort("auto");
 		column2.setParent(head);
 		 column2.setWidth("10%");
-		Listheader column3 = new Listheader("危险(%)");
+		Listheader column3 = new Listheader(Labels.getLabel("Warning(%)"));
 		column3.setSort("auto");
 		column3.setParent(head);
 		 column3.setWidth("10%");
-		Listheader column4 = new Listheader("错误(%)");
+		Listheader column4 = new Listheader(Labels.getLabel("Error(%)"));
 		column4.setSort("auto");
 		column4.setParent(head);
 		 column4.setWidth("10%");
-		Listheader column5 = new Listheader("阀值");
+		Listheader column5 = new Listheader(Labels.getLabel("Threshold"));
 		column5.setSort("auto");
 		column5.setParent(head);
-		Listheader column6 = new Listheader("最新状态");
+		Listheader column6 = new Listheader(Labels.getLabel("TLatestStatus"));
 		column6.setSort("auto");
 		// column6.setParent(head);
 		for (Report report : reports) {
@@ -573,7 +573,7 @@ public class CreateReportImpl implements CreateReport {
 				new Label(report.getPropertyValue("warnPercent")).setParent(cell3);
 				new Label(report.getPropertyValue("errorPercent")).setParent(cell4);
 				new Label(report.getPropertyValue("errorCondition")).setParent(cell5);
-				new Label(report.getPropertyValue("最新状态")).setParent(cell6);
+				new Label(report.getPropertyValue(Labels.getLabel("TLatestStatus"))).setParent(cell6);
 			}
 
 		}
@@ -603,26 +603,26 @@ public class CreateReportImpl implements CreateReport {
 		head.setSizable(true);
 		head.setParent(box);
 		// 名称 正常(%) 危险(%) 错误(%) 阀值 最新状态
-		Listheader column1 = new Listheader("名称");
+		Listheader column1 = new Listheader(Labels.getLabel("Name"));
 		 column1.setWidth("30%");
 		 column1.setSort("auto");
 		column1.setParent(head);
-		Listheader column2 = new Listheader("正常(%)");
+		Listheader column2 = new Listheader(Labels.getLabel("Normal(%)"));
 		column2.setSort("auto");
 		column2.setWidth("10%");
 		column2.setParent(head);
-		Listheader column3 = new Listheader("危险(%)");
+		Listheader column3 = new Listheader(Labels.getLabel("Warning(%)"));
 		column3.setSort("auto");
 		column3.setWidth("10%");
 		column3.setParent(head);
-		Listheader column4 = new Listheader("错误(%)");
+		Listheader column4 = new Listheader(Labels.getLabel("Error(%)"));
 		column4.setSort("auto");
 		column4.setWidth("10%");
 		column4.setParent(head);
-		Listheader column5 = new Listheader("阀值");
+		Listheader column5 = new Listheader(Labels.getLabel("Threshold"));
 		column5.setSort("auto");
 		column5.setParent(head);
-		Listheader column6 = new Listheader("最新状态");
+		Listheader column6 = new Listheader(Labels.getLabel("TLatestStatus"));
 		column6.setSort("auto");
 		// column6.setParent(head);
 		String[] nodeid = nodeids.split(",");
@@ -651,7 +651,7 @@ public class CreateReportImpl implements CreateReport {
 				cell3.setLabel(rd.getPropertyValue(id, "warnPercent"));
 				cell4.setLabel(rd.getPropertyValue(id, "errorPercent"));
 				cell5.setLabel(rd.getPropertyValue(id, "errorCondition"));
-				cell6.setLabel(rd.getPropertyValue(id, "最新状态"));
+				cell6.setLabel(rd.getPropertyValue(id, Labels.getLabel("TLatestStatus")));
 			//}
 
 		}
@@ -679,27 +679,27 @@ public class CreateReportImpl implements CreateReport {
 		Listhead head = new Listhead();
 		head.setParent(box);
 		head.setSizable(true);
-		Listheader column0 = new Listheader("名称");
+		Listheader column0 = new Listheader(Labels.getLabel("Name"));
 		column0.setSort("auto");
 		column0.setWidth("150px");
 		column0.setParent(head);
-		Listheader column1 = new Listheader("返回值名称");
+		Listheader column1 = new Listheader(Labels.getLabel("ReturnsValueName"));
 		column1.setSort("auto");
 		column1.setWidth("100px");
 		column1.setParent(head);
-		Listheader column2 = new Listheader("最大值");
+		Listheader column2 = new Listheader(Labels.getLabel("MaximumValue"));
 		column2.setSort("auto");
 		column2.setWidth("100px");
 		column2.setParent(head);
-		Listheader column4 = new Listheader("最小值");
+		Listheader column4 = new Listheader(Labels.getLabel("MinimumValue"));
 		column4.setSort("auto");
 		column4.setWidth("100px");
 		column4.setParent(head);
-		Listheader column3 = new Listheader("平均值");
+		Listheader column3 = new Listheader(Labels.getLabel("AverageValue"));
 		column3.setSort("auto");
 		column3.setWidth("100px");
 		column3.setParent(head);
-		Listheader column5 = new Listheader("最近一次");
+		Listheader column5 = new Listheader(Labels.getLabel("ARecent"));
 		column5.setSort("auto");
 		column5.setWidth("100px");
 		column5.setParent(head);
@@ -781,27 +781,27 @@ public class CreateReportImpl implements CreateReport {
 		Listhead head = new Listhead();
 		head.setParent(box);
 		head.setSizable(true);
-		Listheader column0 = new Listheader("名称");
+		Listheader column0 = new Listheader(Labels.getLabel("Name"));
 		column0.setSort("auto");
 		column0.setWidth("150px");
 		column0.setParent(head);
-		Listheader column1 = new Listheader("返回值名称");
+		Listheader column1 = new Listheader(Labels.getLabel("ReturnsValueName"));
 		column1.setSort("auto");
 		column1.setWidth("100px");
 		column1.setParent(head);
-		Listheader column2 = new Listheader("最大值");
+		Listheader column2 = new Listheader(Labels.getLabel("MaximumValue"));
 		column2.setSort("auto");
 		column2.setWidth("100px");
 		column2.setParent(head);
-		Listheader column4 = new Listheader("最小值");
+		Listheader column4 = new Listheader(Labels.getLabel("MinimumValue"));
 		column4.setSort("auto");
 		column4.setWidth("100px");
 		column4.setParent(head);
-		Listheader column3 = new Listheader("平均值");
+		Listheader column3 = new Listheader(Labels.getLabel("AverageValue"));
 		column3.setSort("auto");
 		column3.setWidth("100px");
 		column3.setParent(head);
-		Listheader column5 = new Listheader("最近一次");
+		Listheader column5 = new Listheader(Labels.getLabel("ARecent"));
 		column5.setSort("auto");
 		column5.setWidth("100px");
 		column5.setParent(head);

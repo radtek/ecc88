@@ -67,24 +67,24 @@ public class report extends GenericForwardComposer
 		}
 		if (w == null)
 		{
-			error_message = "未登录或无效的会话！";
+			error_message = Labels.getLabel("UnknownInvalidSession");
 			return;
 		}
 		INode n = w.getNode(monitorId);
 		if (n == null)
 		{
-			error_message = "节点不存在或无权访问！";
+			error_message = Labels.getLabel("NodeNotExistAccess");
 			return;
 		}
 		if (!n.getType().equals(INode.MONITOR))
 		{
-			error_message = "节点类型非法！";
+			error_message = Labels.getLabel("NodeTypeIllegal");
 			return;
 		}
 		MonitorInfo info = w.getMonitorInfo(n);
 		if (info == null)
 		{
-			error_message = "节点不存在或无权访问！";
+			error_message = Labels.getLabel("NodeNotExistAccess");
 			return;
 		}
 		try
@@ -404,7 +404,7 @@ public class report extends GenericForwardComposer
 		Iterator itm = dstrs.keySet().iterator();
 		String mindate = ((Date) itm.next()).toLocaleString();
 		String maxdate = simpleReport.getPropertyValue("latestCreateTime");
-		String subtitle = "时段：" + mindate + "~" + maxdate;
+		String subtitle = Labels.getLabel("PeriodTime:") + mindate + "~" + maxdate;
 		
 		Reportdatasource ds = new Reportdatasource(buildBean("HistoryBean"));
 		Reportdatasource subds1 = new Reportdatasource(buildBean("MonitorBean"));

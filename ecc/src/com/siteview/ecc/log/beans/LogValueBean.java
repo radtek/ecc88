@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.zkoss.util.resource.Labels;
+
 /**
  * @author yuandong s[0] = m.get(i).get("_UserID"); s[1] =
  *         m.get(i).get("_OperateObjName"); s[2] = m.get(i).get("_OperateType");
@@ -30,42 +32,42 @@ public class LogValueBean  {
 		
 		//以下代号定义来自 mmc 版本   UserLogMmcListView.cs  60行  至 90行  //修改部分和 mmc 保持一致
 		
-		m_obj.put("0", "登录");            
+		m_obj.put("0", Labels.getLabel("SignIn"));            
 		m_obj.put("1", "SE");              
-		m_obj.put("2", "组");              
-		m_obj.put("3", "设备");            
-		m_obj.put("4", "监测器");          
-		m_obj.put("5", "基本设置");        
-		m_obj.put("6", "客户名称");        
-		m_obj.put("7", "监测服务器名称");  
-		m_obj.put("8", "报警规则");        
-		m_obj.put("9", "拓扑视图");        
-		m_obj.put("10", "SysLog设置");     
-		m_obj.put("11", "用户管理");       
-		m_obj.put("12", "邮件设置");       
-		m_obj.put("13", "时间段任务计划"); 
-		m_obj.put("14", "绝对时间任务计划");
-		m_obj.put("15", "短信设置");       
-		m_obj.put("16", "TopN报告");       
-		m_obj.put("17", "统计报告");       
-		m_obj.put("18", "值班配置");       
-		m_obj.put("20", "相对时间任务计划"); 
-		m_obj.put("22", "监测器浏览"); 		
-		m_obj.put("23", "监测器设置"); 
-		m_obj.put("24", "邮件模板"); 
-		m_obj.put("25", "短信模板"); 
-		m_obj.put("28", "IP地址"); 
+		m_obj.put("2", Labels.getLabel("Group"));              
+		m_obj.put("3", Labels.getLabel("Equipment"));            
+		m_obj.put("4", Labels.getLabel("Monitor"));          
+		m_obj.put("5", Labels.getLabel("BasicSetting"));        
+		m_obj.put("6", Labels.getLabel("CustomerName"));        
+		m_obj.put("7", Labels.getLabel("MonitoringServerName"));  
+		m_obj.put("8", Labels.getLabel("AlarmRules"));        
+		m_obj.put("9", Labels.getLabel("TopologyView"));        
+		m_obj.put("10", Labels.getLabel("SysLogSettings"));     
+		m_obj.put("11", Labels.getLabel("UserManagement"));       
+		m_obj.put("12", Labels.getLabel("MailSettings"));       
+		m_obj.put("13", Labels.getLabel("TimeSlotTaskPlan")); 
+		m_obj.put("14", Labels.getLabel("AbsoluteTimeTaskPlan"));
+		m_obj.put("15", Labels.getLabel("MessageSettings"));       
+		m_obj.put("16", Labels.getLabel("TopNReport"));       
+		m_obj.put("17", Labels.getLabel("StatisticalReport"));       
+		m_obj.put("18", Labels.getLabel("DutyTableConfiguration"));       
+		m_obj.put("20", Labels.getLabel("RelativeTimeTaskPlan")); 
+		m_obj.put("22", Labels.getLabel("MonitorBrowsing")); 		
+		m_obj.put("23", Labels.getLabel("MonitorSettings")); 
+		m_obj.put("24", Labels.getLabel("EmailTemplate")); 
+		m_obj.put("25", Labels.getLabel("SMSTemplates")); 
+		m_obj.put("28", Labels.getLabel("IPAddress")); 
 		
-		m_type.put("0", "登录");
-		m_type.put("1", "添加");
-		m_type.put("2", "编辑");
-		m_type.put("3", "删除");
-		m_type.put("4", "允许");
-		m_type.put("5", "禁止");
-		m_type.put("6", "批量添加");
-		m_type.put("7", "快速添加");
-		m_type.put("8", "粘贴");
-		m_type.put("9", "事件确认");
+		m_type.put("0", Labels.getLabel("SignIn"));
+		m_type.put("1", Labels.getLabel("Add"));
+		m_type.put("2", Labels.getLabel("Editor"));
+		m_type.put("3", Labels.getLabel("Delete"));
+		m_type.put("4", Labels.getLabel("Enable"));
+		m_type.put("5", Labels.getLabel("Disable"));
+		m_type.put("6", Labels.getLabel("BatchAdd"));
+		m_type.put("7", Labels.getLabel("QuicklyAdd"));
+		m_type.put("8", Labels.getLabel("Paste"));
+		m_type.put("9", Labels.getLabel("EventIdentification"));
 
 		
 		userId = a.get(i).get("_UserID");

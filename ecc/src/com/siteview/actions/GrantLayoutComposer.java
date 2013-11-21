@@ -90,13 +90,13 @@ public class GrantLayoutComposer extends GenericForwardComposer implements
 			public void onEvent(Event event) throws Exception {
 				if(grantTree.getUserRight().isAdmin())
 				{
-					Message.showInfo("管理员无需授权，总是拥有全部功能!");
+					Message.showInfo(Labels.getLabel("AdministratorWithoutAuthorizationAlwaysHaveAll"));
 					return;
 				}
 				try
 				{
 					commitActionGrant();
-					Message.showInfo("成功!");
+					Message.showInfo(Labels.getLabel("Successg"));
 				}catch(Exception e)
 				{
 					Toolkit.getToolkit().showError(e.getMessage());
@@ -109,13 +109,13 @@ public class GrantLayoutComposer extends GenericForwardComposer implements
 			public void onEvent(Event event) throws Exception {
 				if(grantTree.getUserRight().isAdmin())
 				{
-					Message.showInfo("管理员无需授权，总是拥有全部功能!");
+					Message.showInfo(Labels.getLabel("AdministratorWithoutAuthorizationAlwaysHaveAll"));
 					return;
 				}
 				try
 				{
 					commitVisibleGrant();
-					Message.showInfo("成功!");
+					Message.showInfo(Labels.getLabel("Successg"));
 				}catch(Exception e)
 				{
 					Toolkit.getToolkit().showError(e.getMessage());

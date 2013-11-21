@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.zkoss.util.resource.Labels;
+
 import com.siteview.ecc.report.common.ReportFileToolkit;
 import com.siteview.ecc.reportserver.Constand;
 import com.siteview.ecc.reportserver.DirectoryZip;
@@ -67,7 +69,7 @@ public class ShowHtml extends HttpServlet{
 		File file = new File(htmlurl);
 		StringBuffer content = new StringBuffer();
 		if (!file.exists())
-			return "文件不存在!";
+			return Labels.getLabel("FileNotExist");
 		FileInputStream fis = null;
 		InputStreamReader isr = null;
 		BufferedReader reader = null;
@@ -82,7 +84,7 @@ public class ShowHtml extends HttpServlet{
 				strReadLine = reader.readLine();
 			}
 		} catch (Exception e) {
-			return "读取" + file.getName() + "出错！";
+			return Labels.getLabel("Read") + file.getName() + Labels.getLabel("ErrorC");
 		} finally {
 			try {
 				reader.close();
@@ -119,11 +121,11 @@ public class ShowHtml extends HttpServlet{
 		  scroll.append("?reportGenID=").append(reportGenID);
 		  scroll.append("&currentPage=").append(1);
 		  scroll.append("&createTimeInMillis=").append((createTimeInMillis));
-		  scroll.append("\">第一页</a>&nbsp;");
+		  scroll.append("\">First page</a>&nbsp;");
 		  }
 		  else
 		  {
-			  scroll.append("<span style=\"font-size:12px\">第一页</span>&nbsp;");
+			  scroll.append("<span style=\"font-size:12px\">First page</span>&nbsp;");
 		  }
 		  if(Integer.parseInt(currentPage)>1)
 		  {
@@ -131,10 +133,10 @@ public class ShowHtml extends HttpServlet{
 			  scroll.append("?reportGenID=").append(reportGenID);
 			  scroll.append("&currentPage=").append((Integer.parseInt(currentPage)-1));
 			  scroll.append("&createTimeInMillis=").append((createTimeInMillis));
-			  scroll.append("\">前一页</a>&nbsp;");
+			  scroll.append("\">Previous page</a>&nbsp;");
 		  }else
 		  {
-			  scroll.append("<span style=\"font-size:12px\">前一页</span>&nbsp;");
+			  scroll.append("<span style=\"font-size:12px\">Previous page</span>&nbsp;");
 		  }
 		  if(Integer.parseInt(currentPage)<pageCount)
 		  {
@@ -142,11 +144,11 @@ public class ShowHtml extends HttpServlet{
 			  scroll.append("?reportGenID=").append(reportGenID);
 			  scroll.append("&currentPage=").append((Integer.parseInt(currentPage)+1));
 			  scroll.append("&createTimeInMillis=").append((createTimeInMillis));
-			  scroll.append("\">后一页</a>&nbsp;");
+			  scroll.append("\">Next page</a>&nbsp;");
 		  }
 		  else
 		  {
-			  scroll.append("<span style=\"font-size:12px\">后一页</span>&nbsp;");
+			  scroll.append("<span style=\"font-size:12px\">Next page</span>&nbsp;");
 		  }
 		  if(Integer.parseInt(currentPage)<pageCount)
 		  { 
@@ -154,27 +156,27 @@ public class ShowHtml extends HttpServlet{
 		  scroll.append("?reportGenID=").append(reportGenID);
 		  scroll.append("&currentPage=").append(pageCount);
 		  scroll.append("&createTimeInMillis=").append((createTimeInMillis));
-		  scroll.append("\">末一页</a>&nbsp;");
+		  scroll.append("\">End of page</a>&nbsp;");
 		  }
 		  else
 		  {
-			  scroll.append("<span style=\"font-size:12px\">末一页</span>&nbsp;");
+			  scroll.append("<span style=\"font-size:12px\">End of page</span>&nbsp;");
 		  }
-		  scroll.append("<span style=\"font-size:12px\">共 :");
+		  scroll.append("<span style=\"font-size:12px\">Total of:");
 		  scroll.append(pageCount);
-		  scroll.append("页</span>&nbsp;");
+		  scroll.append("Page</span>&nbsp;");
 		  
 		  
-		  scroll.append("<span style=\"font-size:12px\">当前是第:");
+		  scroll.append("<span style=\"font-size:12px\">Now is:");
 		  scroll.append(currentPage);
-		  scroll.append("页</span>&nbsp;");
+		  scroll.append("Page</span>&nbsp;");
 		  
 		  
 		  scroll.append("<a style=\"font-size:12px;text-decoration: underline\" href=\"/ecc/main/report/saveStatisticReport");
 		  scroll.append("?reportGenID=").append(reportGenID);
 		  scroll.append("&currentPage=").append((currentPage));
 		  scroll.append("&createTimeInMillis=").append((createTimeInMillis));
-		  scroll.append("\">保存</a>&nbsp;");
+		  scroll.append("\">Save</a>&nbsp;");
 //		  if(isDownload) downloadFile();
 		  return scroll.toString();
 	  }

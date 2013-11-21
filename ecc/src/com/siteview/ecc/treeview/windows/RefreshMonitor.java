@@ -92,19 +92,19 @@ public class RefreshMonitor extends GenericForwardComposer
 			{
 				((EntityInfo) info).setSonId(sons.toString());
 			}
-			String title="刷新设备("+node.getName()+")，以获取最新监测状态";
+			String title=Labels.getLabel("RefreshDeviceK")+node.getName()+Labels.getLabel("KObtainNewStateMonitor");
 			wrefresh.setTitle(title);
 		}
 		if (node.getType().equals(INode.MONITOR))
 		{
 			info = view.getMonitorInfo(node);
 			session.setAttribute(ConstantValues.RefreshMonitorId, id);
-			String title="刷新监测器("+node.getName()+")，以获取最新监测状态";
+			String title=Labels.getLabel("RefreshMonitorK")+node.getName()+Labels.getLabel("KObtainNewStateMonitor");
 			wrefresh.setTitle(title);
 		}
 		if (info == null)
 		{
-			error_message = "节点不存在或无权访问！";
+			error_message = Labels.getLabel("NodeNotExistAccess");
 			return;
 		}
 		try
@@ -187,9 +187,9 @@ public class RefreshMonitor extends GenericForwardComposer
 			{
 				if (error_message == null)
 				{
-					lbfinish.setValue("刷新完成。");
-					System.out.println("刷新完成 OK");
-					lbrefresh.setValue("刷新完成...");
+					lbfinish.setValue(Labels.getLabel("RefreshComplete."));
+					System.out.println(Labels.getLabel("RefreshCompleteOK"));
+					lbrefresh.setValue(Labels.getLabel("RefreshComplete..."));
 					
 					INode[] ids = null;
 					if (node.getType().equals(INode.ENTITY))
@@ -252,7 +252,7 @@ public class RefreshMonitor extends GenericForwardComposer
 			{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-				error_message = "获取刷新数据失败！";
+				error_message = Labels.getLabel("GetRefreshedDataFailed");
 				// error_message = e.getMessage();
 				timetag = true;
 				return;

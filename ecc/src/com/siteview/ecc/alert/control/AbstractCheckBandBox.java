@@ -1,5 +1,6 @@
 package com.siteview.ecc.alert.control;
 
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
@@ -51,7 +52,7 @@ public abstract class AbstractCheckBandBox extends Bandbox {
 				Component comp = selectevent.getReference();
 				if (comp instanceof Listitem){
 					Listitem listitem = (Listitem)comp;
-					if ("其他".equals(listitem.getValue())){
+					if (Labels.getLabel("Other").equals(listitem.getValue())){
 						for (Object obj : listbox.getItems()){
 							if ((obj instanceof Listitem) == false) continue;
 							if (listitem.equals(obj) == false){
@@ -61,7 +62,7 @@ public abstract class AbstractCheckBandBox extends Bandbox {
 					}else{
 						for (Object obj : listbox.getItems()){
 							if ((obj instanceof Listitem) == false) continue;
-							if ("其他".equals(((Listitem)obj).getValue())){
+							if (Labels.getLabel("Other").equals(((Listitem)obj).getValue())){
 								((Listitem)obj).setSelected(false);
 							}
 						}
@@ -126,7 +127,7 @@ public abstract class AbstractCheckBandBox extends Bandbox {
 	public void onOpen() throws Exception{
 		listbox.getItems().clear();
 		
-		this.setRow(listbox,this.getValue().contains("其他"), "其他", "其他");
+		this.setRow(listbox,this.getValue().contains(Labels.getLabel("Other")), Labels.getLabel("Other"), Labels.getLabel("Other"));
 
 		for (String address : getSelectArray()){
 			this.addAlertReceiver(listbox,address,isExist(this.getValue(),address));
@@ -136,9 +137,9 @@ public abstract class AbstractCheckBandBox extends Bandbox {
 			for(Object obj : listbox.getItems()){
 				if(obj instanceof Listitem){
 					Listitem tmpItem = (Listitem)obj;
-					if(tmpItem.getValue().toString().equals("其他")){
+					if(tmpItem.getValue().toString().equals(Labels.getLabel("Other"))){
 						tmpItem.setSelected(true);
-						this.setValue("其他");
+						this.setValue(Labels.getLabel("Other"));
 						break;
 					}
 				}

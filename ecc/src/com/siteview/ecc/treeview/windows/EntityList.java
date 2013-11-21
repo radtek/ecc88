@@ -74,18 +74,18 @@ public class EntityList extends GenericForwardComposer
 		
 		if (view == null)
 		{
-			error_message = "未登录或无效的会话！";
+			error_message = Labels.getLabel("UnknownInvalidSession");
 			return;
 		}
 		node = view.getNode(Id);
 		if (node == null)
 		{
-			error_message = "节点不存在或无权访问！";
+			error_message = Labels.getLabel("NodeNotExistAccess");
 			return;
 		}
 		if (!node.getType().equals(INode.GROUP) && !node.getType().equals(INode.SE))
 		{
-			error_message = "节点类型非法！";
+			error_message = Labels.getLabel("NodeTypeIllegal");
 			return;
 		}
 		

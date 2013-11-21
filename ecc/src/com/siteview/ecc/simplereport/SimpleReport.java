@@ -45,6 +45,7 @@ import org.jfree.data.xy.XYDataset;
 import org.jfree.ui.RectangleInsets;
 import org.jfree.ui.TextAnchor;
 import org.zkoss.image.AImage;
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.util.GenericForwardComposer;
 import org.zkoss.zul.Area;
@@ -110,24 +111,24 @@ public class SimpleReport extends GenericForwardComposer
 		}
 		if (w == null)
 		{
-			error_message = "未登录或无效的会话！";
+			error_message = Labels.getLabel("UnknownInvalidSession");
 			return;
 		}
 		INode n = w.getNode(monitorId);
 		if (n == null)
 		{
-			error_message = "节点不存在或无权访问！";
+			error_message = Labels.getLabel("NodeNotExistAccess");
 			return;
 		}
 		if (!n.getType().equals(INode.MONITOR))
 		{
-			error_message = "节点类型非法！";
+			error_message = Labels.getLabel("NodeTypeIllegal");
 			return;
 		}
 		MonitorInfo info = w.getMonitorInfo(n);
 		if (info == null)
 		{
-			error_message = "节点不存在或无权访问！";
+			error_message = Labels.getLabel("NodeNotExistAccess");
 			return;
 		}
 		try

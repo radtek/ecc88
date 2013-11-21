@@ -449,7 +449,7 @@ public class Toolkit
 	public void showError(String msg)
 	{
 		try{
-		Messagebox.show(msg,"ÌבÊ¾", Messagebox.OK, Messagebox.ERROR);
+		Messagebox.show(msg,Labels.getLabel("Prompt"), Messagebox.OK, Messagebox.ERROR);
 		}catch(Exception e)
 		{
 			e.printStackTrace(System.err);

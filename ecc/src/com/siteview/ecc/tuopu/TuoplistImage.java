@@ -1,6 +1,7 @@
 package com.siteview.ecc.tuopu;
 
 import org.apache.log4j.Logger;
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.event.Events;
@@ -57,21 +58,21 @@ public class TuoplistImage extends Vbox {
 		
 		Hbox hbox = new Hbox();
 		Toolbarbutton editbtn = new Toolbarbutton();
-		editbtn.setLabel("±à¼­ ");
+		editbtn.setLabel(Labels.getLabel("Editor"));
 		if(this.getEditListener()!=null){
 			editbtn.addEventListener(Events.ON_CLICK, getEditListener());
 		}
 		editbtn.setParent(hbox);
 		
 		Toolbarbutton deletebtn = new Toolbarbutton();
-		deletebtn.setLabel("É¾³ý ");
+		deletebtn.setLabel(Labels.getLabel("Delete"));
 		if(this.getDeleteListener()!=null){
 			deletebtn.addEventListener(Events.ON_CLICK, getDeleteListener());
 		}
 		deletebtn.setParent(hbox);
 		
 		Toolbarbutton downloadbtn = new Toolbarbutton();
-		downloadbtn.setLabel("ÏÂÔØÍØÆËÍ¼ ");
+		downloadbtn.setLabel(Labels.getLabel("DownloadTopologicalGraph"));
 		if(this.getDownloadListener()!=null){
 			downloadbtn.addEventListener(Events.ON_CLICK, getDownloadListener());
 		}

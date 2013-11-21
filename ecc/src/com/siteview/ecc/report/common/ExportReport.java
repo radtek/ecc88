@@ -173,7 +173,7 @@ public class ExportReport {
 		Iterator itm = dstrs.keySet().iterator();
 		String mindate = Toolkit.getToolkit().formatDate((Date) itm.next());
 		String maxdate = this.report.getPropertyValue("latestCreateTime");
-		String subtitle = "Ê±¶Î£º" + mindate + "~" + maxdate;
+		String subtitle = Labels.getLabel("PeriodTime:") + mindate + "~" + maxdate;
 
 		// Reportdatasource ds = new Reportdatasource(buildBean("HistoryBean"));
 		Reportdatasource subds1 = new Reportdatasource(buildBean("MonitorBean"));

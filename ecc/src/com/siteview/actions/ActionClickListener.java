@@ -834,7 +834,7 @@ public class ActionClickListener implements EventListener
 						String minfo = "";
 						for (INode node2 : ids)
 						{
-							minfo = "Æô¶¯£º" + node2.getName() + "(" + node2.getSvId() + ") parent is " + node.getName() + "(" + node.getSvId() + ")";
+							minfo = Labels.getLabel("Start:") + node2.getName() + "(" + node2.getSvId() + ") parent is " + node.getName() + "(" + node.getSvId() + ")";
 							if (node2.getType().equals(INode.GROUP))
 							{
 								AppendOperateLog.addOneLog(loginname, minfo, OpTypeId.enable, OpObjectId.group);

@@ -45,6 +45,7 @@ import org.jfree.chart.renderer.category.BarRenderer3D;
 import org.jfree.chart.title.TextTitle;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.ui.RectangleInsets;
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zul.Image;
 
 import com.siteview.base.data.IniFile;
@@ -216,18 +217,18 @@ public class TopNReport implements Runnable
 				INode n = view.getNode(lstIds[i]);
 				if (n == null)
 				{
-					error_message = "节点不存在或无权访问！";
+					error_message = Labels.getLabel("NodeNotExistAccess");
 					continue;
 				}
 				if (!n.getType().equals(INode.MONITOR))
 				{
-					error_message = "节点类型非法！";
+					error_message = Labels.getLabel("NodeTypeIllegal");
 					continue;
 				}
 				MonitorInfo info = view.getMonitorInfo(n);
 				if (info == null)
 				{
-					error_message = "节点不存在或无权访问！";
+					error_message = Labels.getLabel("NodeNotExistAccess");
 					continue;
 				}
 				tmpnodeids = lstIds[i] + "," + tmpnodeids;
@@ -726,7 +727,7 @@ public class TopNReport implements Runnable
 			{
 				return;
 			}
-			String subtitle = "时段：" + Toolkit.getToolkit().formatDate(tmStart) + "~" + Toolkit.getToolkit().formatDate(tmEnd);
+			String subtitle = Labels.getLabel("PeriodTime:") + Toolkit.getToolkit().formatDate(tmStart) + "~" + Toolkit.getToolkit().formatDate(tmEnd);
 
 			TopNReportDatasource ds2 = null;
 			TopNReportDatasource ds1 = null;

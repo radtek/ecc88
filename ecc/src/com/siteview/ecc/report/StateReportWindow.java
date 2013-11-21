@@ -8,6 +8,7 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.zkoss.util.media.AMedia;
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zhtml.Filedownload;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
@@ -58,7 +59,7 @@ public class StateReportWindow extends Window {
 			String fileType = getFormatListbox().getSelectedItem().getValue().toString();
 			String subDir = EccWebAppInit.getWebDir()+"main/report/statereport/";
 			Map parameter = new HashMap();
-			String title = stateBean.getMonitorName()+"的状态统计报告";
+			String title = stateBean.getMonitorName()+Labels.getLabel("StateStatisticalReportD");
 			parameter.put("title", title);
 			parameter.put("sub_dir", subDir);
 			parameter.put("dataSource1", new StateDatasource(stateBean.cloneThis()));
@@ -67,13 +68,13 @@ public class StateReportWindow extends Window {
 			parameter.put("dataSource4", new ImageDatasource(colorlist));
 			
 			if(fileType.equals("html")){
-				boolean flag = ChartUtil.saveAsHtml(subDir+"stateImfoReport.jasper",subDir,stateBean.getMonitorName()+"_状态统计报告", parameter, new StateDatasource(stateBean.cloneThis()));
+				boolean flag = ChartUtil.saveAsHtml(subDir+"stateImfoReport.jasper",subDir,stateBean.getMonitorName()+Labels.getLabel("StateStatisticalReportH"), parameter, new StateDatasource(stateBean.cloneThis()));
 				logger.info(flag);
 			}else if(fileType.equals("pdf")){
-				AMedia media = ChartUtil.saveAsPdf(subDir+"stateImfoReport.jasper", stateBean.getMonitorName()+"_状态统计报告",parameter, new StateDatasource(stateBean.cloneThis()));
+				AMedia media = ChartUtil.saveAsPdf(subDir+"stateImfoReport.jasper", stateBean.getMonitorName()+Labels.getLabel("StateStatisticalReportH"),parameter, new StateDatasource(stateBean.cloneThis()));
 				Filedownload.save(media);			
 			}else{
-				AMedia media = ChartUtil.saveAsXls(subDir+"stateImfoReport.jasper", stateBean.getMonitorName()+"_状态统计报告",parameter, new StateDatasource(stateBean.cloneThis()));
+				AMedia media = ChartUtil.saveAsXls(subDir+"stateImfoReport.jasper", stateBean.getMonitorName()+Labels.getLabel("StateStatisticalReportH"),parameter, new StateDatasource(stateBean.cloneThis()));
 				Filedownload.save(media);				
 			}
 			win.detach();

@@ -145,7 +145,7 @@ public class addEntity extends GenericForwardComposer
 				this.entityEdit = this.view.getEntityEdit(node);
 				this.entityTemplate = this.entityEdit.getDeviceTemplate();
 				String templatename = entityTemplate.get_sv_name();
-				WAddEntity.setTitle("编辑(" + templatename + ")设备");
+				WAddEntity.setTitle(Labels.getLabel("Editor")+(" + templatename + ")+Labels.getLabel("Equipment"));
 				CreateUI();
 				String name = entityEdit.getName();
 				String depends = entityEdit.getSvDependsOn();

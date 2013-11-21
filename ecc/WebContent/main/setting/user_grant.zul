@@ -5,7 +5,7 @@
 <?page id="eccGrantRight" title="SITEVIEW ECC 8.8"?>
 <?link  rel="stylesheet" type="text/css" href="~./zul/css/ext.css.dsp"?>
 <zk>
-<window use="com.siteview.actions.GrantRightWindow" id="grantWindow" title="用户授权" border="normal" width="600px" height="500px" closable="true" onClose="self.visible = false; event.stopPropagation();">
+<window use="com.siteview.actions.GrantRightWindow" id="grantWindow" title="${c:l('UserAuthorization')}" border="normal" width="600px" height="500px" closable="true" onClose="self.visible = false; event.stopPropagation();">
 <caption image="/main/images/user.gif" label="${c:l('UserAuthorization')}"/>
 	<borderlayout id="grantComposer" apply="com.siteview.actions.GrantLayoutComposer" style="border:none;margin:0">
 							<center id="titleWest" style="font-size:12px" flex="true" border="none">

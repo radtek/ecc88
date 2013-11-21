@@ -208,11 +208,11 @@ public class AddGroup extends GenericForwardComposer
 
 				if (isedit )
 				{
-					minfo = "±à¼­×é£º" + name + "(" + node.getSvId() + ") " ;
+					minfo = Labels.getLabel("EditorGroup:") + name + "(" + node.getSvId() + ") " ;
 					AppendOperateLog.addOneLog(loginname, minfo, OpTypeId.edit, OpObjectId.group);
 				} else
 				{
-					minfo = "Ìí¼Ó×é£º" + name+ "(" +id + ") parent is " + node.getName() + "(" + node.getSvId() + ")";
+					minfo = Labels.getLabel("AddGroup:") + name+ "(" +id + ") parent is " + node.getName() + "(" + node.getSvId() + ")";
 					AppendOperateLog.addOneLog(loginname, minfo, OpTypeId.add, OpObjectId.group);
 				}
 				Session session = Executions.getCurrent().getDesktop().getSession();

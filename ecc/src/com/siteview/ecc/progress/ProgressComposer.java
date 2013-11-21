@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import org.apache.log4j.Logger;
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.Event;
@@ -54,11 +55,11 @@ public class ProgressComposer extends GenericForwardComposer implements	Composer
 					{
 						long time=System.currentTimeMillis()-Long.parseLong(progressmeter.getAttribute("startTimer").toString());
 //						Thread.sleep(10000);
-						btnCancel.setLabel("完成");
+						btnCancel.setLabel(Labels.getLabel("Complete"));
 						if(time/(1000*60)<1)
-							excutingInfoLabel.setValue("花费时间:"+(time/(1000))+"秒");
+							excutingInfoLabel.setValue(Labels.getLabel("SpendTime:")+(time/(1000))+Labels.getLabel("Seconds"));
 						else	
-							excutingInfoLabel.setValue("花费时间:"+(time/(1000*60))+"分");
+							excutingInfoLabel.setValue(Labels.getLabel("SpendTime:")+(time/(1000*60))+Labels.getLabel("Minute"));
 						progressTimer.setRunning(false);
 					}
 
@@ -82,7 +83,7 @@ public class ProgressComposer extends GenericForwardComposer implements	Composer
 					IEccProgressmeter eccProgressmeter=(IEccProgressmeter)progressmeter.getAttribute("eccProgressmeter");
 					eccProgressmeter.cancel();
 					progressWindow.setVisible(false);
-					if(((Button)event.getTarget()).getLabel().equals("完成")){
+					if(((Button)event.getTarget()).getLabel().equals(Labels.getLabel("Complete"))){
 						//						Executions.getCurrent().sendRedirect(eccProgressmeter.getFinishUrl(), "_blank");
 						showfile(eccProgressmeter.getFinishUrl());
 					}

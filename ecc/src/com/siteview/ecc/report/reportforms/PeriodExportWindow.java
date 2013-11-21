@@ -19,6 +19,7 @@ import javax.imageio.stream.ImageOutputStream;
 import org.apache.log4j.Logger;
 import org.jfree.data.xy.XYDataset;
 import org.zkoss.util.media.AMedia;
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zhtml.Filedownload;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
@@ -88,8 +89,8 @@ public class PeriodExportWindow extends Window {
 			List l1 = ReportServices.getRuntimeData(report1,report2);
 			List l2 = buildstreamimage();
 			Map parameter = new HashMap();
-			parameter.put("title", "时段对比报告:"+report1.getPropertyValue("MonitorName"));
-			parameter.put("subtitle", "时段:"+sub1+"与"+"\n时段:"+sub2);
+			parameter.put("title", Labels.getLabel("TimeComparisonReport:")+report1.getPropertyValue("MonitorName"));
+			parameter.put("subtitle", Labels.getLabel("PeriodTime:")+sub1+Labels.getLabel("And")+Labels.getLabel("PeriodTime:")+sub2);
 			parameter.put("SUBREPORT_DIR", subDir);
 			parameter.put("ds1", new PerodreportDatasource(l1));
 			parameter.put("ds2", new PerodreportDatasource(l2));
@@ -97,13 +98,13 @@ public class PeriodExportWindow extends Window {
 			l.addAll(l1);
 			l.addAll(l2);
 			if(fileType.equals("html")){
-				boolean flag = ChartUtil.saveAsHtml(subDir+"report.jasper",subDir,report1.getPropertyValue("MonitorName")+"_时段对比报告", parameter, new PerodreportDatasource(l));
+				boolean flag = ChartUtil.saveAsHtml(subDir+"report.jasper",subDir,report1.getPropertyValue("MonitorName")+Labels.getLabel("TimeComparisonReport"), parameter, new PerodreportDatasource(l));
 				logger.info(flag);
 			}else if(fileType.equals("pdf")){
-				AMedia media = ChartUtil.saveAsPdf(subDir+"report.jasper",report1.getPropertyValue("MonitorName")+"_时段对比报告", parameter, new PerodreportDatasource(l));
+				AMedia media = ChartUtil.saveAsPdf(subDir+"report.jasper",report1.getPropertyValue("MonitorName")+Labels.getLabel("TimeComparisonReport"), parameter, new PerodreportDatasource(l));
 				Filedownload.save(media);			
 			}else{
-				AMedia media = ChartUtil.saveAsXls(subDir+"report.jasper",report1.getPropertyValue("MonitorName")+"_时段对比报告", parameter, new PerodreportDatasource(l));
+				AMedia media = ChartUtil.saveAsXls(subDir+"report.jasper",report1.getPropertyValue("MonitorName")+Labels.getLabel("TimeComparisonReport"), parameter, new PerodreportDatasource(l));
 				Filedownload.save(media);				
 			}
 			window.detach();

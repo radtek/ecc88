@@ -11,6 +11,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.zkoss.util.resource.Labels;
+
 import net.sf.jasperreports.engine.JRExporterParameter;
 import net.sf.jasperreports.engine.JRParameter;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -349,7 +351,7 @@ public class StatsReport implements IEccProgressmeter
 				}
 			}
 			parameters.put("ReportTitle", title);
-			parameters.put("subReportTitle", "Ê±¶Î£º" + Toolkit.getToolkit().formatDate(tmStart) + "~" + Toolkit.getToolkit().formatDate(tmEnd));
+			parameters.put("subReportTitle", Labels.getLabel("PeriodTime:") + Toolkit.getToolkit().formatDate(tmStart) + "~" + Toolkit.getToolkit().formatDate(tmEnd));
 			String path = EccWebAppInit.getWebDir();
 			parameters.put("SUBREPORT_DIR", path + "/main/report/");
 			if ("html".equals(type))

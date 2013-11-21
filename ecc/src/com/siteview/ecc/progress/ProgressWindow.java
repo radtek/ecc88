@@ -2,6 +2,7 @@ package com.siteview.ecc.progress;
 
 import java.util.ArrayList;
 
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zul.Button;
 import org.zkoss.zul.Hbox;
 import org.zkoss.zul.Label;
@@ -18,7 +19,7 @@ public class ProgressWindow extends Window
 	{
 		Progressmeter progressmeter=(Progressmeter)getFellow("progressmeter");
 		Button btnCancel=(Button)getFellow("btnCancel");
-		btnCancel.setLabel("È¡Ïû");
+		btnCancel.setLabel(Labels.getLabel("Cancel"));
 		btnCancel.setAction("");
 		Timer progressTimer=(Timer)getFellow("progressTimer");
 		progressTimer.setRunning(true);

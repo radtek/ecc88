@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javolution.util.FastMap;
 
 import org.apache.log4j.Logger;
+import org.zkoss.util.resource.Labels;
 
 import com.siteview.base.data.IniFile;
 import com.siteview.base.data.QueryInfo;
@@ -236,7 +237,7 @@ public class Manager implements StarterListener
 			ndata.put("LoginName", loginName);
 			ndata.put("PassWord", passWord);
 		}else{
-			throw new Exception("LDAP µÇÂ¼ÈÏÖ¤Ê§°Ü");
+			throw new Exception(Labels.getLabel("LDAPLogonAuthenticationFailure"));
 		}
 		
 		RetMapInMap retm= ManageSvapi.GetUnivData(ndata);
