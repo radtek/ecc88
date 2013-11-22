@@ -3,8 +3,8 @@
 	<property name="ireport.scriptlethandling" value="0"/>
 	<property name="ireport.encoding" value="UTF-8"/>
 	<import value="net.sf.jasperreports.engine.*"/>
-	<import value="net.sf.jasperreports.engine.data.*"/>
 	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
 	<field name="averagevalue" class="java.lang.String">
 		<fieldDescription><![CDATA[averagevalue]]></fieldDescription>
 	</field>
@@ -26,11 +26,11 @@
 	<title>
 		<band height="23" splitType="Stretch">
 			<staticText>
-				<reportElement key="staticText-6" mode="Opaque" x="2" y="5" width="562" height="17" backcolor="#CBE5F5"/>
+				<reportElement key="staticText-6" mode="Opaque" x="2" y="5" width="573" height="17" backcolor="#CBE5F5"/>
 				<textElement>
 					<font fontName="宋体" size="12" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
 				</textElement>
-				<text><![CDATA[统计]]></text>
+				<text><![CDATA[Statistics]]></text>
 			</staticText>
 		</band>
 	</title>
@@ -41,35 +41,35 @@
 				<textElement>
 					<font fontName="宋体" size="12" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
 				</textElement>
-				<text><![CDATA[ 名称]]></text>
+				<text><![CDATA[Name]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="staticText-2" mode="Opaque" x="164" y="5" width="134" height="14" backcolor="#E7F4F9"/>
 				<textElement>
 					<font fontName="宋体" size="12" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
 				</textElement>
-				<text><![CDATA[返回值]]></text>
+				<text><![CDATA[Return value]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="staticText-3" mode="Opaque" x="298" y="5" width="84" height="14" backcolor="#E7F4F9"/>
 				<textElement>
 					<font fontName="宋体" size="12" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
 				</textElement>
-				<text><![CDATA[最大值]]></text>
+				<text><![CDATA[Maximum value]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="staticText-4" mode="Opaque" x="382" y="5" width="85" height="14" backcolor="#E7F4F9"/>
 				<textElement>
 					<font fontName="宋体" size="12" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
 				</textElement>
-				<text><![CDATA[平均值]]></text>
+				<text><![CDATA[Average value]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-5" mode="Opaque" x="467" y="5" width="97" height="14" backcolor="#E7F4F9"/>
+				<reportElement key="staticText-5" mode="Opaque" x="467" y="5" width="108" height="14" backcolor="#E7F4F9"/>
 				<textElement>
 					<font fontName="宋体" size="12" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
 				</textElement>
-				<text><![CDATA[最新值]]></text>
+				<text><![CDATA[Most recent value]]></text>
 			</staticText>
 		</band>
 	</pageHeader>
@@ -114,7 +114,7 @@
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{averagevalue}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
-				<reportElement key="textField-5" x="467" y="3" width="96" height="18"/>
+				<reportElement key="textField-5" x="467" y="3" width="108" height="18"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>

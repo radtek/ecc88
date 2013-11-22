@@ -855,10 +855,7 @@ public class MonitorsFastAdd extends GenericForwardComposer
 		String templateId = (String)WFastAdd.getAttribute("templateId");
 		int point = 0;
 		boolean isNetDevice = false;
-		//cxy add monitor bug 2013/11/20
-		//Map<String, String> netDeviceTemplate = TemplateManager.getEntityGroupTemplateLabel().get("网络设备");
-		Map<String, String> netDeviceTemplate = TemplateManager.getEntityGroupTemplateLabel().get("Network Device");
-		
+		Map<String, String> netDeviceTemplate = TemplateManager.getEntityGroupTemplateLabel().get("网络设备");
 		for(String deviceId : netDeviceTemplate.keySet()){
 			if(deviceId!=null && deviceId.equals(templateId)){
 				isNetDevice = true;

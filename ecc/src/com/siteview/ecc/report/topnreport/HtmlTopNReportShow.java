@@ -133,9 +133,9 @@ public class HtmlTopNReportShow extends HttpServlet {
 			scroll.append("?fileType=").append(fileType);
 			scroll.append("&topNReportPath=").append(topNReportPath);
 			scroll.append("&currentPage=").append(1);
-			scroll.append("\">第一页</a>&nbsp;");
+			scroll.append("\">First page</a>&nbsp;");
 		} else {
-			scroll.append("<span style=\"font-size:12px\">第一页</span>&nbsp;");
+			scroll.append("<span style=\"font-size:12px\">First page</span>&nbsp;");
 		}
 		if (currentPage > 1) {
 			scroll
@@ -143,9 +143,9 @@ public class HtmlTopNReportShow extends HttpServlet {
 			scroll.append("?fileType=").append(fileType);
 			scroll.append("&topNReportPath=").append(topNReportPath);
 			scroll.append("&currentPage=").append((currentPage - 1));
-			scroll.append("\">前一页</a>&nbsp;");
+			scroll.append("\">Previous page</a>&nbsp;");
 		} else {
-			scroll.append("<span style=\"font-size:12px\">前一页</span>&nbsp;");
+			scroll.append("<span style=\"font-size:12px\">Previous page</span>&nbsp;");
 		}
 		if (currentPage < pageCount) {
 			scroll
@@ -153,9 +153,9 @@ public class HtmlTopNReportShow extends HttpServlet {
 			scroll.append("?fileType=").append(fileType);
 			scroll.append("&topNReportPath=").append(topNReportPath);
 			scroll.append("&currentPage=").append((currentPage + 1));
-			scroll.append("\">后一页</a>&nbsp;");
+			scroll.append("\">Next page</a>&nbsp;");
 		} else {
-			scroll.append("<span style=\"font-size:12px\">后一页</span>&nbsp;");
+			scroll.append("<span style=\"font-size:12px\">Next page</span>&nbsp;");
 		}
 		if (currentPage < pageCount) {
 			scroll
@@ -163,16 +163,16 @@ public class HtmlTopNReportShow extends HttpServlet {
 			scroll.append("?fileType=").append(fileType);
 			scroll.append("&topNReportPath=").append(topNReportPath);
 			scroll.append("&currentPage=").append(pageCount);
-			scroll.append("\">末一页</a>&nbsp;");
+			scroll.append("\">End of page</a>&nbsp;");
 		} else {
-			scroll.append("<span style=\"font-size:12px\">末一页</span>&nbsp;");
+			scroll.append("<span style=\"font-size:12px\">End of page</span>&nbsp;");
 		}
 		scroll
 				.append("<a style=\"font-size:12px;text-decoration: underline\" href=\"/ecc/main/report/saveTopReport");
 		scroll.append("?fileType=").append(fileType);
 		scroll.append("&topNReportPath=").append(topNReportPath);
 		scroll.append("&currentPage=").append(currentPage);
-		scroll.append("\">保存</a>&nbsp;");
+		scroll.append("\">Save</a>&nbsp;");
 		return scroll.toString();
 	}
 

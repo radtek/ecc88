@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 
 import org.zkoss.util.media.AMedia;
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
@@ -80,7 +81,7 @@ public class TopNProgress extends GenericForwardComposer
 			progressmeter.setValue(pvalue);
 			if(pvalue==100)
 			{
-				getdata.setValue("正在保存报告文件...");
+				getdata.setValue(Labels.getLabel("SavingReportFileS"));
 			}
 			if(getFinishGerateFile())
 			{

@@ -133,11 +133,11 @@ public class AddMonitor extends GenericForwardComposer {
 		try {
 
 			currentrow = insertp;
-			item = new Comboitem("分钟");
+			item = new Comboitem(Labels.getLabel("MinuteZ"));
 			item.setValue("1");
 			item.setParent(cbErrorFrequencyUnit);
 
-			item = new Comboitem("小时");
+			item = new Comboitem(Labels.getLabel("HourX"));
 			item.setValue("60");
 			item.setParent(cbErrorFrequencyUnit);
 			cbErrorFrequencyUnit.setSelectedIndex(0);
@@ -891,7 +891,7 @@ public class AddMonitor extends GenericForwardComposer {
 		tbErrorFrequency.setValue(sv_errfreqsave);
 		if (monitorEdit.getParameter().get("sv_errfrequint") != null) {
 			String sv_errfrequint = monitorEdit.getParameter().get(
-					"sv_errfrequint").equals("1") ? "分钟" : "小时";
+					"sv_errfrequint").equals("1") ? Labels.getLabel("MinuteZ") : Labels.getLabel("HourX");
 			cbErrorFrequencyUnit.setValue(sv_errfrequint);
 		}
 		String sv_description = monitorEdit.getParameter()
@@ -1030,7 +1030,7 @@ public class AddMonitor extends GenericForwardComposer {
 		// paramter
 		String errfreqsave = tbErrorFrequency.getValue();
 		this.monitorEdit.getParameter().put("sv_errfreqsave", errfreqsave);
-		String errfrequint = "分钟".equals(this.cbErrorFrequencyUnit.getValue()) ? "1"
+		String errfrequint = Labels.getLabel("MinuteZ").equals(this.cbErrorFrequencyUnit.getValue()) ? "1"
 				: "60";
 		this.monitorEdit.getParameter().put("sv_errfrequint", errfrequint);
 		String desc = tbDescription.getValue();
@@ -1046,7 +1046,7 @@ public class AddMonitor extends GenericForwardComposer {
 		if (ErrorFrequency == null || ErrorFrequency.isEmpty()) {
 			ErrorFrequency = "0";
 		}
-		if (!cbErrorFrequencyUnit.getValue().equals("分钟")) {
+		if (!cbErrorFrequencyUnit.getValue().equals(Labels.getLabel("MinuteZ"))) {
 			ErrorFrequency = Integer
 					.toString((Integer.parseInt(ErrorFrequency) * 60));
 		}

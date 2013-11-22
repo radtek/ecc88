@@ -175,7 +175,7 @@ public class SimpleReport extends GenericForwardComposer
 			String average = simpleReport1.getReturnValue("average", i);
 			String latestCreateTime = simpleReport1.getPropertyValue("latestCreateTime");
 			// keyvalue.put("latest",simpleReport.getReturnValue("latest", i));
-			keyvalue.put("subtitle", "最大值" + max + "平均值" + average + "最小值" + min);
+			keyvalue.put("subtitle", Labels.getLabel("MaximumValue") + max + Labels.getLabel("AverageValue") + average + Labels.getLabel("MinimumValue") + min);
 			keyvalue.put("title", simpleReport1.getReturnValue("ReturnName", i));
 			keyvalue.put("maxvalue", max);
 			keyvalue.put("minvalue", min);

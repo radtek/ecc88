@@ -354,7 +354,7 @@ public class TendencyReport extends GenericForwardComposer {
 		String min = report.getReturnValue("min", index);
 		String max = report.getReturnValue("max", index);
 		String average = report.getReturnValue("average", index);
-		String subtitle = "最小值：" + min + "最大值：" + max + "平均值：" + average;
+		String subtitle = Labels.getLabel("MinimumValue:") + min + Labels.getLabel("MaximumValue:") + max + Labels.getLabel("AverageValue:") + average;
 		String name = report.getReturnValue("ReturnName", index) == null ? ""
 				: report.getReturnValue("ReturnName", index);
 		XYDataset data = buildDataset(report,index, name);
@@ -433,7 +433,7 @@ public class TendencyReport extends GenericForwardComposer {
 				av=60*24*24*60*60;
 			}
 		}
-		TimeSeries average1 = MovingAverage.createMovingAverage(timeseries,"趋势线",av, 5);      // 绘制1小时移动平均线
+		TimeSeries average1 = MovingAverage.createMovingAverage(timeseries,Labels.getLabel("TrendLine"),av, 5);      // 绘制1小时移动平均线
 		TimeSeriesCollection timeseriescollection = new TimeSeriesCollection();
 		timeseriescollection.addSeries(average1);
 		timeseriescollection.addSeries(timeseries);

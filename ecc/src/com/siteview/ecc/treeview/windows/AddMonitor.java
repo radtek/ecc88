@@ -1078,7 +1078,7 @@ public class AddMonitor extends GenericForwardComposer
 		tbErrorFrequency.setValue(sv_errfreqsave);
 		if (monitorEdit.getParameter().get("sv_errfrequint") != null)
 		{
-			String sv_errfrequint = monitorEdit.getParameter().get("sv_errfrequint").equals("1") ? "分钟" : "小时";
+			String sv_errfrequint = monitorEdit.getParameter().get("sv_errfrequint").equals("1") ? Labels.getLabel("MinuteZ") : Labels.getLabel("HourX");
 			cbErrorFrequencyUnit.setValue(sv_errfrequint);
 		}
 		String sv_description = monitorEdit.getParameter().get("sv_description");
@@ -1264,7 +1264,7 @@ public class AddMonitor extends GenericForwardComposer
 		// paramter
 		String errfreqsave = tbErrorFrequency.getValue();
 		this.monitorEdit.getParameter().put("sv_errfreqsave", errfreqsave);
-		String errfrequint = "分钟".equals(this.cbErrorFrequencyUnit.getValue()) ? "1" : "60";
+		String errfrequint = Labels.getLabel("MinuteZ").equals(this.cbErrorFrequencyUnit.getValue()) ? "1" : "60";
 		this.monitorEdit.getParameter().put("sv_errfrequint", errfrequint);
 		String desc = tbDescription.getValue();
 		this.monitorEdit.getParameter().put("sv_description", desc);
@@ -1281,7 +1281,7 @@ public class AddMonitor extends GenericForwardComposer
 		{
 			ErrorFrequency = "0";
 		}
-		if (!cbErrorFrequencyUnit.getValue().equals("分钟"))
+		if (!cbErrorFrequencyUnit.getValue().equals(Labels.getLabel("MinuteZ")))
 		{
 			ErrorFrequency = Integer.toString((Integer.parseInt(ErrorFrequency) * 60));
 		}
@@ -1600,9 +1600,7 @@ public class AddMonitor extends GenericForwardComposer
 			String templateId = (String)WAddMonitor.getAttribute("templateId");
 			int point = 0;
 			boolean isNetDevice = false;
-			//cxy add monitor bug 2013/11/20
-			//Map<String, String> netDeviceTemplate = TemplateManager.getEntityGroupTemplateLabel().get(Labels.getLabel("NetworkEquipment"));
-			Map<String, String> netDeviceTemplate = TemplateManager.getEntityGroupTemplateLabel().get("Network Device");
+			Map<String, String> netDeviceTemplate = TemplateManager.getEntityGroupTemplateLabel().get(Labels.getLabel("NetworkEquipment"));
 			for(String deviceId : netDeviceTemplate.keySet()){
 				if(deviceId!=null && deviceId.equals(templateId)){
 					isNetDevice = true;

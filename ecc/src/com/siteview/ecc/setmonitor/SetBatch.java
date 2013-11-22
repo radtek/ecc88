@@ -732,13 +732,13 @@ public class SetBatch extends GenericForwardComposer
 		{
 			String errfreqsave = ibErrorFrequency.getValue().toString();
 			mointorparm.put("sv_errfreqsave", errfreqsave);
-			String errfrequint = "∑÷÷”".equals(this.cbErrorFrequencyUnit.getValue()) ? "1" : "60";
+			String errfrequint = Labels.getLabel("MinuteZ").equals(this.cbErrorFrequencyUnit.getValue()) ? "1" : "60";
 			mointorparm.put("sv_errfrequint", errfrequint);
 			if (errfreqsave == null || errfreqsave.isEmpty())
 			{
 				errfreqsave = "0";
 			}
-			if (!cbErrorFrequencyUnit.getValue().equals("∑÷÷”"))
+			if (!cbErrorFrequencyUnit.getValue().equals(Labels.getLabel("MinuteZ")))
 			{
 				errfreqsave = Integer.toString((Integer.parseInt(errfreqsave) * 60));
 			}
@@ -751,7 +751,7 @@ public class SetBatch extends GenericForwardComposer
 		{
 			String freq = ibFrequency.getValue().toString();
 			mointorparm.put("_frequency1", freq);
-			String frequencyUnit = "∑÷÷”".equals(this.cbFrequencyUnit.getValue()) ? "1" : "60";
+			String frequencyUnit = Labels.getLabel("MinuteZ").equals(this.cbFrequencyUnit.getValue()) ? "1" : "60";
 			mointorparm.put("_frequencyUnit", frequencyUnit);
 			String va = "1".equals(frequencyUnit) ? freq : Integer.toString((Integer.parseInt(freq) * 60));
 			mointorparm.put("_frequency", va);

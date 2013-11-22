@@ -5,6 +5,7 @@ import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRField;
 
 import org.apache.log4j.Logger;
+import org.zkoss.util.resource.Labels;
 
 import com.siteview.ecc.report.beans.StateBean;
 
@@ -20,7 +21,7 @@ public class StateDatasource implements JRDataSource {
 		String name = arg0.getName();
 		previous = name;
 		if("title".equals(name)){
-			return sbean.getMonitorName()+"的状态统计报告";
+			return sbean.getMonitorName()+Labels.getLabel("StateStatisticalReportD");
 		}
 		if(name.equals("okpercent")){
 			String state = sbean.getPercentOk();

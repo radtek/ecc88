@@ -12,6 +12,7 @@ import javolution.util.FastList;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.zkoss.util.resource.Labels;
 
 import com.siteview.base.cache.bean.ReportData;
 import com.siteview.base.manage.Manager;
@@ -45,7 +46,7 @@ public class ReportCacheThread extends Thread {
 				if (view == null)
 					return;
 
-				log.info("开始后台缓存服务...,Now=" + new Date() );
+				log.info(Labels.getLabel("StartBackgroundCacheService") + new Date() );
 				Thread thread = new CacheThread(view);
 				thread.start();
 				while(thread.isAlive()){
@@ -53,7 +54,7 @@ public class ReportCacheThread extends Thread {
 					view.setVisit();
 					Thread.sleep(10000);
 				}
-				log.info("后台缓存服务结束，下次运行时间为5分钟后,Now=" + new Date() );
+				log.info(Labels.getLabel("BackgroundCacheServiceEndedRunMinutes") + new Date() );
 			} catch (Exception e) {
 				e.printStackTrace();
 			}finally{

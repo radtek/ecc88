@@ -23,6 +23,7 @@ import org.jfree.data.time.Second;
 import org.jfree.data.time.TimeSeries;
 import org.jfree.data.time.TimeSeriesCollection;
 import org.jfree.data.xy.XYDataset;
+import org.zkoss.util.resource.Labels;
 
 import com.siteview.base.data.Report;
 import com.siteview.base.data.ReportDate;
@@ -434,7 +435,7 @@ public class ReportServices {
 			String min = simpleReport1.getReturnValue("min", i);
 			String average = simpleReport1.getReturnValue("average", i);
 			String latestCreateTime = simpleReport1.getPropertyValue("latestCreateTime");
-			keyvalue.put("subtitle", "最大值" + max + "平均值" + average + "最小值" + min);
+			keyvalue.put("subtitle", Labels.getLabel("MaximumValue") + max + Labels.getLabel("AverageValue") + average + Labels.getLabel("MinimumValue") + min);
 			keyvalue.put("title", simpleReport1.getReturnValue("ReturnName", i));
 			keyvalue.put("maxvalue", max);
 			keyvalue.put("minvalue", min);
@@ -487,8 +488,8 @@ public class ReportServices {
 					}
 				}
 				Map<String, String> keyvalue = new HashMap<String, String>();
-				keyvalue.put("subtitle", "最大值" + maxValue + "平均值" + conv_number(average/idList.length)
-						+ "最小值" + minValue);
+				keyvalue.put("subtitle", Labels.getLabel("MaximumValue") + maxValue + Labels.getLabel("AverageValue") + conv_number(average/idList.length)
+						+ Labels.getLabel("MinimumValue") + minValue);
 				keyvalue.put("title", rd.getReturnValue(id, "ReturnName", i));
 				keyvalue.put("maxvalue", Double.toString(maxValue));
 				keyvalue.put("minvalue", Double.toString(minValue));

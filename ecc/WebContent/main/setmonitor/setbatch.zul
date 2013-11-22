@@ -176,9 +176,9 @@
 																onChange="applyButton.setDisabled(false)"
 																readonly="true" width="100px">
 																<comboitem
-																	label="${c:l('Minute')}" />
+																	label="${c:l('MinuteZ')}" />
 																<comboitem
-																	label="${c:l('Hour')}" />
+																	label="${c:l('HourX')}" />
 															</combobox>
 														</hbox>
 													</row>

@@ -372,17 +372,17 @@ public class PeriodReport extends GenericForwardComposer {
 			String min2 = simpleReport2.getReturnValue("min", i);
 			String average1 = simpleReport1.getReturnValue("average", i);
 			String average2 = simpleReport1.getReturnValue("average", i);
-			if (simpleReport1.getReturnValue("ReturnName", i).equals("状态")) {
-				keyvalue.put("subtitle", "最大值" + max1 + "/" + max2 + "平均值"
-						+ average1 + "/" + average2 + "最小值" + min1 + "/" + min2
-						+ "/" + "标注：状态图竖线表示告警状态");
+			if (simpleReport1.getReturnValue("ReturnName", i).equals(Labels.getLabel("State"))) {
+				keyvalue.put("subtitle", Labels.getLabel("MaximumValue") + max1 + "/" + max2 + Labels.getLabel("AverageValue")
+						+ average1 + "/" + average2 + Labels.getLabel("MinimumValue") + min1 + "/" + min2
+						+ "/" + Labels.getLabel("AnnotationDiagramExpressedAlarmStatusBar"));
 
 			}
 
 			else {
 				keyvalue
-						.put("subtitle", "最大值" + max1 + "/" + max2 + "平均值"
-								+ average1 + "/" + average2 + "最小值" + min1
+						.put("subtitle", Labels.getLabel("MaximumValue") + max1 + "/" + max2 + Labels.getLabel("AverageValue")
+								+ average1 + "/" + average2 + Labels.getLabel("MinimumValue") + min1
 								+ "/" + min2);
 
 			}
