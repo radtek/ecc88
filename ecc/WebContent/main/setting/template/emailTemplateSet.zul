@@ -59,13 +59,13 @@
 										template.setHeight("470px");
 										template.setWidth("595px");				
 										showMore.setVisible(true);
-										self.setLabel("隐藏");	
+										self.setLabel("Hidden");	
 									}
 									else{
 									template.setHeight("285px");
 									template.setWidth("595px");	
 									showMore.setVisible(false);									
-									self.setLabel("系统变量说明");
+									self.setLabel("SystemVariables");
 									}
 									
 									}</attribute>
