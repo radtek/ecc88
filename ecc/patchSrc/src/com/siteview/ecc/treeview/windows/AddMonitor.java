@@ -516,7 +516,7 @@ public class AddMonitor extends GenericForwardComposer
 				String follow = parameter.get("sv_follow");
 				HtmlBasedComponent basecontrol = buildControl(parameter, false, true);
 				HtmlBasedComponent followcontrol = buildControl(followpar.get(follow), true, false);
-				if("¼à²âÆµÂÊ".equals(parameter.get("sv_label"))){
+				if(Labels.getLabel("Frequency").equals(parameter.get("sv_label"))){
 					componentFrequency = basecontrol;
 				}else{
 					componentFrequency = null;
@@ -576,7 +576,7 @@ public class AddMonitor extends GenericForwardComposer
 				label.setValue(par.get("sv_label") + "*:");
 			} else
 			{
-				if("¼à²âÆµÂÊ".equals(par.get("sv_label"))){
+				if(Labels.getLabel("Frequency").equals(par.get("sv_label"))){
 					label.setValue(par.get("sv_label") + "*:");
 				}else{
 					label.setValue(par.get("sv_label") + ":");

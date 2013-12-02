@@ -80,7 +80,7 @@ public class MonitorFilterComposer  extends GenericForwardComposer{
 		if(frequencyListboxData.getItems()!=null && frequencyListboxData.getItems().size()>0) frequencyListboxData.getItems().clear();
 		Listitem blankItem = new Listitem();
 		blankItem.setSelected(true);
-		blankItem.appendChild(new Listcell(Labels.getLabel("MonitoringFrequency")));
+		blankItem.appendChild(new Listcell(Labels.getLabel("Frequency")));
 		frequencyListboxData.appendChild(blankItem);
 		Object[] obj = freqCollection.toArray();
 		Arrays.sort(obj, new Comparator<Object>(){

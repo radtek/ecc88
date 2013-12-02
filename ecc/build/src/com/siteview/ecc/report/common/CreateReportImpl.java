@@ -257,7 +257,7 @@ public class CreateReportImpl implements CreateReport {
 							+ (min1 - min2);
 				}
 			}
-			keyvalue.put("subtitle", Labels.getLabel("MaximumValue") + max + Labels.getLabel("AverageValue") + average + Labels.getLabel("MinimumValue") + min +"\r\n"+Labels.getLabel("MonitoringFrequency:")+fr+Labels.getLabel("MinuteZ") +Labels.getLabel("MonitoringTime:")+time);
+			keyvalue.put("subtitle", Labels.getLabel("MaximumValue") + max + Labels.getLabel("AverageValue") + average + Labels.getLabel("MinimumValue") + min +"\r\n"+Labels.getLabel("Frequency:")+fr+Labels.getLabel("MinuteZ") +Labels.getLabel("MonitoringTime:")+time);
 			String MonitorName=simpleReport1.getReturnValue(nodeid, "MonitorName", i);
 			keyvalue.put("title", MonitorName+"["+simpleReport1.getReturnValue(nodeid, "ReturnName", i)+"]");
 			keyvalue.put("ytitle",simpleReport1.getReturnValue(nodeid, "ReturnName", i));

@@ -148,7 +148,7 @@ public class MonitorImfoComposer extends GenericForwardComposer{
 		groupName.setValue(mbean.getGroupName());
 		entityName.setValue(mbean.getEntityName());
 		type.setValue(mbean.getMonitorType());
-		frequency.setValue(mbean.getFrequency());
+		frequency.setValue(mbean.getFrequency().replace("∑÷÷”", " minutes").replace("–° ±", " hours"));
 		String[] keyValue = split(mbean.getKeyValue());
 		okCondition.setValue(keyValue[0]);
 		warnCondition.setValue(keyValue[1]);

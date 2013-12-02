@@ -34,7 +34,7 @@
 	}else if ("LDAP".equalsIgnoreCase(BaseTools.getConfigString("auth.type"))) {
 	}else if ("ECC".equalsIgnoreCase(BaseTools.getConfigString("auth.type"))) {
 	}else{
-		loginMsg="登录类型没有设置（NTLM/LDAP/ECC）。";
+		loginMsg="Log type not set (NTLM/LDAP/ECC).";
 	}
  	if (user == null) {
  		if (request.getCookies() != null) {
@@ -88,11 +88,11 @@
 						strSession = Manager.createView(user, password);
 					}
 					
-					System.out.println("花费时间：Manager.createView="
+					System.out.println("To spend time: Manager.createView="
 							+ (System.currentTimeMillis() - l));
 
 					if (strSession == "") {
-						loginMsg = "用户名或者密码错误!";
+						loginMsg = "The user name or password is wrong!";
 					} else {
 						//EccSessionListener.removeZkSession(session);
 						Toolkit.getToolkit().cleanSession(session);
@@ -131,7 +131,7 @@
 						
 						AppendOperateLog.addOneLog(user, userRight
 								.getUserName()
-								+ "登录成功！", OpTypeId.signin,
+								+ "Login is successful!", OpTypeId.signin,
 								OpObjectId.login);
 	%>
 
@@ -139,8 +139,8 @@
 					<%
 						}
 								} else {
-									throw new Exception("登录出现异常：<br>"
-											+ "本机的IP地址不在允许登录的范围内，登录被终止. ");
+									throw new Exception("Login anomaly:<br>"
+											+ "The IP address of the machine is not in the scope allowed to login, login is terminated. ");
 								}
 
 							} catch (Exception e) {

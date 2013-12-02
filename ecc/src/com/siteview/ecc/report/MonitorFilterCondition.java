@@ -345,7 +345,7 @@ public class MonitorFilterCondition {
 	 * @return
 	 */
 	public boolean freqOperator(String src) {
-		if (freq == null || freq.equals(Labels.getLabel("MonitoringFrequency")))
+		if (freq == null || freq.equals(Labels.getLabel("Frequency")))
 			return true;
 	
 		if((src.endsWith(Labels.getLabel("MinuteZ"))&&freq.endsWith(Labels.getLabel("MinuteZ"))) || (src.endsWith(Labels.getLabel("HourX"))&&freq.endsWith(Labels.getLabel("HourX")))){

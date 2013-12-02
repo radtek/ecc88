@@ -32,7 +32,7 @@ public class MonitorImfoListbox extends AbstractListbox {
 	public List<String> getListheader() {
 		return new ArrayList<String>(Arrays.asList(new String[] { Labels.getLabel("MonitorName"),
 				Labels.getLabel("GroupNameTile"),Labels.getLabel("IPAddress"),Labels.getLabel("DeviceName"), Labels.getLabel("Type"), 
-				Labels.getLabel("MonitoringFrequency"), Labels.getLabel("Threshold"), Labels.getLabel("LastTime")/*,"状态统计"*/}));
+				Labels.getLabel("Frequency"), Labels.getLabel("Threshold"), Labels.getLabel("LastTime")/*,"状态统计"*/}));
 	}
 
 	@Override
@@ -102,9 +102,9 @@ public class MonitorImfoListbox extends AbstractListbox {
 						cell.setTooltiptext(tmpKey.getMonitorName());
 						cell.setParent(item);
 					}
-					if(head.equals(Labels.getLabel("MonitoringFrequency"))){
+					if(head.equals(Labels.getLabel("Frequency"))){
 						Listcell cell = new Listcell(tmpKey.getFrequency());
-						cell.setTooltiptext(tmpKey.getFrequency());
+						cell.setTooltiptext(tmpKey.getFrequency().replace("分钟", " minutes").replace("小时", " hours"));
 						cell.setParent(item);
 					}
 					if(head.equals(Labels.getLabel("Threshold"))){

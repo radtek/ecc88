@@ -39,7 +39,7 @@ public class MonitorInfoListbox extends AbstractListbox {
 	public List<String> getListheader() {
 		return new ArrayList<String>(Arrays.asList(new String[] { Labels.getLabel("State"),
 				Labels.getLabel("Name"),Labels.getLabel("GroupName"),Labels.getLabel("DeviceName"),
-				Labels.getLabel("MonitoringFrequency"),Labels.getLabel("Threshold"), Labels.getLabel("ErrorCheckingValue")}));
+				Labels.getLabel("Frequency"),Labels.getLabel("Threshold"), Labels.getLabel("ErrorCheckingValue")}));
 	}
 	
 	@Override
@@ -99,7 +99,7 @@ public class MonitorInfoListbox extends AbstractListbox {
 						cell.appendChild(c2);
 						cell.setParent(item);
 					}
-					if(head.equals(Labels.getLabel("MonitoringFrequency"))){
+					if(head.equals(Labels.getLabel("Frequency"))){
 						Listcell cell = new Listcell(monitorFrequency);
 						cell.setTooltiptext(monitorFrequency);
 						cell.setParent(item);

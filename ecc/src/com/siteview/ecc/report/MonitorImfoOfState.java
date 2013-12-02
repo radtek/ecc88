@@ -248,7 +248,7 @@ public class MonitorImfoOfState extends Window {
 		MonitorTemplate tmplate = info.getMonitorTemplate();
 		String initFreq = "";
 		for (Map<String, String> keyMap : tmplate.get_Parameter_Items()) {
-			if (Labels.getLabel("MonitoringFrequency").equals(keyMap.get("sv_label"))) {
+			if (Labels.getLabel("Frequency").equals(keyMap.get("sv_label"))) {
 				initFreq = keyMap.get("sv_value") + Labels.getLabel("Minute");
 				break;
 			}

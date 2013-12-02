@@ -166,6 +166,11 @@ public class report extends GenericAutowireComposer implements StarterListener{
 			//	dscr = " 显示了不同设备的监测器在相同时段内的监测数据的对比。通过数据的显示，可以对选择监测器的不同指标进行详细显示，可以对监测器数据情况进行详细的把握。";
 				dscr = Labels.getLabel("reportdscr5");
 			}
+		//	if (zulName.equals("ReportErrorContrast")) {
+		//		pic = "/main/images/contrast.gif";
+			//	dscr = " 显示了不同设备的监测器在相同时段内的监测数据的对比。通过数据的显示，可以对选择监测器的不同指标进行详细显示，可以对监测器数据情况进行详细的把握。";
+		//		dscr = Labels.getLabel("reportdscr9");
+		//	}
 			if (zulName.equals("ReportTimeContrast")) {
 				pic = "/main/images/contrast.gif";
 			//	dscr = "显示了同一监测器在不同时间段内的监测数据的对比。通过数据的显示，可以对选择监测器在不同时间段的数据进行详细显示，可以对监测器进行详细的把握。";
