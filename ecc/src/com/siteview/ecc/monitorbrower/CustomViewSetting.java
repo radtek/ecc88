@@ -24,15 +24,15 @@ public class CustomViewSetting {
 	private static void init(){
 		try {
 			LocalIniFile iniFile = getCustomViewSetIniFile();
-			
+		
 			//浏览次数最多的监测器
-			if(!iniFile.getSectionList().contains("CV111")){
+			if(iniFile.getSectionList().contains("CV111")){
 				CVBean bean = new CVBean("CV111","","","","","ShowAll","99999",Labels.getLabel("AllTypes"),"CV111","Manual",
 						Labels.getLabel("DisplayAll"),"Status",Labels.getLabel("State"),Labels.getLabel("BrowseMaximumNumberMonitor"));
 				saveCustomView("CV111",bean);
 			}
 			//出错最多的监测器
-			if(!iniFile.getSectionList().contains("CV222")){
+			if(iniFile.getSectionList().contains("CV222")){
 				CVBean bean = new CVBean("CV222","","","","","ShowAll","99999",Labels.getLabel("AllTypes"),"CV222","Manual",
 						Labels.getLabel("DisplayAll"),"Status",Labels.getLabel("State"),Labels.getLabel("MostMistakesMonitor"));
 				saveCustomView("CV222",bean);
@@ -134,7 +134,7 @@ public class CustomViewSetting {
 		List<CVBean> rtnBean = new ArrayList<CVBean>();
 		try {
 			LocalIniFile iniFile = getCustomViewSetIniFile();
-
+			
 			for(String cvId : iniFile.getSectionList()){
 				String NodeId = iniFile.getValue(cvId, "NodeId");
 				String Title = iniFile.getValue(cvId, "Titile");
@@ -157,6 +157,7 @@ public class CustomViewSetting {
 				CVBean bean = new CVBean(NodeId,EntityName,GroupName
 						,MonitorDescripe,MonitorName,MonitorState,MonitorType
 						,MonitorTypeName,NodeId,RefreshFre,ShowHideName,Sort,SortName,Title);
+				
 				rtnBean.add(bean);
 			}
 		} catch (Exception e) {
