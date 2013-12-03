@@ -23,8 +23,7 @@
 
 					<hbox align="center">
 					<image src="/main/images/se_.gif"/>
-					<!-- <label value="购买点数" /> -->
-					<label value="${c:l('username')}" />
+					<label value="${c:l('BuyCredits')}" />
 					</hbox>
 					<label id="pointLabel"/>
 			</row>

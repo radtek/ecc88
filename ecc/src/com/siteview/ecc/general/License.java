@@ -90,7 +90,7 @@ public class License extends GenericAutowireComposer {
 //		endTimeLabel.setValue(t.format(d));
 		endTimeLabel.setValue(s + "+" + m_fmap.get("return").get(x[0]));
 		//versionLabel.setValue("SITEVIEW ECC 8.8");
-		versionLabel.setValue("E2E View" + Labels.getLabel("username"));
+		versionLabel.setValue(Labels.getLabel("SiteView88"));
 		
 		// 正式版用户的授权数据是从加密狗上读取的	
 		Map<String, String> licensedata = Manager.getLicenseData();		
